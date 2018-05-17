@@ -99,6 +99,9 @@ std::string _(const char* psz)
 
 int main(int argc, char *argv[])
 {
+
+    printf("johnny test \n");
+
     Q_INIT_RESOURCE(bitcoin);
     QApplication app(argc, argv);
 

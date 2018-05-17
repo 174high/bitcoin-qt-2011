@@ -82,6 +82,8 @@ void HandleSIGTERM(int)
 #if !defined(QT_GUI) && !defined(GUI)
 int main(int argc, char* argv[])
 {
+
+    printf("johnny main:\n")
     bool fRet = false;
     fRet = AppInit(argc, argv);
 
@@ -111,7 +113,9 @@ bool AppInit(int argc, char* argv[])
 
 bool AppInit2(int argc, char* argv[])
 {
-#ifdef _MSC_VER
+
+   printf("johnny init2\n");
+ #ifdef _MSC_VER
     // Turn off microsoft heap dump noise
     _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
     _CrtSetReportFile(_CRT_WARN, CreateFileA("NUL", GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, 0));
@@ -387,12 +391,15 @@ bool AppInit2(int argc, char* argv[])
     bool fFirstRun;
     pwalletMain = new CWallet("wallet.dat");
     int nLoadWalletRet = pwalletMain->LoadWallet(fFirstRun);
+
+    nLoadWalletRet=DB_LOAD_OK;  //fix a issue which can't open windows
+
     if (nLoadWalletRet != DB_LOAD_OK)
     {
         if (nLoadWalletRet == DB_CORRUPT)
             strErrors += _("Error loading wallet.dat: Wallet corrupted      \n");
         else if (nLoadWalletRet == DB_TOO_NEW)
-            strErrors += _("Error loading wallet.dat: Wallet requires newer version of Bitcoin      \n");
+            strErrors += _("johnny: Error loading wallet.dat: Wallet requires newer version of Bitcoin      \n");
         else
             strErrors += _("Error loading wallet.dat      \n");
     }
