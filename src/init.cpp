@@ -387,6 +387,7 @@ bool AppInit2(int argc, char* argv[])
     printf(" block index %15"PRI64d"ms\n", GetTimeMillis() - nStart);
 
     printf("Loading wallet...\n");
+
     nStart = GetTimeMillis();
     bool fFirstRun;
     pwalletMain = new CWallet("wallet.dat");

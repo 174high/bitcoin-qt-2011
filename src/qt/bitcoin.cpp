@@ -14,6 +14,7 @@
 #include <QThread>
 #include <QLocale>
 #include <QTranslator>
+#include <QtDebug>
 
 // Need a global reference for the notifications to find the GUI
 BitcoinGUI *guiref;
@@ -100,7 +101,10 @@ std::string _(const char* psz)
 int main(int argc, char *argv[])
 {
 
-    printf("johnny test \n");
+    qDebug() << "******************" ; 
+    qDebug() << " johnny test      " ;    
+    qDebug() << "******************" ;
+
 
     Q_INIT_RESOURCE(bitcoin);
     QApplication app(argc, argv);
