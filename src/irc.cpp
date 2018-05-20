@@ -6,6 +6,8 @@
 #include "irc.h"
 #include "net.h"
 #include "strlcpy.h"
+#include  <QtDebug>
+
 
 using namespace std;
 using namespace boost;
@@ -253,6 +255,10 @@ void ThreadIRCSeed(void* parg)
 
 void ThreadIRCSeed2(void* parg)
 {
+#ifdef DEBUG_BITCOIN_CORE
+    qDebug()<<__FUNCTION__<<" 1:";
+#endif 
+
     /* Dont advertise on IRC if we don't allow incoming connections */
     if (mapArgs.count("-connect") || fNoListen)
         return;

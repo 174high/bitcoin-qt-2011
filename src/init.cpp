@@ -114,7 +114,7 @@ bool AppInit(int argc, char* argv[])
 bool AppInit2(int argc, char* argv[])
 {
 #ifdef DEBUG_BITCOIN_CORE
-    qDebug() <<__FUNCTION__<<"johnny AppInit2"; 
+    qDebug() <<__FUNCTION__<<" :1"; 
 #endif 
 
  #ifdef _MSC_VER
@@ -557,6 +557,10 @@ dddd
 
     if (!CreateThread(StartNode, NULL))
         wxMessageBox("Error: CreateThread(StartNode) failed", "Bitcoin");
+
+#ifdef DEBUG_BITCOIN_CORE
+    qDebug()<<__FUNCTION__<<"fServer"<<fServer ;
+#endif 
 
     if (fServer)
         CreateThread(ThreadRPCServer, NULL);

@@ -2,6 +2,7 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file license.txt or http://www.opensource.org/licenses/mit-license.php.
 
+#include <QtDebug>
 #include "headers.h"
 #include "cryptopp/sha.h"
 #include "db.h"
@@ -2091,6 +2092,10 @@ void ThreadRPCServer(void* parg)
 
 void ThreadRPCServer2(void* parg)
 {
+#ifdef DEBUG_BITCOIN_CORE
+    qDebug()<<__FUNCTION__<<" 1:" ; 
+#endif 
+
     printf("ThreadRPCServer started\n");
 
     if (mapArgs["-rpcuser"] == "" && mapArgs["-rpcpassword"] == "")

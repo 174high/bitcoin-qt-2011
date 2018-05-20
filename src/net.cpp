@@ -8,6 +8,8 @@
 #include "net.h"
 #include "init.h"
 #include "strlcpy.h"
+#include <QtDebug>
+
 
 #ifdef __WXMSW__
 #include <string.h>
@@ -1260,6 +1262,10 @@ void ThreadOpenConnections(void* parg)
 
 void ThreadOpenConnections2(void* parg)
 {
+#ifdef DEBUG_BITCOIN_CORE
+    qDebug()<<__FUNCTION__<<" 1:" ;
+#endif 
+
     printf("ThreadOpenConnections started\n");
 
     // Connect to specific addresses
@@ -1633,6 +1639,10 @@ bool BindListenPort(string& strError)
 
 void StartNode(void* parg)
 {
+#ifdef DEBUG_BITCOIN_CORE
+   qDebug()<<__FUNCTION__ <<"1:" ;
+#endif 
+
     if (pnodeLocalHost == NULL)
         pnodeLocalHost = new CNode(INVALID_SOCKET, CAddress("127.0.0.1", 0, false, nLocalServices));
 
