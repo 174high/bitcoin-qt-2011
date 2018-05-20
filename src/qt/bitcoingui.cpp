@@ -498,6 +498,10 @@ void BitcoinGUI::gotoAddressBookPage()
 
 void BitcoinGUI::gotoReceiveCoinsPage()
 {
+#ifdef DEBUG_GUI
+    qDebug()<<__FUNCTION__<<":1"
+#endif 
+
     receiveCoinsAction->setChecked(true);
     centralWidget->setCurrentWidget(receiveCoinsPage);
 
@@ -508,6 +512,10 @@ void BitcoinGUI::gotoReceiveCoinsPage()
 
 void BitcoinGUI::gotoSendCoinsPage()
 {
+#ifdef DEBUG_GUI
+    qDebug()<<__FUNCTION__<<":1"
+#endif
+
     sendCoinsAction->setChecked(true);
     sendCoinsPage->clear();
     centralWidget->setCurrentWidget(sendCoinsPage);
