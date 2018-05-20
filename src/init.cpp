@@ -84,7 +84,6 @@ void HandleSIGTERM(int)
 int main(int argc, char* argv[])
 {
 
-    printf("johnny main:\n")
     bool fRet = false;
     fRet = AppInit(argc, argv);
 
@@ -114,9 +113,12 @@ bool AppInit(int argc, char* argv[])
 
 bool AppInit2(int argc, char* argv[])
 {
+#ifdef DEBUG_BITCOIN_CORE
+    qDebug() <<__FUNCTION__<<"johnny AppInit2"; 
+#endif 
 
-    qDebug() <<"johnny AppInit2"; 
  #ifdef _MSC_VER
+dddd
     // Turn off microsoft heap dump noise
     _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
     _CrtSetReportFile(_CRT_WARN, CreateFileA("NUL", GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, 0));
@@ -366,6 +368,10 @@ bool AppInit2(int argc, char* argv[])
             return false;
         }
     }
+
+//###############################################################################
+//                      ignore up code when read qt code
+//##############################################################################
 
     //
     // Load data files

@@ -101,9 +101,12 @@ std::string _(const char* psz)
 int main(int argc, char *argv[])
 {
 #ifdef DEBUG_QT    
-    qDebug() << "******************" ; 
-    qDebug() << " johnny test      " ;    
-    qDebug() << "******************" ;
+    qDebug() <<__FUNCTION__<< "******************" ; 
+    qDebug() <<__FUNCTION__<< " johnny test      " ;    
+    qDebug() <<__FUNCTION__<< "******************" ;
+
+    qDebug() <<__FUNCTION__<<"argc="<<argc ;
+    qDebug() <<__FUNCTION__<<"argv="<<argv ;
 #endif 
 
     Q_INIT_RESOURCE(bitcoin);

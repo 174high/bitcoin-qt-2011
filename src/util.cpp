@@ -10,6 +10,7 @@
 #include <boost/interprocess/sync/interprocess_mutex.hpp>
 #include <boost/interprocess/sync/interprocess_recursive_mutex.hpp>
 #include <boost/foreach.hpp>
+#include <QtDebug>
 
 using namespace std;
 using namespace boost;
@@ -447,9 +448,15 @@ void ParseParameters(int argc, char* argv[])
 {
     mapArgs.clear();
     mapMultiArgs.clear();
+#ifdef DEBUG_BITCOIN_CORE
+    qDebug()<<__FUNCTION__<<"test" ;
+#endif 
+
     for (int i = 1; i < argc; i++)
     {
         char psz[10000];
+        qDebug()<<__FUNCTION__<<"psz="<<psz ;
+
         strlcpy(psz, argv[i], sizeof(psz));
         char* pszValue = (char*)"";
         if (strchr(psz, '='))
