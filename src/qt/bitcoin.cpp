@@ -100,17 +100,20 @@ std::string _(const char* psz)
 
 int main(int argc, char *argv[])
 {
-
+#ifdef DEBUG_QT    
     qDebug() << "******************" ; 
     qDebug() << " johnny test      " ;    
     qDebug() << "******************" ;
-
+#endif 
 
     Q_INIT_RESOURCE(bitcoin);
     QApplication app(argc, argv);
 
     // Load language file for system locale
     QString locale = QLocale::system().name();
+#ifdef DEBUG_QT
+    qDebug() << locale; 
+#endif 
     QTranslator translator;
     translator.load("bitcoin_"+locale);
     app.installTranslator(&translator);

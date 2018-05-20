@@ -10,6 +10,7 @@
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/interprocess/sync/file_lock.hpp>
+#include <QtDebug>
 
 using namespace std;
 using namespace boost;
@@ -114,7 +115,7 @@ bool AppInit(int argc, char* argv[])
 bool AppInit2(int argc, char* argv[])
 {
 
-   printf("johnny init2\n");
+    qDebug() <<"johnny AppInit2"; 
  #ifdef _MSC_VER
     // Turn off microsoft heap dump noise
     _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
