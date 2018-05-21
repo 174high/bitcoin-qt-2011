@@ -21,7 +21,7 @@ QMAKE_CXXFLAGS_WARN_ON = -fdiagnostics-show-option -Wall -Wno-invalid-offsetof -
 
 # Input
 DEPENDPATH += ../src/qt ../src ../src/cryptopp ../src json/include
-HEADERS += ../src/qt/bitcoingui.h \
+HEADERS += bitcoingui.h \
     ../src/qt/transactiontablemodel.h \
     ../src/qt/addresstablemodel.h \
     ../src/qt/optionsdialog.h \
@@ -81,13 +81,13 @@ HEADERS += ../src/qt/bitcoingui.h \
     ../src/qt/transactionview.h \
     ../src/qt/walletmodel.h \
     ../src/bitcoinrpc.h \
-    ../src/qt/overviewpage.h \
+    overviewpage.h \
     ../src/qt/csvmodelwriter.h \
     ../src/qt/qtwin.h \
     ../src/crypter.h \
     ../src/qt/sendcoinsentry.h \
     ../src/qt/qvalidatedlineedit.h
-SOURCES += bitcoin.cpp ../src/qt/bitcoingui.cpp \
+SOURCES += bitcoin.cpp bitcoingui.cpp \
     ../src/qt/transactiontablemodel.cpp \
     ../src/qt/addresstablemodel.cpp \
     ../src/qt/optionsdialog.cpp \
@@ -123,7 +123,7 @@ SOURCES += bitcoin.cpp ../src/qt/bitcoingui.cpp \
     ../src/qt/transactionview.cpp \
     ../src/qt/walletmodel.cpp \
     ../src/bitcoinrpc.cpp \
-    ../src/qt/overviewpage.cpp \
+    overviewpage.cpp \
     ../src/qt/csvmodelwriter.cpp \
     ../src/qt/qtwin.cpp \
     ../src/crypter.cpp \
