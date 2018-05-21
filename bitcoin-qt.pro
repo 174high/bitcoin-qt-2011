@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET =
 INCLUDEPATH += src src/json src/cryptopp src/qt
-DEFINES += QT_GUI
+DEFINES += QT_GUI DEBUG_QT DEBUG_BITCOIN_CORE
 # DEFINES += SSL
 CONFIG += no_include_pwd
 
