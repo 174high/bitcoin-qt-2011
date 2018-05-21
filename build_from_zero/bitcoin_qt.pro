@@ -1,3 +1,3 @@
 CONFIG += qt
-QT -= gui
+QT -= 
 SOURCES += main.cpp
