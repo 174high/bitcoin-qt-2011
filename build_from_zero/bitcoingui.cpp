@@ -5,6 +5,12 @@
  */
 #include "bitcoingui.h"
 #include <QMenuBar>
+#include <QLabel>
+#include <QStackedWidget>
+
+
+#include "overviewpage.h"
+
 
 
 BitcoinGUI::BitcoinGUI(QWidget *parent)
@@ -16,6 +22,24 @@ BitcoinGUI::BitcoinGUI(QWidget *parent)
     // Menus
     QMenu *file = menuBar()->addMenu("&File");
 
+    QMenu *settings = menuBar()->addMenu("&Settings");
+
+    QMenu *help = menuBar()->addMenu("&Help");
+
+    QToolBar *toolbar = addToolBar("Main toolbar");
+
+    QToolBar *toolbar2 = addToolBar("Transactions toolbar");
+  
+      // Overview page
+    overviewPage = new OverviewPage();
+
+//    progressBarLabel = new QLabel(tr("Synchronizing with network..."));    
+
+    centralWidget = new QStackedWidget(this);
+
+    centralWidget->addWidget(overviewPage);
+    setCentralWidget(centralWidget);
+    
 }
 
 
