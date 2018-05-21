@@ -9,7 +9,8 @@
 int main(int argc, char** argv)
 {
     qDebug()<<"hello qt!";
-
+ 
+    Q_INIT_RESOURCE(bitcoin);
     QApplication app(argc, argv);
 
     QTranslator translator;

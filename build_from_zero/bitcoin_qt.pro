@@ -5,4 +5,7 @@ SOURCES += main.cpp \
 
 HEADERS += bitcoingui.h
 
+RESOURCES += \
+          bitcoin.qrc
+
 TRANSLATIONS = hellotr_la.ts
