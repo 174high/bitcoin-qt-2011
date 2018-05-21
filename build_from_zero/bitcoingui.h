@@ -29,17 +29,23 @@ class BitcoinGUI : public QMainWindow
 public:
     explicit BitcoinGUI(QWidget *parent = 0);
     ~BitcoinGUI();
+
 //protected:
 private:
 
-   QStackedWidget *centralWidget;
+    QStackedWidget *centralWidget;
 
     OverviewPage *overviewPage;
     QLabel *progressBarLabel;
 
+    QAction *overviewAction;
+
+    void createActions();
 
 //public slots:
-//private slots:
+   private slots:
+   void gotoOverviewPage();
+
 };
 
 
