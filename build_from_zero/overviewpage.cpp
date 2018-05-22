@@ -36,12 +36,12 @@ OverviewPage::~OverviewPage()
 void OverviewPage::setBalance(qint64 balance, qint64 unconfirmedBalance)
 {
     ui->labelBalance->setText(GUIUtil::formatMoney(balance) + QString(" BTC"));
-//    ui->labelUnconfirmed->setText(GUIUtil::formatMoney(unconfirmedBalance) + QString(" BTC"));
+    ui->labelUnconfirmed->setText(GUIUtil::formatMoney(unconfirmedBalance) + QString(" BTC"));
 }
 
 void OverviewPage::setNumTransactions(int count)
 {
-//    ui->labelNumTransactions->setText(QLocale::system().toString(count));
+     ui->labelNumTransactions->setText(QLocale::system().toString(count));
 }
 
 void OverviewPage::setModel(WalletModel *model)
