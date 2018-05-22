@@ -1,89 +1,22 @@
-/*
- * Qt4 bitcoin GUI.
- *
- * W.J. van der Laan 2011
- */
+#include <QtCore/QCoreApplication>
+#include <QtCore/QDebug>
+#include <QtGui>
+#include <QTranslator>
+#include <QObject>
 #include "bitcoingui.h"
-#include <QMenuBar>
-#include <QLabel>
-#include <QStackedWidget>
-#include <QToolBar>
-
-#include "overviewpage.h"
 
 
-
-BitcoinGUI::BitcoinGUI(QWidget *parent)
+int main(int argc, char** argv)
 {
-    resize(850, 550);
-    setWindowTitle(tr("Bitcoin Wallet"));
-    setWindowIcon(QIcon(":icons/bitcoin"));
+    Q_INIT_RESOURCE(bitcoin);
+    QApplication app(argc, argv);
 
-    createActions();
- 
-   // Menus
-    QMenu *file = menuBar()->addMenu("&File");
+    QTranslator translator;
+    translator.load("hellotr_la");
+    app.installTranslator(&translator);
 
-    QMenu *settings = menuBar()->addMenu("&Settings");
+    BitcoinGUI window;
+    window.show();
 
-    QMenu *help = menuBar()->addMenu("&Help");
-
-    QToolBar *toolbar = addToolBar("Main toolbar");
-    toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-    toolbar->addAction(overviewAction);
-
-    QToolBar *toolbar2 = addToolBar("Transactions toolbar");
-    toolbar2->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
- //   toolbar2->addAction(exportAction);
-
-      // Overview page
-    overviewPage = new OverviewPage();
-
-//    progressBarLabel = new QLabel(tr("Synchronizing with network..."));    
-
-    centralWidget = new QStackedWidget(this);
-
-    centralWidget->addWidget(overviewPage);
-    setCentralWidget(centralWidget);
-
-
-    gotoOverviewPage();    
+    return app.exec();
 }
-
-
-
-BitcoinGUI::~BitcoinGUI(void)
-{
-
-}
-
-void BitcoinGUI::createActions()
-{
-    QActionGroup *tabGroup = new QActionGroup(this);
-
-    overviewAction = new QAction(QIcon(":/icons/overview"), tr("&Overview"), this);
-    overviewAction->setCheckable(true);
-    tabGroup->addAction(overviewAction);
-
-//    exportAction = new QAction(QIcon(":/icons/export"), tr("&Export..."), this);
-//    exportAction->setToolTip(tr("Export data in current view to a file")); 
-
-
-   connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
-
-
-
-}
-
-
-
-void BitcoinGUI::gotoOverviewPage()
-{
-    overviewAction->setChecked(true);
-    centralWidget->setCurrentWidget(overviewPage);
-
-    //exportAction->setEnabled(false);
-    //disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-}
-
-
