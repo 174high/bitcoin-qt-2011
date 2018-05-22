@@ -51,6 +51,9 @@ int WalletModel::getNumTransactions() const
 
 void WalletModel::update()
 {
+#ifdef DEBUG_WALLET
+    qDebug()<<__FUNCTION__<<"balance and transaction"; 
+#endif 
     qint64 newBalance = getBalance();
     qint64 newUnconfirmedBalance = getUnconfirmedBalance();
     int newNumTransactions = getNumTransactions();
