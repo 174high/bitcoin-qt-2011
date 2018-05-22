@@ -1,8 +1,9 @@
 #include "overviewpage.h"
 #include "ui_overviewpage.h"
 
-//#include "walletmodel.h"
-//#include "guiutil.h"
+#include <QtDebug>
+#include "walletmodel.h"
+#include "guiutil.h"
 
 OverviewPage::OverviewPage(QWidget *parent) :
     QWidget(parent),
@@ -34,7 +35,7 @@ OverviewPage::~OverviewPage()
 
 void OverviewPage::setBalance(qint64 balance, qint64 unconfirmedBalance)
 {
-//    ui->labelBalance->setText(GUIUtil::formatMoney(balance) + QString(" BTC"));
+    ui->labelBalance->setText(GUIUtil::formatMoney(balance) + QString(" BTC"));
 //    ui->labelUnconfirmed->setText(GUIUtil::formatMoney(unconfirmedBalance) + QString(" BTC"));
 }
 
@@ -46,12 +47,14 @@ void OverviewPage::setNumTransactions(int count)
 void OverviewPage::setModel(WalletModel *model)
 {
     this->model = model;
-
+    
+    qDebug() <<__FUNCTION__ <<"set balance" ;
     // Keep up to date with wallet
-//    setBalance(model->getBalance(), model->getUnconfirmedBalance());
-//    connect(model, SIGNAL(balanceChanged(qint64, qint64)), this, SLOT(setBalance(qint64, qint64)));
+     setBalance(model->getBalance(), model->getUnconfirmedBalance());
+     connect(model, SIGNAL(balanceChanged(qint64, qint64)), this, SLOT(setBalance(qint64, qint64)));
 
-//    setNumTransactions(model->getNumTransactions());
-//    connect(model, SIGNAL(numTransactionsChanged(int)), this, SLOT(setNumTransactions(int)));
+     qDebug() <<__FUNCTION__ <<"get transactions number" ;
+     setNumTransactions(model->getNumTransactions());
+     connect(model, SIGNAL(numTransactionsChanged(int)), this, SLOT(setNumTransactions(int)));
 
 }

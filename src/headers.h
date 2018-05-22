@@ -58,6 +58,8 @@
 
 #include <boost/foreach.hpp>
 
+#include <QtDebug>
+
 #ifdef __WXMSW__
 #include <windows.h>
 #include <winsock2.h>

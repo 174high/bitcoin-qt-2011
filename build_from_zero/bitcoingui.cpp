@@ -48,37 +48,111 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     walletModel(0),
     trayIcon(0)
 {
-      resize(850, 550);
+    resize(850, 550);
     setWindowTitle(tr("Bitcoin Wallet"));
     setWindowIcon(QIcon(":icons/bitcoin"));
 
     createActions();
 
-   // Menus
+    // Menus
     QMenu *file = menuBar()->addMenu("&File");
-
+    file->addAction(sendCoinsAction);
+    file->addAction(receiveCoinsAction);
+    file->addSeparator();
+    file->addAction(quitAction);
+    
     QMenu *settings = menuBar()->addMenu("&Settings");
+    settings->addAction(optionsAction);
 
     QMenu *help = menuBar()->addMenu("&Help");
-
+    help->addAction(aboutAction);
+    
+    // Toolbar
     QToolBar *toolbar = addToolBar("Main toolbar");
     toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     toolbar->addAction(overviewAction);
+    toolbar->addAction(sendCoinsAction);
+    toolbar->addAction(receiveCoinsAction);
+    toolbar->addAction(historyAction);
+    toolbar->addAction(addressBookAction);
 
     QToolBar *toolbar2 = addToolBar("Transactions toolbar");
     toolbar2->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
- //   toolbar2->addAction(exportAction);
+    toolbar2->addAction(exportAction);
 
-      // Overview page
+    // Overview page
     overviewPage = new OverviewPage();
+    QVBoxLayout *vbox = new QVBoxLayout();
 
-//    progressBarLabel = new QLabel(tr("Synchronizing with network..."));    
+    transactionView = new TransactionView(this);
+    connect(transactionView, SIGNAL(doubleClicked(const QModelIndex&)), transactionView, SLOT(showDetails()));
+    vbox->addWidget(transactionView);
+
+    transactionsPage = new QWidget(this);
+    transactionsPage->setLayout(vbox);
+
+    addressBookPage = new AddressBookPage(AddressBookPage::ForEditing, AddressBookPage::SendingTab);
+
+    receiveCoinsPage = new AddressBookPage(AddressBookPage::ForEditing, AddressBookPage::ReceivingTab);
+
+    sendCoinsPage = new SendCoinsDialog(this);
 
     centralWidget = new QStackedWidget(this);
-
     centralWidget->addWidget(overviewPage);
+    centralWidget->addWidget(transactionsPage);
+    centralWidget->addWidget(addressBookPage);
+    centralWidget->addWidget(receiveCoinsPage);
+    centralWidget->addWidget(sendCoinsPage);
     setCentralWidget(centralWidget);
+    
+    // Create status bar
+    statusBar();
 
+    // Status bar "Connections" notification
+    QFrame *frameConnections = new QFrame();
+    frameConnections->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+    frameConnections->setMinimumWidth(150);
+    frameConnections->setMaximumWidth(150);
+    QHBoxLayout *frameConnectionsLayout = new QHBoxLayout(frameConnections);
+    frameConnectionsLayout->setContentsMargins(3,0,3,0);
+    frameConnectionsLayout->setSpacing(3);
+    labelConnectionsIcon = new QLabel();
+    labelConnectionsIcon->setToolTip(tr("Number of connections to other clients"));
+    frameConnectionsLayout->addWidget(labelConnectionsIcon);
+    labelConnections = new QLabel();
+    labelConnections->setToolTip(tr("Number of connections to other clients"));
+    frameConnectionsLayout->addWidget(labelConnections);
+    frameConnectionsLayout->addStretch();
+
+    // Status bar "Blocks" notification
+    QFrame *frameBlocks = new QFrame();
+    frameBlocks->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+    frameBlocks->setMinimumWidth(150);
+    frameBlocks->setMaximumWidth(150);
+    QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
+    frameBlocksLayout->setContentsMargins(3,0,3,0);
+    frameBlocksLayout->setSpacing(3);
+    labelBlocksIcon = new QLabel();
+    frameBlocksLayout->addWidget(labelBlocksIcon);
+    labelBlocks = new QLabel();
+    frameBlocksLayout->addWidget(labelBlocks);
+    frameBlocksLayout->addStretch();
+
+    // Progress bar for blocks download
+    progressBarLabel = new QLabel(tr("Synchronizing with network..."));
+    progressBarLabel->setVisible(false);
+    progressBar = new QProgressBar();
+    progressBar->setToolTip(tr("Block chain synchronization in progress"));
+    progressBar->setVisible(false);
+
+    statusBar()->addWidget(progressBarLabel);
+    statusBar()->addWidget(progressBar);
+    statusBar()->addPermanentWidget(frameConnections);
+    statusBar()->addPermanentWidget(frameBlocks);
+
+    createTrayIcon();
+
+    syncIconMovie = new QMovie(":/movies/update_spinner", "mng", this);
 
     gotoOverviewPage();
 }

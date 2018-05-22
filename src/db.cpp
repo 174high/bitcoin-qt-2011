@@ -7,6 +7,9 @@
 #include "net.h"
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
+//#include <experimental/source_location>
+
+
 
 using namespace std;
 using namespace boost;
@@ -75,6 +78,10 @@ CDB::CDB(const char* pszFile, const char* pszMode) : pdb(NULL)
             dbenv.set_lk_max_objects(10000);
             dbenv.set_errfile(fopen(strErrorFile.c_str(), "a")); /// debug
             dbenv.set_flags(DB_AUTO_COMMIT, 1);
+ 
+            #ifdef DEBUG_WALLET 
+            qDebug()<<__FUNCTION__<<"open:1"<<strDataDir.c_str()<<__builtin_FUNCTION();  
+            #endif 
             ret = dbenv.open(strDataDir.c_str(),
                              DB_CREATE     |
                              DB_INIT_LOCK  |
@@ -95,6 +102,10 @@ CDB::CDB(const char* pszFile, const char* pszMode) : pdb(NULL)
         if (pdb == NULL)
         {
             pdb = new Db(&dbenv, 0);
+
+           #ifdef DEBUG_WALLET 
+            qDebug()<<__FUNCTION__<<"open:2";
+            #endif
 
             ret = pdb->open(NULL,      // Txn pointer
                             pszFile,   // Filename
@@ -517,6 +528,11 @@ bool CAddrDB::EraseAddress(const CAddress& addr)
 
 bool CAddrDB::LoadAddresses()
 {
+
+    #ifdef DEBUG_WALLET
+    qDebug()<<__builtin_FUNCTION();
+    #endif  
+    
     CRITICAL_BLOCK(cs_mapAddresses)
     {
         // Load user provided addresses
@@ -573,11 +589,11 @@ bool CAddrDB::LoadAddresses()
 
 bool LoadAddresses()
 {
+    #ifdef DEBUG_WALLET
+    qDebug()<<__FUNCTION__<<__builtin_FUNCTION()<<CAddrDB("cr+").LoadAddresses();
+    #endif
     return CAddrDB("cr+").LoadAddresses();
 }
-
-
-
 
 //
 // CWalletDB
@@ -670,6 +686,11 @@ void CWalletDB::ListAccountCreditDebit(const string& strAccount, list<CAccountin
 
 int CWalletDB::LoadWallet(CWallet* pwallet)
 {
+
+#ifdef DEBUG_WALLET
+    qDebug()<<__FUNCTION__;
+#endif
+
     pwallet->vchDefaultKey.clear();
     int nFileVersion = 0;
     vector<uint256> vWalletUpgrade;

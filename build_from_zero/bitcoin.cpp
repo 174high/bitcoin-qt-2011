@@ -98,19 +98,80 @@ std::string _(const char* psz)
     return QCoreApplication::translate("bitcoin-core", psz).toStdString();
 }
 
-int main(int argc, char** argv)
+int main(int argc, char *argv[])
 {
-    qDebug()<<"hello qt!";
- 
+#ifdef DEBUG_QT    
+    qDebug() <<__FUNCTION__<< "******************" ; 
+    qDebug() <<__FUNCTION__<< " johnny test      " ;    
+    qDebug() <<__FUNCTION__<< "******************" ;
+
+    qDebug() <<__FUNCTION__<<"argc="<<argc ;
+    qDebug() <<__FUNCTION__<<"argv="<<argv ;
+#endif 
+
     Q_INIT_RESOURCE(bitcoin);
     QApplication app(argc, argv);
 
+    // Load language file for system locale
+    QString locale = QLocale::system().name();
+#ifdef DEBUG_QT
+    qDebug() << locale; 
+#endif 
     QTranslator translator;
-    translator.load("hellotr_la");
+    translator.load("bitcoin_"+locale);
     app.installTranslator(&translator);
 
-    BitcoinGUI window;
-    window.show();
+    app.setQuitOnLastWindowClosed(false);
 
-    return app.exec();
+    try
+    {
+        if(AppInit2(argc, argv))
+        {
+            {
+                // Put this in a block, so that BitcoinGUI is cleaned up properly before
+                // calling shutdown.
+                BitcoinGUI window;
+                ClientModel clientModel(pwalletMain);
+                WalletModel walletModel(pwalletMain);
+
+                guiref = &window;
+                window.setClientModel(&clientModel);
+                window.setWalletModel(&walletModel);
+
+                if (QtWin::isCompositionEnabled())
+                {
+#ifdef Q_WS_WIN32
+                    // Windows-specific customization
+                    window.setAttribute(Qt::WA_TranslucentBackground);
+                    window.setAttribute(Qt::WA_NoSystemBackground, false);
+                    QPalette pal = window.palette();
+                    QColor bg = pal.window().color();
+                    bg.setAlpha(0);
+                    pal.setColor(QPalette::Window, bg);
+                    window.setPalette(pal);
+                    window.ensurePolished();
+                    window.setAttribute(Qt::WA_StyledBackground, false);
+#endif
+                    QtWin::extendFrameIntoClientArea(&window);
+                    window.setContentsMargins(0, 0, 0, 0);
+                }
+
+                window.show();
+
+                app.exec();
+
+                guiref = 0;
+            }
+            Shutdown(NULL);
+        }
+        else
+        {
+            return 1;
+        }
+    } catch (std::exception& e) {
+        PrintException(&e, "Runaway exception");
+    } catch (...) {
+        PrintException(NULL, "Runaway exception");
+    }
+    return 0;
 }

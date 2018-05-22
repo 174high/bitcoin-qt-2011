@@ -6,6 +6,7 @@
 
 #include "headers.h"
 
+#include <QtDebug>
 #include <QTimer>
 #include <QSet>
 
@@ -27,6 +28,9 @@ WalletModel::WalletModel(CWallet *wallet, QObject *parent) :
 
 qint64 WalletModel::getBalance() const
 {
+#ifdef DEBUG_WALLET 
+    qDebug()<<__FUNCTION__ ;
+#endif 
     return wallet->GetBalance();
 }
 

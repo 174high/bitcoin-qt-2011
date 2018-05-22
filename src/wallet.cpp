@@ -7,6 +7,8 @@
 #include "cryptopp/sha.h"
 #include "crypter.h"
 
+#include <QtDebug>
+
 using namespace std;
 
 
@@ -726,15 +728,29 @@ void CWallet::ResendWalletTransactions()
 
 int64 CWallet::GetBalance() const
 {
+#ifdef DEBUG_WALLET 
+    qDebug()<<__FUNCTION__<<":1" ;
+#endif
+
     int64 nTotal = 0;
     CRITICAL_BLOCK(cs_mapWallet)
     {
+        #ifdef DEBUG_WALLET 
+        qDebug()<<__FUNCTION__<<"test :2";
+        #endif
+
         for (map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)
         {
+            #ifdef DEBUG_WALLET 
+            qDebug()<<__FUNCTION__<<"test ";
+            #endif
             const CWalletTx* pcoin = &(*it).second;
             if (!pcoin->IsFinal() || !pcoin->IsConfirmed())
                 continue;
             nTotal += pcoin->GetAvailableCredit();
+            #ifdef DEBUG_WALLET 
+            qDebug()<<__FUNCTION__<<"nTotal="<<nTotal ;
+            #endif
         }
     }
 

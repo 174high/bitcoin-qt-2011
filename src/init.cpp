@@ -118,7 +118,6 @@ bool AppInit2(int argc, char* argv[])
 #endif 
 
  #ifdef _MSC_VER
-dddd
     // Turn off microsoft heap dump noise
     _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
     _CrtSetReportFile(_CRT_WARN, CreateFileA("NUL", GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, 0));
@@ -162,6 +161,9 @@ dddd
 
 
     ReadConfigFile(mapArgs, mapMultiArgs); // Must be done after processing datadir
+#ifdef DEBUG_WALLET
+    qDebug()<<__FUNCTION__<<"-----test1";
+#endif
 
     if (mapArgs.count("-?") || mapArgs.count("--help"))
     {
@@ -260,6 +262,10 @@ dddd
         if (!IsSwitchChar(argv[i][0]))
             fCommandLine = true;
 
+#ifdef DEBUG_WALLET
+    qDebug()<<__FUNCTION__<<"-----test2";
+#endif
+
     if (fCommandLine)
     {
         int ret = CommandLineRPC(argc, argv);
@@ -299,8 +305,16 @@ dddd
 #endif
     printf("Default data directory %s\n", GetDefaultDataDir().c_str());
 
+#ifdef DEBUG_WALLET
+    qDebug()<<__FUNCTION__<<"-----test3";
+#endif
+
     if (GetBoolArg("-loadblockindextest"))
     {
+       #ifdef DEBUG_WALLET
+       qDebug()<<__FUNCTION__<<"creat a db:1";
+       #endif 
+
         CTxDB txdb("r");
         txdb.LoadBlockIndex();
         PrintBlockTree();
@@ -347,6 +361,10 @@ dddd
     }
 #endif
 
+#ifdef DEBUG_WALLET
+    qDebug()<<__FUNCTION__<<"-----test4";
+#endif
+
     // Make sure only a single bitcoin process is using the data directory.
     string strLockFile = GetDataDir() + "/.lock";
     FILE* file = fopen(strLockFile.c_str(), "a"); // empty lock file; created if it doesn't exist.
@@ -368,6 +386,9 @@ dddd
             return false;
         }
     }
+#ifdef DEBUG_WALLET
+    qDebug()<<__FUNCTION__<<"-----test5";
+#endif
 
 //###############################################################################
 //                      ignore up code when read qt code
@@ -383,9 +404,16 @@ dddd
 
     printf("Loading addresses...\n");
     nStart = GetTimeMillis();
+#ifdef DEBUG_WALLET
+    qDebug()<<__FUNCTION__<<"-----test6";
+#endif
     if (!LoadAddresses())
         strErrors += _("Error loading addr.dat      \n");
     printf(" addresses   %15"PRI64d"ms\n", GetTimeMillis() - nStart);
+
+#ifdef DEBUG_WALLET
+    qDebug()<<__FUNCTION__<<"-----test7";
+#endif
 
     printf("Loading block index...\n");
     nStart = GetTimeMillis();
@@ -396,8 +424,15 @@ dddd
     printf("Loading wallet...\n");
 
     nStart = GetTimeMillis();
+
+#ifdef DEBUG_WALLET
+    qDebug()<<__FUNCTION__<<"!!!!!creat a wallet.dat here!!!:1";
+#endif
     bool fFirstRun;
     pwalletMain = new CWallet("wallet.dat");
+#ifdef DEBUG_WALLET
+    qDebug()<<__FUNCTION__<<"!!!!!creat a wallet.dat here!!!:2"; 
+#endif 
     int nLoadWalletRet = pwalletMain->LoadWallet(fFirstRun);
 
     nLoadWalletRet=DB_LOAD_OK;  //fix a issue which can't open windows
