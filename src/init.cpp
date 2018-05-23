@@ -147,6 +147,10 @@ bool AppInit2(int argc, char* argv[])
 
     if (mapArgs.count("-datadir"))
     {
+
+#ifdef DEBUG_BITCOIN_CORE
+    qDebug() <<__FUNCTION__<<" argc:1";
+#endif
         if (filesystem::is_directory(filesystem::system_complete(mapArgs["-datadir"])))
         {
             filesystem::path pathDataDir = filesystem::system_complete(mapArgs["-datadir"]);
@@ -167,6 +171,10 @@ bool AppInit2(int argc, char* argv[])
 
     if (mapArgs.count("-?") || mapArgs.count("--help"))
     {
+        #ifdef DEBUG_BITCOIN_CORE
+            qDebug() <<__FUNCTION__<<" argc:1";
+        #endif
+
         string strUsage = string() +
           _("Bitcoin version") + " " + FormatFullVersion() + "\n\n" +
           _("Usage:") + "\t\t\t\t\t\t\t\t\t\t\n" +
@@ -268,6 +276,10 @@ bool AppInit2(int argc, char* argv[])
 
     if (fCommandLine)
     {
+
+#ifdef DEBUG_BITCOIN_CORE
+    qDebug() <<__FUNCTION__<<" argc:2";
+#endif
         int ret = CommandLineRPC(argc, argv);
         exit(ret);
     }
@@ -275,6 +287,10 @@ bool AppInit2(int argc, char* argv[])
 #ifndef __WXMSW__
     if (fDaemon)
     {
+        #ifdef DEBUG_BITCOIN_CORE
+        qDebug() <<__FUNCTION__<<" argc:1";
+        #endif
+
         // Daemonize
         pid_t pid = fork();
         if (pid < 0)
@@ -455,6 +471,9 @@ bool AppInit2(int argc, char* argv[])
         pindexRescan = pindexGenesisBlock;
     else
     {
+#ifdef DEBUG_WALLET
+    qDebug()<<__FUNCTION__<<"!!!!!creat wallet db:1";
+#endif  
         CWalletDB walletdb("wallet.dat");
         CBlockLocator locator;
         if (walletdb.ReadBestBlock(locator))
@@ -492,6 +511,9 @@ bool AppInit2(int argc, char* argv[])
     //
     if (GetBoolArg("-printblockindex") || GetBoolArg("-printblocktree"))
     {
+       #ifdef DEBUG_BITCOIN_CORE
+        qDebug() <<__FUNCTION__<<" argc:5";
+        #endif
         PrintBlockTree();
         return false;
     }
@@ -530,6 +552,10 @@ bool AppInit2(int argc, char* argv[])
 
     if (mapArgs.count("-proxy"))
     {
+        #ifdef DEBUG_BITCOIN_CORE
+        qDebug() <<__FUNCTION__<<" argc:3";
+        #endif
+
         fUseProxy = true;
         addrProxy = CAddress(mapArgs["-proxy"]);
         if (!addrProxy.IsValid())
@@ -541,6 +567,9 @@ bool AppInit2(int argc, char* argv[])
 
     if (mapArgs.count("-addnode"))
     {
+        #ifdef DEBUG_BITCOIN_CORE
+        qDebug() <<__FUNCTION__<<" argc:4";
+        #endif
         BOOST_FOREACH(string strAddr, mapMultiArgs["-addnode"])
         {
             CAddress addr(strAddr, fAllowDNS);
@@ -557,6 +586,9 @@ bool AppInit2(int argc, char* argv[])
 
     if (mapArgs.count("-paytxfee"))
     {
+        #ifdef DEBUG_BITCOIN_CORE
+        qDebug() <<__FUNCTION__<<" argc:5";
+        #endif
         if (!ParseMoney(mapArgs["-paytxfee"], nTransactionFee))
         {
             wxMessageBox(_("Invalid amount for -paytxfee=<amount>"), "Bitcoin");
@@ -568,6 +600,9 @@ bool AppInit2(int argc, char* argv[])
 
     if (fHaveUPnP)
     {
+        #ifdef DEBUG_BITCOIN_CORE
+        qDebug() <<__FUNCTION__<<" argc:5";
+        #endif
 #if USE_UPNP
     if (GetBoolArg("-noupnp"))
         fUseUPnP = false;
