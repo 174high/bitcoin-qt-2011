@@ -479,8 +479,16 @@ bool AppInit2(int argc, char* argv[])
         if (walletdb.ReadBestBlock(locator))
             pindexRescan = locator.GetBlockIndex();
     }
+
+
+
     if (pindexBest != pindexRescan)
     {
+
+#ifdef DEBUG_WALLET
+    qDebug()<<__FUNCTION__<<"Rescanning last "<<(pindexBest->nHeight - pindexRescan->nHeight)<<" "<<" blocks (from block "<<pindexRescan->nHeight<<")";
+#endif
+
         printf("Rescanning last %i blocks (from block %i)...\n", pindexBest->nHeight - pindexRescan->nHeight, pindexRescan->nHeight);
         nStart = GetTimeMillis();
         pwalletMain->ScanForWalletTransactions(pindexRescan, true);
@@ -497,6 +505,17 @@ bool AppInit2(int argc, char* argv[])
         printf("mapWallet.size() = %d\n",       pwalletMain->mapWallet.size());
         printf("mapAddressBook.size() = %d\n",  pwalletMain->mapAddressBook.size());
 
+#ifdef DEBUG_WALLET
+       //// debug print
+        qDebug()<<"mapBlockIndex.size() ="<<mapBlockIndex.size();
+        qDebug()<<"nBestHeight ="<<nBestHeight;
+        qDebug()<<"setKeyPool.size() ="<<pwalletMain->setKeyPool.size();
+        qDebug()<<"mapPubKeys.size() ="<<mapPubKeys.size();
+        qDebug()<<"mapWallet.size() ="<<pwalletMain->mapWallet.size();
+        qDebug()<<"mapAddressBook.size() ="<<pwalletMain->mapAddressBook.size();
+#endif 
+
+
     if (!strErrors.empty())
     {
         wxMessageBox(strErrors, "Bitcoin", wxOK | wxICON_ERROR);
@@ -506,7 +525,8 @@ bool AppInit2(int argc, char* argv[])
     // Add wallet transactions that aren't already in a block to mapTransactions
     pwalletMain->ReacceptWalletTransactions();
 
-    //
+//############################################################################################################################    
+
     // Parameters
     //
     if (GetBoolArg("-printblockindex") || GetBoolArg("-printblocktree"))

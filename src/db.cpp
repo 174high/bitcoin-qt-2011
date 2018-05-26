@@ -530,7 +530,7 @@ bool CAddrDB::LoadAddresses()
 {
 
     #ifdef DEBUG_WALLET
-    qDebug()<<__builtin_FUNCTION();
+    qDebug()<<__FUNCTION__;
     #endif  
     
     CRITICAL_BLOCK(cs_mapAddresses)
@@ -572,6 +572,9 @@ bool CAddrDB::LoadAddresses()
             // Unserialize
             string strType;
             ssKey >> strType;
+            #ifdef DEBUG_WALLET
+            qDebug()<<__FUNCTION__<<strType.c_str();
+            #endif
             if (strType == "addr")
             {
                 CAddress addr;
@@ -727,6 +730,8 @@ int CWalletDB::LoadWallet(CWallet* pwallet)
             // is just the two items serialized one after the other
             string strType;
             ssKey >> strType;
+
+            qDebug()<<"strType="<<strType.c_str() ;
             if (strType == "name")
             {
                 string strAddress;
@@ -782,8 +787,11 @@ int CWalletDB::LoadWallet(CWallet* pwallet)
             }
             else if (strType == "key" || strType == "wkey")
             {
+
                 vector<unsigned char> vchPubKey;
                 ssKey >> vchPubKey;
+                qDebug()<<" set key ----------"  ;
+
                 CKey key;
                 if (strType == "key")
                 {
