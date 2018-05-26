@@ -8,7 +8,7 @@
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 //#include <experimental/source_location>
-
+#include <QtDebug>
 
 
 using namespace std;
@@ -688,7 +688,7 @@ int CWalletDB::LoadWallet(CWallet* pwallet)
 {
 
 #ifdef DEBUG_WALLET
-    qDebug()<<__FUNCTION__;
+    qDebug()<<__FUNCTION__<<"--------------------------------====";
 #endif
 
     pwallet->vchDefaultKey.clear();
@@ -970,6 +970,7 @@ bool BackupWallet(const CWallet& wallet, const string& strDest)
                 dbenv.lsn_reset(wallet.strWalletFile.c_str(), 0);
                 mapFileUseCount.erase(wallet.strWalletFile);
 
+                qDebug()<<__FUNCTION__<<"Copy wallet.dat" ;
                 // Copy wallet.dat
                 filesystem::path pathSrc(GetDataDir() + "/" + wallet.strWalletFile);
                 filesystem::path pathDest(strDest);

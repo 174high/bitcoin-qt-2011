@@ -7,6 +7,7 @@
 #include "bignum.h"
 #include "key.h"
 #include "script.h"
+#include <QtDebug>
 
 class CWalletTx;
 class CReserveKey;
@@ -34,12 +35,14 @@ public:
 
     CWallet()
     {
+        qDebug()<<"CWallet()" ;
         fFileBacked = false;
         nMasterKeyMaxID = 0;
         pwalletdbEncryption = NULL;
     }
     CWallet(std::string strWalletFileIn)
-    {
+    {  
+        qDebug()<<"CWallet(std::string strWalletFileIn)" ;
         strWalletFile = strWalletFileIn;
         fFileBacked = true;
         nMasterKeyMaxID = 0;
