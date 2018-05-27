@@ -108,7 +108,7 @@ CDB::CDB(const char* pszFile, const char* pszMode) : pdb(NULL)
             pdb = new Db(&dbenv, 0);
 
            #ifdef DEBUG_WALLET 
-            qDebug()<<__FUNCTION__<<"open:2";
+            qDebug()<<__FUNCTION__<<"open:2 " <<pszFile ;
             #endif
 
             ret = pdb->open(NULL,      // Txn pointer

@@ -320,13 +320,17 @@ bool AppInit2(int argc, char* argv[])
     nStart = GetTimeMillis();
 
 #ifdef DEBUG_WALLET
-    qDebug()<<__FUNCTION__<<"!!!!!creat a wallet.dat here!!!:1";
+    qDebug()<<__FUNCTION__<<"!!!!!creat a wallet.dat here!!!";
 #endif
     bool fFirstRun;
     pwalletMain = new CWallet("wallet.dat");
+
+
+
 #ifdef DEBUG_WALLET
-    qDebug()<<__FUNCTION__<<"!!!!!creat a wallet.dat here!!!:2"; 
+    qDebug()<<__FUNCTION__<<"!!!!! loadwallet here "; 
 #endif 
+
     int nLoadWalletRet = pwalletMain->LoadWallet(fFirstRun);
 
     nLoadWalletRet=DB_LOAD_OK;  //fix a issue which can't open windows
@@ -347,12 +351,12 @@ bool AppInit2(int argc, char* argv[])
     CBlockIndex *pindexRescan = pindexBest;
 
 #ifdef DEBUG_WALLET
-    qDebug()<<__FUNCTION__<<"!!!!!creat wallet db:1";
+    qDebug()<<__FUNCTION__<<"!!!!!creat wallet db";
 #endif  
-        CWalletDB walletdb("wallet.dat");
-        CBlockLocator locator;
-        if (walletdb.ReadBestBlock(locator))
-            pindexRescan = locator.GetBlockIndex();
+    CWalletDB walletdb("wallet.dat");
+    CBlockLocator locator;
+    if (walletdb.ReadBestBlock(locator))
+        pindexRescan = locator.GetBlockIndex();
 
     if (pindexBest != pindexRescan)
     {
