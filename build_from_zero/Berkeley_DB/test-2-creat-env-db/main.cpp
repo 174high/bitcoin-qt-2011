@@ -14,13 +14,16 @@ using std::cerr;
 using namespace boost;
 
 DbEnv dbenv(0);
-
+static bool fDbEnvInit = false;
 
 int main (int argc, char *argv[])
 {
 
    int ret; 
 
+   if(!fDbEnvInit)
+   {
+ 
    std::string strDataDir="/root/.db_test" ;
 
    filesystem::create_directory(strDataDir.c_str());
@@ -39,9 +42,8 @@ int main (int argc, char *argv[])
     dbenv.set_errfile(fopen(strErrorFile.c_str(), "a")); /// debug
     dbenv.set_flags(DB_AUTO_COMMIT, 1);
 
-    #ifdef DEBUG_WALLET 
     qDebug()<<__FUNCTION__<<"open:1"<<strDataDir.c_str() ;
-    #endif
+
     ret = dbenv.open(strDataDir.c_str(),
                      DB_CREATE     |
                      DB_INIT_LOCK  |
@@ -52,6 +54,11 @@ int main (int argc, char *argv[])
                      DB_RECOVER,
                      S_IRUSR | S_IWUSR);
 
+    if (ret > 0)
+    printf("error while creat enviromrnt !!!");
+//    throw runtime_error(strprintf("CDB() : error %d opening database environment", ret));
+    fDbEnvInit = true;
+    }
 
     return ret; 
 }
