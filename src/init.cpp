@@ -227,11 +227,6 @@ bool AppInit2(int argc, char* argv[])
 #endif
     printf("Default data directory %s\n", GetDefaultDataDir().c_str());
 
-#ifdef DEBUG_WALLET
-    qDebug()<<__FUNCTION__<<"-----test3";
-#endif
-
-
     //
     // Limit to single instance per user
     // Required to protect the database files if we're going to keep deleting log.*

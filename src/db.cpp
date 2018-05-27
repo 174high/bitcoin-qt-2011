@@ -50,6 +50,10 @@ instance_of_cdbinit;
 
 CDB::CDB(const char* pszFile, const char* pszMode) : pdb(NULL)
 {
+    #ifdef DEBUG_WALLET 
+    qDebug()<<__FUNCTION__<<"created base class !!!";
+    #endif
+
     int ret;
     if (pszFile == NULL)
         return;
@@ -80,7 +84,7 @@ CDB::CDB(const char* pszFile, const char* pszMode) : pdb(NULL)
             dbenv.set_flags(DB_AUTO_COMMIT, 1);
  
             #ifdef DEBUG_WALLET 
-            qDebug()<<__FUNCTION__<<"open:1"<<strDataDir.c_str()<<__builtin_FUNCTION();  
+            qDebug()<<__FUNCTION__<<"open:1"<<strDataDir.c_str() ;  
             #endif 
             ret = dbenv.open(strDataDir.c_str(),
                              DB_CREATE     |
@@ -573,7 +577,7 @@ bool CAddrDB::LoadAddresses()
             string strType;
             ssKey >> strType;
             #ifdef DEBUG_WALLET
-            qDebug()<<__FUNCTION__<<strType.c_str();
+            qDebug()<<__FUNCTION__<<" Read next record "<<strType.c_str();
             #endif
             if (strType == "addr")
             {
@@ -593,7 +597,7 @@ bool CAddrDB::LoadAddresses()
 bool LoadAddresses()
 {
     #ifdef DEBUG_WALLET
-    qDebug()<<__FUNCTION__<<__builtin_FUNCTION()<<CAddrDB("cr+").LoadAddresses();
+    qDebug()<<__FUNCTION__<<" a function here";
     #endif
     return CAddrDB("cr+").LoadAddresses();
 }
