@@ -1,163 +1,145 @@
 #include <iostream>
-#include <db_cxx.h>
 #include <string.h>
+#include <db_cxx.h>
+#include <db.h>
+#include <QtDebug>
+#include <sys/stat.h>
+#include <boost/filesystem.hpp>
+#include <boost/filesystem/fstream.hpp>
+#include "serialize.h"
 
-using namespace std;
 
-int main(void)
+using std::cout;
+using std::endl;
+using std::cerr;
+
+using namespace boost;
+
+DbEnv dbenv(0);
+static bool fDbEnvInit = false;
+
+
+Db* pdb;
+
+
+int main (int argc, char *argv[])
 {
 
-       Db db(NULL,0);
-       u_int32_t oFlags = DB_CREATE; // Open flags;
-       try
-       {
-              db.open(NULL,                // Transaction pointer
-                     "my_db.db",          // Database file name
-                      NULL,                // Optional logical database name
-                      DB_BTREE,            // Database access method
-                      oFlags,              // Open flags
-                      0);                  // File mode (using defaults)
+	int ret; 
+	unsigned int nFlags = DB_THREAD;
+	nFlags |= DB_CREATE;
 
-              db.truncate(NULL,0,0);
+	if(!fDbEnvInit)
+	{
 
-              float money = 122.45;
+	std::string strDataDir="/root/.db_test" ;
 
-              char *description = "Grocery bill.";
+	filesystem::create_directory(strDataDir.c_str());
 
-              Dbt key(&money, sizeof(float));
+	std::string strLogDir = strDataDir + "/database" ;
+	//    filesystem::create_directory(strLogDir.c_str());
+	std::string strErrorFile = strDataDir + "/db.log";
 
-              Dbt data(description, strlen(description)+1);
 
-              int ret = db.put(NULL, &key, &data, DB_NOOVERWRITE);
+	printf("dbenv.open strLogDir=%s strErrorFile=%s\n", strLogDir.c_str(), strErrorFile.c_str());
 
-              cout<<"put data--"<<description<<endl;
+	//    dbenv.set_lg_dir(strLogDir.c_str());
+	dbenv.set_lg_max(10000000);
+	dbenv.set_lk_max_locks(10000);
+	dbenv.set_lk_max_objects(10000);
+	dbenv.set_errfile(fopen(strErrorFile.c_str(), "a")); /// debug
+	dbenv.set_flags(DB_AUTO_COMMIT, 1);
 
-              ret = db.get(NULL, &key, &data, DB_GET_BOTH);
+	qDebug()<<__FUNCTION__<<"open:1"<<strDataDir.c_str() ;
 
-              cout<<"get key--"<<*((float*)key.get_data())<<endl;
+	ret = dbenv.open(strDataDir.c_str(),
+		     DB_CREATE     |
+		     DB_INIT_LOCK  |
+		     DB_INIT_LOG   |
+		     DB_INIT_MPOOL |
+		     DB_INIT_TXN   |
+		     DB_THREAD     |
+		     DB_RECOVER,
+		     S_IRUSR | S_IWUSR);
 
-              cout<<"get data--"<<(char *)data.get_data()<<endl;
+	if (ret > 0)
+	printf("error while creat enviromrnt !!!");
+	//    throw runtime_error(strprintf("CDB() : error %d opening database environment", ret));
+	fDbEnvInit = true;
+	}
 
 
-              money = 111;
+	std::string pszFile="addr.dat"; 
 
-              description = "James--------------------"; 
+	pdb = new Db(&dbenv, 0);
 
-             data.set_data(description);
+	qDebug()<<__FUNCTION__<<"open:2 " <<pszFile.c_str() ;
 
-              data.set_size(strlen(description)+1);
+	ret = pdb->open(NULL,      // Txn pointer
+		    pszFile.c_str(),   // Filename
+		    "main",    // Logical db name
+		    DB_BTREE,  // Database type
+		    nFlags,    // Flags
+		    0);
 
-              db.put(NULL,&key,&data,DB_NOOVERWRITE);
+	if (ret > 0)
+	{
 
-              ret = db.get(NULL, &key, &data, DB_GET_BOTH);
+	}
 
-              cout<<"get key--"<<*((float*)key.get_data())<<endl;
+	Dbc* cursor;
 
-              cout<<"get data--"<<(char *)data.get_data()<<endl;
+	pdb->cursor(NULL,&cursor,0);
 
-              money = 191;
+	cout<<"open cursor"<<endl;
 
-              description = "Mike";
+	std::string strType ;
+	// Read next record
+	CDataStream ssKey;
+	CDataStream ssValue;
 
-              data.set_data(description);
+	Dbt datKey;
+	datKey.set_data(&ssKey[0]);
+	datKey.set_size(ssKey.size());
 
-              data.set_size(strlen(description)+1);
+	Dbt datValue;
 
-              db.put(NULL,&key,&data,DB_NOOVERWRITE);
+	datValue.set_data(&ssValue[0]);
+	datValue.set_size(ssValue.size());
 
-              ret = db.get(NULL, &key, &data, DB_GET_BOTH);
+	datKey.set_flags(DB_DBT_MALLOC);
+	datValue.set_flags(DB_DBT_MALLOC);
 
-              cout<<"get key--"<<*((float*)key.get_data())<<endl;
+	if((ret = cursor->get(&datKey,&datValue,DB_NEXT)) != DB_NOTFOUND)
+	{
+	     // Convert to streams
+	     ssKey.SetType(SER_DISK);
+	     ssKey.clear();
+	     ssKey.write((char*)datKey.get_data(), datKey.get_size());
+	     ssValue.SetType(SER_DISK);
+	     ssValue.clear();
+	     ssValue.write((char*)datValue.get_data(), datValue.get_size()) ;
 
-              cout<<"get data--"<<(char *)data.get_data()<<endl;
- 
+	     ssKey >> strType;
 
-              Dbc* cursor;
+	     std::cout<<" get type ="<<strType<<endl  ;
 
-              db.cursor(NULL,&cursor,0);
+	}
 
-              cout<<"open cursor"<<endl;
+	if (cursor != NULL)
+	{
 
-              while((ret = cursor->get(&key,&data,DB_PREV)) != DB_NOTFOUND)
-              {
+	    cursor->close();
 
-                     cout<<"get key--"<<*((float*)key.get_data())<<endl;
+	}
 
-                     cout<<"get data--"<<(char *)data.get_data()<<endl;
-
-              }
-
-              if (cursor != NULL)
-              {
-
-                     cursor->close();
-
-              }
-
-              money = 191;
-
-              description = "Mike";
-
-              data.set_data(description);
-
-              data.set_size(strlen(description)+1);
-
-              db.cursor(NULL,&cursor,0);
-
-              cout<<"delete 191..."<<endl;
-
-              while((ret = cursor->get(&key,&data,DB_SET)) == 0 )
-              {
-
-                     cursor-> del(0);
-
-              }
-
-              if (cursor != NULL)
-              {
-
-                     cursor->close();
-
-              }
-
-              cout<<"after delete 191..."<<endl;
-
-              db.cursor(NULL,&cursor,0);
-
-              while((ret = cursor->get(&key,&data,DB_PREV)) != DB_NOTFOUND)
-              {
-                     cout<<"get key--"<<*((float*)key.get_data())<<endl;
-
-                     cout<<"get data--"<<(char *)data.get_data()<<endl;
-
-              }
-
-              if (cursor != NULL)
-              {
-
-                     cursor->close();
-
-              }
-
-       }
-
-       catch(DbException &e)
-       {
-
-              cerr<<"DBException:"<<e.what();
-
-       }
-
-       catch(std::exception &e)
-       {
-
-              cerr<<"DBException:"<<e.what();
-
-       }
-
-
-       return 0;
+    return ret; 
 }
+
+
+
+
+
 
 
 
