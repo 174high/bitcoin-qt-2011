@@ -119,9 +119,7 @@ int main (int argc, char *argv[])
 
 */
 
-
-
-
+/*
         std::string key("version");
         static const int VERSION = 32500;
         bool fOverwrite=true;
@@ -143,18 +141,29 @@ int main (int argc, char *argv[])
         ret = pdb->put(0, &datKey, &datValue, (fOverwrite ? 0 : DB_NOOVERWRITE));
 
         pdb->close (0);
-
-/*
-    CDataStream ssKey(SER_DISK);
-    ssKey.reserve(1000);
-    ssKey << key;
-    Dbt datKey(&ssKey[0], ssKey.size());
-
-    // Read
-    Dbt datValue;
-    datValue.set_flags(DB_DBT_MALLOC);
-    int ret = pdb->get(GetTxn(), &datKey, &datValue, 0);
 */
+
+        std::string key("version");
+        int value=0; 
+
+	CDataStream ssKey(SER_DISK);
+    	ssKey.reserve(1000);
+    	ssKey << key;
+    	Dbt datKey(&ssKey[0], ssKey.size());
+
+    	// Read
+    	Dbt datValue;
+    	datValue.set_flags(DB_DBT_MALLOC);
+//    	int ret = pdb->get(GetTxn(), &datKey, &datValue, 0);
+        ret = pdb->get(0, &datKey, &datValue, 0);
+
+     // Unserialize value
+        CDataStream ssValue((char*)datValue.get_data(), (char*)datValue.get_data() + datValue.get_size(), SER_DISK);
+        ssValue >> value;
+
+        printf(" version=%d \n",value);	
+
+        pdb->close (0);
 
     return ret; 
 }
