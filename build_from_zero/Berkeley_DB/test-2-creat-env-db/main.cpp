@@ -16,10 +16,16 @@ using namespace boost;
 DbEnv dbenv(0);
 static bool fDbEnvInit = false;
 
+
+Db* pdb;
+
+
 int main (int argc, char *argv[])
 {
 
    int ret; 
+   unsigned int nFlags = DB_THREAD;
+   nFlags |= DB_CREATE;
 
    if(!fDbEnvInit)
    {
@@ -60,8 +66,50 @@ int main (int argc, char *argv[])
     fDbEnvInit = true;
     }
 
+
+    std::string pszFile="addr.dat"; 
+
+    pdb = new Db(&dbenv, 0);
+
+    qDebug()<<__FUNCTION__<<"open:2 " <<pszFile.c_str() ;
+
+    ret = pdb->open(NULL,      // Txn pointer
+                    pszFile.c_str(),   // Filename
+                    "main",    // Logical db name
+                    DB_BTREE,  // Database type
+                    nFlags,    // Flags
+                    0);
+
+    if (ret > 0)
+    {
+
+    }
+
+
+
+
+
     return ret; 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
