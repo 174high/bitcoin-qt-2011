@@ -1159,7 +1159,7 @@ string CWallet::SendMoneyToBitcoinAddress(string strAddress, int64 nValue, CWall
 
 int CWallet::LoadWallet(bool& fFirstRunRet)
 {
-    qDebug()<<__FUNCTION__<<" :1" ;
+    qDebug()<<__FUNCTION__<<" CWallet----------------------------!!!!!" ;
 
     if (!fFileBacked)
         return false;

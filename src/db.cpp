@@ -395,6 +395,10 @@ CBlockIndex static * InsertBlockIndex(uint256 hash)
 
 bool CTxDB::LoadBlockIndex()
 {
+#ifdef DEBUG_WALLET
+    qDebug()<<__FUNCTION__ ; 
+#endif 
+
     // Get database cursor
     Dbc* pcursor = GetCursor();
     if (!pcursor)
@@ -439,7 +443,11 @@ bool CTxDB::LoadBlockIndex()
 
             // Watch for genesis block
             if (pindexGenesisBlock == NULL && diskindex.GetBlockHash() == hashGenesisBlock)
+            {
+                qDebug()<<"!!! the pindexGenesisBlock here and pindexGenesisBlock=" ;
                 pindexGenesisBlock = pindexNew;
+            }
+ 
 
             if (!pindexNew->CheckIndex())
                 return error("LoadBlockIndex() : CheckIndex failed at %d", pindexNew->nHeight);
@@ -695,7 +703,7 @@ int CWalletDB::LoadWallet(CWallet* pwallet)
 {
 
 #ifdef DEBUG_WALLET
-    qDebug()<<__FUNCTION__<<"--------------------------------====";
+    qDebug()<<__FUNCTION__<<"--CWalletDB-------------------------====";
 #endif
 
     pwallet->vchDefaultKey.clear();
@@ -908,6 +916,10 @@ int CWalletDB::LoadWallet(CWallet* pwallet)
 
 void ThreadFlushWalletDB(void* parg)
 {
+#ifdef DEBUG_WALLET
+    qDebug()<<__FUNCTION__ ; 
+#endif 
+
     const string& strFile = ((const string*)parg)[0];
     static bool fOneThread;
     if (fOneThread)

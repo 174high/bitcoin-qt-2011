@@ -176,10 +176,6 @@ bool AppInit2(int argc, char* argv[])
         if (!IsSwitchChar(argv[i][0]))
             fCommandLine = true;
 
-#ifdef DEBUG_WALLET
-    qDebug()<<__FUNCTION__<<"-----test2";
-#endif
-
     if (fCommandLine)
     {
 
@@ -408,19 +404,6 @@ bool AppInit2(int argc, char* argv[])
     else
         DNSAddressSeed();
 
-    if (mapArgs.count("-paytxfee"))
-    {
-        #ifdef DEBUG_BITCOIN_CORE
-        qDebug() <<__FUNCTION__<<" argc:5";
-        #endif
-        if (!ParseMoney(mapArgs["-paytxfee"], nTransactionFee))
-        {
-            wxMessageBox(_("Invalid amount for -paytxfee=<amount>"), "Bitcoin");
-            return false;
-        }
-        if (nTransactionFee > 0.25 * COIN)
-            wxMessageBox(_("Warning: -paytxfee is set very high.  This is the transaction fee you will pay if you send a transaction."), "Bitcoin", wxOK | wxICON_EXCLAMATION);
-    }
 
     if (fHaveUPnP)
     {
