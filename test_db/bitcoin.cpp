@@ -178,20 +178,26 @@ int main(int argc, char *argv[])
 
 	Dbc* cursor;
 
- //       while(1)
-        {
+        pdb->cursor(NULL,&cursor,0);
+ 
+        unsigned int fFlags = DB_SET_RANGE;
 
-	pdb->cursor(NULL,&cursor,0);
+        unsigned int test_num=5 ;
+ 
+        while(test_num>0)
+        {
+        test_num--; 
 
 	cout<<"open cursor"<<endl;
 
 	std::string strType ;
 	// Read next record
 	CDataStream ssKey;
-	CDataStream ssValue;
 
-                                     // at /root/.db_test/blockindex.dat
+        if(fFlags == DB_SET_RANGE)                              // at /root/.db_test/blockindex.dat
         ssKey << make_pair(std::string("blockindex"), uint256(0));
+
+        CDataStream ssValue;
 
 	Dbt datKey;
 	datKey.set_data(&ssKey[0]);
@@ -205,7 +211,7 @@ int main(int argc, char *argv[])
 	datKey.set_flags(DB_DBT_MALLOC);
 	datValue.set_flags(DB_DBT_MALLOC);
 
-	if((ret = cursor->get(&datKey,&datValue,DB_SET_RANGE)) != DB_NOTFOUND)
+	if((ret = cursor->get(&datKey,&datValue,fFlags)) != DB_NOTFOUND)
 	{
 	     // Convert to streams
 	     ssKey.SetType(SER_DISK);
@@ -214,12 +220,30 @@ int main(int argc, char *argv[])
 	     ssValue.SetType(SER_DISK);
 	     ssValue.clear();
 	     ssValue.write((char*)datValue.get_data(), datValue.get_size()) ;
-
 	     ssKey >> strType;
-
 	     std::cout<<" get type ="<<strType<<endl  ;
-
 	}
+
+       fFlags = DB_NEXT;
+
+        if(strType == "blockindex")
+        {
+            CDiskBlockIndex diskindex;
+            ssValue >> diskindex;
+
+            // Construct block index object
+            std::cout<<"BlockHash:"<<diskindex.GetBlockHash().ToString()<<std::endl ;
+            //diskindex.hashPrev;
+            //diskindex.hashNext;
+            //diskindex.nFile;
+            //diskindex.nBlockPos;
+            //diskindex.nHeight;
+            //diskindex.nVersion;
+            //diskindex.hashMerkleRoot;
+            //diskindex.nTime;
+            //diskindex.nBits;
+            //diskindex.nNonce;
+        }
 
         std::cout<<"ret"<<ret ;
 
@@ -235,29 +259,7 @@ int main(int argc, char *argv[])
     return ret; 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*###############################################################################################*/
 
 
 
