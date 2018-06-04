@@ -16,12 +16,20 @@
 #include <QLocale>
 #include <QTranslator>
 #include <QtDebug>
+#include <utility>
+#include <stdexcept>
 
 using std::cout;
 using std::endl;
 using std::cerr;
 
+using std::map;
+using std::make_pair;
+using std::runtime_error;
+
 using namespace boost;
+
+map<uint256, CBlockIndex*> mapBlockIndex1; 
 
 DbEnv dbenv1(0);
 static bool fDbEnvInit = false;
@@ -109,11 +117,28 @@ std::string _(const char* psz)
     return QCoreApplication::translate("bitcoin-core", psz).toStdString();
 }
 
+CBlockIndex static * InsertBlockIndex(uint256 hash)
+{
+    if (hash == 0)
+        return NULL;
+
+    // Return existing
+    map<uint256, CBlockIndex*>::iterator mi = mapBlockIndex1.find(hash);
+    if (mi != mapBlockIndex1.end())
+        return (*mi).second;
+
+    // Create new
+    CBlockIndex* pindexNew = new CBlockIndex();
+    if (!pindexNew)
+        throw runtime_error("LoadBlockIndex() : new CBlockIndex failed");
+    mi = mapBlockIndex1.insert(make_pair(hash, pindexNew)).first;
+    pindexNew->phashBlock = &((*mi).first);
+
+    return pindexNew;
+}
+
 int main(int argc, char *argv[])
 {
-
-
-
 	int ret; 
 	unsigned int nFlags = DB_THREAD;
 	nFlags |= DB_CREATE;
@@ -179,16 +204,16 @@ int main(int argc, char *argv[])
 	Dbc* cursor;
 
         pdb->cursor(NULL,&cursor,0);
+
+        cout<<"open cursor"<<endl;
  
         unsigned int fFlags = DB_SET_RANGE;
 
-        unsigned int test_num=5 ;
+        unsigned int test_num=13,seq=0 ;
  
         while(test_num>0)
         {
         test_num--; 
-
-	cout<<"open cursor"<<endl;
 
 	std::string strType ;
 	// Read next record
@@ -231,23 +256,74 @@ int main(int argc, char *argv[])
             CDiskBlockIndex diskindex;
             ssValue >> diskindex;
 
+         // Construct block index object
+            CBlockIndex* pindexNew = InsertBlockIndex(diskindex.GetBlockHash());
+            pindexNew->pprev          = InsertBlockIndex(diskindex.hashPrev);
+            pindexNew->pnext          = InsertBlockIndex(diskindex.hashNext);
+            pindexNew->nFile          = diskindex.nFile;
+            pindexNew->nBlockPos      = diskindex.nBlockPos;
+            pindexNew->nHeight        = diskindex.nHeight;
+            pindexNew->nVersion       = diskindex.nVersion;
+            pindexNew->hashMerkleRoot = diskindex.hashMerkleRoot;
+            pindexNew->nTime          = diskindex.nTime;
+            pindexNew->nBits          = diskindex.nBits;
+            pindexNew->nNonce         = diskindex.nNonce;
+
+
+            std::cout<<"seq="<<++seq<<std::endl; 
             // Construct block index object
             std::cout<<"BlockHash:"<<diskindex.GetBlockHash().ToString()<<std::endl ;
-            //diskindex.hashPrev;
-            //diskindex.hashNext;
-            //diskindex.nFile;
-            //diskindex.nBlockPos;
-            //diskindex.nHeight;
-            //diskindex.nVersion;
-            //diskindex.hashMerkleRoot;
-            //diskindex.nTime;
-            //diskindex.nBits;
-            //diskindex.nNonce;
+            std::cout<<"hashPrev :"<<diskindex.hashPrev.ToString()<<std::endl ;
+            std::cout<<"hashNext :"<<diskindex.hashNext.ToString()<<std::endl;
+            std::cout<<"nFile    :"<<diskindex.nFile<<std::endl;
+            std::cout<<"nBlockPos:"<<diskindex.nBlockPos<<std::endl;
+            std::cout<<"nHeight  :"<<diskindex.nHeight<<std::endl;
+            std::cout<<"nVersion :"<<diskindex.nVersion<<std::endl;
+            std::cout<<"hashMerkleRoot:"<<diskindex.hashMerkleRoot.ToString()<<std::endl;
+            std::cout<<"nTime    :"<<diskindex.nTime<<std::endl;
+            std::cout<<"nBits    :"<<diskindex.nBits<<std::endl;
+            std::cout<<"nNonce   :"<<diskindex.nNonce<<std::endl;
+
+
+
+
         }
 
-        std::cout<<"ret"<<ret ;
+        std::cout<<"ret"<<ret<<std::endl  ;
 
         }
+
+       std::cout<<"#############################################################"<<std::endl; 
+
+       map<uint256, CBlockIndex*>::iterator mi=mapBlockIndex1.begin();
+        
+
+       std::cout<<"test1 size="<<mapBlockIndex1.size()<<std::endl; 
+   
+       seq=0; 
+
+       while(mi!=mapBlockIndex1.end())
+       {
+           std::cout<<"seq="<<++seq<<std::endl;
+            // Construct block index object
+            std::cout<<"BlockHash:"<<(*mi).second->GetBlockHash().ToString()<<std::endl ;
+            if((*mi).second->pprev!=NULL)
+            std::cout<<"hashPrev :"<<(*mi).second->pprev->GetBlockHash().ToString()<<std::endl ;
+            if((*mi).second->pnext!=NULL )
+            std::cout<<"hashNext :"<<(*mi).second->pnext->GetBlockHash().ToString()<<std::endl;
+            std::cout<<"nFile    :"<<(*mi).second->nFile<<std::endl;
+            std::cout<<"nBlockPos:"<<(*mi).second->nBlockPos<<std::endl;
+            std::cout<<"nHeight  :"<<(*mi).second->nHeight<<std::endl;
+            std::cout<<"nVersion :"<<(*mi).second->nVersion<<std::endl;
+            std::cout<<"hashMerkleRoot:"<<(*mi).second->hashMerkleRoot.ToString()<<std::endl;
+            std::cout<<"nTime    :"<<(*mi).second->nTime<<std::endl;
+            std::cout<<"nBits    :"<<(*mi).second->nBits<<std::endl;
+            std::cout<<"nNonce   :"<<(*mi).second->nNonce<<std::endl;
+
+           mi++; 
+       }
+
+       std::cout<<"test2"<<std::endl; 
 
 	if (cursor != NULL)
 	{
@@ -261,5 +337,5 @@ int main(int argc, char *argv[])
 
 /*###############################################################################################*/
 
-    return 0;
+    //return 0;
 }
