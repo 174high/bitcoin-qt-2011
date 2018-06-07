@@ -22,6 +22,8 @@
 using std::cout;
 using std::endl;
 using std::cerr;
+using std::vector; 
+using std::pair;
 
 using std::map;
 using std::make_pair;
@@ -269,7 +271,7 @@ int main(int argc, char *argv[])
             pindexNew->nBits          = diskindex.nBits;
             pindexNew->nNonce         = diskindex.nNonce;
 
-
+/*
             std::cout<<"seq="<<++seq<<std::endl; 
             // Construct block index object
             std::cout<<"BlockHash:"<<diskindex.GetBlockHash().ToString()<<std::endl ;
@@ -283,7 +285,7 @@ int main(int argc, char *argv[])
             std::cout<<"nTime    :"<<diskindex.nTime<<std::endl;
             std::cout<<"nBits    :"<<diskindex.nBits<<std::endl;
             std::cout<<"nNonce   :"<<diskindex.nNonce<<std::endl;
-
+*/
 
 
 
@@ -301,7 +303,7 @@ int main(int argc, char *argv[])
        std::cout<<"test1 size="<<mapBlockIndex1.size()<<std::endl; 
    
        seq=0; 
-
+/*
        while(mi!=mapBlockIndex1.end())
        {
            std::cout<<"seq="<<++seq<<std::endl;
@@ -322,7 +324,7 @@ int main(int argc, char *argv[])
 
            mi++; 
        }
-
+*/
        std::cout<<"test2"<<std::endl; 
 
 	if (cursor != NULL)
@@ -331,6 +333,64 @@ int main(int argc, char *argv[])
 	    cursor->close();
 
 	}
+
+   // Calculate bnChainWork
+    vector<pair<int, CBlockIndex*> > vSortedByHeight;
+    vSortedByHeight.reserve(mapBlockIndex1.size());
+    BOOST_FOREACH(const PAIRTYPE(uint256, CBlockIndex*)& item, mapBlockIndex1)
+    {
+        CBlockIndex* pindex = item.second;
+        vSortedByHeight.push_back(make_pair(pindex->nHeight, pindex));
+    }
+
+    std::cout<<"vSortedByHeight  size="<<vSortedByHeight.size()<<std::endl; 
+
+    sort(vSortedByHeight.begin(), vSortedByHeight.end());
+
+    BOOST_FOREACH(const PAIRTYPE(int, CBlockIndex*)& item, vSortedByHeight)
+    {
+       	    CBlockIndex* pindex = item.second;
+	    // Construct block index object
+	    std::cout<<"BlockHash:"<<pindex->GetBlockHash().ToString()<<std::endl ;
+	    if(pindex->pprev!=NULL)
+	    std::cout<<"hashPrev :"<<pindex->pprev->GetBlockHash().ToString()<<std::endl ;
+	    if(pindex->pnext!=NULL )
+	    std::cout<<"hashNext :"<<pindex->pnext->GetBlockHash().ToString()<<std::endl;
+	    std::cout<<"nFile    :"<<pindex->nFile<<std::endl;
+	    std::cout<<"nBlockPos:"<<pindex->nBlockPos<<std::endl;
+	    std::cout<<"nHeight  :"<<pindex->nHeight<<std::endl;
+	    std::cout<<"nVersion :"<<pindex->nVersion<<std::endl;
+	    std::cout<<"hashMerkleRoot:"<<pindex->hashMerkleRoot.ToString()<<std::endl;
+	    std::cout<<"nTime    :"<<pindex->nTime<<std::endl;
+	    std::cout<<"nBits    :"<<pindex->nBits<<std::endl;
+	    std::cout<<"nNonce   :"<<pindex->nNonce<<std::endl;
+
+    }
+
+    BOOST_FOREACH(const PAIRTYPE(int, CBlockIndex*)& item, vSortedByHeight)
+    {
+        CBlockIndex* pindex = item.second;
+        if(pindex->pprev!=NULL)
+        {    
+            std::cout<<"pprev->bnChainWork="<<pindex->pprev->bnChainWork.ToString()<<std::endl;
+            std::cout<<"pindex->GetBlockWork="<<pindex->GetBlockWork().ToString()<<std::endl; 
+        }
+//        std::cout<<"pprev->bnChainWork="<<pindex->pprev->bnChainWork.getuint256().ToString()<<std::endl; 
+        pindex->bnChainWork = (pindex->pprev ? pindex->pprev->bnChainWork : 0) + pindex->GetBlockWork();
+        
+        if(pindex->pprev!=NULL)
+        {
+
+            std::cout<<"pindex->bnChainWork="<<pindex->bnChainWork.ToString()<<std::endl;
+        }
+
+    }
+
+
+
+
+
+
 
     return ret; 
 
