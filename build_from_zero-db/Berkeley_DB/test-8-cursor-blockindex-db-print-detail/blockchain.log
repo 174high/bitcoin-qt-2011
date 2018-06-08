@@ -1,0 +1,872 @@
+main open:1 /root/.db_test 
+main open:2  blkindex.dat 
+open cursor
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+ get type =blockindex
+ret0
+#############################################################
+test1 size=52
+test2
+vSortedByHeight  size=52
+BlockHash:000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
+hashNext :00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048
+nFile    :1
+nBlockPos:8
+nHeight  :0
+nVersion :1
+hashMerkleRoot:4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b
+nTime    :1231006505
+nBits    :486604799
+nNonce   :2083236893
+
+BlockHash:000000002978eecde8d020f7f057083bc990002fff495121d7dc1c26d00c00f8
+nFile    :0
+nBlockPos:0
+nHeight  :0
+nVersion :0
+hashMerkleRoot:0000000000000000000000000000000000000000000000000000000000000000
+nTime    :0
+nBits    :0
+nNonce   :0
+
+BlockHash:000000009b7262315dbf071787ad3656097b892abffd1f95a1a022f896f533fc
+nFile    :0
+nBlockPos:0
+nHeight  :0
+nVersion :0
+hashMerkleRoot:0000000000000000000000000000000000000000000000000000000000000000
+nTime    :0
+nBits    :0
+nNonce   :0
+
+BlockHash:00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048
+hashPrev :000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
+hashNext :000000006a625f06636b8bb6ac7b960a8d03705d1ace08b1a19da3fdcc99ddbd
+nFile    :1
+nBlockPos:301
+nHeight  :1
+nVersion :1
+hashMerkleRoot:0e3e2357e806b6cdb1f70b54c3a3a17b6714ee1f0e68bebb44a74b1efd512098
+nTime    :1231469665
+nBits    :486604799
+nNonce   :2573394689
+
+BlockHash:000000006a625f06636b8bb6ac7b960a8d03705d1ace08b1a19da3fdcc99ddbd
+hashPrev :00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048
+hashNext :0000000082b5015589a3fdf2d4baff403e6f0be035a5d9742c1cae6295464449
+nFile    :1
+nBlockPos:524
+nHeight  :2
+nVersion :1
+hashMerkleRoot:9b0fc92260312ce44e74ef369f5c66bbb85848f2eddd5a7a1cde251e54ccfdd5
+nTime    :1231469744
+nBits    :486604799
+nNonce   :1639830024
+
+BlockHash:0000000082b5015589a3fdf2d4baff403e6f0be035a5d9742c1cae6295464449
+hashPrev :000000006a625f06636b8bb6ac7b960a8d03705d1ace08b1a19da3fdcc99ddbd
+hashNext :000000004ebadb55ee9096c9a2f8880e09da59c0d68b1c228da88e48844a1485
+nFile    :1
+nBlockPos:747
+nHeight  :3
+nVersion :1
+hashMerkleRoot:999e1c837c76a1b7fbb7e57baf87b309960f5ffefbf2a9b95dd890602272f644
+nTime    :1231470173
+nBits    :486604799
+nNonce   :1844305925
+
+BlockHash:000000004ebadb55ee9096c9a2f8880e09da59c0d68b1c228da88e48844a1485
+hashPrev :0000000082b5015589a3fdf2d4baff403e6f0be035a5d9742c1cae6295464449
+hashNext :000000009b7262315dbf071787ad3656097b892abffd1f95a1a022f896f533fc
+nFile    :1
+nBlockPos:970
+nHeight  :4
+nVersion :1
+hashMerkleRoot:df2b060fa2e5e9c8ed5eaf6a45c13753ec8c63282b2688322eba40cd98ea067a
+nTime    :1231470988
+nBits    :486604799
+nNonce   :2850094635
+
+BlockHash:000000003031a0e73735690c5a1ff2a4be82553b2a12b776fbd3a215dc8f778d
+hashPrev :000000009b7262315dbf071787ad3656097b892abffd1f95a1a022f896f533fc
+hashNext :0000000071966c2b1d065fd446b1e485b2c9d9594acd2007ccbd5441cfc89444
+nFile    :1
+nBlockPos:1416
+nHeight  :6
+nVersion :1
+hashMerkleRoot:20251a76e64e920e58291a30d4b212939aae976baca40e70818ceaa596fb9d37
+nTime    :1231471789
+nBits    :486604799
+nNonce   :2538380312
+
+BlockHash:0000000071966c2b1d065fd446b1e485b2c9d9594acd2007ccbd5441cfc89444
+hashPrev :000000003031a0e73735690c5a1ff2a4be82553b2a12b776fbd3a215dc8f778d
+hashNext :00000000408c48f847aa786c2268fc3e6ec2af68e8468a34a28c61b7f1de0dc6
+nFile    :1
+nBlockPos:1639
+nHeight  :7
+nVersion :1
+hashMerkleRoot:8aa673bc752f2851fd645d6a0a92917e967083007d9c1684f9423b100540673f
+nTime    :1231472369
+nBits    :486604799
+nNonce   :2258412857
+
+BlockHash:00000000408c48f847aa786c2268fc3e6ec2af68e8468a34a28c61b7f1de0dc6
+hashPrev :0000000071966c2b1d065fd446b1e485b2c9d9594acd2007ccbd5441cfc89444
+hashNext :000000008d9dc510f23c2657fc4f67bea30078cc05a90eb89e84cc475c080805
+nFile    :1
+nBlockPos:1862
+nHeight  :8
+nVersion :1
+hashMerkleRoot:a6f7f1c0dad0f2eb6b13c4f33de664b1b0e9f22efad5994a6d5b6086d85e85e3
+nTime    :1231472743
+nBits    :486604799
+nNonce   :1716931356
+
+BlockHash:000000008d9dc510f23c2657fc4f67bea30078cc05a90eb89e84cc475c080805
+hashPrev :00000000408c48f847aa786c2268fc3e6ec2af68e8468a34a28c61b7f1de0dc6
+hashNext :000000002c05cc2e78923c34df87fd108b22221ac6076c18f3ade378a4d915e9
+nFile    :1
+nBlockPos:2085
+nHeight  :9
+nVersion :1
+hashMerkleRoot:0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9
+nTime    :1231473279
+nBits    :486604799
+nNonce   :1397702696
+
+BlockHash:000000002c05cc2e78923c34df87fd108b22221ac6076c18f3ade378a4d915e9
+hashPrev :000000008d9dc510f23c2657fc4f67bea30078cc05a90eb89e84cc475c080805
+hashNext :0000000097be56d606cdd9c54b04d4747e957d3608abe69198c661f2add73073
+nFile    :1
+nBlockPos:2308
+nHeight  :10
+nVersion :1
+hashMerkleRoot:d3ad39fa52a89997ac7381c95eeffeaf40b66af7a57e9eba144be0a175a12b11
+nTime    :1231473952
+nBits    :486604799
+nNonce   :1709518110
+
+BlockHash:0000000097be56d606cdd9c54b04d4747e957d3608abe69198c661f2add73073
+hashPrev :000000002c05cc2e78923c34df87fd108b22221ac6076c18f3ade378a4d915e9
+hashNext :0000000027c2488e2510d1acf4369787784fa20ee084c258b58d9fbd43802b5e
+nFile    :1
+nBlockPos:2531
+nHeight  :11
+nVersion :1
+hashMerkleRoot:f8325d8f7fa5d658ea143629288d0530d2710dc9193ddc067439de803c37066e
+nTime    :1231474360
+nBits    :486604799
+nNonce   :4161222679
+
+BlockHash:0000000027c2488e2510d1acf4369787784fa20ee084c258b58d9fbd43802b5e
+hashPrev :0000000097be56d606cdd9c54b04d4747e957d3608abe69198c661f2add73073
+hashNext :000000005c51de2031a895adc145ee2242e919a01c6d61fb222a54a54b4d3089
+nFile    :1
+nBlockPos:2754
+nHeight  :12
+nVersion :1
+hashMerkleRoot:3b96bb7e197ef276b85131afd4a09c059cc368133a26ca04ebffb0ab4f75c8b8
+nTime    :1231474888
+nBits    :486604799
+nNonce   :208296255
+
+BlockHash:000000005c51de2031a895adc145ee2242e919a01c6d61fb222a54a54b4d3089
+hashPrev :0000000027c2488e2510d1acf4369787784fa20ee084c258b58d9fbd43802b5e
+hashNext :0000000080f17a0c5a67f663a9bc9969eb37e81666d9321125f0e293656f8a37
+nFile    :1
+nBlockPos:2977
+nHeight  :13
+nVersion :1
+hashMerkleRoot:9962d5c704ec27243364cbe9d384808feeac1c15c35ac790dffd1e929829b271
+nTime    :1231475020
+nBits    :486604799
+nNonce   :2259603767
+
+BlockHash:0000000080f17a0c5a67f663a9bc9969eb37e81666d9321125f0e293656f8a37
+hashPrev :000000005c51de2031a895adc145ee2242e919a01c6d61fb222a54a54b4d3089
+hashNext :00000000b3322c8c3ef7d2cf6da009a776e6a99ee65ec5a32f3f345712238473
+nFile    :1
+nBlockPos:3200
+nHeight  :14
+nVersion :1
+hashMerkleRoot:e1afd89295b68bc5247fe0ca2885dd4b8818d7ce430faa615067d7bab8640156
+nTime    :1231475589
+nBits    :486604799
+nNonce   :615369513
+
+BlockHash:00000000b3322c8c3ef7d2cf6da009a776e6a99ee65ec5a32f3f345712238473
+hashPrev :0000000080f17a0c5a67f663a9bc9969eb37e81666d9321125f0e293656f8a37
+hashNext :00000000174a25bb399b009cc8deff1c4b3ea84df7e93affaaf60dc3416cc4f5
+nFile    :1
+nBlockPos:3423
+nHeight  :15
+nVersion :1
+hashMerkleRoot:50748b7a193a0b23f1e9494b51131d2f954cc6cf4792bacc69d207d16002080d
+nTime    :1231562746
+nBits    :486604799
+nNonce   :2566641720
+
+BlockHash:00000000174a25bb399b009cc8deff1c4b3ea84df7e93affaaf60dc3416cc4f5
+hashPrev :00000000b3322c8c3ef7d2cf6da009a776e6a99ee65ec5a32f3f345712238473
+hashNext :000000003ff1d0d70147acfbef5d6a87460ff5bcfce807c2d5b6f0a66bfdf809
+nFile    :1
+nBlockPos:3646
+nHeight  :16
+nVersion :1
+hashMerkleRoot:e79fc1dad370e628614702f048edc8e98829cf8ea8f6615db19f992b1be92e44
+nTime    :1231562758
+nBits    :486604799
+nNonce   :3591544324
+
+BlockHash:000000003ff1d0d70147acfbef5d6a87460ff5bcfce807c2d5b6f0a66bfdf809
+hashPrev :00000000174a25bb399b009cc8deff1c4b3ea84df7e93affaaf60dc3416cc4f5
+hashNext :000000008693e98cf893e4c85a446b410bb4dfa129bd1be582c09ed3f0261116
+nFile    :1
+nBlockPos:3869
+nHeight  :17
+nVersion :1
+hashMerkleRoot:a3e0b7558e67f5cadd4a3166912cbf6f930044124358ef3a9afd885ac391625d
+nTime    :1231563791
+nBits    :486604799
+nNonce   :2474926087
+
+BlockHash:000000008693e98cf893e4c85a446b410bb4dfa129bd1be582c09ed3f0261116
+hashPrev :000000003ff1d0d70147acfbef5d6a87460ff5bcfce807c2d5b6f0a66bfdf809
+hashNext :00000000841cb802ca97cf20fb9470480cae9e5daa5d06b4a18ae2d5dd7f186f
+nFile    :1
+nBlockPos:4092
+nHeight  :18
+nVersion :1
+hashMerkleRoot:f925f26deb2dc4696be8782ab7ad9493d04721b28ee69a09d7dfca51b863ca23
+nTime    :1231564334
+nBits    :486604799
+nNonce   :4064360242
+
+BlockHash:00000000841cb802ca97cf20fb9470480cae9e5daa5d06b4a18ae2d5dd7f186f
+hashPrev :000000008693e98cf893e4c85a446b410bb4dfa129bd1be582c09ed3f0261116
+hashNext :0000000067a97a2a37b8f190a17f0221e9c3f4fa824ddffdc2e205eae834c8d7
+nFile    :1
+nBlockPos:4315
+nHeight  :19
+nVersion :1
+hashMerkleRoot:9b9e461221e5284f3bfe5656efdc8c7cc633b2f1beef54a86316bf2ae3a3e230
+nTime    :1231564974
+nBits    :486604799
+nNonce   :766824726
+
+BlockHash:0000000067a97a2a37b8f190a17f0221e9c3f4fa824ddffdc2e205eae834c8d7
+hashPrev :00000000841cb802ca97cf20fb9470480cae9e5daa5d06b4a18ae2d5dd7f186f
+hashNext :000000006f016342d1275be946166cff975c8b27542de70a7113ac6d1ef3294f
+nFile    :1
+nBlockPos:4538
+nHeight  :20
+nVersion :1
+hashMerkleRoot:ee1afca2d1130676503a6db5d6a77075b2bf71382cfdf99231f89717b5257b5b
+nTime    :1231565995
+nBits    :486604799
+nNonce   :1901123894
+
+BlockHash:000000006f016342d1275be946166cff975c8b27542de70a7113ac6d1ef3294f
+hashPrev :0000000067a97a2a37b8f190a17f0221e9c3f4fa824ddffdc2e205eae834c8d7
+hashNext :0000000098b58d427a10c860335a21c1a9a7639e96c3d6f1a03d8c8c885b5e3b
+nFile    :1
+nBlockPos:4761
+nHeight  :21
+nVersion :1
+hashMerkleRoot:e0175970efb4417950921bfcba2a3a1e88c007c21232ff706009cc70b89210b4
+nTime    :1231566553
+nBits    :486604799
+nNonce   :3592540203
+
+BlockHash:0000000098b58d427a10c860335a21c1a9a7639e96c3d6f1a03d8c8c885b5e3b
+hashPrev :000000006f016342d1275be946166cff975c8b27542de70a7113ac6d1ef3294f
+hashNext :000000000cd339982e556dfffa9de94744a4135c53eeef15b7bcc9bdeb9c2182
+nFile    :1
+nBlockPos:4984
+nHeight  :22
+nVersion :1
+hashMerkleRoot:9e2eaf1d7e5178a2d116f331c340f1f7fd6de7540783ac36a7054fe9a4d64943
+nTime    :1231567467
+nBits    :486604799
+nNonce   :1645155368
+
+BlockHash:000000000cd339982e556dfffa9de94744a4135c53eeef15b7bcc9bdeb9c2182
+hashPrev :0000000098b58d427a10c860335a21c1a9a7639e96c3d6f1a03d8c8c885b5e3b
+hashNext :00000000fc051fbbce89a487e811a5d4319d209785ea4f4b27fc83770d1e415f
+nFile    :1
+nBlockPos:5207
+nHeight  :23
+nVersion :1
+hashMerkleRoot:e1cf3476234d8446653ad52a8939ed792003eefdcd0e897319ab9d2cb4c14c8c
+nTime    :1231567611
+nBits    :486604799
+nNonce   :1437882917
+
+BlockHash:00000000fc051fbbce89a487e811a5d4319d209785ea4f4b27fc83770d1e415f
+hashPrev :000000000cd339982e556dfffa9de94744a4135c53eeef15b7bcc9bdeb9c2182
+hashNext :000000008e35a1d59ea1be8d76683662f47fd13c62a9e347ad5845a26f762026
+nFile    :1
+nBlockPos:5430
+nHeight  :24
+nVersion :1
+hashMerkleRoot:43c39b8b3728c6cb26fae0fc18803ca6cf43e15fde218e3dfbd54e633cf6753e
+nTime    :1231568277
+nBits    :486604799
+nNonce   :2969614887
+
+BlockHash:000000008e35a1d59ea1be8d76683662f47fd13c62a9e347ad5845a26f762026
+hashPrev :00000000fc051fbbce89a487e811a5d4319d209785ea4f4b27fc83770d1e415f
+hashNext :0000000041438e52d25bccab8798a92cabafdaad69a071d3d2a41718faf01098
+nFile    :1
+nBlockPos:5653
+nHeight  :25
+nVersion :1
+hashMerkleRoot:9b0f52332d7d013b49016416c4818b5abb80b01ca526b7b813830348ad2321be
+nTime    :1231568646
+nBits    :486604799
+nNonce   :837891875
+
+BlockHash:0000000041438e52d25bccab8798a92cabafdaad69a071d3d2a41718faf01098
+hashPrev :000000008e35a1d59ea1be8d76683662f47fd13c62a9e347ad5845a26f762026
+hashNext :0000000071350772f98f84babf35502b33d42ee8466d3dde0f376c4120352081
+nFile    :1
+nBlockPos:5876
+nHeight  :26
+nVersion :1
+hashMerkleRoot:67c1e8143bb6ad221a4ce77d6c8be68f2e25e0743f51b2db1a7b22bab59014dc
+nTime    :1231570450
+nBits    :486604799
+nNonce   :1555516980
+
+BlockHash:0000000071350772f98f84babf35502b33d42ee8466d3dde0f376c4120352081
+hashPrev :0000000041438e52d25bccab8798a92cabafdaad69a071d3d2a41718faf01098
+hashNext :00000000bb0d9430d3d1bab474be5050342161efcca9f7e45b151bff9a700944
+nFile    :1
+nBlockPos:6099
+nHeight  :27
+nVersion :1
+hashMerkleRoot:230cf03a6ce420eaa42e3c64feebb47920f3470efb4323b4574b4b6e5a004f65
+nTime    :1231570573
+nBits    :486604799
+nNonce   :3012316214
+
+BlockHash:00000000bb0d9430d3d1bab474be5050342161efcca9f7e45b151bff9a700944
+hashPrev :0000000071350772f98f84babf35502b33d42ee8466d3dde0f376c4120352081
+hashNext :00000000c57a1b6351208c592eef8eff015d93c899a047fe35b35252a4a59bcb
+nFile    :1
+nBlockPos:6322
+nHeight  :28
+nVersion :1
+hashMerkleRoot:f399cb6c5bed7bb36d44f361c29dd5ecf12deba163470d8835b7ba0c4ed8aebd
+nTime    :1231601457
+nBits    :486604799
+nNonce   :2396281646
+
+BlockHash:00000000c57a1b6351208c592eef8eff015d93c899a047fe35b35252a4a59bcb
+hashPrev :00000000bb0d9430d3d1bab474be5050342161efcca9f7e45b151bff9a700944
+hashNext :00000000bc919cfb64f62de736d55cf79e3d535b474ace256b4fbb56073f64db
+nFile    :1
+nBlockPos:6545
+nHeight  :29
+nVersion :1
+hashMerkleRoot:c361e2f4581f035dd58b99788347884e046e47b4c17ec347344ff8b24cd377ec
+nTime    :1231601503
+nBits    :486604799
+nNonce   :2688142130
+
+BlockHash:00000000bc919cfb64f62de736d55cf79e3d535b474ace256b4fbb56073f64db
+hashPrev :00000000c57a1b6351208c592eef8eff015d93c899a047fe35b35252a4a59bcb
+hashNext :000000009700ff3494f215c412cd8c0ceabf1deb0df03ce39bcfc223b769d3c4
+nFile    :1
+nBlockPos:6768
+nHeight  :30
+nVersion :1
+hashMerkleRoot:f5e26c8b82401c585235c572ba8265f16f7d9304ed8e31c198eab571754f5331
+nTime    :1231602122
+nBits    :486604799
+nNonce   :3893691144
+
+BlockHash:000000009700ff3494f215c412cd8c0ceabf1deb0df03ce39bcfc223b769d3c4
+hashPrev :00000000bc919cfb64f62de736d55cf79e3d535b474ace256b4fbb56073f64db
+hashNext :00000000e5cb7c6c273547b0c9421b01e23310ed83f934b96270f35a4d66f6e3
+nFile    :1
+nBlockPos:6991
+nHeight  :31
+nVersion :1
+hashMerkleRoot:86b33edba8ff663b0f73ef487e4433f34d26ef91de15659d2cc09594d27b52cb
+nTime    :1231602736
+nBits    :486604799
+nNonce   :716922133
+
+BlockHash:00000000e5cb7c6c273547b0c9421b01e23310ed83f934b96270f35a4d66f6e3
+hashPrev :000000009700ff3494f215c412cd8c0ceabf1deb0df03ce39bcfc223b769d3c4
+hashNext :00000000a87073ea3d7af299e02a434598b9c92094afa552e0711afcc0857962
+nFile    :1
+nBlockPos:7214
+nHeight  :32
+nVersion :1
+hashMerkleRoot:2b9905f06583c01454f10f720b5709e3b667c9dd3d9efc423c97b7e70afdc0c9
+nTime    :1231603171
+nBits    :486604799
+nNonce   :230744328
+
+BlockHash:00000000a87073ea3d7af299e02a434598b9c92094afa552e0711afcc0857962
+hashPrev :00000000e5cb7c6c273547b0c9421b01e23310ed83f934b96270f35a4d66f6e3
+hashNext :00000000a73fb23b6c42b18b3253ed29c5d0c80d84624efa12c2cf05c4b4318f
+nFile    :1
+nBlockPos:7437
+nHeight  :33
+nVersion :1
+hashMerkleRoot:bdeaa0089cd84670da5e6385f0185c2d7978bf57a1aa5540d3ff3b3eabaa1210
+nTime    :1231603939
+nBits    :486604799
+nNonce   :1076005922
+
+BlockHash:00000000a73fb23b6c42b18b3253ed29c5d0c80d84624efa12c2cf05c4b4318f
+hashPrev :00000000a87073ea3d7af299e02a434598b9c92094afa552e0711afcc0857962
+hashNext :00000000b572a465b4e816420d47a16274557b3573b7924b64808a82c7322d9b
+nFile    :1
+nBlockPos:7660
+nHeight  :34
+nVersion :1
+hashMerkleRoot:223b0620a8f1c1f23a2ebf8032ed11321b921017d01974e74cddd651319b5474
+nTime    :1231604338
+nBits    :486604799
+nNonce   :616579874
+
+BlockHash:00000000b572a465b4e816420d47a16274557b3573b7924b64808a82c7322d9b
+hashPrev :00000000a73fb23b6c42b18b3253ed29c5d0c80d84624efa12c2cf05c4b4318f
+hashNext :00000000f824d643f525b4904ea25c92174b8499435f388549a1700f4d3244de
+nFile    :1
+nBlockPos:7883
+nHeight  :35
+nVersion :1
+hashMerkleRoot:852b1997ed935ba638078998e2d15bc8a91b8ad232e2d988e22c969eba3bafe0
+nTime    :1231605153
+nBits    :486604799
+nNonce   :3890072084
+
+BlockHash:00000000f824d643f525b4904ea25c92174b8499435f388549a1700f4d3244de
+hashPrev :00000000b572a465b4e816420d47a16274557b3573b7924b64808a82c7322d9b
+hashNext :00000000ddd96d128e122d1179034ff66c27dc583eb9e8996a0b1779c60c6f86
+nFile    :1
+nBlockPos:8106
+nHeight  :36
+nVersion :1
+hashMerkleRoot:d05d256fbd5845b30039e37d48215788a4e438249048c47ddb9c83cd927d4d5a
+nTime    :1231605789
+nBits    :486604799
+nNonce   :797229870
+
+BlockHash:00000000ddd96d128e122d1179034ff66c27dc583eb9e8996a0b1779c60c6f86
+hashPrev :00000000f824d643f525b4904ea25c92174b8499435f388549a1700f4d3244de
+hashNext :000000007c19ee8e924d3024d58efff50f872aadf256140bb1e3d62fea4fd6dd
+nFile    :1
+nBlockPos:8329
+nHeight  :37
+nVersion :1
+hashMerkleRoot:6d344eb5d67ed329a1c1d7603bba4b85d5916435b49f7a585bb370b76820287d
+nTime    :1231606762
+nBits    :486604799
+nNonce   :2244623873
+
+BlockHash:000000007c19ee8e924d3024d58efff50f872aadf256140bb1e3d62fea4fd6dd
+hashPrev :00000000ddd96d128e122d1179034ff66c27dc583eb9e8996a0b1779c60c6f86
+hashNext :000000005665d506f6c3ccb5fd98624f9816a8a169f1d2327d1d4d6d3262ad12
+nFile    :1
+nBlockPos:8552
+nHeight  :38
+nVersion :1
+hashMerkleRoot:e690daeb9f73d29d8a22cb4b5ec29970e9b32283d4376adeaad8691ccb449a68
+nTime    :1231607488
+nBits    :486604799
+nNonce   :3941073664
+
+BlockHash:000000005665d506f6c3ccb5fd98624f9816a8a169f1d2327d1d4d6d3262ad12
+hashPrev :000000007c19ee8e924d3024d58efff50f872aadf256140bb1e3d62fea4fd6dd
+hashNext :00000000b2f01f399bf503e55f25a1aa51067056d2eb81915cb91976968b69aa
+nFile    :1
+nBlockPos:8775
+nHeight  :39
+nVersion :1
+hashMerkleRoot:1484c18ba443b13851098597d8cb6d49d5983eab63c53d6b0dcc565612e7ca6b
+nTime    :1231607511
+nBits    :486604799
+nNonce   :1610743848
+
+BlockHash:00000000b2f01f399bf503e55f25a1aa51067056d2eb81915cb91976968b69aa
+hashPrev :000000005665d506f6c3ccb5fd98624f9816a8a169f1d2327d1d4d6d3262ad12
+hashNext :00000000ad2b48c7032b6d7d4f2e19e54d79b1c159f5599056492f2cd7bb528b
+nFile    :1
+nBlockPos:8998
+nHeight  :40
+nVersion :1
+hashMerkleRoot:04391286b3aefbb5df4cdb515ac7fce7942525fa602e1d7757e90a4fd41a1e20
+nTime    :1231608208
+nBits    :486604799
+nNonce   :1902584070
+
+BlockHash:00000000ad2b48c7032b6d7d4f2e19e54d79b1c159f5599056492f2cd7bb528b
+hashPrev :00000000b2f01f399bf503e55f25a1aa51067056d2eb81915cb91976968b69aa
+hashNext :00000000314e90489514c787d615cea50003af2023796ccdd085b6bcc1fa28f5
+nFile    :1
+nBlockPos:9221
+nHeight  :41
+nVersion :1
+hashMerkleRoot:9efa6cb3b8cca3c9387144f397f80e7b4bc2dd86026fdd308625a2e100a08d5a
+nTime    :1231608903
+nBits    :486604799
+nNonce   :3522947079
+
+BlockHash:00000000314e90489514c787d615cea50003af2023796ccdd085b6bcc1fa28f5
+hashPrev :00000000ad2b48c7032b6d7d4f2e19e54d79b1c159f5599056492f2cd7bb528b
+hashNext :00000000ac21f2862aaab177fd3c5c8b395de842f84d88c9cf3420b2d393e550
+nFile    :1
+nBlockPos:9444
+nHeight  :42
+nVersion :1
+hashMerkleRoot:27c4d937dca276fb2b61e579902e8a876fd5b5abc17590410ced02d5a9f8e483
+nTime    :1231609153
+nBits    :486604799
+nNonce   :3600650283
+
+BlockHash:00000000ac21f2862aaab177fd3c5c8b395de842f84d88c9cf3420b2d393e550
+hashPrev :00000000314e90489514c787d615cea50003af2023796ccdd085b6bcc1fa28f5
+hashNext :000000002978eecde8d020f7f057083bc990002fff495121d7dc1c26d00c00f8
+nFile    :1
+nBlockPos:9667
+nHeight  :43
+nVersion :1
+hashMerkleRoot:2f5c03ce19e9a855ac93087a1b68fe6592bcf4bd7cbb9c1ef264d886a785894e
+nTime    :1231609477
+nBits    :486604799
+nNonce   :2093702200
+
+BlockHash:000000009189006e461d2f4037a819d00217412ac01900ddbf09461100b836bb
+hashPrev :000000002978eecde8d020f7f057083bc990002fff495121d7dc1c26d00c00f8
+hashNext :0000000002d5f429a2e3a9d9f82b777469696deb64038803c87833aa8ee9c08e
+nFile    :1
+nBlockPos:10113
+nHeight  :45
+nVersion :1
+hashMerkleRoot:f69778085f1e78a1ea1cfcfe3b61ffb5c99870f5ae382e41ec43cf165d66a6d9
+nTime    :1231611068
+nBits    :486604799
+nNonce   :2771238433
+
+BlockHash:0000000002d5f429a2e3a9d9f82b777469696deb64038803c87833aa8ee9c08e
+hashPrev :000000009189006e461d2f4037a819d00217412ac01900ddbf09461100b836bb
+hashNext :000000001a5c4531f86aa874e711e1882038336e2610f70ce750cdd690c57a81
+nFile    :1
+nBlockPos:10336
+nHeight  :46
+nVersion :1
+hashMerkleRoot:ddd4d06365155ab4caaaee552fb3d8643207bd06efe14f920698a6dd4eb22ffa
+nTime    :1231611793
+nBits    :486604799
+nNonce   :1626117377
+
+BlockHash:000000001a5c4531f86aa874e711e1882038336e2610f70ce750cdd690c57a81
+hashPrev :0000000002d5f429a2e3a9d9f82b777469696deb64038803c87833aa8ee9c08e
+hashNext :0000000088960278f4060b8747027b2aac0eb443aedbb1b75d1a72cf71826e89
+nFile    :1
+nBlockPos:10559
+nHeight  :47
+nVersion :1
+hashMerkleRoot:d17b9c9c609309049dfb9005edd7011f02d7875ca7dab6effddf4648bb70eff6
+nTime    :1231612888
+nBits    :486604799
+nNonce   :2957174816
+
+BlockHash:0000000088960278f4060b8747027b2aac0eb443aedbb1b75d1a72cf71826e89
+hashPrev :000000001a5c4531f86aa874e711e1882038336e2610f70ce750cdd690c57a81
+hashNext :00000000f067c09041ff0fcee3d91aeb7fbcc5654d3f766af2b4377aaee68d00
+nFile    :1
+nBlockPos:10782
+nHeight  :48
+nVersion :1
+hashMerkleRoot:32edede0b7d0c37340a665de057f418df634452f6bb80dcb8a5ff0aeddf1158a
+nTime    :1231613140
+nBits    :486604799
+nNonce   :3759171867
+
+BlockHash:00000000f067c09041ff0fcee3d91aeb7fbcc5654d3f766af2b4377aaee68d00
+hashPrev :0000000088960278f4060b8747027b2aac0eb443aedbb1b75d1a72cf71826e89
+hashNext :0000000026f34d197f653c5e80cb805e40612eadb0f45d00d7ea4164a20faa33
+nFile    :1
+nBlockPos:11005
+nHeight  :49
+nVersion :1
+hashMerkleRoot:194c9715279d8626bc66f2b6552f2ae67b3df3a00b88553245b12bffffad5b59
+nTime    :1231613802
+nBits    :486604799
+nNonce   :3014810412
+
+BlockHash:0000000026f34d197f653c5e80cb805e40612eadb0f45d00d7ea4164a20faa33
+hashPrev :00000000f067c09041ff0fcee3d91aeb7fbcc5654d3f766af2b4377aaee68d00
+hashNext :000000001c511e00d1e6825c912988a3695ab2758fdbb6c7ee58da1da4fb2d63
+nFile    :1
+nBlockPos:11228
+nHeight  :50
+nVersion :1
+hashMerkleRoot:540a7e54fd64478554519f1b2d643ecc888c5030631487f9cfc530b71d281309
+nTime    :1231614698
+nBits    :486604799
+nNonce   :1028409902
+
+BlockHash:000000001c511e00d1e6825c912988a3695ab2758fdbb6c7ee58da1da4fb2d63
+hashPrev :0000000026f34d197f653c5e80cb805e40612eadb0f45d00d7ea4164a20faa33
+nFile    :1
+nBlockPos:11451
+nHeight  :51
+nVersion :1
+hashMerkleRoot:a09c89d2a31440658a42ec97aeee0d36b01529e45b315922e2aa2955334d1821
+nTime    :1231615503
+nBits    :486604799
+nNonce   :528566281
+
+pprev->bnChainWork=4295032833
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=8590065666
+pprev->bnChainWork=8590065666
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=12885098499
+pprev->bnChainWork=12885098499
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=17180131332
+pprev->bnChainWork=17180131332
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=21475164165
+pprev->bnChainWork=0
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=4295032833
+pprev->bnChainWork=4295032833
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=8590065666
+pprev->bnChainWork=8590065666
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=12885098499
+pprev->bnChainWork=12885098499
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=17180131332
+pprev->bnChainWork=17180131332
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=21475164165
+pprev->bnChainWork=21475164165
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=25770196998
+pprev->bnChainWork=25770196998
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=30065229831
+pprev->bnChainWork=30065229831
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=34360262664
+pprev->bnChainWork=34360262664
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=38655295497
+pprev->bnChainWork=38655295497
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=42950328330
+pprev->bnChainWork=42950328330
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=47245361163
+pprev->bnChainWork=47245361163
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=51540393996
+pprev->bnChainWork=51540393996
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=55835426829
+pprev->bnChainWork=55835426829
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=60130459662
+pprev->bnChainWork=60130459662
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=64425492495
+pprev->bnChainWork=64425492495
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=68720525328
+pprev->bnChainWork=68720525328
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=73015558161
+pprev->bnChainWork=73015558161
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=77310590994
+pprev->bnChainWork=77310590994
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=81605623827
+pprev->bnChainWork=81605623827
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=85900656660
+pprev->bnChainWork=85900656660
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=90195689493
+pprev->bnChainWork=90195689493
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=94490722326
+pprev->bnChainWork=94490722326
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=98785755159
+pprev->bnChainWork=98785755159
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=103080787992
+pprev->bnChainWork=103080787992
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=107375820825
+pprev->bnChainWork=107375820825
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=111670853658
+pprev->bnChainWork=111670853658
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=115965886491
+pprev->bnChainWork=115965886491
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=120260919324
+pprev->bnChainWork=120260919324
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=124555952157
+pprev->bnChainWork=124555952157
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=128850984990
+pprev->bnChainWork=128850984990
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=133146017823
+pprev->bnChainWork=133146017823
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=137441050656
+pprev->bnChainWork=137441050656
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=141736083489
+pprev->bnChainWork=141736083489
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=146031116322
+pprev->bnChainWork=146031116322
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=150326149155
+pprev->bnChainWork=150326149155
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=154621181988
+pprev->bnChainWork=154621181988
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=158916214821
+pprev->bnChainWork=158916214821
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=163211247654
+pprev->bnChainWork=0
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=4295032833
+pprev->bnChainWork=4295032833
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=8590065666
+pprev->bnChainWork=8590065666
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=12885098499
+pprev->bnChainWork=12885098499
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=17180131332
+pprev->bnChainWork=17180131332
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=21475164165
+pprev->bnChainWork=21475164165
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=25770196998
+pprev->bnChainWork=25770196998
+pindex->GetBlockWork=4295032833
+pindex->bnChainWork=30065229831
