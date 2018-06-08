@@ -1,0 +1,531 @@
+g++ -c -m64 -pipe -O2 -D_REENTRANT -Wall -W -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I. -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -o main.o main.cpp
+In file included from main.cpp:9:0:
+serialize.h:178:21: warning: unused parameter ‘a’ [-Wunused-parameter]
+ inline unsigned int GetSerializeSize(bool a, int, int=0)                          { return sizeof(char); }
+                     ^
+In file included from main.cpp:9:0:
+serialize.h: In member function ‘CAutoFile& CAutoFile::read(char*, int)’:
+serialize.h:1267:43: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         if (fread(pch, 1, nSize, file) != nSize)
+                                           ^
+serialize.h: In member function ‘CAutoFile& CAutoFile::write(const char*, int)’:
+serialize.h:1276:44: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         if (fwrite(pch, 1, nSize, file) != nSize)
+                                            ^
+In file included from main.cpp:10:0:
+uint256.h: In member function ‘void base_uint<BITS>::SetHex(const char*)’:
+uint256.h:324:30: warning: array subscript has type ‘char’ [-Wchar-subscripts]
+         while (phexdigit[*psz] || *psz == '0')
+                              ^
+uint256.h: At global scope:
+uint256.h:635:12: warning: unused parameter ‘vArg’ [-Wunused-parameter]
+ inline int Testuint256AdHoc(std::vector<std::string> vArg)
+            ^
+main.cpp: In function ‘int main(int, char**)’:
+main.cpp:134:30: error: no match for ‘operator<<’ (operand types are ‘std::basic_ostream<char>’ and ‘std::vector<unsigned char>’)
+             std::cout<<"key="<<vchPubKey  ;        
+                              ^
+main.cpp:134:30: note: candidates are:
+In file included from /usr/include/c++/4.8/iostream:39:0,
+                 from main.cpp:1:
+/usr/include/c++/4.8/ostream:108:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__ostream_type& (*)(std::basic_ostream<_CharT, _Traits>::__ostream_type&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(__ostream_type& (*__pf)(__ostream_type&))
+       ^
+/usr/include/c++/4.8/ostream:108:7: note:   no known conversion for argument 1 from ‘std::vector<unsigned char>’ to ‘std::basic_ostream<char>::__ostream_type& (*)(std::basic_ostream<char>::__ostream_type&) {aka std::basic_ostream<char>& (*)(std::basic_ostream<char>&)}’
+/usr/include/c++/4.8/ostream:117:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__ios_type& (*)(std::basic_ostream<_CharT, _Traits>::__ios_type&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>; std::basic_ostream<_CharT, _Traits>::__ios_type = std::basic_ios<char>]
+       operator<<(__ios_type& (*__pf)(__ios_type&))
+       ^
+/usr/include/c++/4.8/ostream:117:7: note:   no known conversion for argument 1 from ‘std::vector<unsigned char>’ to ‘std::basic_ostream<char>::__ios_type& (*)(std::basic_ostream<char>::__ios_type&) {aka std::basic_ios<char>& (*)(std::basic_ios<char>&)}’
+/usr/include/c++/4.8/ostream:127:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::ios_base& (*)(std::ios_base&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(ios_base& (*__pf) (ios_base&))
+       ^
+/usr/include/c++/4.8/ostream:127:7: note:   no known conversion for argument 1 from ‘std::vector<unsigned char>’ to ‘std::ios_base& (*)(std::ios_base&)’
+/usr/include/c++/4.8/ostream:166:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(long __n)
+       ^
+/usr/include/c++/4.8/ostream:166:7: note:   no known conversion for argument 1 from ‘std::vector<unsigned char>’ to ‘long int’
+/usr/include/c++/4.8/ostream:170:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(unsigned long __n)
+       ^
+/usr/include/c++/4.8/ostream:170:7: note:   no known conversion for argument 1 from ‘std::vector<unsigned char>’ to ‘long unsigned int’
+/usr/include/c++/4.8/ostream:174:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(bool) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(bool __n)
+       ^
+/usr/include/c++/4.8/ostream:174:7: note:   no known conversion for argument 1 from ‘std::vector<unsigned char>’ to ‘bool’
+In file included from /usr/include/c++/4.8/ostream:612:0,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from main.cpp:1:
+/usr/include/c++/4.8/bits/ostream.tcc:91:5: note: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(short int) [with _CharT = char; _Traits = std::char_traits<char>]
+     basic_ostream<_CharT, _Traits>::
+     ^
+/usr/include/c++/4.8/bits/ostream.tcc:91:5: note:   no known conversion for argument 1 from ‘std::vector<unsigned char>’ to ‘short int’
+In file included from /usr/include/c++/4.8/iostream:39:0,
+                 from main.cpp:1:
+/usr/include/c++/4.8/ostream:181:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(short unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(unsigned short __n)
+       ^
+/usr/include/c++/4.8/ostream:181:7: note:   no known conversion for argument 1 from ‘std::vector<unsigned char>’ to ‘short unsigned int’
+In file included from /usr/include/c++/4.8/ostream:612:0,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from main.cpp:1:
+/usr/include/c++/4.8/bits/ostream.tcc:105:5: note: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(int) [with _CharT = char; _Traits = std::char_traits<char>]
+     basic_ostream<_CharT, _Traits>::
+     ^
+/usr/include/c++/4.8/bits/ostream.tcc:105:5: note:   no known conversion for argument 1 from ‘std::vector<unsigned char>’ to ‘int’
+In file included from /usr/include/c++/4.8/iostream:39:0,
+                 from main.cpp:1:
+/usr/include/c++/4.8/ostream:192:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(unsigned int __n)
+       ^
+/usr/include/c++/4.8/ostream:192:7: note:   no known conversion for argument 1 from ‘std::vector<unsigned char>’ to ‘unsigned int’
+/usr/include/c++/4.8/ostream:201:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long long int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(long long __n)
+       ^
+/usr/include/c++/4.8/ostream:201:7: note:   no known conversion for argument 1 from ‘std::vector<unsigned char>’ to ‘long long int’
+/usr/include/c++/4.8/ostream:205:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long long unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(unsigned long long __n)
+       ^
+/usr/include/c++/4.8/ostream:205:7: note:   no known conversion for argument 1 from ‘std::vector<unsigned char>’ to ‘long long unsigned int’
+/usr/include/c++/4.8/ostream:220:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(double) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(double __f)
+       ^
+/usr/include/c++/4.8/ostream:220:7: note:   no known conversion for argument 1 from ‘std::vector<unsigned char>’ to ‘double’
+/usr/include/c++/4.8/ostream:224:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(float) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(float __f)
+       ^
+/usr/include/c++/4.8/ostream:224:7: note:   no known conversion for argument 1 from ‘std::vector<unsigned char>’ to ‘float’
+/usr/include/c++/4.8/ostream:232:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long double) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(long double __f)
+       ^
+/usr/include/c++/4.8/ostream:232:7: note:   no known conversion for argument 1 from ‘std::vector<unsigned char>’ to ‘long double’
+/usr/include/c++/4.8/ostream:245:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(const void*) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+       operator<<(const void* __p)
+       ^
+/usr/include/c++/4.8/ostream:245:7: note:   no known conversion for argument 1 from ‘std::vector<unsigned char>’ to ‘const void*’
+In file included from /usr/include/c++/4.8/ostream:612:0,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from main.cpp:1:
+/usr/include/c++/4.8/bits/ostream.tcc:119:5: note: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__streambuf_type*) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__streambuf_type = std::basic_streambuf<char>]
+     basic_ostream<_CharT, _Traits>::
+     ^
+/usr/include/c++/4.8/bits/ostream.tcc:119:5: note:   no known conversion for argument 1 from ‘std::vector<unsigned char>’ to ‘std::basic_ostream<char>::__streambuf_type* {aka std::basic_streambuf<char>*}’
+In file included from /usr/include/qt4/QtCore/qhash.h:46:0,
+                 from /usr/include/qt4/QtCore/qdebug.h:46,
+                 from /usr/include/qt4/QtCore/QtDebug:1,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qchar.h:400:28: note: QDataStream& operator<<(QDataStream&, const QChar&)
+ Q_CORE_EXPORT QDataStream &operator<<(QDataStream &, const QChar &);
+                            ^
+/usr/include/qt4/QtCore/qchar.h:400:28: note:   no known conversion for argument 1 from ‘std::basic_ostream<char>’ to ‘QDataStream&’
+In file included from /usr/include/qt4/QtCore/qstring.h:46:0,
+                 from /usr/include/qt4/QtCore/qobject.h:48,
+                 from /usr/include/qt4/QtCore/qiodevice.h:46,
+                 from /usr/include/qt4/QtCore/qdatastream.h:46,
+                 from /usr/include/qt4/QtCore/qpair.h:45,
+                 from /usr/include/qt4/QtCore/qhash.h:49,
+                 from /usr/include/qt4/QtCore/qdebug.h:46,
+                 from /usr/include/qt4/QtCore/QtDebug:1,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qbytearray.h:597:28: note: QDataStream& operator<<(QDataStream&, const QByteArray&)
+ Q_CORE_EXPORT QDataStream &operator<<(QDataStream &, const QByteArray &);
+                            ^
+/usr/include/qt4/QtCore/qbytearray.h:597:28: note:   no known conversion for argument 1 from ‘std::basic_ostream<char>’ to ‘QDataStream&’
+In file included from /usr/include/qt4/QtCore/qobject.h:48:0,
+                 from /usr/include/qt4/QtCore/qiodevice.h:46,
+                 from /usr/include/qt4/QtCore/qdatastream.h:46,
+                 from /usr/include/qt4/QtCore/qpair.h:45,
+                 from /usr/include/qt4/QtCore/qhash.h:49,
+                 from /usr/include/qt4/QtCore/qdebug.h:46,
+                 from /usr/include/qt4/QtCore/QtDebug:1,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qstring.h:1080:28: note: QDataStream& operator<<(QDataStream&, const QString&)
+ Q_CORE_EXPORT QDataStream &operator<<(QDataStream &, const QString &);
+                            ^
+/usr/include/qt4/QtCore/qstring.h:1080:28: note:   no known conversion for argument 1 from ‘std::basic_ostream<char>’ to ‘QDataStream&’
+In file included from /usr/include/qt4/QtCore/qiodevice.h:46:0,
+                 from /usr/include/qt4/QtCore/qdatastream.h:46,
+                 from /usr/include/qt4/QtCore/qpair.h:45,
+                 from /usr/include/qt4/QtCore/qhash.h:49,
+                 from /usr/include/qt4/QtCore/qdebug.h:46,
+                 from /usr/include/qt4/QtCore/QtDebug:1,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qobject.h:407:22: note: QDebug operator<<(QDebug, const QObject*)
+ Q_CORE_EXPORT QDebug operator<<(QDebug, const QObject *);
+                      ^
+/usr/include/qt4/QtCore/qobject.h:407:22: note:   no known conversion for argument 1 from ‘std::basic_ostream<char>’ to ‘QDebug’
+In file included from /usr/include/qt4/QtCore/qdatastream.h:46:0,
+                 from /usr/include/qt4/QtCore/qpair.h:45,
+                 from /usr/include/qt4/QtCore/qhash.h:49,
+                 from /usr/include/qt4/QtCore/qdebug.h:46,
+                 from /usr/include/qt4/QtCore/QtDebug:1,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qiodevice.h:247:22: note: QDebug operator<<(QDebug, QIODevice::OpenMode)
+ Q_CORE_EXPORT QDebug operator<<(QDebug debug, QIODevice::OpenMode modes);
+                      ^
+/usr/include/qt4/QtCore/qiodevice.h:247:22: note:   no known conversion for argument 1 from ‘std::basic_ostream<char>’ to ‘QDebug’
+In file included from /usr/include/qt4/QtCore/qpair.h:45:0,
+                 from /usr/include/qt4/QtCore/qhash.h:49,
+                 from /usr/include/qt4/QtCore/qdebug.h:46,
+                 from /usr/include/qt4/QtCore/QtDebug:1,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qdatastream.h:261:14: note: template<class T> QDataStream& operator<<(QDataStream&, const QList<T>&)
+ QDataStream& operator<<(QDataStream& s, const QList<T>& l)
+              ^
+/usr/include/qt4/QtCore/qdatastream.h:261:14: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘std::operator<< <std::char_traits<char> >((* & std::cout), ((const char*)"key="))’ (type ‘std::basic_ostream<char>’) to type ‘QDataStream&’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/qt4/QtCore/qpair.h:45:0,
+                 from /usr/include/qt4/QtCore/qhash.h:49,
+                 from /usr/include/qt4/QtCore/qdebug.h:46,
+                 from /usr/include/qt4/QtCore/QtDebug:1,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qdatastream.h:287:14: note: template<class T> QDataStream& operator<<(QDataStream&, const QLinkedList<T>&)
+ QDataStream& operator<<(QDataStream& s, const QLinkedList<T>& l)
+              ^
+/usr/include/qt4/QtCore/qdatastream.h:287:14: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘std::operator<< <std::char_traits<char> >((* & std::cout), ((const char*)"key="))’ (type ‘std::basic_ostream<char>’) to type ‘QDataStream&’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/qt4/QtCore/qpair.h:45:0,
+                 from /usr/include/qt4/QtCore/qhash.h:49,
+                 from /usr/include/qt4/QtCore/qdebug.h:46,
+                 from /usr/include/qt4/QtCore/QtDebug:1,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qdatastream.h:312:14: note: template<class T> QDataStream& operator<<(QDataStream&, const QVector<T>&)
+ QDataStream& operator<<(QDataStream& s, const QVector<T>& v)
+              ^
+/usr/include/qt4/QtCore/qdatastream.h:312:14: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘std::operator<< <std::char_traits<char> >((* & std::cout), ((const char*)"key="))’ (type ‘std::basic_ostream<char>’) to type ‘QDataStream&’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/qt4/QtCore/qpair.h:45:0,
+                 from /usr/include/qt4/QtCore/qhash.h:49,
+                 from /usr/include/qt4/QtCore/qdebug.h:46,
+                 from /usr/include/qt4/QtCore/QtDebug:1,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qdatastream.h:337:14: note: template<class T> QDataStream& operator<<(QDataStream&, const QSet<T>&)
+ QDataStream& operator<<(QDataStream &out, const QSet<T> &set)
+              ^
+/usr/include/qt4/QtCore/qdatastream.h:337:14: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘std::operator<< <std::char_traits<char> >((* & std::cout), ((const char*)"key="))’ (type ‘std::basic_ostream<char>’) to type ‘QDataStream&’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/qt4/QtCore/qpair.h:45:0,
+                 from /usr/include/qt4/QtCore/qhash.h:49,
+                 from /usr/include/qt4/QtCore/qdebug.h:46,
+                 from /usr/include/qt4/QtCore/QtDebug:1,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qdatastream.h:376:35: note: template<class Key, class T> QDataStream& operator<<(QDataStream&, const QHash<Key, T>&)
+ Q_OUTOFLINE_TEMPLATE QDataStream &operator<<(QDataStream &out, const QHash<Key, T>& hash)
+                                   ^
+/usr/include/qt4/QtCore/qdatastream.h:376:35: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘std::operator<< <std::char_traits<char> >((* & std::cout), ((const char*)"key="))’ (type ‘std::basic_ostream<char>’) to type ‘QDataStream&’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/qt4/QtCore/qpair.h:45:0,
+                 from /usr/include/qt4/QtCore/qhash.h:49,
+                 from /usr/include/qt4/QtCore/qdebug.h:46,
+                 from /usr/include/qt4/QtCore/QtDebug:1,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qdatastream.h:422:35: note: template<class Key, class T> QDataStream& operator<<(QDataStream&, const QMap<aKey, aT>&)
+ Q_OUTOFLINE_TEMPLATE QDataStream &operator<<(QDataStream &out, const QMap<Key, T> &map)
+                                   ^
+/usr/include/qt4/QtCore/qdatastream.h:422:35: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘std::operator<< <std::char_traits<char> >((* & std::cout), ((const char*)"key="))’ (type ‘std::basic_ostream<char>’) to type ‘QDataStream&’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/qt4/QtCore/qhash.h:49:0,
+                 from /usr/include/qt4/QtCore/qdebug.h:46,
+                 from /usr/include/qt4/QtCore/QtDebug:1,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qpair.h:116:21: note: template<class T1, class T2> QDataStream& operator<<(QDataStream&, const QPair<T1, T2>&)
+ inline QDataStream& operator<<(QDataStream& s, const QPair<T1, T2>& p)
+                     ^
+/usr/include/qt4/QtCore/qpair.h:116:21: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘std::operator<< <std::char_traits<char> >((* & std::cout), ((const char*)"key="))’ (type ‘std::basic_ostream<char>’) to type ‘QDataStream&’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/qt4/QtCore/qlocale.h:45:0,
+                 from /usr/include/qt4/QtCore/qtextstream.h:48,
+                 from /usr/include/qt4/QtCore/qdebug.h:50,
+                 from /usr/include/qt4/QtCore/QtDebug:1,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qvariant.h:606:22: note: QDebug operator<<(QDebug, const QVariant&)
+ Q_CORE_EXPORT QDebug operator<<(QDebug, const QVariant &);
+                      ^
+/usr/include/qt4/QtCore/qvariant.h:606:22: note:   no known conversion for argument 1 from ‘std::basic_ostream<char>’ to ‘QDebug’
+/usr/include/qt4/QtCore/qvariant.h:532:28: note: QDataStream& operator<<(QDataStream&, const QVariant&)
+ Q_CORE_EXPORT QDataStream& operator<< (QDataStream& s, const QVariant& p);
+                            ^
+/usr/include/qt4/QtCore/qvariant.h:532:28: note:   no known conversion for argument 1 from ‘std::basic_ostream<char>’ to ‘QDataStream&’
+/usr/include/qt4/QtCore/qvariant.h:534:28: note: QDataStream& operator<<(QDataStream&, QVariant::Type)
+ Q_CORE_EXPORT QDataStream& operator<< (QDataStream& s, const QVariant::Type p);
+                            ^
+/usr/include/qt4/QtCore/qvariant.h:534:28: note:   no known conversion for argument 1 from ‘std::basic_ostream<char>’ to ‘QDataStream&’
+/usr/include/qt4/QtCore/qvariant.h:607:22: note: QDebug operator<<(QDebug, QVariant::Type)
+ Q_CORE_EXPORT QDebug operator<<(QDebug, const QVariant::Type);
+                      ^
+/usr/include/qt4/QtCore/qvariant.h:607:22: note:   no known conversion for argument 1 from ‘std::basic_ostream<char>’ to ‘QDebug’
+In file included from /usr/include/qt4/QtCore/qtextstream.h:48:0,
+                 from /usr/include/qt4/QtCore/qdebug.h:50,
+                 from /usr/include/qt4/QtCore/QtDebug:1,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qlocale.h:837:28: note: QDataStream& operator<<(QDataStream&, const QLocale&)
+ Q_CORE_EXPORT QDataStream &operator<<(QDataStream &, const QLocale &);
+                            ^
+/usr/include/qt4/QtCore/qlocale.h:837:28: note:   no known conversion for argument 1 from ‘std::basic_ostream<char>’ to ‘QDataStream&’
+In file included from /usr/include/qt4/QtCore/qdebug.h:50:0,
+                 from /usr/include/qt4/QtCore/QtDebug:1,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qtextstream.h:291:21: note: QTextStream& operator<<(QTextStream&, QTextStreamFunction)
+ inline QTextStream &operator<<(QTextStream &s, QTextStreamFunction f)
+                     ^
+/usr/include/qt4/QtCore/qtextstream.h:291:21: note:   no known conversion for argument 1 from ‘std::basic_ostream<char>’ to ‘QTextStream&’
+/usr/include/qt4/QtCore/qtextstream.h:294:21: note: QTextStream& operator<<(QTextStream&, QTextStreamManipulator)
+ inline QTextStream &operator<<(QTextStream &s, QTextStreamManipulator m)
+                     ^
+/usr/include/qt4/QtCore/qtextstream.h:294:21: note:   no known conversion for argument 1 from ‘std::basic_ostream<char>’ to ‘QTextStream&’
+In file included from /usr/include/qt4/QtCore/QtDebug:1:0,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qdebug.h:160:15: note: template<class T> QDebug operator<<(QDebug, const QList<T>&)
+ inline QDebug operator<<(QDebug debug, const QList<T> &list)
+               ^
+/usr/include/qt4/QtCore/qdebug.h:160:15: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘std::operator<< <std::char_traits<char> >((* & std::cout), ((const char*)"key="))’ (type ‘std::basic_ostream<char>’) to type ‘QDebug’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/qt4/QtCore/QtDebug:1:0,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qdebug.h:178:15: note: template<class T> QDebug operator<<(QDebug, const QVector<T>&)
+ inline QDebug operator<<(QDebug debug, const QVector<T> &vec)
+               ^
+/usr/include/qt4/QtCore/qdebug.h:178:15: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘std::operator<< <std::char_traits<char> >((* & std::cout), ((const char*)"key="))’ (type ‘std::basic_ostream<char>’) to type ‘QDebug’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/qt4/QtCore/QtDebug:1:0,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qdebug.h:190:15: note: template<class aKey, class aT> QDebug operator<<(QDebug, const QMap<aKey, aT>&)
+ inline QDebug operator<<(QDebug debug, const QMap<aKey, aT> &map)
+               ^
+/usr/include/qt4/QtCore/qdebug.h:190:15: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘std::operator<< <std::char_traits<char> >((* & std::cout), ((const char*)"key="))’ (type ‘std::basic_ostream<char>’) to type ‘QDebug’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/qt4/QtCore/QtDebug:1:0,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qdebug.h:207:15: note: template<class aKey, class aT> QDebug operator<<(QDebug, const QHash<Key, T>&)
+ inline QDebug operator<<(QDebug debug, const QHash<aKey, aT> &hash)
+               ^
+/usr/include/qt4/QtCore/qdebug.h:207:15: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘std::operator<< <std::char_traits<char> >((* & std::cout), ((const char*)"key="))’ (type ‘std::basic_ostream<char>’) to type ‘QDebug’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/qt4/QtCore/QtDebug:1:0,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qdebug.h:223:15: note: template<class T1, class T2> QDebug operator<<(QDebug, const QPair<T1, T2>&)
+ inline QDebug operator<<(QDebug debug, const QPair<T1, T2> &pair)
+               ^
+/usr/include/qt4/QtCore/qdebug.h:223:15: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘std::operator<< <std::char_traits<char> >((* & std::cout), ((const char*)"key="))’ (type ‘std::basic_ostream<char>’) to type ‘QDebug’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/qt4/QtCore/QtDebug:1:0,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qdebug.h:231:15: note: template<class T> QDebug operator<<(QDebug, const QSet<T>&)
+ inline QDebug operator<<(QDebug debug, const QSet<T> &set)
+               ^
+/usr/include/qt4/QtCore/qdebug.h:231:15: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘std::operator<< <std::char_traits<char> >((* & std::cout), ((const char*)"key="))’ (type ‘std::basic_ostream<char>’) to type ‘QDebug’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/qt4/QtCore/QtDebug:1:0,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qdebug.h:242:15: note: template<class T> QDebug operator<<(QDebug, const QContiguousCache<T>&)
+ inline QDebug operator<<(QDebug debug, const QContiguousCache<T> &cache)
+               ^
+/usr/include/qt4/QtCore/qdebug.h:242:15: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘std::operator<< <std::char_traits<char> >((* & std::cout), ((const char*)"key="))’ (type ‘std::basic_ostream<char>’) to type ‘QDebug’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/qt4/QtCore/QtDebug:1:0,
+                 from main.cpp:5:
+/usr/include/qt4/QtCore/qdebug.h:260:15: note: template<class T> QDebug operator<<(QDebug, const QFlags<T>&)
+ inline QDebug operator<<(QDebug debug, const QFlags<T> &flags)
+               ^
+/usr/include/qt4/QtCore/qdebug.h:260:15: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘std::operator<< <std::char_traits<char> >((* & std::cout), ((const char*)"key="))’ (type ‘std::basic_ostream<char>’) to type ‘QDebug’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from main.cpp:10:0:
+uint256.h:463:22: note: const uint160 operator<<(const base_uint160&, unsigned int)
+ inline const uint160 operator<<(const base_uint160& a, unsigned int shift)   { return uint160(a) <<= shift; }
+                      ^
+uint256.h:463:22: note:   no known conversion for argument 1 from ‘std::basic_ostream<char>’ to ‘const base_uint160& {aka const base_uint<160u>&}’
+uint256.h:465:22: note: const uint160 operator<<(const uint160&, unsigned int)
+ inline const uint160 operator<<(const uint160& a, unsigned int shift)        { return uint160(a) <<= shift; }
+                      ^
+uint256.h:465:22: note:   no known conversion for argument 1 from ‘std::basic_ostream<char>’ to ‘const uint160&’
+uint256.h:577:22: note: const uint256 operator<<(const base_uint256&, unsigned int)
+ inline const uint256 operator<<(const base_uint256& a, unsigned int shift)   { return uint256(a) <<= shift; }
+                      ^
+uint256.h:577:22: note:   no known conversion for argument 1 from ‘std::basic_ostream<char>’ to ‘const base_uint256& {aka const base_uint<256u>&}’
+uint256.h:579:22: note: const uint256 operator<<(const uint256&, unsigned int)
+ inline const uint256 operator<<(const uint256& a, unsigned int shift)        { return uint256(a) <<= shift; }
+                      ^
+uint256.h:579:22: note:   no known conversion for argument 1 from ‘std::basic_ostream<char>’ to ‘const uint256&’
+In file included from /usr/include/boost/shared_ptr.hpp:17:0,
+                 from /usr/include/boost/filesystem/path.hpp:29,
+                 from /usr/include/boost/filesystem.hpp:16,
+                 from main.cpp:7:
+/usr/include/boost/smart_ptr/shared_ptr.hpp:857:64: note: template<class E, class T, class Y> std::basic_ostream<_CharT, _Traits>& boost::operator<<(std::basic_ostream<_CharT, _Traits>&, const boost::shared_ptr<Y>&)
+ template<class E, class T, class Y> std::basic_ostream<E, T> & operator<< (std::basic_ostream<E, T> & os, shared_ptr<Y> const & p)
+                                                                ^
+/usr/include/boost/smart_ptr/shared_ptr.hpp:857:64: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   ‘std::vector<unsigned char>’ is not derived from ‘const boost::shared_ptr<Y>’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/c++/4.8/iostream:39:0,
+                 from main.cpp:1:
+/usr/include/c++/4.8/ostream:548:5: note: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const unsigned char*)
+     operator<<(basic_ostream<char, _Traits>& __out, const unsigned char* __s)
+     ^
+/usr/include/c++/4.8/ostream:548:5: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘vchPubKey’ (type ‘std::vector<unsigned char>’) to type ‘const unsigned char*’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/c++/4.8/iostream:39:0,
+                 from main.cpp:1:
+/usr/include/c++/4.8/ostream:543:5: note: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const signed char*)
+     operator<<(basic_ostream<char, _Traits>& __out, const signed char* __s)
+     ^
+/usr/include/c++/4.8/ostream:543:5: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘vchPubKey’ (type ‘std::vector<unsigned char>’) to type ‘const signed char*’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/c++/4.8/iostream:39:0,
+                 from main.cpp:1:
+/usr/include/c++/4.8/ostream:530:5: note: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const char*)
+     operator<<(basic_ostream<char, _Traits>& __out, const char* __s)
+     ^
+/usr/include/c++/4.8/ostream:530:5: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘vchPubKey’ (type ‘std::vector<unsigned char>’) to type ‘const char*’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/c++/4.8/ostream:612:0,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from main.cpp:1:
+/usr/include/c++/4.8/bits/ostream.tcc:321:5: note: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const char*)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, const char* __s)
+     ^
+/usr/include/c++/4.8/bits/ostream.tcc:321:5: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘vchPubKey’ (type ‘std::vector<unsigned char>’) to type ‘const char*’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/c++/4.8/iostream:39:0,
+                 from main.cpp:1:
+/usr/include/c++/4.8/ostream:513:5: note: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const _CharT*)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, const _CharT* __s)
+     ^
+/usr/include/c++/4.8/ostream:513:5: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   mismatched types ‘const _CharT*’ and ‘std::vector<unsigned char>’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/c++/4.8/iostream:39:0,
+                 from main.cpp:1:
+/usr/include/c++/4.8/ostream:493:5: note: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, unsigned char)
+     operator<<(basic_ostream<char, _Traits>& __out, unsigned char __c)
+     ^
+/usr/include/c++/4.8/ostream:493:5: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘vchPubKey’ (type ‘std::vector<unsigned char>’) to type ‘unsigned char’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/c++/4.8/iostream:39:0,
+                 from main.cpp:1:
+/usr/include/c++/4.8/ostream:488:5: note: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, signed char)
+     operator<<(basic_ostream<char, _Traits>& __out, signed char __c)
+     ^
+/usr/include/c++/4.8/ostream:488:5: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘vchPubKey’ (type ‘std::vector<unsigned char>’) to type ‘signed char’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/c++/4.8/iostream:39:0,
+                 from main.cpp:1:
+/usr/include/c++/4.8/ostream:482:5: note: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, char)
+     operator<<(basic_ostream<char, _Traits>& __out, char __c)
+     ^
+/usr/include/c++/4.8/ostream:482:5: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘vchPubKey’ (type ‘std::vector<unsigned char>’) to type ‘char’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/c++/4.8/iostream:39:0,
+                 from main.cpp:1:
+/usr/include/c++/4.8/ostream:476:5: note: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, char)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, char __c)
+     ^
+/usr/include/c++/4.8/ostream:476:5: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   cannot convert ‘vchPubKey’ (type ‘std::vector<unsigned char>’) to type ‘char’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/c++/4.8/iostream:39:0,
+                 from main.cpp:1:
+/usr/include/c++/4.8/ostream:471:5: note: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, _CharT)
+     operator<<(basic_ostream<_CharT, _Traits>& __out, _CharT __c)
+     ^
+/usr/include/c++/4.8/ostream:471:5: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   deduced conflicting types for parameter ‘_CharT’ (‘char’ and ‘std::vector<unsigned char>’)
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+In file included from /usr/include/c++/4.8/string:52:0,
+                 from /usr/include/c++/4.8/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8/ios:42,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from main.cpp:1:
+/usr/include/c++/4.8/bits/basic_string.h:2753:5: note: template<class _CharT, class _Traits, class _Alloc> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::basic_string<_CharT, _Traits, _Alloc>&)
+     operator<<(basic_ostream<_CharT, _Traits>& __os,
+     ^
+/usr/include/c++/4.8/bits/basic_string.h:2753:5: note:   template argument deduction/substitution failed:
+main.cpp:134:32: note:   ‘std::vector<unsigned char>’ is not derived from ‘const std::basic_string<_CharT, _Traits, _Alloc>’
+             std::cout<<"key="<<vchPubKey  ;        
+                                ^
+main.cpp: At global scope:
+main.cpp:23:5: warning: unused parameter ‘argc’ [-Wunused-parameter]
+ int main (int argc, char *argv[])
+     ^
+main.cpp:23:5: warning: unused parameter ‘argv’ [-Wunused-parameter]
+In file included from main.cpp:9:0:
+serialize.h: In instantiation of ‘unsigned int GetSerializeSize_impl(const std::vector<_Tp, _Alloc>&, int, int, const true_type&) [with T = unsigned char; A = std::allocator<unsigned char>; boost::true_type = boost::integral_constant<bool, true>]’:
+serialize.h:479:80:   required from ‘unsigned int GetSerializeSize(const std::vector<_Tp, _Alloc>&, int, int) [with T = unsigned char; A = std::allocator<unsigned char>]’
+serialize.h:562:82:   required from here
+serialize.h:462:14: warning: unused parameter ‘nType’ [-Wunused-parameter]
+ unsigned int GetSerializeSize_impl(const std::vector<T, A>& v, int nType, int nVersion, const boost::true_type&)
+              ^
+serialize.h:462:14: warning: unused parameter ‘nVersion’ [-Wunused-parameter]
+In file included from main.cpp:10:0:
+uint256.h: In instantiation of ‘void base_uint<BITS>::SetHex(const char*) [with unsigned int BITS = 160u]’:
+uint256.h:342:27:   required from ‘void base_uint<BITS>::SetHex(const string&) [with unsigned int BITS = 160u; std::string = std::basic_string<char>]’
+uint256.h:449:19:   required from here
+uint256.h:324:32: warning: array subscript has type ‘char’ [-Wchar-subscripts]
+         while (phexdigit[*psz] || *psz == '0')
+                                ^
+uint256.h: In instantiation of ‘void base_uint<BITS>::SetHex(const char*) [with unsigned int BITS = 256u]’:
+uint256.h:342:27:   required from ‘void base_uint<BITS>::SetHex(const string&) [with unsigned int BITS = 256u; std::string = std::basic_string<char>]’
+uint256.h:563:19:   required from here
+uint256.h:324:32: warning: array subscript has type ‘char’ [-Wchar-subscripts]
+In file included from main.cpp:9:0:
+serialize.h: In instantiation of ‘void Unserialize_impl(Stream&, std::vector<T, A>&, int, int, const true_type&) [with Stream = CDataStream; T = unsigned char; A = std::allocator<unsigned char>; boost::true_type = boost::integral_constant<bool, true>]’:
+serialize.h:552:72:   required from ‘void Unserialize(Stream&, std::vector<T, A>&, int, int) [with Stream = CDataStream; T = unsigned char; A = std::allocator<unsigned char>]’
+serialize.h:1127:50:   required from ‘CDataStream& CDataStream::operator>>(T&) [with T = std::vector<unsigned char>]’
+main.cpp:133:22:   required from here
+serialize.h:507:6: warning: unused parameter ‘nType’ [-Wunused-parameter]
+ void Unserialize_impl(Stream& is, std::vector<T, A>& v, int nType, int nVersion, const boost::true_type&)
+      ^
+serialize.h:507:6: warning: unused parameter ‘nVersion’ [-Wunused-parameter]
+In file included from main.cpp:9:0:
+serialize.h:62:20: warning: ‘pszSubVer’ defined but not used [-Wunused-variable]
+ static const char* pszSubVer = "";
+                    ^
+make: *** [main.o] Error 1

@@ -1,0 +1,25 @@
+qmake 
+make -j8
+
+
+1.
+
+./bitcoin_qt
+
+Hello World - Berkeley DB style!!
+
+
+2.
+
+./bitcoin_qt  
+
+hello_world: first_record already exists in db
+Hello World - Berkeley DB style!!
+
+
+3. 
+
+db_dump -p chap4_db
+
+
+

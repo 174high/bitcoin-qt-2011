@@ -1,0 +1,3000 @@
+main open:1 /root/.db_test 
+main open:2  wallet.dat 
+dbenv.open strLogDir=/root/.db_test/database strErrorFile=/root/.db_test/db.log
+open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+ get type =key
+	ªt‘pÔÅ™rgo[jÑî¤ÖÊPsuµíÀkÀéªBuj!¹êÏSÑy2Ş-õmÕÛ÷gæŒŸgu
+ret0open cursor
+terminate called after throwing an instance of 'DbException'
+  what():  Dbc::get: Cannot allocate memory
