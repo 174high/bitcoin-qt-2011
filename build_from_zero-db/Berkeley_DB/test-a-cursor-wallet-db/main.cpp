@@ -86,6 +86,7 @@ int main (int argc, char *argv[])
 	}
 
 	Dbc* cursor;
+        std::vector<unsigned char> vchDefaultKey;
 
         pdb->cursor(NULL,&cursor,0);
 
@@ -126,16 +127,22 @@ int main (int argc, char *argv[])
             ssKey >> vchPubKey;
 	    std::vector<unsigned char>::iterator it;
             for(it=vchPubKey.begin();it!=vchPubKey.end();it++)
-                cout<<*it;
+                std::cout<<static_cast<unsigned>(*it);
             
             std::cout<<""<<std::endl; 
         }
-
-        if (strType == "name")
+        else if (strType == "name")
         {
             std::string strAddress;
             ssKey >> strAddress;
             std::cout<<"name="<<strAddress<<std::endl; 
+        }
+        else if(strType == "defaultkey")
+        {
+            ssValue >> vchDefaultKey;
+            std::vector<unsigned char>::iterator it;
+            for(it=vchDefaultKey.begin();it!=vchDefaultKey.end();it++)
+                std::cout<<static_cast<unsigned>(*it);
         }
 
         std::cout<<"ret"<<ret ;

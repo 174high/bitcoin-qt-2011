@@ -37,6 +37,7 @@ DbEnv dbenv1(0);
 static bool fDbEnvInit = false;
 Db* pdb;
 
+
 // Need a global reference for the notifications to find the GUI
 BitcoinGUI *guiref;
 
@@ -111,13 +112,18 @@ void MainFrameRepaint()
 {
 }
 
+
+
 /*
    Translate string to current locale using Qt.
  */
+
+
 std::string _(const char* psz)
 {
     return QCoreApplication::translate("bitcoin-core", psz).toStdString();
 }
+
 
 CBlockIndex static * InsertBlockIndex(uint256 hash)
 {
