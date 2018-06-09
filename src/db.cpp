@@ -441,6 +441,19 @@ bool CTxDB::LoadBlockIndex()
             pindexNew->nBits          = diskindex.nBits;
             pindexNew->nNonce         = diskindex.nNonce;
 
+/*
+            std::cout<<"BlockHash:"<<diskindex.GetBlockHash().ToString()<<std::endl ;
+            std::cout<<"hashPrev :"<<diskindex.hashPrev.ToString()<<std::endl ;
+            std::cout<<"hashNext :"<<diskindex.hashNext.ToString()<<std::endl;
+            std::cout<<"nFile    :"<<diskindex.nFile<<std::endl;
+            std::cout<<"nBlockPos:"<<diskindex.nBlockPos<<std::endl;
+            std::cout<<"nHeight  :"<<diskindex.nHeight<<std::endl;
+            std::cout<<"nVersion :"<<diskindex.nVersion<<std::endl;
+            std::cout<<"hashMerkleRoot:"<<diskindex.hashMerkleRoot.ToString()<<std::endl;
+            std::cout<<"nTime    :"<<diskindex.nTime<<std::endl;
+            std::cout<<"nBits    :"<<diskindex.nBits<<std::endl;
+            std::cout<<"nNonce   :"<<diskindex.nNonce<<std::endl;
+*/
             // Watch for genesis block
             if (pindexGenesisBlock == NULL && diskindex.GetBlockHash() == hashGenesisBlock)
             {
@@ -474,38 +487,57 @@ bool CTxDB::LoadBlockIndex()
         pindex->bnChainWork = (pindex->pprev ? pindex->pprev->bnChainWork : 0) + pindex->GetBlockWork();
     }
 
+    std::cout<<"ReadHashBestChain 1"<<std::endl;
+    std::cout<<"in hashBestChain="<<hashBestChain.ToString()<<std::endl;  
     // Load hashBestChain pointer to end of best chain
     if (!ReadHashBestChain(hashBestChain))
     {
+        qDebug()<<"ReadHashBestChain 2";
         if (pindexGenesisBlock == NULL)
             return true;
         return error("CTxDB::LoadBlockIndex() : hashBestChain not loaded");
     }
+
+    std::cout<<"out hashBestChain="<<hashBestChain.ToString()<<std::endl;
+
     if (!mapBlockIndex.count(hashBestChain))
-        return error("CTxDB::LoadBlockIndex() : hashBestChain not found in the block index");
+    {        qDebug()<<"ReadHashBestChain 3";
+         return error("CTxDB::LoadBlockIndex() : hashBestChain not found in the block index");
+    }
+
+    qDebug()<<"ReadHashBestChain 4";
+
     pindexBest = mapBlockIndex[hashBestChain];
     nBestHeight = pindexBest->nHeight;
     bnBestChainWork = pindexBest->bnChainWork;
     printf("LoadBlockIndex(): hashBestChain=%s  height=%d\n", hashBestChain.ToString().substr(0,20).c_str(), nBestHeight);
+    qDebug()<<"LoadBlockIndex(): hashBestChain="<<hashBestChain.ToString().substr(0,20).c_str()<<" height="<<nBestHeight; 
 
     // Load bnBestInvalidWork, OK if it doesn't exist
     ReadBestInvalidWork(bnBestInvalidWork);
 
+
+    std::cout<<"CheckBlock in:"<<std::endl; 
     // Verify blocks in the best chain
     CBlockIndex* pindexFork = NULL;
     for (CBlockIndex* pindex = pindexBest; pindex && pindex->pprev; pindex = pindex->pprev)
     {
+        std::cout<<"CheckBlock 1:"<<std::endl;
         if (pindex->nHeight < nBestHeight-2500 && !mapArgs.count("-checkblocks"))
             break;
         CBlock block;
+        std::cout<<"CheckBlock 2:"<<std::endl;
         if (!block.ReadFromDisk(pindex))
             return error("LoadBlockIndex() : block.ReadFromDisk failed");
+        std::cout<<"CheckBlock 3:"<<std::endl;
         if (!block.CheckBlock())
         {
             printf("LoadBlockIndex() : *** found bad block at %d, hash=%s\n", pindex->nHeight, pindex->GetBlockHash().ToString().c_str());
             pindexFork = pindex->pprev;
         }
     }
+
+    std::cout<<"CheckBlock out:"<<std::endl; 
     if (pindexFork)
     {
         // Reorg back to the fork

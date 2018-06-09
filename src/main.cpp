@@ -613,6 +613,7 @@ int CTxIndex::GetDepthInMainChain() const
 
 bool CBlock::ReadFromDisk(const CBlockIndex* pindex, bool fReadTransactions)
 {
+    std::cout<<__FUNCTION__<<" fReadTransactions="<<fReadTransactions<<std::endl; 
     if (!fReadTransactions)
     {
         *this = pindex->GetBlockHeader();

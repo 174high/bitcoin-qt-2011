@@ -321,8 +321,6 @@ bool AppInit2(int argc, char* argv[])
     bool fFirstRun;
     pwalletMain = new CWallet("wallet.dat");
 
-
-
 #ifdef DEBUG_WALLET
     qDebug()<<__FUNCTION__<<"!!!!! loadwallet here "; 
 #endif 
@@ -439,8 +437,8 @@ bool AppInit2(int argc, char* argv[])
     qDebug()<<__FUNCTION__<<"fServer"<<fServer ;
 #endif 
 
-    if (fServer)
-        CreateThread(ThreadRPCServer, NULL);
+//    if (fServer)
+//        CreateThread(ThreadRPCServer, NULL);
 
 #if defined(__WXMSW__) && defined(GUI)
     if (fFirstRun)
