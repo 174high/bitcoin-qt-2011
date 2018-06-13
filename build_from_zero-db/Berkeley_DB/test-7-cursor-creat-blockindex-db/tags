@@ -1,0 +1,679 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AR	Makefile	/^AR            = ar cqs$/;"	m
+ARRAYLEN	util.h	46;"	d
+AffinityBugWorkaround	util.h	/^inline bool AffinityBugWorkaround(void(*pfn)(void*))$/;"	f
+BEGIN	util.h	42;"	d
+BITCOIN_BIGNUM_H	bignum.h	5;"	d
+BITCOIN_MAIN_H	main.h	5;"	d
+BITCOIN_SERIALIZE_H	serialize.h	5;"	d
+BITCOIN_UINT256_H	uint256.h	5;"	d
+BITCOIN_UTIL_H	util.h	5;"	d
+Beep	util.h	122;"	d
+CATCH_PRINT_EXCEPTION	util.h	488;"	d
+CAutoBN_CTX	bignum.h	/^    CAutoBN_CTX()$/;"	f	class:CAutoBN_CTX
+CAutoBN_CTX	bignum.h	/^class CAutoBN_CTX$/;"	c
+CAutoFile	serialize.h	/^    CAutoFile(FILE* filenew=NULL, int nTypeIn=SER_DISK, int nVersionIn=VERSION)$/;"	f	class:CAutoFile
+CAutoFile	serialize.h	/^class CAutoFile$/;"	c
+CBigNum	bignum.h	/^    CBigNum()$/;"	f	class:CBigNum
+CBigNum	bignum.h	/^    CBigNum(char n)             { BN_init(this); if (n >= 0) setulong(n); else setint64(n); }$/;"	f	class:CBigNum
+CBigNum	bignum.h	/^    CBigNum(const CBigNum& b)$/;"	f	class:CBigNum
+CBigNum	bignum.h	/^    CBigNum(int n)              { BN_init(this); if (n >= 0) setulong(n); else setint64(n); }$/;"	f	class:CBigNum
+CBigNum	bignum.h	/^    CBigNum(int64 n)            { BN_init(this); setint64(n); }$/;"	f	class:CBigNum
+CBigNum	bignum.h	/^    CBigNum(long n)             { BN_init(this); if (n >= 0) setulong(n); else setint64(n); }$/;"	f	class:CBigNum
+CBigNum	bignum.h	/^    CBigNum(short n)            { BN_init(this); if (n >= 0) setulong(n); else setint64(n); }$/;"	f	class:CBigNum
+CBigNum	bignum.h	/^    CBigNum(uint64 n)           { BN_init(this); setuint64(n); }$/;"	f	class:CBigNum
+CBigNum	bignum.h	/^    CBigNum(unsigned char n)    { BN_init(this); setulong(n); }$/;"	f	class:CBigNum
+CBigNum	bignum.h	/^    CBigNum(unsigned int n)     { BN_init(this); setulong(n); }$/;"	f	class:CBigNum
+CBigNum	bignum.h	/^    CBigNum(unsigned long n)    { BN_init(this); setulong(n); }$/;"	f	class:CBigNum
+CBigNum	bignum.h	/^    CBigNum(unsigned short n)   { BN_init(this); setulong(n); }$/;"	f	class:CBigNum
+CBigNum	bignum.h	/^    explicit CBigNum(const std::vector<unsigned char>& vch)$/;"	f	class:CBigNum
+CBigNum	bignum.h	/^    explicit CBigNum(uint256 n) { BN_init(this); setuint256(n); }$/;"	f	class:CBigNum
+CBigNum	bignum.h	/^class CBigNum : public BIGNUM$/;"	c
+CBlock	main.h	/^    CBlock()$/;"	f	class:CBlock
+CBlock	main.h	/^class CBlock$/;"	c
+CBlockIndex	main.h	/^    CBlockIndex()$/;"	f	class:CBlockIndex
+CBlockIndex	main.h	/^    CBlockIndex(unsigned int nFileIn, unsigned int nBlockPosIn, CBlock& block)$/;"	f	class:CBlockIndex
+CBlockIndex	main.h	/^class CBlockIndex$/;"	c
+CC	Makefile	/^CC            = gcc$/;"	m
+CCriticalBlock	util.h	/^    CCriticalBlock(CCriticalSection& csIn) { pcs = &csIn; pcs->Enter(); }$/;"	f	class:CCriticalBlock
+CCriticalBlock	util.h	/^class CCriticalBlock$/;"	c
+CCriticalSection	util.h	/^    explicit CCriticalSection() { InitializeCriticalSection(&cs); }$/;"	f	class:CCriticalSection
+CCriticalSection	util.h	/^class CCriticalSection$/;"	c
+CDataStream	serialize.h	/^    CDataStream(const char* pbegin, const char* pend, int nTypeIn=SER_NETWORK, int nVersionIn=VERSION) : vch(pbegin, pend)$/;"	f	class:CDataStream
+CDataStream	serialize.h	/^    CDataStream(const std::vector<char>& vchIn, int nTypeIn=SER_NETWORK, int nVersionIn=VERSION) : vch(vchIn.begin(), vchIn.end())$/;"	f	class:CDataStream
+CDataStream	serialize.h	/^    CDataStream(const std::vector<unsigned char>& vchIn, int nTypeIn=SER_NETWORK, int nVersionIn=VERSION) : vch((char*)&vchIn.begin()[0], (char*)&vchIn.end()[0])$/;"	f	class:CDataStream
+CDataStream	serialize.h	/^    CDataStream(const vector_type& vchIn, int nTypeIn=SER_NETWORK, int nVersionIn=VERSION) : vch(vchIn.begin(), vchIn.end())$/;"	f	class:CDataStream
+CDataStream	serialize.h	/^    CDataStream(const_iterator pbegin, const_iterator pend, int nTypeIn=SER_NETWORK, int nVersionIn=VERSION) : vch(pbegin, pend)$/;"	f	class:CDataStream
+CDataStream	serialize.h	/^    explicit CDataStream(int nTypeIn=SER_NETWORK, int nVersionIn=VERSION)$/;"	f	class:CDataStream
+CDataStream	serialize.h	/^class CDataStream$/;"	c
+CDiskBlockIndex	main.h	/^    CDiskBlockIndex()$/;"	f	class:CDiskBlockIndex
+CDiskBlockIndex	main.h	/^    explicit CDiskBlockIndex(CBlockIndex* pindex) : CBlockIndex(*pindex)$/;"	f	class:CDiskBlockIndex
+CDiskBlockIndex	main.h	/^class CDiskBlockIndex : public CBlockIndex$/;"	c
+CFLAGS	Makefile	/^CFLAGS        = -m64 -pipe -O2 -D_REENTRANT -Wall -W $(DEFINES)$/;"	m
+CFixedFieldString	serialize.h	/^    explicit CFixedFieldString(const std::string& str) : pcstr(&str), pstr(NULL) { }$/;"	f	class:CFixedFieldString
+CFixedFieldString	serialize.h	/^    explicit CFixedFieldString(std::string& str) : pcstr(&str), pstr(&str) { }$/;"	f	class:CFixedFieldString
+CFixedFieldString	serialize.h	/^class CFixedFieldString$/;"	c
+CFlatData	serialize.h	/^    CFlatData(void* pbeginIn, void* pendIn) : pbegin((char*)pbeginIn), pend((char*)pendIn) { }$/;"	f	class:CFlatData
+CFlatData	serialize.h	/^class CFlatData$/;"	c
+CHK_DIR_EXISTS	Makefile	/^CHK_DIR_EXISTS= test -d$/;"	m
+COMPRESS	Makefile	/^COMPRESS      = gzip -9f$/;"	m
+COPY	Makefile	/^COPY          = cp -f$/;"	m
+COPY_DIR	Makefile	/^COPY_DIR      = $(COPY) -r$/;"	m
+COPY_FILE	Makefile	/^COPY_FILE     = $(COPY)$/;"	m
+CRITICAL_BLOCK	util.h	264;"	d
+CSerActionGetSerializeSize	serialize.h	/^class CSerActionGetSerializeSize { };$/;"	c
+CSerActionSerialize	serialize.h	/^class CSerActionSerialize { };$/;"	c
+CSerActionUnserialize	serialize.h	/^class CSerActionUnserialize { };$/;"	c
+CTransaction	main.h	/^    CTransaction()$/;"	f	class:CTransaction
+CTransaction	main.h	/^class CTransaction$/;"	c
+CTryCriticalBlock	util.h	/^    CTryCriticalBlock(CCriticalSection& csIn) { pcs = (csIn.TryEnter() ? &csIn : NULL); }$/;"	f	class:CTryCriticalBlock
+CTryCriticalBlock	util.h	/^class CTryCriticalBlock$/;"	c
+CXX	Makefile	/^CXX           = g++$/;"	m
+CXXFLAGS	Makefile	/^CXXFLAGS      = -m64 -pipe -O2 -D_REENTRANT -Wall -W $(DEFINES)$/;"	m
+Compact	serialize.h	/^    inline void Compact()$/;"	f	class:CDataStream
+CreateThread	util.h	/^inline pthread_t CreateThread(void(*pfn)(void*), void* parg, bool fWantHandle=false)$/;"	f
+DEFINES	Makefile	/^DEFINES       = -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED$/;"	m
+DEL_DIR	Makefile	/^DEL_DIR       = rmdir$/;"	m
+DEL_FILE	Makefile	/^DEL_FILE      = rm -f$/;"	m
+DESTDIR	Makefile	/^DESTDIR       = $/;"	m
+DIST	Makefile	/^DIST          = \/usr\/share\/qt4\/mkspecs\/common\/unix.conf \\$/;"	m
+DateTimeStrFormat	util.h	/^inline std::string DateTimeStrFormat(const char* pszFormat, int64 nTime)$/;"	f
+END	util.h	43;"	d
+Enter	util.h	/^    void Enter() { EnterCriticalSection(&cs); }$/;"	f	class:CCriticalSection
+Entered	util.h	/^    bool Entered() { return pcs != NULL; }$/;"	f	class:CTryCriticalBlock
+ExitThread	util.h	/^inline void ExitThread(size_t nExitCode)$/;"	f
+FLATDATA	serialize.h	273;"	d
+GetArg	util.h	/^inline int64 GetArg(const std::string& strArg, int64 nDefault)$/;"	f
+GetArg	util.h	/^inline std::string GetArg(const std::string& strArg, const std::string& strDefault)$/;"	f
+GetBlockHash	main.h	/^    uint256 GetBlockHash() const$/;"	f	class:CBlockIndex
+GetBlockHash	main.h	/^    uint256 GetBlockHash() const$/;"	f	class:CDiskBlockIndex
+GetBoolArg	util.h	/^inline bool GetBoolArg(const std::string& strArg)$/;"	f
+GetCompact	bignum.h	/^    unsigned int GetCompact() const$/;"	f	class:CBigNum
+GetHash	main.h	/^    uint256 GetHash() const$/;"	f	class:CBlock
+GetHex	bignum.h	/^    std::string GetHex() const$/;"	f	class:CBigNum
+GetHex	uint256.h	/^    std::string GetHex() const$/;"	f	class:base_uint
+GetPerformanceCounter	util.h	/^inline int64 GetPerformanceCounter()$/;"	f
+GetSerializeSize	bignum.h	/^    unsigned int GetSerializeSize(int nType=0, int nVersion=VERSION) const$/;"	f	class:CBigNum
+GetSerializeSize	serialize.h	/^    unsigned int GetSerializeSize(const T& obj)$/;"	f	class:CAutoFile
+GetSerializeSize	serialize.h	/^    unsigned int GetSerializeSize(const T& obj)$/;"	f	class:CDataStream
+GetSerializeSize	serialize.h	/^    unsigned int GetSerializeSize(int, int=0) const$/;"	f	class:CFixedFieldString
+GetSerializeSize	serialize.h	/^    unsigned int GetSerializeSize(int, int=0) const$/;"	f	class:CFlatData
+GetSerializeSize	serialize.h	/^inline unsigned int GetSerializeSize(bool a, int, int=0)                          { return sizeof(char); }$/;"	f
+GetSerializeSize	serialize.h	/^inline unsigned int GetSerializeSize(char a,           int, int=0) { return sizeof(a); }$/;"	f
+GetSerializeSize	serialize.h	/^inline unsigned int GetSerializeSize(const CScript& v, int nType, int nVersion)$/;"	f
+GetSerializeSize	serialize.h	/^inline unsigned int GetSerializeSize(const T& a, long nType, int nVersion=VERSION)$/;"	f
+GetSerializeSize	serialize.h	/^inline unsigned int GetSerializeSize(const std::vector<T, A>& v, int nType, int nVersion)$/;"	f
+GetSerializeSize	serialize.h	/^inline unsigned int GetSerializeSize(double a,         int, int=0) { return sizeof(a); }$/;"	f
+GetSerializeSize	serialize.h	/^inline unsigned int GetSerializeSize(float a,          int, int=0) { return sizeof(a); }$/;"	f
+GetSerializeSize	serialize.h	/^inline unsigned int GetSerializeSize(int64 a,          int, int=0) { return sizeof(a); }$/;"	f
+GetSerializeSize	serialize.h	/^inline unsigned int GetSerializeSize(signed char a,    int, int=0) { return sizeof(a); }$/;"	f
+GetSerializeSize	serialize.h	/^inline unsigned int GetSerializeSize(signed int a,     int, int=0) { return sizeof(a); }$/;"	f
+GetSerializeSize	serialize.h	/^inline unsigned int GetSerializeSize(signed long a,    int, int=0) { return sizeof(a); }$/;"	f
+GetSerializeSize	serialize.h	/^inline unsigned int GetSerializeSize(signed short a,   int, int=0) { return sizeof(a); }$/;"	f
+GetSerializeSize	serialize.h	/^inline unsigned int GetSerializeSize(uint64 a,         int, int=0) { return sizeof(a); }$/;"	f
+GetSerializeSize	serialize.h	/^inline unsigned int GetSerializeSize(unsigned char a,  int, int=0) { return sizeof(a); }$/;"	f
+GetSerializeSize	serialize.h	/^inline unsigned int GetSerializeSize(unsigned int a,   int, int=0) { return sizeof(a); }$/;"	f
+GetSerializeSize	serialize.h	/^inline unsigned int GetSerializeSize(unsigned long a,  int, int=0) { return sizeof(a); }$/;"	f
+GetSerializeSize	serialize.h	/^inline unsigned int GetSerializeSize(unsigned short a, int, int=0) { return sizeof(a); }$/;"	f
+GetSerializeSize	serialize.h	/^unsigned int GetSerializeSize(const boost::tuple<T0, T1, T2, T3>& item, int nType, int nVersion)$/;"	f
+GetSerializeSize	serialize.h	/^unsigned int GetSerializeSize(const boost::tuple<T0, T1, T2>& item, int nType, int nVersion)$/;"	f
+GetSerializeSize	serialize.h	/^unsigned int GetSerializeSize(const std::basic_string<C>& str, int, int)$/;"	f
+GetSerializeSize	serialize.h	/^unsigned int GetSerializeSize(const std::map<K, T, Pred, A>& m, int nType, int nVersion)$/;"	f
+GetSerializeSize	serialize.h	/^unsigned int GetSerializeSize(const std::pair<K, T>& item, int nType, int nVersion)$/;"	f
+GetSerializeSize	serialize.h	/^unsigned int GetSerializeSize(const std::set<K, Pred, A>& m, int nType, int nVersion)$/;"	f
+GetSerializeSize	uint256.h	/^    unsigned int GetSerializeSize(int nType=0, int nVersion=VERSION) const$/;"	f	class:base_uint
+GetSerializeSize_impl	serialize.h	/^unsigned int GetSerializeSize_impl(const std::vector<T, A>& v, int nType, int nVersion, const boost::false_type&)$/;"	f
+GetSerializeSize_impl	serialize.h	/^unsigned int GetSerializeSize_impl(const std::vector<T, A>& v, int nType, int nVersion, const boost::true_type&)$/;"	f
+GetSizeOfCompactSize	serialize.h	/^inline unsigned int GetSizeOfCompactSize(uint64 nSize)$/;"	f
+GetTimeMillis	util.h	/^inline int64 GetTimeMillis()$/;"	f
+GetType	serialize.h	/^    int GetType()                { return nType; }$/;"	f	class:CAutoFile
+GetType	serialize.h	/^    int GetType()                { return nType; }$/;"	f	class:CDataStream
+GetVersion	serialize.h	/^    int GetVersion()             { return nVersion; }$/;"	f	class:CAutoFile
+GetVersion	serialize.h	/^    int GetVersion()             { return nVersion; }$/;"	f	class:CDataStream
+Hash	util.h	/^inline uint256 Hash(const T1 p1begin, const T1 p1end,$/;"	f
+Hash	util.h	/^inline uint256 Hash(const T1 pbegin, const T1 pend)$/;"	f
+Hash160	util.h	/^inline uint160 Hash160(const std::vector<unsigned char>& vch)$/;"	f
+HexNumStr	util.h	/^inline std::string HexNumStr(const std::vector<unsigned char>& vch, bool f0x=true)$/;"	f
+HexNumStr	util.h	/^std::string HexNumStr(const T itbegin, const T itend, bool f0x=true)$/;"	f
+HexStr	util.h	/^inline std::string HexStr(const std::vector<unsigned char>& vch, bool fSpaces=false)$/;"	f
+HexStr	util.h	/^std::string HexStr(const T itbegin, const T itend, bool fSpaces=false)$/;"	f
+IMPLEMENT_RANDOMIZE_STACK	util.h	476;"	d
+IMPLEMENT_SERIALIZE	serialize.h	88;"	d
+INCPATH	Makefile	/^INCPATH       = -I\/usr\/share\/qt4\/mkspecs\/linux-g++-64 -I. -I\/usr\/include\/qt4\/QtCore -I\/usr\/include\/qt4\/QtGui -I\/usr\/include\/qt4 -I.$/;"	m
+INSTALL_DIR	Makefile	/^INSTALL_DIR   = $(COPY_DIR)$/;"	m
+INSTALL_FILE	Makefile	/^INSTALL_FILE  = install -m 644 -p$/;"	m
+INSTALL_PROGRAM	Makefile	/^INSTALL_PROGRAM = install -m 755 -p$/;"	m
+INT64_MAX	util.h	96;"	d
+INT64_MIN	util.h	97;"	d
+INVALID_SOCKET	util.h	115;"	d
+Init	serialize.h	/^    void Init(int nTypeIn=SER_NETWORK, int nVersionIn=VERSION)$/;"	f	class:CDataStream
+IsSwitchChar	util.h	/^inline bool IsSwitchChar(char c)$/;"	f
+LFLAGS	Makefile	/^LFLAGS        = -m64 -Wl,-O1$/;"	m
+LIBS	Makefile	/^LIBS          = $(SUBLIBS)  -L\/usr\/lib\/x86_64-linux-gnu -ldb_cxx -lboost_filesystem -lboost_system -lQtGui -lQtCore -lpthread $/;"	m
+LINK	Makefile	/^LINK          = g++$/;"	m
+Leave	util.h	/^    void Leave() { LeaveCriticalSection(&cs); }$/;"	f	class:CCriticalSection
+MAX_PATH	util.h	121;"	d
+MAX_SIZE	serialize.h	/^static const unsigned int MAX_SIZE = 0x02000000;$/;"	v
+MKDIR	Makefile	/^MKDIR         = mkdir -p$/;"	m
+MOVE	Makefile	/^MOVE          = mv -f$/;"	m
+MSG_DONTWAIT	util.h	93;"	d
+MSG_NOSIGNAL	util.h	92;"	d
+OBJECTS	Makefile	/^OBJECTS       = main.o$/;"	m
+OBJECTS_DIR	Makefile	/^OBJECTS_DIR   = .\/$/;"	m
+PAGESIZE	serialize.h	46;"	d
+PAIRTYPE	util.h	67;"	d
+PRI64d	util.h	56;"	d
+PRI64d	util.h	60;"	d
+PRI64u	util.h	57;"	d
+PRI64u	util.h	61;"	d
+PRI64x	util.h	58;"	d
+PRI64x	util.h	62;"	d
+PrintHex	util.h	/^inline void PrintHex(const std::vector<unsigned char>& vch, const char* pszFormat="%s", bool fSpaces=true)$/;"	f
+PrintHex	util.h	/^void PrintHex(const T pbegin, const T pend, const char* pszFormat="%s", bool fSpaces=true)$/;"	f
+QMAKE	Makefile	/^QMAKE         = \/usr\/lib\/x86_64-linux-gnu\/qt4\/bin\/qmake$/;"	m
+QMAKE_TARGET	Makefile	/^QMAKE_TARGET  = bitcoin_qt$/;"	m
+RANLIB	Makefile	/^RANLIB        = $/;"	m
+READDATA	serialize.h	134;"	d
+READWRITE	serialize.h	123;"	d
+REF	util.h	/^inline T& REF(const T& val)$/;"	f
+ReadCompactSize	serialize.h	/^uint64 ReadCompactSize(Stream& is)$/;"	f
+ReadVersion	serialize.h	/^    void ReadVersion()           { *this >> nVersion; }$/;"	f	class:CAutoFile
+ReadVersion	serialize.h	/^    void ReadVersion()           { *this >> nVersion; }$/;"	f	class:CDataStream
+Rewind	serialize.h	/^    bool Rewind(size_type n)$/;"	f	class:CDataStream
+SED	Makefile	/^SED           = sed$/;"	m
+SER_BLOCKHEADERONLY	serialize.h	/^    SER_BLOCKHEADERONLY = (1 << 17),$/;"	e	enum:__anon1
+SER_DISK	serialize.h	/^    SER_DISK            = (1 << 1),$/;"	e	enum:__anon1
+SER_GETHASH	serialize.h	/^    SER_GETHASH         = (1 << 2),$/;"	e	enum:__anon1
+SER_NETWORK	serialize.h	/^    SER_NETWORK         = (1 << 0),$/;"	e	enum:__anon1
+SER_SKIPSIG	serialize.h	/^    SER_SKIPSIG         = (1 << 16),$/;"	e	enum:__anon1
+SOCKET	util.h	/^typedef u_int SOCKET;$/;"	t
+SOCKET_ERROR	util.h	116;"	d
+SOURCES	Makefile	/^SOURCES       = main.cpp $/;"	m
+STRIP	Makefile	/^STRIP         = strip$/;"	m
+SYMLINK	Makefile	/^SYMLINK       = ln -f -s$/;"	m
+S_IRUSR	util.h	100;"	d
+S_IWUSR	util.h	101;"	d
+SerReadWrite	serialize.h	/^inline unsigned int SerReadWrite(Stream& s, T& obj, int nType, int nVersion, CSerActionUnserialize ser_action)$/;"	f
+SerReadWrite	serialize.h	/^inline unsigned int SerReadWrite(Stream& s, const T& obj, int nType, int nVersion, CSerActionGetSerializeSize ser_action)$/;"	f
+SerReadWrite	serialize.h	/^inline unsigned int SerReadWrite(Stream& s, const T& obj, int nType, int nVersion, CSerActionSerialize ser_action)$/;"	f
+Serialize	bignum.h	/^    void Serialize(Stream& s, int nType=0, int nVersion=VERSION) const$/;"	f	class:CBigNum
+Serialize	serialize.h	/^    void Serialize(Stream& s, int nType=0, int nVersion=VERSION) const$/;"	f	class:CDataStream
+Serialize	serialize.h	/^    void Serialize(Stream& s, int, int=0) const$/;"	f	class:CFixedFieldString
+Serialize	serialize.h	/^    void Serialize(Stream& s, int, int=0) const$/;"	f	class:CFlatData
+Serialize	serialize.h	/^inline void Serialize(Stream& os, const T& a, long nType, int nVersion=VERSION)$/;"	f
+Serialize	serialize.h	/^inline void Serialize(Stream& os, const std::vector<T, A>& v, int nType, int nVersion)$/;"	f
+Serialize	serialize.h	/^template<typename Stream> inline void Serialize(Stream& s, bool a, int, int=0)    { char f=a; WRITEDATA(s, f); }$/;"	f
+Serialize	serialize.h	/^template<typename Stream> inline void Serialize(Stream& s, char a,           int, int=0) { WRITEDATA(s, a); }$/;"	f
+Serialize	serialize.h	/^template<typename Stream> inline void Serialize(Stream& s, double a,         int, int=0) { WRITEDATA(s, a); }$/;"	f
+Serialize	serialize.h	/^template<typename Stream> inline void Serialize(Stream& s, float a,          int, int=0) { WRITEDATA(s, a); }$/;"	f
+Serialize	serialize.h	/^template<typename Stream> inline void Serialize(Stream& s, int64 a,          int, int=0) { WRITEDATA(s, a); }$/;"	f
+Serialize	serialize.h	/^template<typename Stream> inline void Serialize(Stream& s, signed char a,    int, int=0) { WRITEDATA(s, a); }$/;"	f
+Serialize	serialize.h	/^template<typename Stream> inline void Serialize(Stream& s, signed int a,     int, int=0) { WRITEDATA(s, a); }$/;"	f
+Serialize	serialize.h	/^template<typename Stream> inline void Serialize(Stream& s, signed long a,    int, int=0) { WRITEDATA(s, a); }$/;"	f
+Serialize	serialize.h	/^template<typename Stream> inline void Serialize(Stream& s, signed short a,   int, int=0) { WRITEDATA(s, a); }$/;"	f
+Serialize	serialize.h	/^template<typename Stream> inline void Serialize(Stream& s, uint64 a,         int, int=0) { WRITEDATA(s, a); }$/;"	f
+Serialize	serialize.h	/^template<typename Stream> inline void Serialize(Stream& s, unsigned char a,  int, int=0) { WRITEDATA(s, a); }$/;"	f
+Serialize	serialize.h	/^template<typename Stream> inline void Serialize(Stream& s, unsigned int a,   int, int=0) { WRITEDATA(s, a); }$/;"	f
+Serialize	serialize.h	/^template<typename Stream> inline void Serialize(Stream& s, unsigned long a,  int, int=0) { WRITEDATA(s, a); }$/;"	f
+Serialize	serialize.h	/^template<typename Stream> inline void Serialize(Stream& s, unsigned short a, int, int=0) { WRITEDATA(s, a); }$/;"	f
+Serialize	serialize.h	/^void Serialize(Stream& os, const CScript& v, int nType, int nVersion)$/;"	f
+Serialize	serialize.h	/^void Serialize(Stream& os, const boost::tuple<T0, T1, T2, T3>& item, int nType, int nVersion)$/;"	f
+Serialize	serialize.h	/^void Serialize(Stream& os, const boost::tuple<T0, T1, T2>& item, int nType, int nVersion)$/;"	f
+Serialize	serialize.h	/^void Serialize(Stream& os, const std::basic_string<C>& str, int, int)$/;"	f
+Serialize	serialize.h	/^void Serialize(Stream& os, const std::map<K, T, Pred, A>& m, int nType, int nVersion)$/;"	f
+Serialize	serialize.h	/^void Serialize(Stream& os, const std::pair<K, T>& item, int nType, int nVersion)$/;"	f
+Serialize	serialize.h	/^void Serialize(Stream& os, const std::set<K, Pred, A>& m, int nType, int nVersion)$/;"	f
+Serialize	uint256.h	/^    void Serialize(Stream& s, int nType=0, int nVersion=VERSION) const$/;"	f	class:base_uint
+SerializeHash	util.h	/^uint256 SerializeHash(const T& obj, int nType=SER_GETHASH, int nVersion=VERSION)$/;"	f
+Serialize_impl	serialize.h	/^void Serialize_impl(Stream& os, const std::vector<T, A>& v, int nType, int nVersion, const boost::false_type&)$/;"	f
+Serialize_impl	serialize.h	/^void Serialize_impl(Stream& os, const std::vector<T, A>& v, int nType, int nVersion, const boost::true_type&)$/;"	f
+SetCompact	bignum.h	/^    CBigNum& SetCompact(unsigned int nCompact)$/;"	f	class:CBigNum
+SetHex	bignum.h	/^    void SetHex(const std::string& str)$/;"	f	class:CBigNum
+SetHex	uint256.h	/^    void SetHex(const char* psz)$/;"	f	class:base_uint
+SetHex	uint256.h	/^    void SetHex(const std::string& str)$/;"	f	class:base_uint
+SetNull	main.h	/^    void SetNull()$/;"	f	class:CBlock
+SetNull	main.h	/^    void SetNull()$/;"	f	class:CTransaction
+SetThreadPriority	util.h	/^inline void SetThreadPriority(int nPriority)$/;"	f
+SetType	serialize.h	/^    void SetType(int n)          { nType = n; }$/;"	f	class:CAutoFile
+SetType	serialize.h	/^    void SetType(int n)          { nType = n; }$/;"	f	class:CDataStream
+SetVersion	serialize.h	/^    void SetVersion(int n)       { nVersion = n; }$/;"	f	class:CAutoFile
+SetVersion	serialize.h	/^    void SetVersion(int n)       { nVersion = n; }$/;"	f	class:CDataStream
+Sleep	util.h	/^inline void Sleep(int64 n)$/;"	f
+TAR	Makefile	/^TAR           = tar -cf$/;"	m
+TARGET	Makefile	/^TARGET        = bitcoin_qt$/;"	m
+THREAD_PRIORITY_ABOVE_NORMAL	util.h	631;"	d
+THREAD_PRIORITY_BELOW_NORMAL	util.h	629;"	d
+THREAD_PRIORITY_LOWEST	util.h	628;"	d
+THREAD_PRIORITY_NORMAL	util.h	630;"	d
+TRY_CRITICAL_BLOCK	util.h	278;"	d
+TerminateThread	util.h	/^inline bool TerminateThread(pthread_t hthread, unsigned int nExitCode)$/;"	f
+Testuint256AdHoc	uint256.h	/^inline int Testuint256AdHoc(std::vector<std::string> vArg)$/;"	f
+ToString	bignum.h	/^    std::string ToString(int nBase=10) const$/;"	f	class:CBigNum
+ToString	uint256.h	/^    std::string ToString() const$/;"	f	class:base_uint
+TryEnter	util.h	/^    bool TryEnter() { return TryEnterCriticalSection(&cs); }$/;"	f	class:CCriticalSection
+UBEGIN	util.h	44;"	d
+UEND	util.h	45;"	d
+UINT64_MAX	util.h	95;"	d
+Unserialize	bignum.h	/^    void Unserialize(Stream& s, int nType=0, int nVersion=VERSION)$/;"	f	class:CBigNum
+Unserialize	serialize.h	/^    void Unserialize(Stream& s, int, int=0)$/;"	f	class:CFixedFieldString
+Unserialize	serialize.h	/^    void Unserialize(Stream& s, int, int=0)$/;"	f	class:CFlatData
+Unserialize	serialize.h	/^inline void Unserialize(Stream& is, T& a, long nType, int nVersion=VERSION)$/;"	f
+Unserialize	serialize.h	/^inline void Unserialize(Stream& is, std::vector<T, A>& v, int nType, int nVersion)$/;"	f
+Unserialize	serialize.h	/^template<typename Stream> inline void Unserialize(Stream& s, bool& a, int, int=0) { char f; READDATA(s, f); a=f; }$/;"	f
+Unserialize	serialize.h	/^template<typename Stream> inline void Unserialize(Stream& s, char& a,           int, int=0) { READDATA(s, a); }$/;"	f
+Unserialize	serialize.h	/^template<typename Stream> inline void Unserialize(Stream& s, double& a,         int, int=0) { READDATA(s, a); }$/;"	f
+Unserialize	serialize.h	/^template<typename Stream> inline void Unserialize(Stream& s, float& a,          int, int=0) { READDATA(s, a); }$/;"	f
+Unserialize	serialize.h	/^template<typename Stream> inline void Unserialize(Stream& s, int64& a,          int, int=0) { READDATA(s, a); }$/;"	f
+Unserialize	serialize.h	/^template<typename Stream> inline void Unserialize(Stream& s, signed char& a,    int, int=0) { READDATA(s, a); }$/;"	f
+Unserialize	serialize.h	/^template<typename Stream> inline void Unserialize(Stream& s, signed int& a,     int, int=0) { READDATA(s, a); }$/;"	f
+Unserialize	serialize.h	/^template<typename Stream> inline void Unserialize(Stream& s, signed long& a,    int, int=0) { READDATA(s, a); }$/;"	f
+Unserialize	serialize.h	/^template<typename Stream> inline void Unserialize(Stream& s, signed short& a,   int, int=0) { READDATA(s, a); }$/;"	f
+Unserialize	serialize.h	/^template<typename Stream> inline void Unserialize(Stream& s, uint64& a,         int, int=0) { READDATA(s, a); }$/;"	f
+Unserialize	serialize.h	/^template<typename Stream> inline void Unserialize(Stream& s, unsigned char& a,  int, int=0) { READDATA(s, a); }$/;"	f
+Unserialize	serialize.h	/^template<typename Stream> inline void Unserialize(Stream& s, unsigned int& a,   int, int=0) { READDATA(s, a); }$/;"	f
+Unserialize	serialize.h	/^template<typename Stream> inline void Unserialize(Stream& s, unsigned long& a,  int, int=0) { READDATA(s, a); }$/;"	f
+Unserialize	serialize.h	/^template<typename Stream> inline void Unserialize(Stream& s, unsigned short& a, int, int=0) { READDATA(s, a); }$/;"	f
+Unserialize	serialize.h	/^void Unserialize(Stream& is, CScript& v, int nType, int nVersion)$/;"	f
+Unserialize	serialize.h	/^void Unserialize(Stream& is, boost::tuple<T0, T1, T2, T3>& item, int nType, int nVersion)$/;"	f
+Unserialize	serialize.h	/^void Unserialize(Stream& is, boost::tuple<T0, T1, T2>& item, int nType, int nVersion)$/;"	f
+Unserialize	serialize.h	/^void Unserialize(Stream& is, std::basic_string<C>& str, int, int)$/;"	f
+Unserialize	serialize.h	/^void Unserialize(Stream& is, std::map<K, T, Pred, A>& m, int nType, int nVersion)$/;"	f
+Unserialize	serialize.h	/^void Unserialize(Stream& is, std::pair<K, T>& item, int nType, int nVersion)$/;"	f
+Unserialize	serialize.h	/^void Unserialize(Stream& is, std::set<K, Pred, A>& m, int nType, int nVersion)$/;"	f
+Unserialize	uint256.h	/^    void Unserialize(Stream& s, int nType=0, int nVersion=VERSION)$/;"	f	class:base_uint
+Unserialize_impl	serialize.h	/^void Unserialize_impl(Stream& is, std::vector<T, A>& v, int nType, int nVersion, const boost::false_type&)$/;"	f
+Unserialize_impl	serialize.h	/^void Unserialize_impl(Stream& is, std::vector<T, A>& v, int nType, int nVersion, const boost::true_type&)$/;"	f
+VERSION	serialize.h	/^static const int VERSION = 32500;$/;"	v
+VERSION_IS_BETA	serialize.h	/^static const bool VERSION_IS_BETA = true;$/;"	v
+WIDTH	uint256.h	/^    enum { WIDTH=BITS\/32 };$/;"	e	enum:base_uint::__anon2
+WRITEDATA	serialize.h	133;"	d
+WSAEADDRINUSE	util.h	113;"	d
+WSAEALREADY	util.h	108;"	d
+WSAEINPROGRESS	util.h	112;"	d
+WSAEINTR	util.h	111;"	d
+WSAEINVAL	util.h	107;"	d
+WSAEMSGSIZE	util.h	110;"	d
+WSAENOTSOCK	util.h	114;"	d
+WSAEWOULDBLOCK	util.h	109;"	d
+WSAGetLastError	util.h	106;"	d
+WriteCompactSize	serialize.h	/^void WriteCompactSize(Stream& os, uint64 nSize)$/;"	f
+WriteVersion	serialize.h	/^    void WriteVersion()          { *this << nVersion; }$/;"	f	class:CAutoFile
+WriteVersion	serialize.h	/^    void WriteVersion()          { *this << nVersion; }$/;"	f	class:CDataStream
+_	util.h	/^inline const char* _(const char* psz)$/;"	f
+__forceinline	util.h	38;"	d
+_strlwr	util.h	120;"	d
+_vsnprintf	util.h	118;"	d
+abs64	util.h	/^inline int64 abs64(int64 n)$/;"	f
+alignup	util.h	/^T* alignup(T* p)$/;"	f
+allocate	serialize.h	/^    T* allocate(std::size_t n, const void *hint = 0)$/;"	f	struct:secure_allocator
+allocator_type	serialize.h	/^    typedef vector_type::allocator_type   allocator_type;$/;"	t	class:CDataStream
+atoi	util.h	/^inline int atoi(const std::string& str)$/;"	f
+atoi64	util.h	/^inline int64 atoi64(const char* psz)$/;"	f
+atoi64	util.h	/^inline int64 atoi64(const std::string& str)$/;"	f
+base	serialize.h	/^    typedef std::allocator<T> base;$/;"	t	struct:secure_allocator
+base_uint	uint256.h	/^class base_uint$/;"	c
+base_uint160	uint256.h	/^typedef base_uint<160> base_uint160;$/;"	t
+base_uint256	uint256.h	/^typedef base_uint<256> base_uint256;$/;"	t
+basetype	uint256.h	/^    typedef base_uint160 basetype;$/;"	t	class:uint160
+basetype	uint256.h	/^    typedef base_uint256 basetype;$/;"	t	class:uint256
+begin	serialize.h	/^    char* begin() { return pbegin; }$/;"	f	class:CFlatData
+begin	serialize.h	/^    const char* begin() const { return pbegin; }$/;"	f	class:CFlatData
+begin	serialize.h	/^    const_iterator begin() const                     { return vch.begin() + nReadPos; }$/;"	f	class:CDataStream
+begin	serialize.h	/^    iterator begin()                                 { return vch.begin() + nReadPos; }$/;"	f	class:CDataStream
+begin	uint256.h	/^    unsigned char* begin()$/;"	f	class:base_uint
+bignum_error	bignum.h	/^    explicit bignum_error(const std::string& str) : std::runtime_error(str) {}$/;"	f	class:bignum_error
+bignum_error	bignum.h	/^class bignum_error : public std::runtime_error$/;"	c
+bnChainWork	main.h	/^    CBigNum bnChainWork;$/;"	m	class:CBlockIndex
+clear	serialize.h	/^    void clear()                                     { vch.clear(); nReadPos = 0; }$/;"	f	class:CDataStream
+clear	serialize.h	/^    void clear(short n = 0)      { state = n; }$/;"	f	class:CAutoFile
+clear	serialize.h	/^    void clear(short n)          { state = n; }  \/\/ name conflict with vector clear()$/;"	f	class:CDataStream
+closesocket	util.h	141;"	d
+const_iterator	serialize.h	/^    typedef vector_type::const_iterator   const_iterator;$/;"	t	class:CDataStream
+const_pointer	serialize.h	/^    typedef typename base::const_pointer const_pointer;$/;"	t	struct:secure_allocator
+const_reference	serialize.h	/^    typedef typename base::const_reference const_reference;$/;"	t	struct:secure_allocator
+const_reference	serialize.h	/^    typedef vector_type::const_reference  const_reference;$/;"	t	class:CDataStream
+cs	util.h	/^    CRITICAL_SECTION cs;$/;"	m	class:CCriticalSection
+deallocate	serialize.h	/^    void deallocate(T* p, std::size_t n)$/;"	f	struct:secure_allocator
+difference_type	serialize.h	/^    typedef typename base::difference_type  difference_type;$/;"	t	struct:secure_allocator
+difference_type	serialize.h	/^    typedef vector_type::difference_type  difference_type;$/;"	t	class:CDataStream
+element_type	serialize.h	/^    typedef FILE element_type;$/;"	t	class:CAutoFile
+empty	serialize.h	/^    bool empty() const                               { return vch.size() == nReadPos; }$/;"	f	class:CDataStream
+end	serialize.h	/^    char* end() { return pend; }$/;"	f	class:CFlatData
+end	serialize.h	/^    const char* end() const { return pend; }$/;"	f	class:CFlatData
+end	serialize.h	/^    const_iterator end() const                       { return vch.end(); }$/;"	f	class:CDataStream
+end	serialize.h	/^    iterator end()                                   { return vch.end(); }$/;"	f	class:CDataStream
+end	uint256.h	/^    unsigned char* end()$/;"	f	class:base_uint
+eof	serialize.h	/^    bool eof() const             { return size() == 0; }$/;"	f	class:CDataStream
+erase	serialize.h	/^    iterator erase(iterator first, iterator last)$/;"	f	class:CDataStream
+erase	serialize.h	/^    iterator erase(iterator it)$/;"	f	class:CDataStream
+exceptions	serialize.h	/^    short exceptions()           { return exceptmask; }$/;"	f	class:CAutoFile
+exceptions	serialize.h	/^    short exceptions()           { return exceptmask; }$/;"	f	class:CDataStream
+exceptions	serialize.h	/^    short exceptions(short mask) { short prev = exceptmask; exceptmask = mask; setstate(0, "CAutoFile"); return prev; }$/;"	f	class:CAutoFile
+exceptions	serialize.h	/^    short exceptions(short mask) { short prev = exceptmask; exceptmask = mask; setstate(0, "CDataStream"); return prev; }$/;"	f	class:CDataStream
+exceptmask	serialize.h	/^    short exceptmask;$/;"	m	class:CAutoFile
+exceptmask	serialize.h	/^    short exceptmask;$/;"	m	class:CDataStream
+fDbEnvInit	main.cpp	/^static bool fDbEnvInit = false;$/;"	v	file:
+fail	serialize.h	/^    bool fail() const            { return state & (std::ios::badbit | std::ios::failbit); }$/;"	f	class:CAutoFile
+fail	serialize.h	/^    bool fail() const            { return state & (std::ios::badbit | std::ios::failbit); }$/;"	f	class:CDataStream
+fclose	serialize.h	/^    void fclose()$/;"	f	class:CAutoFile
+file	serialize.h	/^    FILE* file;$/;"	m	class:CAutoFile
+for	serialize.h	29;"	d
+for	uint256.h	21;"	d
+for	util.h	35;"	d
+getint	bignum.h	/^    int getint() const$/;"	f	class:CBigNum
+getuint	bignum.h	/^    unsigned int getuint() const$/;"	f	class:CBigNum
+getuint256	bignum.h	/^    uint256 getuint256()$/;"	f	class:CBigNum
+getulong	bignum.h	/^    unsigned long getulong() const$/;"	f	class:CBigNum
+getvch	bignum.h	/^    std::vector<unsigned char> getvch() const$/;"	f	class:CBigNum
+good	serialize.h	/^    bool good() const            { return !eof() && (state == 0); }$/;"	f	class:CDataStream
+good	serialize.h	/^    bool good() const            { return state == 0; }$/;"	f	class:CAutoFile
+hashMerkleRoot	main.h	/^    uint256 hashMerkleRoot;$/;"	m	class:CBlock
+hashMerkleRoot	main.h	/^    uint256 hashMerkleRoot;$/;"	m	class:CBlockIndex
+hashNext	main.h	/^    uint256 hashNext;$/;"	m	class:CDiskBlockIndex
+hashPrev	main.h	/^    uint256 hashPrev;$/;"	m	class:CDiskBlockIndex
+hashPrevBlock	main.h	/^    uint256 hashPrevBlock;$/;"	m	class:CBlock
+heapchk	util.h	/^inline void heapchk()$/;"	f
+i64tostr	util.h	/^inline std::string i64tostr(int64 n)$/;"	f
+ignore	serialize.h	/^    CDataStream& ignore(int nSize)$/;"	f	class:CDataStream
+in_avail	serialize.h	/^    int in_avail()               { return size(); }$/;"	f	class:CDataStream
+insert	serialize.h	/^    iterator insert(iterator it, const char& x=char()) { return vch.insert(it, x); }$/;"	f	class:CDataStream
+insert	serialize.h	/^    void insert(iterator it, const char* first, const char* last)$/;"	f	class:CDataStream
+insert	serialize.h	/^    void insert(iterator it, const_iterator first, const_iterator last)$/;"	f	class:CDataStream
+insert	serialize.h	/^    void insert(iterator it, size_type n, const char& x) { vch.insert(it, n, x); }$/;"	f	class:CDataStream
+insert	serialize.h	/^    void insert(iterator it, std::vector<char>::const_iterator first, std::vector<char>::const_iterator last)$/;"	f	class:CDataStream
+int64	serialize.h	/^typedef __int64  int64;$/;"	t
+int64	serialize.h	/^typedef long long  int64;$/;"	t
+int64	uint256.h	/^typedef __int64  int64;$/;"	t
+int64	uint256.h	/^typedef long long  int64;$/;"	t
+int64	util.h	/^typedef __int64  int64;$/;"	t
+int64	util.h	/^typedef long long  int64;$/;"	t
+iterator	serialize.h	/^    typedef vector_type::iterator         iterator;$/;"	t	class:CDataStream
+itostr	util.h	/^inline std::string itostr(int n)$/;"	f
+loop	util.h	41;"	d
+main	main.cpp	/^int main (int argc, char *argv[])$/;"	f
+main	serialize.h	/^int main(int argc, char *argv[])$/;"	f
+mlock	serialize.h	38;"	d
+mlock	serialize.h	48;"	d
+munlock	serialize.h	39;"	d
+munlock	serialize.h	51;"	d
+myclosesocket	util.h	/^inline int myclosesocket(SOCKET& hSocket)$/;"	f
+nBits	main.h	/^    unsigned int nBits;$/;"	m	class:CBlock
+nBits	main.h	/^    unsigned int nBits;$/;"	m	class:CBlockIndex
+nBlockPos	main.h	/^    unsigned int nBlockPos;$/;"	m	class:CBlockIndex
+nFile	main.h	/^    unsigned int nFile;$/;"	m	class:CBlockIndex
+nHeight	main.h	/^    int nHeight;$/;"	m	class:CBlockIndex
+nLine	util.h	/^    int nLine;$/;"	m	class:CCriticalSection
+nLockTime	main.h	/^    unsigned int nLockTime;$/;"	m	class:CTransaction
+nNonce	main.h	/^    unsigned int nNonce;$/;"	m	class:CBlock
+nNonce	main.h	/^    unsigned int nNonce;$/;"	m	class:CBlockIndex
+nReadPos	serialize.h	/^    unsigned int nReadPos;$/;"	m	class:CDataStream
+nTime	main.h	/^    unsigned int nTime;$/;"	m	class:CBlock
+nTime	main.h	/^    unsigned int nTime;$/;"	m	class:CBlockIndex
+nType	serialize.h	/^    int nType;$/;"	m	class:CAutoFile
+nType	serialize.h	/^    int nType;$/;"	m	class:CDataStream
+nType	serialize.h	/^    int nType;$/;"	m	struct:ser_streamplaceholder
+nVersion	main.h	/^        nVersion = this->nVersion;$/;"	m	class:CTransaction
+nVersion	main.h	/^    int nVersion;$/;"	m	class:CBlock
+nVersion	main.h	/^    int nVersion;$/;"	m	class:CBlockIndex
+nVersion	main.h	/^    int nVersion;$/;"	m	class:CTransaction
+nVersion	serialize.h	/^    int nVersion;$/;"	m	class:CAutoFile
+nVersion	serialize.h	/^    int nVersion;$/;"	m	class:CDataStream
+nVersion	serialize.h	/^    int nVersion;$/;"	m	struct:ser_streamplaceholder
+operator !	bignum.h	/^    bool operator!() const$/;"	f	class:CBigNum
+operator !	bignum.h	/^    bool operator!() { return (pctx == NULL); }$/;"	f	class:CAutoBN_CTX
+operator !	serialize.h	/^    bool operator!()            { return (file == NULL); }$/;"	f	class:CAutoFile
+operator !	uint256.h	/^    bool operator!() const$/;"	f	class:base_uint
+operator !=	bignum.h	/^inline bool operator!=(const CBigNum& a, const CBigNum& b) { return (BN_cmp(&a, &b) != 0); }$/;"	f
+operator !=	uint256.h	/^    friend inline bool operator!=(const base_uint& a, const base_uint& b)$/;"	f	class:base_uint
+operator !=	uint256.h	/^    friend inline bool operator!=(const base_uint& a, uint64 b)$/;"	f	class:base_uint
+operator !=	uint256.h	/^inline bool operator!=(const base_uint160& a, const uint160& b)         { return (base_uint160)a != (base_uint160)b; }$/;"	f
+operator !=	uint256.h	/^inline bool operator!=(const base_uint256& a, const uint256& b)         { return (base_uint256)a != (base_uint256)b; }$/;"	f
+operator !=	uint256.h	/^inline bool operator!=(const uint160& a, const base_uint160& b)         { return (base_uint160)a != (base_uint160)b; }$/;"	f
+operator !=	uint256.h	/^inline bool operator!=(const uint160& a, const uint160& b)              { return (base_uint160)a != (base_uint160)b; }$/;"	f
+operator !=	uint256.h	/^inline bool operator!=(const uint160& a, uint64 b)                           { return (base_uint160)a != b; }$/;"	f
+operator !=	uint256.h	/^inline bool operator!=(const uint256& a, const base_uint256& b)         { return (base_uint256)a != (base_uint256)b; }$/;"	f
+operator !=	uint256.h	/^inline bool operator!=(const uint256& a, const uint256& b)              { return (base_uint256)a != (base_uint256)b; }$/;"	f
+operator !=	uint256.h	/^inline bool operator!=(const uint256& a, uint64 b)                           { return (base_uint256)a != b; }$/;"	f
+operator %	bignum.h	/^inline const CBigNum operator%(const CBigNum& a, const CBigNum& b)$/;"	f
+operator %=	bignum.h	/^    CBigNum& operator%=(const CBigNum& b)$/;"	f	class:CBigNum
+operator &	bignum.h	/^    BN_CTX** operator&() { return &pctx; }$/;"	f	class:CAutoBN_CTX
+operator &	serialize.h	/^    FILE** operator&()          { return &file; }$/;"	f	class:CAutoFile
+operator &	uint256.h	/^inline const uint160 operator&(const base_uint160& a, const base_uint160& b) { return uint160(a) &= b; }$/;"	f
+operator &	uint256.h	/^inline const uint160 operator&(const base_uint160& a, const uint160& b) { return (base_uint160)a &  (base_uint160)b; }$/;"	f
+operator &	uint256.h	/^inline const uint160 operator&(const uint160& a, const base_uint160& b) { return (base_uint160)a &  (base_uint160)b; }$/;"	f
+operator &	uint256.h	/^inline const uint160 operator&(const uint160& a, const uint160& b)      { return (base_uint160)a &  (base_uint160)b; }$/;"	f
+operator &	uint256.h	/^inline const uint256 operator&(const base_uint256& a, const base_uint256& b) { return uint256(a) &= b; }$/;"	f
+operator &	uint256.h	/^inline const uint256 operator&(const base_uint256& a, const uint256& b) { return (base_uint256)a &  (base_uint256)b; }$/;"	f
+operator &	uint256.h	/^inline const uint256 operator&(const uint256& a, const base_uint256& b) { return (base_uint256)a &  (base_uint256)b; }$/;"	f
+operator &	uint256.h	/^inline const uint256 operator&(const uint256& a, const uint256& b)      { return (base_uint256)a &  (base_uint256)b; }$/;"	f
+operator &=	uint256.h	/^    base_uint& operator&=(const base_uint& b)$/;"	f	class:base_uint
+operator &=	uint256.h	/^    base_uint& operator&=(uint64 b)$/;"	f	class:base_uint
+operator *	bignum.h	/^    BN_CTX& operator*() { return *pctx; }$/;"	f	class:CAutoBN_CTX
+operator *	bignum.h	/^inline const CBigNum operator*(const CBigNum& a, const CBigNum& b)$/;"	f
+operator *	serialize.h	/^    FILE& operator*()           { return *file; }$/;"	f	class:CAutoFile
+operator *=	bignum.h	/^    CBigNum& operator*=(const CBigNum& b)$/;"	f	class:CBigNum
+operator +	bignum.h	/^inline const CBigNum operator+(const CBigNum& a, const CBigNum& b)$/;"	f
+operator +	serialize.h	/^    friend CDataStream operator+(const CDataStream& a, const CDataStream& b)$/;"	f	class:CDataStream
+operator +	uint256.h	/^inline const uint160 operator+(const base_uint160& a, const base_uint160& b) { return uint160(a) += b; }$/;"	f
+operator +	uint256.h	/^inline const uint160 operator+(const base_uint160& a, const uint160& b) { return (base_uint160)a +  (base_uint160)b; }$/;"	f
+operator +	uint256.h	/^inline const uint160 operator+(const uint160& a, const base_uint160& b) { return (base_uint160)a +  (base_uint160)b; }$/;"	f
+operator +	uint256.h	/^inline const uint160 operator+(const uint160& a, const uint160& b)      { return (base_uint160)a +  (base_uint160)b; }$/;"	f
+operator +	uint256.h	/^inline const uint256 operator+(const base_uint256& a, const base_uint256& b) { return uint256(a) += b; }$/;"	f
+operator +	uint256.h	/^inline const uint256 operator+(const base_uint256& a, const uint256& b) { return (base_uint256)a +  (base_uint256)b; }$/;"	f
+operator +	uint256.h	/^inline const uint256 operator+(const uint256& a, const base_uint256& b) { return (base_uint256)a +  (base_uint256)b; }$/;"	f
+operator +	uint256.h	/^inline const uint256 operator+(const uint256& a, const uint256& b)      { return (base_uint256)a +  (base_uint256)b; }$/;"	f
+operator ++	bignum.h	/^    CBigNum& operator++()$/;"	f	class:CBigNum
+operator ++	bignum.h	/^    const CBigNum operator++(int)$/;"	f	class:CBigNum
+operator ++	uint256.h	/^    base_uint& operator++()$/;"	f	class:base_uint
+operator ++	uint256.h	/^    const base_uint operator++(int)$/;"	f	class:base_uint
+operator +=	bignum.h	/^    CBigNum& operator+=(const CBigNum& b)$/;"	f	class:CBigNum
+operator +=	serialize.h	/^    CDataStream& operator+=(const CDataStream& b)$/;"	f	class:CDataStream
+operator +=	uint256.h	/^    base_uint& operator+=(const base_uint& b)$/;"	f	class:base_uint
+operator +=	uint256.h	/^    base_uint& operator+=(uint64 b64)$/;"	f	class:base_uint
+operator -	bignum.h	/^inline const CBigNum operator-(const CBigNum& a)$/;"	f
+operator -	bignum.h	/^inline const CBigNum operator-(const CBigNum& a, const CBigNum& b)$/;"	f
+operator -	uint256.h	/^    const base_uint operator-() const$/;"	f	class:base_uint
+operator -	uint256.h	/^inline const uint160 operator-(const base_uint160& a, const base_uint160& b) { return uint160(a) -= b; }$/;"	f
+operator -	uint256.h	/^inline const uint160 operator-(const base_uint160& a, const uint160& b) { return (base_uint160)a -  (base_uint160)b; }$/;"	f
+operator -	uint256.h	/^inline const uint160 operator-(const uint160& a, const base_uint160& b) { return (base_uint160)a -  (base_uint160)b; }$/;"	f
+operator -	uint256.h	/^inline const uint160 operator-(const uint160& a, const uint160& b)      { return (base_uint160)a -  (base_uint160)b; }$/;"	f
+operator -	uint256.h	/^inline const uint256 operator-(const base_uint256& a, const base_uint256& b) { return uint256(a) -= b; }$/;"	f
+operator -	uint256.h	/^inline const uint256 operator-(const base_uint256& a, const uint256& b) { return (base_uint256)a -  (base_uint256)b; }$/;"	f
+operator -	uint256.h	/^inline const uint256 operator-(const uint256& a, const base_uint256& b) { return (base_uint256)a -  (base_uint256)b; }$/;"	f
+operator -	uint256.h	/^inline const uint256 operator-(const uint256& a, const uint256& b)      { return (base_uint256)a -  (base_uint256)b; }$/;"	f
+operator --	bignum.h	/^    CBigNum& operator--()$/;"	f	class:CBigNum
+operator --	bignum.h	/^    const CBigNum operator--(int)$/;"	f	class:CBigNum
+operator --	uint256.h	/^    base_uint& operator--()$/;"	f	class:base_uint
+operator --	uint256.h	/^    const base_uint operator--(int)$/;"	f	class:base_uint
+operator -=	bignum.h	/^    CBigNum& operator-=(const CBigNum& b)$/;"	f	class:CBigNum
+operator -=	uint256.h	/^    base_uint& operator-=(const base_uint& b)$/;"	f	class:base_uint
+operator -=	uint256.h	/^    base_uint& operator-=(uint64 b64)$/;"	f	class:base_uint
+operator ->	serialize.h	/^    FILE* operator->()          { return file; }$/;"	f	class:CAutoFile
+operator /	bignum.h	/^inline const CBigNum operator\/(const CBigNum& a, const CBigNum& b)$/;"	f
+operator /=	bignum.h	/^    CBigNum& operator\/=(const CBigNum& b)$/;"	f	class:CBigNum
+operator <	bignum.h	/^inline bool operator<(const CBigNum& a, const CBigNum& b)  { return (BN_cmp(&a, &b) < 0); }$/;"	f
+operator <	uint256.h	/^    friend inline bool operator<(const base_uint& a, const base_uint& b)$/;"	f	class:base_uint
+operator <	uint256.h	/^inline bool operator<(const base_uint160& a, const uint160& b)          { return (base_uint160)a <  (base_uint160)b; }$/;"	f
+operator <	uint256.h	/^inline bool operator<(const base_uint256& a, const uint256& b)          { return (base_uint256)a <  (base_uint256)b; }$/;"	f
+operator <	uint256.h	/^inline bool operator<(const uint160& a, const base_uint160& b)          { return (base_uint160)a <  (base_uint160)b; }$/;"	f
+operator <	uint256.h	/^inline bool operator<(const uint160& a, const uint160& b)               { return (base_uint160)a <  (base_uint160)b; }$/;"	f
+operator <	uint256.h	/^inline bool operator<(const uint256& a, const base_uint256& b)          { return (base_uint256)a <  (base_uint256)b; }$/;"	f
+operator <	uint256.h	/^inline bool operator<(const uint256& a, const uint256& b)               { return (base_uint256)a <  (base_uint256)b; }$/;"	f
+operator <<	bignum.h	/^inline const CBigNum operator<<(const CBigNum& a, unsigned int shift)$/;"	f
+operator <<	serialize.h	/^    CAutoFile& operator<<(const T& obj)$/;"	f	class:CAutoFile
+operator <<	serialize.h	/^    CDataStream& operator<<(const T& obj)$/;"	f	class:CDataStream
+operator <<	uint256.h	/^inline const uint160 operator<<(const base_uint160& a, unsigned int shift)   { return uint160(a) <<= shift; }$/;"	f
+operator <<	uint256.h	/^inline const uint160 operator<<(const uint160& a, unsigned int shift)        { return uint160(a) <<= shift; }$/;"	f
+operator <<	uint256.h	/^inline const uint256 operator<<(const base_uint256& a, unsigned int shift)   { return uint256(a) <<= shift; }$/;"	f
+operator <<	uint256.h	/^inline const uint256 operator<<(const uint256& a, unsigned int shift)        { return uint256(a) <<= shift; }$/;"	f
+operator <<=	bignum.h	/^    CBigNum& operator<<=(unsigned int shift)$/;"	f	class:CBigNum
+operator <<=	uint256.h	/^    base_uint& operator<<=(unsigned int shift)$/;"	f	class:base_uint
+operator <=	bignum.h	/^inline bool operator<=(const CBigNum& a, const CBigNum& b) { return (BN_cmp(&a, &b) <= 0); }$/;"	f
+operator <=	uint256.h	/^    friend inline bool operator<=(const base_uint& a, const base_uint& b)$/;"	f	class:base_uint
+operator <=	uint256.h	/^inline bool operator<=(const base_uint160& a, const uint160& b)         { return (base_uint160)a <= (base_uint160)b; }$/;"	f
+operator <=	uint256.h	/^inline bool operator<=(const base_uint256& a, const uint256& b)         { return (base_uint256)a <= (base_uint256)b; }$/;"	f
+operator <=	uint256.h	/^inline bool operator<=(const uint160& a, const base_uint160& b)         { return (base_uint160)a <= (base_uint160)b; }$/;"	f
+operator <=	uint256.h	/^inline bool operator<=(const uint160& a, const uint160& b)              { return (base_uint160)a <= (base_uint160)b; }$/;"	f
+operator <=	uint256.h	/^inline bool operator<=(const uint256& a, const base_uint256& b)         { return (base_uint256)a <= (base_uint256)b; }$/;"	f
+operator <=	uint256.h	/^inline bool operator<=(const uint256& a, const uint256& b)              { return (base_uint256)a <= (base_uint256)b; }$/;"	f
+operator =	bignum.h	/^    BN_CTX* operator=(BN_CTX* pnew) { return pctx = pnew; }$/;"	f	class:CAutoBN_CTX
+operator =	bignum.h	/^    CBigNum& operator=(const CBigNum& b)$/;"	f	class:CBigNum
+operator =	serialize.h	/^    FILE* operator=(FILE* pnew) { return file = pnew; }$/;"	f	class:CAutoFile
+operator =	uint256.h	/^    base_uint& operator=(uint64 b)$/;"	f	class:base_uint
+operator =	uint256.h	/^    uint160& operator=(const basetype& b)$/;"	f	class:uint160
+operator =	uint256.h	/^    uint160& operator=(uint64 b)$/;"	f	class:uint160
+operator =	uint256.h	/^    uint256& operator=(const basetype& b)$/;"	f	class:uint256
+operator =	uint256.h	/^    uint256& operator=(uint64 b)$/;"	f	class:uint256
+operator ==	bignum.h	/^inline bool operator==(const CBigNum& a, const CBigNum& b) { return (BN_cmp(&a, &b) == 0); }$/;"	f
+operator ==	uint256.h	/^    friend inline bool operator==(const base_uint& a, const base_uint& b)$/;"	f	class:base_uint
+operator ==	uint256.h	/^    friend inline bool operator==(const base_uint& a, uint64 b)$/;"	f	class:base_uint
+operator ==	uint256.h	/^inline bool operator==(const base_uint160& a, const uint160& b)         { return (base_uint160)a == (base_uint160)b; }$/;"	f
+operator ==	uint256.h	/^inline bool operator==(const base_uint256& a, const uint256& b)         { return (base_uint256)a == (base_uint256)b; }$/;"	f
+operator ==	uint256.h	/^inline bool operator==(const uint160& a, const base_uint160& b)         { return (base_uint160)a == (base_uint160)b; }$/;"	f
+operator ==	uint256.h	/^inline bool operator==(const uint160& a, const uint160& b)              { return (base_uint160)a == (base_uint160)b; }$/;"	f
+operator ==	uint256.h	/^inline bool operator==(const uint160& a, uint64 b)                           { return (base_uint160)a == b; }$/;"	f
+operator ==	uint256.h	/^inline bool operator==(const uint256& a, const base_uint256& b)         { return (base_uint256)a == (base_uint256)b; }$/;"	f
+operator ==	uint256.h	/^inline bool operator==(const uint256& a, const uint256& b)              { return (base_uint256)a == (base_uint256)b; }$/;"	f
+operator ==	uint256.h	/^inline bool operator==(const uint256& a, uint64 b)                           { return (base_uint256)a == b; }$/;"	f
+operator >	bignum.h	/^inline bool operator>(const CBigNum& a, const CBigNum& b)  { return (BN_cmp(&a, &b) > 0); }$/;"	f
+operator >	uint256.h	/^    friend inline bool operator>(const base_uint& a, const base_uint& b)$/;"	f	class:base_uint
+operator >	uint256.h	/^inline bool operator>(const base_uint160& a, const uint160& b)          { return (base_uint160)a >  (base_uint160)b; }$/;"	f
+operator >	uint256.h	/^inline bool operator>(const base_uint256& a, const uint256& b)          { return (base_uint256)a >  (base_uint256)b; }$/;"	f
+operator >	uint256.h	/^inline bool operator>(const uint160& a, const base_uint160& b)          { return (base_uint160)a >  (base_uint160)b; }$/;"	f
+operator >	uint256.h	/^inline bool operator>(const uint160& a, const uint160& b)               { return (base_uint160)a >  (base_uint160)b; }$/;"	f
+operator >	uint256.h	/^inline bool operator>(const uint256& a, const base_uint256& b)          { return (base_uint256)a >  (base_uint256)b; }$/;"	f
+operator >	uint256.h	/^inline bool operator>(const uint256& a, const uint256& b)               { return (base_uint256)a >  (base_uint256)b; }$/;"	f
+operator >=	bignum.h	/^inline bool operator>=(const CBigNum& a, const CBigNum& b) { return (BN_cmp(&a, &b) >= 0); }$/;"	f
+operator >=	uint256.h	/^    friend inline bool operator>=(const base_uint& a, const base_uint& b)$/;"	f	class:base_uint
+operator >=	uint256.h	/^inline bool operator>=(const base_uint160& a, const uint160& b)         { return (base_uint160)a >= (base_uint160)b; }$/;"	f
+operator >=	uint256.h	/^inline bool operator>=(const base_uint256& a, const uint256& b)         { return (base_uint256)a >= (base_uint256)b; }$/;"	f
+operator >=	uint256.h	/^inline bool operator>=(const uint160& a, const base_uint160& b)         { return (base_uint160)a >= (base_uint160)b; }$/;"	f
+operator >=	uint256.h	/^inline bool operator>=(const uint160& a, const uint160& b)              { return (base_uint160)a >= (base_uint160)b; }$/;"	f
+operator >=	uint256.h	/^inline bool operator>=(const uint256& a, const base_uint256& b)         { return (base_uint256)a >= (base_uint256)b; }$/;"	f
+operator >=	uint256.h	/^inline bool operator>=(const uint256& a, const uint256& b)              { return (base_uint256)a >= (base_uint256)b; }$/;"	f
+operator >>	bignum.h	/^inline const CBigNum operator>>(const CBigNum& a, unsigned int shift)$/;"	f
+operator >>	serialize.h	/^    CAutoFile& operator>>(T& obj)$/;"	f	class:CAutoFile
+operator >>	serialize.h	/^    CDataStream& operator>>(T& obj)$/;"	f	class:CDataStream
+operator >>	uint256.h	/^inline const uint160 operator>>(const base_uint160& a, unsigned int shift)   { return uint160(a) >>= shift; }$/;"	f
+operator >>	uint256.h	/^inline const uint160 operator>>(const uint160& a, unsigned int shift)        { return uint160(a) >>= shift; }$/;"	f
+operator >>	uint256.h	/^inline const uint256 operator>>(const base_uint256& a, unsigned int shift)   { return uint256(a) >>= shift; }$/;"	f
+operator >>	uint256.h	/^inline const uint256 operator>>(const uint256& a, unsigned int shift)        { return uint256(a) >>= shift; }$/;"	f
+operator >>=	bignum.h	/^    CBigNum& operator>>=(unsigned int shift)$/;"	f	class:CBigNum
+operator >>=	uint256.h	/^    base_uint& operator>>=(unsigned int shift)$/;"	f	class:base_uint
+operator BN_CTX*	bignum.h	/^    operator BN_CTX*() { return pctx; }$/;"	f	class:CAutoBN_CTX
+operator FILE*	serialize.h	/^    operator FILE*()            { return file; }$/;"	f	class:CAutoFile
+operator []	serialize.h	/^    const_reference operator[](size_type pos) const  { return vch[pos + nReadPos]; }$/;"	f	class:CDataStream
+operator []	serialize.h	/^    reference operator[](size_type pos)              { return vch[pos + nReadPos]; }$/;"	f	class:CDataStream
+operator ^	uint256.h	/^inline const uint160 operator^(const base_uint160& a, const base_uint160& b) { return uint160(a) ^= b; }$/;"	f
+operator ^	uint256.h	/^inline const uint160 operator^(const base_uint160& a, const uint160& b) { return (base_uint160)a ^  (base_uint160)b; }$/;"	f
+operator ^	uint256.h	/^inline const uint160 operator^(const uint160& a, const base_uint160& b) { return (base_uint160)a ^  (base_uint160)b; }$/;"	f
+operator ^	uint256.h	/^inline const uint160 operator^(const uint160& a, const uint160& b)      { return (base_uint160)a ^  (base_uint160)b; }$/;"	f
+operator ^	uint256.h	/^inline const uint256 operator^(const base_uint256& a, const base_uint256& b) { return uint256(a) ^= b; }$/;"	f
+operator ^	uint256.h	/^inline const uint256 operator^(const base_uint256& a, const uint256& b) { return (base_uint256)a ^  (base_uint256)b; }$/;"	f
+operator ^	uint256.h	/^inline const uint256 operator^(const uint256& a, const base_uint256& b) { return (base_uint256)a ^  (base_uint256)b; }$/;"	f
+operator ^	uint256.h	/^inline const uint256 operator^(const uint256& a, const uint256& b)      { return (base_uint256)a ^  (base_uint256)b; }$/;"	f
+operator ^=	uint256.h	/^    base_uint& operator^=(const base_uint& b)$/;"	f	class:base_uint
+operator ^=	uint256.h	/^    base_uint& operator^=(uint64 b)$/;"	f	class:base_uint
+operator |	uint256.h	/^inline const uint160 operator|(const base_uint160& a, const base_uint160& b) { return uint160(a) |= b; }$/;"	f
+operator |	uint256.h	/^inline const uint160 operator|(const base_uint160& a, const uint160& b) { return (base_uint160)a |  (base_uint160)b; }$/;"	f
+operator |	uint256.h	/^inline const uint160 operator|(const uint160& a, const base_uint160& b) { return (base_uint160)a |  (base_uint160)b; }$/;"	f
+operator |	uint256.h	/^inline const uint160 operator|(const uint160& a, const uint160& b)      { return (base_uint160)a |  (base_uint160)b; }$/;"	f
+operator |	uint256.h	/^inline const uint256 operator|(const base_uint256& a, const base_uint256& b) { return uint256(a) |= b; }$/;"	f
+operator |	uint256.h	/^inline const uint256 operator|(const base_uint256& a, const uint256& b) { return (base_uint256)a |  (base_uint256)b; }$/;"	f
+operator |	uint256.h	/^inline const uint256 operator|(const uint256& a, const base_uint256& b) { return (base_uint256)a |  (base_uint256)b; }$/;"	f
+operator |	uint256.h	/^inline const uint256 operator|(const uint256& a, const uint256& b)      { return (base_uint256)a |  (base_uint256)b; }$/;"	f
+operator |=	uint256.h	/^    base_uint& operator|=(const base_uint& b)$/;"	f	class:base_uint
+operator |=	uint256.h	/^    base_uint& operator|=(uint64 b)$/;"	f	class:base_uint
+operator ~	uint256.h	/^    const base_uint operator~() const$/;"	f	class:base_uint
+other	serialize.h	/^    { typedef secure_allocator<_Other> other; };$/;"	t	struct:secure_allocator::rebind
+pbegin	serialize.h	/^    char* pbegin;$/;"	m	class:CFlatData
+pcs	util.h	/^    CCriticalSection* pcs;$/;"	m	class:CCriticalBlock
+pcs	util.h	/^    CCriticalSection* pcs;$/;"	m	class:CTryCriticalBlock
+pcstr	serialize.h	/^    const std::string* pcstr;$/;"	m	class:CFixedFieldString
+pctx	bignum.h	/^    BN_CTX* pctx;$/;"	m	class:CAutoBN_CTX
+pdb	main.cpp	/^Db* pdb;$/;"	v
+pend	serialize.h	/^    char* pend;$/;"	m	class:CFlatData
+phashBlock	main.h	/^    const uint256* phashBlock;$/;"	m	class:CBlockIndex
+pn	uint256.h	/^    unsigned int pn[WIDTH];$/;"	m	class:base_uint
+pnext	main.h	/^    CBlockIndex* pnext;$/;"	m	class:CBlockIndex
+pointer	serialize.h	/^    typedef typename base::pointer pointer;$/;"	t	struct:secure_allocator
+pprev	main.h	/^    CBlockIndex* pprev;$/;"	m	class:CBlockIndex
+pstr	serialize.h	/^    std::string* pstr;$/;"	m	class:CFixedFieldString
+pszFile	util.h	/^    const char* pszFile;$/;"	m	class:CCriticalSection
+pszSubVer	serialize.h	/^static const char* pszSubVer = "";$/;"	v
+pthread_t	util.h	/^typedef HANDLE pthread_t;$/;"	t
+rdbuf	serialize.h	/^    CDataStream* rdbuf()         { return this; }$/;"	f	class:CDataStream
+read	serialize.h	/^    CAutoFile& read(char* pch, int nSize)$/;"	f	class:CAutoFile
+read	serialize.h	/^    CDataStream& read(char* pch, int nSize)$/;"	f	class:CDataStream
+rebind	serialize.h	/^    template<typename _Other> struct rebind$/;"	s	struct:secure_allocator
+reference	serialize.h	/^    typedef typename base::reference reference;$/;"	t	struct:secure_allocator
+reference	serialize.h	/^    typedef vector_type::reference        reference;$/;"	t	class:CDataStream
+release	serialize.h	/^    FILE* release()             { FILE* ret = file; file = NULL; return ret; }$/;"	f	class:CAutoFile
+reserve	serialize.h	/^    void reserve(size_type n)                        { vch.reserve(n + nReadPos); }$/;"	f	class:CDataStream
+resize	serialize.h	/^    void resize(size_type n, value_type c=0)         { vch.resize(n + nReadPos, c); }$/;"	f	class:CDataStream
+reverse_iterator	serialize.h	/^    typedef vector_type::reverse_iterator reverse_iterator;$/;"	t	class:CDataStream
+roundint	util.h	/^inline int roundint(double d)$/;"	f
+roundint64	util.h	/^inline int64 roundint64(double d)$/;"	f
+secure_allocator	serialize.h	/^    secure_allocator() throw() {}$/;"	f	struct:secure_allocator
+secure_allocator	serialize.h	/^    secure_allocator(const secure_allocator& a) throw() : base(a) {}$/;"	f	struct:secure_allocator
+secure_allocator	serialize.h	/^    secure_allocator(const secure_allocator<U>& a) throw() : base(a) {}$/;"	f	struct:secure_allocator
+secure_allocator	serialize.h	/^struct secure_allocator : public std::allocator<T>$/;"	s
+ser_streamplaceholder	serialize.h	/^struct ser_streamplaceholder$/;"	s
+setint64	bignum.h	/^    void setint64(int64 n)$/;"	f	class:CBigNum
+setstate	serialize.h	/^    void setstate(short bits, const char* psz)$/;"	f	class:CAutoFile
+setstate	serialize.h	/^    void setstate(short bits, const char* psz)$/;"	f	class:CDataStream
+setuint256	bignum.h	/^    void setuint256(uint256 n)$/;"	f	class:CBigNum
+setuint64	bignum.h	/^    void setuint64(uint64 n)$/;"	f	class:CBigNum
+setulong	bignum.h	/^    void setulong(unsigned long n)$/;"	f	class:CBigNum
+setvch	bignum.h	/^    void setvch(const std::vector<unsigned char>& vch)$/;"	f	class:CBigNum
+size	serialize.h	/^    size_type size() const                           { return vch.size() - nReadPos; }$/;"	f	class:CDataStream
+size	uint256.h	/^    unsigned int size()$/;"	f	class:base_uint
+size_type	serialize.h	/^    typedef typename base::size_type size_type;$/;"	t	struct:secure_allocator
+size_type	serialize.h	/^    typedef vector_type::size_type        size_type;$/;"	t	class:CDataStream
+skipspaces	util.h	/^void skipspaces(T& it)$/;"	f
+snprintf	util.h	50;"	d
+snprintf	util.h	52;"	d
+socklen_t	util.h	/^typedef int socklen_t;$/;"	t
+state	serialize.h	/^    short state;$/;"	m	class:CAutoFile
+state	serialize.h	/^    short state;$/;"	m	class:CDataStream
+str	serialize.h	/^    std::string str() const$/;"	f	class:CDataStream
+strlwr	util.h	119;"	d
+uint160	uint256.h	/^    explicit uint160(const std::string& str)$/;"	f	class:uint160
+uint160	uint256.h	/^    explicit uint160(const std::vector<unsigned char>& vch)$/;"	f	class:uint160
+uint160	uint256.h	/^    uint160()$/;"	f	class:uint160
+uint160	uint256.h	/^    uint160(const basetype& b)$/;"	f	class:uint160
+uint160	uint256.h	/^    uint160(uint64 b)$/;"	f	class:uint160
+uint160	uint256.h	/^class uint160 : public base_uint160$/;"	c
+uint256	uint256.h	/^    explicit uint256(const std::string& str)$/;"	f	class:uint256
+uint256	uint256.h	/^    explicit uint256(const std::vector<unsigned char>& vch)$/;"	f	class:uint256
+uint256	uint256.h	/^    uint256()$/;"	f	class:uint256
+uint256	uint256.h	/^    uint256(const basetype& b)$/;"	f	class:uint256
+uint256	uint256.h	/^    uint256(uint64 b)$/;"	f	class:uint256
+uint256	uint256.h	/^class uint256 : public base_uint256$/;"	c
+uint64	serialize.h	/^typedef unsigned __int64  uint64;$/;"	t
+uint64	serialize.h	/^typedef unsigned long long  uint64;$/;"	t
+uint64	uint256.h	/^typedef unsigned __int64  uint64;$/;"	t
+uint64	uint256.h	/^typedef unsigned long long  uint64;$/;"	t
+uint64	util.h	/^typedef unsigned __int64  uint64;$/;"	t
+uint64	util.h	/^typedef unsigned long long  uint64;$/;"	t
+unlink	util.h	103;"	d
+vMerkleTree	main.h	/^    mutable std::vector<uint256> vMerkleTree;$/;"	m	class:CBlock
+value_type	serialize.h	/^    typedef typename base::value_type value_type;$/;"	t	struct:secure_allocator
+value_type	serialize.h	/^    typedef vector_type::value_type       value_type;$/;"	t	class:CDataStream
+vch	serialize.h	/^    vector_type vch;$/;"	m	class:CDataStream
+vector_type	serialize.h	/^    typedef std::vector<char, secure_allocator<char> > vector_type;$/;"	t	class:CDataStream
+vtx	main.h	/^    std::vector<CTransaction> vtx;$/;"	m	class:CBlock
+write	serialize.h	/^    CAutoFile& write(const char* pch, int nSize)$/;"	f	class:CAutoFile
+write	serialize.h	/^    CDataStream& write(const char* pch, int nSize)$/;"	f	class:CDataStream
+~CAutoBN_CTX	bignum.h	/^    ~CAutoBN_CTX()$/;"	f	class:CAutoBN_CTX
+~CAutoFile	serialize.h	/^    ~CAutoFile()$/;"	f	class:CAutoFile
+~CBigNum	bignum.h	/^    ~CBigNum()$/;"	f	class:CBigNum
+~CCriticalBlock	util.h	/^    ~CCriticalBlock() { pcs->Leave(); }$/;"	f	class:CCriticalBlock
+~CCriticalSection	util.h	/^    ~CCriticalSection() { DeleteCriticalSection(&cs); }$/;"	f	class:CCriticalSection
+~CTryCriticalBlock	util.h	/^    ~CTryCriticalBlock() { if (pcs) pcs->Leave(); }$/;"	f	class:CTryCriticalBlock
+~secure_allocator	serialize.h	/^    ~secure_allocator() throw() {}$/;"	f	struct:secure_allocator
