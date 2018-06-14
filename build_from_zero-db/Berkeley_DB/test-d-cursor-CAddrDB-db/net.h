@@ -112,6 +112,37 @@ public:
         #endif
     }
 
+    unsigned char GetByte(int n) const
+    {
+        return ((unsigned char*)&ip)[3-n];
+    }
+
+
+    std::string ToStringIPPort() const
+    {
+        return strprintf("%u.%u.%u.%u:%u", GetByte(3), GetByte(2), GetByte(1), GetByte(0), ntohs(port));
+    }
+
+    std::string ToStringIP() const
+    {
+        return strprintf("%u.%u.%u.%u", GetByte(3), GetByte(2), GetByte(1), GetByte(0));
+    }
+
+    std::string ToStringPort() const
+    {
+        return strprintf("%u", ntohs(port));
+    }
+
+    std::string ToString() const
+    {
+        return strprintf("%u.%u.%u.%u:%u", GetByte(3), GetByte(2), GetByte(1), GetByte(0), ntohs(port));
+    }
+
+    void print() const
+    {
+         std::cout<<"CAddress="<<ToString()<<std::endl ;
+    }
+
 };
 
 

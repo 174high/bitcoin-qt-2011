@@ -90,12 +90,12 @@ int main (int argc, char *argv[])
 
 	Dbc* cursor;
 
+        pdb->cursor(NULL,&cursor,0);
+
+        cout<<"open cursor"<<endl;
+
         while(1)
         {
-
-	pdb->cursor(NULL,&cursor,0);
-
-	cout<<"open cursor"<<endl;
 
 	std::string strType ;
 	// Read next record
@@ -135,9 +135,17 @@ int main (int argc, char *argv[])
                 CAddress addr;
                 ssValue >> addr;
                 mapAddresses.insert(make_pair(addr.GetKey(), addr));
+                std::cout<<"key size="<<addr.GetKey().size()<<std::endl ; 
+                addr.print(); 
+              //  std::vector<unsigned char>::iterator it;
+              //  for(it=addr.GetKey().begin();it!=addr.GetKey().end();it++)
+              //      std::cout<<static_cast<unsigned>(*it);
+              //  std::cout<<""<<std::endl;
         }
 
 
+            if(ret!=0)
+                break;
         }
 
 	if (cursor != NULL)
