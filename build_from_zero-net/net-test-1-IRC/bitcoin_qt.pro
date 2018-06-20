@@ -4,13 +4,16 @@ CONFIG += qt
 unix:LIBS += -ldb_cxx  -lboost_filesystem -lboost_system
 
 SOURCES += main.cpp \
+           net.cpp \ 
+           util.cpp        
 #           bitcoingui.cpp \
 #           overviewpage.cpp      
 
 HEADERS += serialize.h \
            net.h  \
            util.h \
-           uint256.h 
+           uint256.h \
+   
 #bitcoingui.h \
 #          overviewpage.h
 

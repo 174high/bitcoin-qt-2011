@@ -6,13 +6,21 @@
 
 #include <arpa/inet.h>　
 
-bool fTestNet = false;
+#include <vector>
+
+class CAddress;
+
+
 
 inline unsigned short GetDefaultPort() { return fTestNet ? 18333 : 8333; } 
 enum
 {
     NODE_NETWORK = (1 << 0),
 };
+
+bool Lookup(const char *pszName, std::vector<CAddress>& vaddr, int nServices, int nMaxSolutions, bool fAllowLookup = false, int portDefault = 0, bool fAllowPort = false);
+bool Lookup(const char *pszName, CAddress& addr, int nServices, bool fAllowLookup = false, int portDefault = 0, bool fAllowPort = false);
+
 
 static const unsigned char pchIPv4[12] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xff, 0xff };
 
@@ -54,25 +62,25 @@ public:
     explicit CAddress(const char* pszIn, int portIn, bool fNameLookup = false, uint64 nServicesIn=NODE_NETWORK)
     {
         Init();
-//        Lookup(pszIn, *this, nServicesIn, fNameLookup, portIn);
+        Lookup(pszIn, *this, nServicesIn, fNameLookup, portIn);
     }
 
     explicit CAddress(const char* pszIn, bool fNameLookup = false, uint64 nServicesIn=NODE_NETWORK)
     {
         Init();
-//        Lookup(pszIn, *this, nServicesIn, fNameLookup, 0, true);
+        Lookup(pszIn, *this, nServicesIn, fNameLookup, 0, true);
     }
 
     explicit CAddress(std::string strIn, int portIn, bool fNameLookup = false, uint64 nServicesIn=NODE_NETWORK)
     {
         Init();
-//        Lookup(strIn.c_str(), *this, nServicesIn, fNameLookup, portIn);
+        Lookup(strIn.c_str(), *this, nServicesIn, fNameLookup, portIn);
     }
 
     explicit CAddress(std::string strIn, bool fNameLookup = false, uint64 nServicesIn=NODE_NETWORK)
     {
         Init();
-//        Lookup(strIn.c_str(), *this, nServicesIn, fNameLookup, 0, true);
+        Lookup(strIn.c_str(), *this, nServicesIn, fNameLookup, 0, true);
     }
 
     void Init()
@@ -111,6 +119,22 @@ public:
         return std::vector<unsigned char>(ss.begin(), ss.end());
         #endif
     }
+
+   bool IsValid() const
+    {
+        // Clean up 3-byte shifted addresses caused by garbage in size field
+        // of addr messages from versions before 0.2.9 checksum.
+        // Two consecutive addr messages look like this:
+        // header20 vectorlen3 addr26 addr26 addr26 header20 vectorlen3 addr26 addr26 addr26...
+        // so if the first length field is garbled, it reads the second batch
+        // of addr misaligned by 3 bytes.
+        if (memcmp(pchReserved, pchIPv4+3, sizeof(pchIPv4)-3) == 0)
+            return false;
+
+        return (ip != 0 && ip != INADDR_NONE && port != htons(USHRT_MAX));
+    }
+
+
 
     unsigned char GetByte(int n) const
     {
