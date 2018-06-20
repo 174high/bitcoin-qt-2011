@@ -12,8 +12,9 @@
 #include "bignum.h"
 #include "uint256.h"
 #include "serialize.h"
+#include <boost/foreach.hpp>
 #include "main.h"
-
+#include "util.h"
 
 using std::cout;
 using std::endl;
@@ -27,9 +28,9 @@ using std::runtime_error;
 
 using namespace boost;
 
-map<uint256, CBlockIndex*> mapBlockIndex1; 
+map<uint256, CBlockIndex*> mapBlockIndex; 
 
-DbEnv dbenv1(0);
+DbEnv dbenv(0);
 static bool fDbEnvInit = false;
 Db* pdb;
 
@@ -41,15 +42,15 @@ CBlockIndex static * InsertBlockIndex(uint256 hash)
         return NULL;
 
     // Return existing
-    map<uint256, CBlockIndex*>::iterator mi = mapBlockIndex1.find(hash);
-    if (mi != mapBlockIndex1.end())
+    map<uint256, CBlockIndex*>::iterator mi = mapBlockIndex.find(hash);
+    if (mi != mapBlockIndex.end())
         return (*mi).second;
 
     // Create new
     CBlockIndex* pindexNew = new CBlockIndex();
     if (!pindexNew)
         throw runtime_error("LoadBlockIndex() : new CBlockIndex failed");
-    mi = mapBlockIndex1.insert(make_pair(hash, pindexNew)).first;
+    mi = mapBlockIndex.insert(make_pair(hash, pindexNew)).first;
     pindexNew->phashBlock = &((*mi).first);
 
     return pindexNew;
@@ -73,18 +74,18 @@ int main(int argc, char *argv[])
 	std::string strErrorFile = strDataDir + "/db.log";
 
 
-	printf("dbenv1.open strLogDir=%s strErrorFile=%s\n", strLogDir.c_str(), strErrorFile.c_str());
+	printf("dbenv.open strLogDir=%s strErrorFile=%s\n", strLogDir.c_str(), strErrorFile.c_str());
 
 	//    dbenv.set_lg_dir(strLogDir.c_str());
-	dbenv1.set_lg_max(10000000);
-	dbenv1.set_lk_max_locks(10000);
-	dbenv1.set_lk_max_objects(10000);
-	dbenv1.set_errfile(fopen(strErrorFile.c_str(), "a")); /// debug
-	dbenv1.set_flags(DB_AUTO_COMMIT, 1);
+	dbenv.set_lg_max(10000000);
+	dbenv.set_lk_max_locks(10000);
+	dbenv.set_lk_max_objects(10000);
+	dbenv.set_errfile(fopen(strErrorFile.c_str(), "a")); /// debug
+	dbenv.set_flags(DB_AUTO_COMMIT, 1);
 
 	qDebug()<<__FUNCTION__<<"open:1"<<strDataDir.c_str() ;
 
-	ret = dbenv1.open(strDataDir.c_str(),
+	ret = dbenv.open(strDataDir.c_str(),
 		     DB_CREATE     |
 		     DB_INIT_LOCK  |
 		     DB_INIT_LOG   |
@@ -103,7 +104,7 @@ int main(int argc, char *argv[])
 
 	std::string pszFile="blkindex.dat"; 
 
-	pdb = new Db(&dbenv1, 0);
+	pdb = new Db(&dbenv, 0);
 
 	qDebug()<<__FUNCTION__<<"open:2 " <<pszFile.c_str() ;
 
@@ -212,15 +213,15 @@ int main(int argc, char *argv[])
         }
 
        std::cout<<"#############################################################"<<std::endl; 
-/*
-       map<uint256, CBlockIndex*>::iterator mi=mapBlockIndex1.begin();
+
+       map<uint256, CBlockIndex*>::iterator mi=mapBlockIndex.begin();
         
 
-       std::cout<<"test1 size="<<mapBlockIndex1.size()<<std::endl; 
-  */ 
-    //   seq=0; 
-/*
-       while(mi!=mapBlockIndex1.end())
+       std::cout<<"test1 size="<<mapBlockIndex.size()<<std::endl; 
+   
+       seq=0; 
+
+       while(mi!=mapBlockIndex.end())
        {
            std::cout<<"seq="<<++seq<<std::endl;
             // Construct block index object
@@ -240,7 +241,7 @@ int main(int argc, char *argv[])
 
            mi++; 
        }
-*/
+
        std::cout<<"test2"<<std::endl; 
 
 	if (cursor != NULL)
@@ -249,11 +250,11 @@ int main(int argc, char *argv[])
 	    cursor->close();
 
 	}
-/*
-   // Calculate bnChainWork
+
+    // Calculate bnChainWork
     vector<pair<int, CBlockIndex*> > vSortedByHeight;
-    vSortedByHeight.reserve(mapBlockIndex1.size());
-    BOOST_FOREACH(const PAIRTYPE(uint256, CBlockIndex*)& item, mapBlockIndex1)
+    vSortedByHeight.reserve(mapBlockIndex.size());
+    BOOST_FOREACH(const PAIRTYPE(uint256, CBlockIndex*)& item, mapBlockIndex)
     {
         CBlockIndex* pindex = item.second;
         vSortedByHeight.push_back(make_pair(pindex->nHeight, pindex));
@@ -282,7 +283,7 @@ int main(int argc, char *argv[])
 	    std::cout<<"nNonce   :"<<pindex->nNonce<<std::endl;
             std::cout<<""<<std::endl; 
     }
-
+/*
     BOOST_FOREACH(const PAIRTYPE(int, CBlockIndex*)& item, vSortedByHeight)
     {
         CBlockIndex* pindex = item.second;
@@ -301,12 +302,7 @@ int main(int argc, char *argv[])
         }
 
     }
-
-
 */
-
-
-
 
     return ret; 
 
