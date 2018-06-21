@@ -4,7 +4,7 @@
 using std::string ;
 
 bool fTestNet = false;
-
+bool fShutdown = false;
 
 string strprintf(const std::string &format, ...)
 {

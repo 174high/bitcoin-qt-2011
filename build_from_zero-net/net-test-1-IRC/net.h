@@ -9,7 +9,7 @@
 #include <vector>
 
 class CAddress;
-
+extern int nConnectTimeout;
 
 
 inline unsigned short GetDefaultPort() { return fTestNet ? 18333 : 8333; } 
@@ -18,6 +18,8 @@ enum
     NODE_NETWORK = (1 << 0),
 };
 
+
+bool ConnectSocket(const CAddress& addrConnect, SOCKET& hSocketRet, int nTimeout=nConnectTimeout);
 bool Lookup(const char *pszName, std::vector<CAddress>& vaddr, int nServices, int nMaxSolutions, bool fAllowLookup = false, int portDefault = 0, bool fAllowPort = false);
 bool Lookup(const char *pszName, CAddress& addr, int nServices, bool fAllowLookup = false, int portDefault = 0, bool fAllowPort = false);
 
@@ -40,11 +42,14 @@ public:
 
     CAddress()
     {
+        std::cout<<"CAddress :0 "<<std::endl; 
         Init();
     }
 
     CAddress(unsigned int ipIn, unsigned short portIn=0, uint64 nServicesIn=NODE_NETWORK)
     {
+        std::cout<<"CAddress :1 "<<"ipIn="<<ipIn<<"  portIn="<<portIn<<std::endl ;
+
         Init();
         ip = ipIn;
         port = htons(portIn == 0 ? GetDefaultPort() : portIn);
@@ -53,6 +58,7 @@ public:
 
     explicit CAddress(const struct sockaddr_in& sockaddr, uint64 nServicesIn=NODE_NETWORK)
     {
+        std::cout<<"CAddress :2"<<std::endl ;
         Init();
         ip = sockaddr.sin_addr.s_addr;
         port = sockaddr.sin_port;
@@ -61,24 +67,28 @@ public:
 
     explicit CAddress(const char* pszIn, int portIn, bool fNameLookup = false, uint64 nServicesIn=NODE_NETWORK)
     {
+        std::cout<<"CAddress :3 "<<" ip="<< pszIn<<" port= "<<portIn<<std::endl ;
         Init();
         Lookup(pszIn, *this, nServicesIn, fNameLookup, portIn);
     }
 
     explicit CAddress(const char* pszIn, bool fNameLookup = false, uint64 nServicesIn=NODE_NETWORK)
     {
+        std::cout<<"CAddress :4"<<std::endl ;
         Init();
         Lookup(pszIn, *this, nServicesIn, fNameLookup, 0, true);
     }
 
     explicit CAddress(std::string strIn, int portIn, bool fNameLookup = false, uint64 nServicesIn=NODE_NETWORK)
     {
+        std::cout<<"CAddress :5"<<std::endl ;
         Init();
         Lookup(strIn.c_str(), *this, nServicesIn, fNameLookup, portIn);
     }
 
     explicit CAddress(std::string strIn, bool fNameLookup = false, uint64 nServicesIn=NODE_NETWORK)
     {
+        std::cout<<"CAddress :6"<<std::endl ;
         Init();
         Lookup(strIn.c_str(), *this, nServicesIn, fNameLookup, 0, true);
     }
@@ -119,6 +129,48 @@ public:
         return std::vector<unsigned char>(ss.begin(), ss.end());
         #endif
     }
+
+    struct sockaddr_in GetSockAddr() const
+    {
+        struct sockaddr_in sockaddr;
+        memset(&sockaddr, 0, sizeof(sockaddr));
+        sockaddr.sin_family = AF_INET;
+        sockaddr.sin_addr.s_addr = ip;
+        sockaddr.sin_port = port;
+        return sockaddr;
+    }
+
+
+    bool IsIPv4() const
+    {
+        return (memcmp(pchReserved, pchIPv4, sizeof(pchIPv4)) == 0);
+    }
+
+    bool IsRFC1918() const
+    {
+      return IsIPv4() && (GetByte(3) == 10 ||
+        (GetByte(3) == 192 && GetByte(2) == 168) ||
+        (GetByte(3) == 172 &&
+          (GetByte(2) >= 16 && GetByte(2) <= 31)));
+    }
+
+    bool IsRFC3927() const
+    {
+      return IsIPv4() && (GetByte(3) == 169 && GetByte(2) == 254);
+    }
+
+    bool IsLocal() const
+    {
+      return IsIPv4() && (GetByte(3) == 127 ||
+          GetByte(3) == 0);
+    }
+
+    bool IsRoutable() const
+    {
+        return IsValid() &&
+            !(IsRFC1918() || IsRFC3927() || IsLocal());
+    }
+
 
    bool IsValid() const
     {

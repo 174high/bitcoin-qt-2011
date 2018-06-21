@@ -8,6 +8,152 @@ using std::vector ;
 #include "strlcpy.h"
 #include <sys/socket.h>  
 #include <netdb.h>
+#include <fcntl.h> 
+
+
+// Settings
+int fUseProxy = false;
+int nConnectTimeout = 5000;
+CAddress addrProxy("127.0.0.1",9050);
+
+bool ConnectSocket(const CAddress& addrConnect, SOCKET& hSocketRet, int nTimeout)
+{
+    hSocketRet = INVALID_SOCKET;
+
+    SOCKET hSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    if (hSocket == INVALID_SOCKET)
+        return false;
+#ifdef BSD
+    int set = 1;
+    setsockopt(hSocket, SOL_SOCKET, SO_NOSIGPIPE, (void*)&set, sizeof(int));
+#endif
+
+    bool fProxy = (fUseProxy && addrConnect.IsRoutable());
+    struct sockaddr_in sockaddr = (fProxy ? addrProxy.GetSockAddr() : addrConnect.GetSockAddr());
+
+#ifdef __WXMSW__
+    u_long fNonblock = 1;
+    if (ioctlsocket(hSocket, FIONBIO, &fNonblock) == SOCKET_ERROR)
+#else
+    int fFlags = fcntl(hSocket, F_GETFL, 0);
+    if (fcntl(hSocket, F_SETFL, fFlags | O_NONBLOCK) == -1)
+#endif
+    {
+        closesocket(hSocket);
+        return false;
+    }
+
+
+    if (connect(hSocket, (struct sockaddr*)&sockaddr, sizeof(sockaddr)) == SOCKET_ERROR)
+    {
+        // WSAEINVAL is here because some legacy version of winsock uses it
+        if (WSAGetLastError() == WSAEINPROGRESS || WSAGetLastError() == WSAEWOULDBLOCK || WSAGetLastError() == WSAEINVAL)
+        {
+            struct timeval timeout;
+            timeout.tv_sec  = nTimeout / 1000;
+            timeout.tv_usec = (nTimeout % 1000) * 1000;
+
+            fd_set fdset;
+            FD_ZERO(&fdset);
+            FD_SET(hSocket, &fdset);
+           int nRet = select(hSocket + 1, NULL, &fdset, NULL, &timeout);
+            if (nRet == 0)
+            {
+                printf("connection timeout\n");
+                closesocket(hSocket);
+                return false;
+            }
+            if (nRet == SOCKET_ERROR)
+            {
+                printf("select() for connection failed: %i\n",WSAGetLastError());
+                closesocket(hSocket);
+                return false;
+            }
+            socklen_t nRetSize = sizeof(nRet);
+#ifdef __WXMSW__
+            if (getsockopt(hSocket, SOL_SOCKET, SO_ERROR, (char*)(&nRet), &nRetSize) == SOCKET_ERROR)
+#else
+            if (getsockopt(hSocket, SOL_SOCKET, SO_ERROR, &nRet, &nRetSize) == SOCKET_ERROR)
+#endif
+            {
+                printf("getsockopt() for connection failed: %i\n",WSAGetLastError());
+                closesocket(hSocket);
+                return false;
+            }
+            if (nRet != 0)
+            {
+                printf("connect() failed after select(): %s\n",strerror(nRet));
+                closesocket(hSocket);
+                return false;
+            }
+        }
+#ifdef __WXMSW__
+        else if (WSAGetLastError() != WSAEISCONN)
+#else
+        else
+#endif
+        {
+            printf("connect() failed: %i\n",WSAGetLastError());
+            closesocket(hSocket);
+            return false;
+        }
+    }
+
+    /*
+    this isn't even strictly necessary
+    CNode::ConnectNode immediately turns the socket back to non-blocking
+    but we'll turn it back to blocking just in case
+    */
+#ifdef __WXMSW__
+    fNonblock = 0;
+    if (ioctlsocket(hSocket, FIONBIO, &fNonblock) == SOCKET_ERROR)
+#else
+    fFlags = fcntl(hSocket, F_GETFL, 0);
+    if (fcntl(hSocket, F_SETFL, fFlags & !O_NONBLOCK) == SOCKET_ERROR)
+#endif
+    {
+        closesocket(hSocket);
+        return false;
+    }
+
+    if (fProxy)
+    {
+        printf("proxy connecting %s\n", addrConnect.ToString().c_str());
+        char pszSocks4IP[] = "\4\1\0\0\0\0\0\0user";
+        memcpy(pszSocks4IP + 2, &addrConnect.port, 2);
+        memcpy(pszSocks4IP + 4, &addrConnect.ip, 4);
+        char* pszSocks4 = pszSocks4IP;
+        int nSize = sizeof(pszSocks4IP);
+
+        int ret = send(hSocket, pszSocks4, nSize, MSG_NOSIGNAL);
+        if (ret != nSize)
+        {
+            closesocket(hSocket);
+            return std::cout<<"Error sending to proxy"<<std::endl;
+        }
+
+        char pchRet[8];
+        if (recv(hSocket, pchRet, 8, 0) != 8)
+        {
+            closesocket(hSocket);
+            return std::cout<<"Error reading proxy response"<<std::endl ;
+        }
+        if (pchRet[1] != 0x5a)
+        {
+            closesocket(hSocket);
+            if (pchRet[1] != 0x5b)
+                printf("ERROR: Proxy returned error %d\n", pchRet[1]);
+            return false;
+        }
+        printf("proxy connected %s\n", addrConnect.ToString().c_str());
+    }
+
+    hSocketRet = hSocket;
+    return true;
+}
+
+
+
 
 bool Lookup(const char *pszName, vector<CAddress>& vaddr, int nServices, int nMaxSolutions, bool fAllowLookup, int portDefault, bool fAllowPort)
 {

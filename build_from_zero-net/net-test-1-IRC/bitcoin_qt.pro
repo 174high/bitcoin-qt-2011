@@ -1,7 +1,7 @@
 CONFIG += qt
 #QT -= 
 
-unix:LIBS += -ldb_cxx  -lboost_filesystem -lboost_system
+unix:LIBS += -ldb_cxx  -lboost_filesystem -lboost_system -lboost_thread 
 
 SOURCES += main.cpp \
            net.cpp \ 
