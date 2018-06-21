@@ -65,6 +65,9 @@ static bool Send(SOCKET hSocket, const char* pszSend)
 {
     if (strstr(pszSend, "PONG") != pszSend)
         printf("IRC SENDING: %s\n", pszSend);
+  
+    printf("###########\n");
+
     const char* psz = pszSend;
     const char* pszEnd = psz + strlen(psz);
     while (psz < pszEnd)
@@ -242,6 +245,11 @@ int main (int argc, char *argv[])
             strMyName = EncodeAddress(addrLocalHost);
         else
             strMyName = strprintf("x%u", GetRand(1000000000));
+
+  
+        std::cout<<"addrLocalHost=" ;
+        addrLocalHost.print(); 
+        std::cout<<"strMyName="<<strMyName<<std::endl  ; 
 
         Send(hSocket, strprintf("NICK %s\r", strMyName.c_str()).c_str());
         Send(hSocket, strprintf("USER %s 8 * : %s\r", strMyName.c_str(), strMyName.c_str()).c_str());
