@@ -222,4 +222,10 @@ public:
 };
 
 
+extern CAddress addrLocalHost;
+
+
+// Settings
+extern int fUseProxy;
+
 #endif 

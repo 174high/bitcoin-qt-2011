@@ -1,11 +1,28 @@
 #include "util.h"
 #include "string"
+#include <openssl/rand.h>
 
 using std::string ;
 using std::vector;
 
 bool fTestNet = false;
 bool fShutdown = false;
+
+uint64 GetRand(uint64 nMax)
+{
+    if (nMax == 0)
+        return 0;
+
+    // The range of the random source must be a multiple of the modulus
+    // to give every possible output value an equal possibility
+    uint64 nRange = (UINT64_MAX / nMax) * nMax;
+    uint64 nRand = 0;
+    do
+        RAND_bytes((unsigned char*)&nRand, sizeof(nRand));
+    while (nRand >= nRange);
+    return (nRand % nMax);
+}
+
 
 
 void ParseString(const string& str, char c, vector<string>& v)

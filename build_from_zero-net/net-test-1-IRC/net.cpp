@@ -11,6 +11,14 @@ using std::vector ;
 #include <fcntl.h> 
 
 
+//
+// Global state variables
+//
+bool fClient = false;
+//bool fAllowDNS = false;
+uint64 nLocalServices = (fClient ? 0 : NODE_NETWORK);
+CAddress addrLocalHost("0.0.0.0", 0, false, nLocalServices);
+
 // Settings
 int fUseProxy = false;
 int nConnectTimeout = 5000;

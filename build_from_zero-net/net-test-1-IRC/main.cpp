@@ -10,6 +10,11 @@
 #include "util.h"
 #include "serialize.h"
 #include "net.h"
+#include <openssl/sha.h>
+#include <openssl/ripemd.h>
+#include "base58.h"
+#include "sha.h"
+#include <stdlib.h>
 
 using std::cout;
 using std::endl;
@@ -18,6 +23,43 @@ using std::string ;
 using std::vector; 
 
 using namespace boost;
+
+#pragma pack(push, 1)
+struct ircaddr
+{
+    int ip;
+    short port;
+};
+#pragma pack(pop)
+
+
+
+string EncodeAddress(const CAddress& addr)
+{
+    struct ircaddr tmp;
+    tmp.ip    = addr.ip;
+    tmp.port  = addr.port;
+
+    vector<unsigned char> vch(UBEGIN(tmp), UEND(tmp));
+    return string("u") + EncodeBase58Check(vch);
+}
+
+bool DecodeAddress(string str, CAddress& addr)
+{
+    vector<unsigned char> vch;
+    if (!DecodeBase58Check(str.substr(1), vch))
+        return false;
+
+    struct ircaddr tmp;
+    if (vch.size() != sizeof(tmp))
+        return false;
+    memcpy(&tmp, &vch[0], sizeof(tmp));
+
+    addr = CAddress(tmp.ip, ntohs(tmp.port), NODE_NETWORK);
+    return true;
+}
+
+
 
 static bool Send(SOCKET hSocket, const char* pszSend)
 {
@@ -121,7 +163,7 @@ int RecvUntil(SOCKET hSocket, const char* psz1, const char* psz2=NULL, const cha
         strLine.reserve(10000);
         if (!RecvLineIRC(hSocket, strLine))
             return 0;
-        std::cout<<"IRC="<<strLine;
+        std::cout<<"IRC="<<strLine<<std::endl ;
         if (psz1 && strLine.find(psz1) != -1)
             return 1;
         if (psz2 && strLine.find(psz2) != -1)
@@ -154,6 +196,7 @@ int main (int argc, char *argv[])
 {
     int nErrorWait = 10;
     int nRetryWait = 10;
+    bool fNameInUse = false;
 
     while (!fShutdown)
     {
@@ -194,8 +237,41 @@ int main (int argc, char *argv[])
                 return 0;
     }
 
+       string strMyName;
+        if (addrLocalHost.IsRoutable() && !fUseProxy && !fNameInUse)
+            strMyName = EncodeAddress(addrLocalHost);
+        else
+            strMyName = strprintf("x%u", GetRand(1000000000));
+
+        Send(hSocket, strprintf("NICK %s\r", strMyName.c_str()).c_str());
+        Send(hSocket, strprintf("USER %s 8 * : %s\r", strMyName.c_str(), strMyName.c_str()).c_str());
+
+        int nRet = RecvUntil(hSocket, " 004 ", " 433 ");
+        if (nRet != 1)
+        {
+            closesocket(hSocket);
+            hSocket = INVALID_SOCKET;
+            if (nRet == 2)
+            {
+                printf("IRC name already in use\n");
+                fNameInUse = true;
+                Wait(10);
+                continue;
+            }
+            nErrorWait = nErrorWait * 11 / 10;
+            if (Wait(nErrorWait += 60))
+                continue;
+            else
+                return 0;
+        }
+        Sleep(500);
 
 
+
+
+
+
+    fShutdown=true;
 
     }
 
