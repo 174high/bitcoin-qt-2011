@@ -235,3 +235,55 @@ bool Lookup(const char *pszName, CAddress& addr, int nServices, bool fAllowLooku
     return fRet;
 }
 
+
+bool AddAddress(CAddress addr, int64 nTimePenalty, CAddrDB *pAddrDB)
+{                       
+    if (!addr.IsRoutable())
+        return false;
+    if (addr.ip == addrLocalHost.ip)
+        return false;
+    addr.nTime = max((int64)0, (int64)addr.nTime - nTimePenalty);
+    CRITICAL_BLOCK(cs_mapAddresses)
+    {
+        map<vector<unsigned char>, CAddress>::iterator it = mapAddresses.find(addr.GetKey());
+        if (it == mapAddresses.end())
+        {
+            // New address
+            printf("AddAddress(%s)\n", addr.ToString().c_str());
+            mapAddresses.insert(make_pair(addr.GetKey(), addr));
+            if (pAddrDB)
+                pAddrDB->WriteAddress(addr);
+            else
+                CAddrDB().WriteAddress(addr);
+            return true;
+        }
+        else
+        {
+            bool fUpdated = false;
+            CAddress& addrFound = (*it).second;
+            if ((addrFound.nServices | addr.nServices) != addrFound.nServices)
+            {
+                // Services have been added
+                addrFound.nServices |= addr.nServices;
+                fUpdated = true;
+            }
+            bool fCurrentlyOnline = (GetAdjustedTime() - addr.nTime < 24 * 60 * 60);
+            int64 nUpdateInterval = (fCurrentlyOnline ? 60 * 60 : 24 * 60 * 60);
+            if (addrFound.nTime < addr.nTime - nUpdateInterval)
+            {
+                // Periodically update most recently seen time
+                addrFound.nTime = addr.nTime;
+                fUpdated = true;
+            }
+            if (fUpdated)
+            {
+                if (pAddrDB)
+                    pAddrDB->WriteAddress(addrFound);
+                else
+                    CAddrDB().WriteAddress(addrFound);
+            }
+        }
+    }
+    return false;
+}
+

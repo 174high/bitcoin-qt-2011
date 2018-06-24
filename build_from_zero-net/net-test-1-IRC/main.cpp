@@ -15,6 +15,7 @@
 #include "base58.h"
 #include "sha.h"
 #include <stdlib.h>
+#include "strlcpy.h"
 
 using std::cout;
 using std::endl;
@@ -24,6 +25,7 @@ using std::vector;
 
 using namespace boost;
 
+int nGotIRCAddresses = 0;
 bool fGotExternalIP = false;
 
 #pragma pack(push, 1)
@@ -348,6 +350,72 @@ int main (int argc, char *argv[])
             }
         }
 
+       if (fTestNet) {
+            Send(hSocket, "JOIN #bitcoinTEST\r");
+            Send(hSocket, "WHO #bitcoinTEST\r");
+        } else {
+            // randomly join #bitcoin00-#bitcoin99
+            int channel_number = GetRandInt(100);
+            Send(hSocket, strprintf("JOIN #bitcoin%02d\r", channel_number).c_str());
+            Send(hSocket, strprintf("WHO #bitcoin%02d\r", channel_number).c_str());
+        }
+
+        int64 nStart = GetTime();
+        string strLine;
+        strLine.reserve(10000);
+        #ifdef DEBUG_NET && DEBUG_IRC
+        std::cout<<__FUNCTION__<<" :2"<<std::endl ;
+        #endif
+        while (!fShutdown && RecvLineIRC(hSocket, strLine))
+        {
+            #ifdef DEBUG_NET && DEBUG_IRC
+            std::cout<<__FUNCTION__<<" :3"<<std::endl ;
+            #endif
+            if (strLine.empty() || strLine.size() > 900 || strLine[0] != ':')
+                continue;
+
+            vector<string> vWords;
+            ParseString(strLine, ' ', vWords);
+            if (vWords.size() < 2)
+                continue;
+
+            char pszName[10000];
+            pszName[0] = '\0';
+
+            if (vWords[1] == "352" && vWords.size() >= 8)
+            {
+                // index 7 is limited to 16 characters
+                // could get full length name at index 10, but would be different from join messages
+                strlcpy(pszName, vWords[7].c_str(), sizeof(pszName));
+                printf("IRC got who\n");
+            }
+
+            if (vWords[1] == "JOIN" && vWords[0].size() > 1)
+            {
+                // :username!username@50000007.F000000B.90000002.IP JOIN :#channelname
+                strlcpy(pszName, vWords[0].c_str() + 1, sizeof(pszName));
+                if (strchr(pszName, '!'))
+                    *strchr(pszName, '!') = '\0';
+                printf("IRC got join\n");
+            }
+
+            if (pszName[0] == 'u')
+            {
+                CAddress addr;
+                if (DecodeAddress(pszName, addr))
+                {
+                    addr.nTime = GetAdjustedTime();
+                    if (AddAddress(addr, 51 * 60))
+                        printf("IRC got new address: %s\n", addr.ToString().c_str());
+                    nGotIRCAddresses++;
+                }
+                else
+                {
+                    printf("IRC decode failed\n");
+                }
+            }
+        }
+        closesocket(hSocket);
 
 
 
