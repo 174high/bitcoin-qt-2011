@@ -1,15 +1,16 @@
 #include "util.h"
 #include "uint256.h"
 #include "net.h"
+#include "db.h"
 #include <vector>
 #include <arpa/inet.h>
-using std::vector ; 
 #include <string.h>   
 #include "strlcpy.h"
 #include <sys/socket.h>  
 #include <netdb.h>
 #include <fcntl.h> 
 
+using namespace std;
 
 //
 // Global state variables
@@ -18,11 +19,14 @@ bool fClient = false;
 //bool fAllowDNS = false;
 uint64 nLocalServices = (fClient ? 0 : NODE_NETWORK);
 CAddress addrLocalHost("0.0.0.0", 0, false, nLocalServices);
+CCriticalSection cs_mapAddresses;
 
 // Settings
 int fUseProxy = false;
 int nConnectTimeout = 5000;
 CAddress addrProxy("127.0.0.1",9050);
+
+map<vector<unsigned char>, CAddress> mapAddresses;
 
 bool ConnectSocket(const CAddress& addrConnect, SOCKET& hSocketRet, int nTimeout)
 {

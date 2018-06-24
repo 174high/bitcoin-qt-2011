@@ -1,6 +1,10 @@
 #include "util.h"
+#include "strlcpy.h"
 #include "string"
 #include <openssl/rand.h>
+#include <boost/filesystem.hpp>
+#include <boost/filesystem/fstream.hpp>
+
 
 using std::string ;
 using std::vector;
@@ -8,19 +12,69 @@ using std::vector;
 bool fTestNet = false;
 bool fShutdown = false;
 
-uint64 GetRand(uint64 nMax)
-{
-    if (nMax == 0)
-        return 0;
+char pszSetDataDir[MAX_PATH] = "";
 
-    // The range of the random source must be a multiple of the modulus
-    // to give every possible output value an equal possibility
-    uint64 nRange = (UINT64_MAX / nMax) * nMax;
-    uint64 nRand = 0;
-    do
-        RAND_bytes((unsigned char*)&nRand, sizeof(nRand));
-    while (nRand >= nRange);
-    return (nRand % nMax);
+string GetDefaultDataDir()
+{
+    // Windows: C:\Documents and Settings\username\Application Data\Bitcoin
+    // Mac: ~/Library/Application Support/Bitcoin
+    // Unix: ~/.bitcoin
+#ifdef __WXMSW__
+    // Windows
+    return MyGetSpecialFolderPath(CSIDL_APPDATA, true) + "\\Bitcoin";
+#else
+    char* pszHome = getenv("HOME");
+    if (pszHome == NULL || strlen(pszHome) == 0)
+        pszHome = (char*)"/";
+    string strHome = pszHome;
+    if (strHome[strHome.size()-1] != '/')
+        strHome += '/';
+#ifdef __WXMAC_OSX__
+    // Mac
+    strHome += "Library/Application Support/";
+    filesystem::create_directory(strHome.c_str());
+    return strHome + "Bitcoin";
+#else
+    // Unix
+    return strHome + ".bitcoin";
+#endif
+#endif
+}
+
+
+void GetDataDir(char* pszDir)
+{
+    // pszDir must be at least MAX_PATH length.
+    int nVariation;
+    if (pszSetDataDir[0] != 0)
+    {
+        strlcpy(pszDir, pszSetDataDir, MAX_PATH);
+        nVariation = 0;
+    }
+    else
+    {
+        // This can be called during exceptions by printf, so we cache the
+        // value so we don't have to do memory allocations after that.
+        static char pszCachedDir[MAX_PATH];
+        if (pszCachedDir[0] == 0)
+            strlcpy(pszCachedDir, GetDefaultDataDir().c_str(), sizeof(pszCachedDir));
+        strlcpy(pszDir, pszCachedDir, MAX_PATH);
+        nVariation = 1;
+    }
+    if (fTestNet)
+    {
+        char* p = pszDir + strlen(pszDir);
+        if (p > pszDir && p[-1] != '/' && p[-1] != '\\')
+            *p++ = '/';
+        strcpy(p, "testnet");
+        nVariation += 2;
+    }
+    static bool pfMkdir[4];
+    if (!pfMkdir[nVariation])
+    {
+        pfMkdir[nVariation] = true;
+        boost::filesystem::create_directory(pszDir);
+    }
 }
 
 
@@ -70,5 +124,53 @@ string strprintf(const std::string &format, ...)
     if (p != buffer)
         delete[] p;
     return str;
+}
+
+
+uint64 GetRand(uint64 nMax)
+{
+    if (nMax == 0)
+        return 0;
+
+    // The range of the random source must be a multiple of the modulus
+    // to give every possible output value an equal possibility
+    uint64 nRange = (UINT64_MAX / nMax) * nMax;
+    uint64 nRand = 0;
+    do
+        RAND_bytes((unsigned char*)&nRand, sizeof(nRand));
+    while (nRand >= nRange);
+    return (nRand % nMax);
+}
+
+int GetRandInt(int nMax)
+{
+    return GetRand(nMax);
+}
+
+
+//
+// "Never go to sea with two chronometers; take one or three."
+// Our three time sources are:
+//  - System clock
+//  - Median of other nodes's clocks
+//  - The user (asking the user to fix the system clock if the first two disagree)
+//
+int64 GetTime()
+{
+    return time(NULL);
+}
+
+static int64 nTimeOffset = 0;
+
+int64 GetAdjustedTime()
+{
+    return GetTime() + nTimeOffset;
+}
+
+string GetDataDir()
+{
+    char pszDir[MAX_PATH];
+    GetDataDir(pszDir);
+    return pszDir;
 }
 

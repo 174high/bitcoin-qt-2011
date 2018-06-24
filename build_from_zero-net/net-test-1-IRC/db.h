@@ -103,6 +103,36 @@ protected:
         return 0;
     }
 
+    template<typename K, typename T>
+    bool Write(const K& key, const T& value, bool fOverwrite=true)
+    {
+        if (!pdb)
+            return false;
+        if (fReadOnly)
+            assert(!"Write called on database in read-only mode");
+
+        // Key
+        CDataStream ssKey(SER_DISK);
+        ssKey.reserve(1000);
+        ssKey << key;
+        Dbt datKey(&ssKey[0], ssKey.size());
+
+        // Value
+        CDataStream ssValue(SER_DISK);
+        ssValue.reserve(10000);
+        ssValue << value;
+        Dbt datValue(&ssValue[0], ssValue.size());
+
+        // Write
+        int ret = pdb->put(GetTxn(), &datKey, &datValue, (fOverwrite ? 0 : DB_NOOVERWRITE));
+
+        // Clear memory in case it was a private key
+        memset(datKey.get_data(), 0, datKey.get_size());
+        memset(datValue.get_data(), 0, datValue.get_size());
+        return (ret == 0);
+    }
+
+
     DbTxn* GetTxn()
     {
         if (!vTxn.empty())
@@ -128,8 +158,20 @@ public:
     bool LoadBlockIndex();
 };
 
+class CAddrDB : public CDB
+{
+public:
+    CAddrDB(const char* pszMode="r+") : CDB("addr.dat", pszMode) { }
+private:
+    CAddrDB(const CAddrDB&);
+ //   void operator=(const CAddrDB&);
+public:
+    bool WriteAddress(const CAddress& addr);
+//    bool EraseAddress(const CAddress& addr);
+    bool LoadAddresses();
+};
 
-
+bool LoadAddresses();
 
 
 

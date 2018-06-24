@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string.h>
 #include <db_cxx.h>
-#include <db.h>
+//#include <db.h>
 #include <QtDebug>
 #include <sys/stat.h>
 #include <boost/filesystem.hpp>
@@ -10,20 +10,21 @@
 #include "util.h"
 #include "serialize.h"
 #include "net.h"
+#include "db.h"
 #include <openssl/sha.h>
 #include <openssl/ripemd.h>
 #include "base58.h"
 #include "sha.h"
 #include <stdlib.h>
 #include "strlcpy.h"
+#include "main.h"
 
-using std::cout;
-using std::endl;
-using std::cerr;
-using std::string ;
-using std::vector; 
-
+using namespace std;
 using namespace boost;
+
+map<uint256, CBlockIndex*> mapBlockIndex;
+CBlockIndex* pindexGenesisBlock = NULL;
+uint256 hashGenesisBlock("0x000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f");
 
 int nGotIRCAddresses = 0;
 bool fGotExternalIP = false;
@@ -388,6 +389,9 @@ int main (int argc, char *argv[])
                 // could get full length name at index 10, but would be different from join messages
                 strlcpy(pszName, vWords[7].c_str(), sizeof(pszName));
                 printf("IRC got who\n");
+                #ifdef DEBUG_NET && DEBUG_IRC
+                std::cout<<__FUNCTION__<<" :4 "<<pszName<<std::endl ;
+                #endif
             }
 
             if (vWords[1] == "JOIN" && vWords[0].size() > 1)
@@ -397,6 +401,10 @@ int main (int argc, char *argv[])
                 if (strchr(pszName, '!'))
                     *strchr(pszName, '!') = '\0';
                 printf("IRC got join\n");
+
+                #ifdef DEBUG_NET && DEBUG_IRC
+                std::cout<<__FUNCTION__<<" :4 "<<pszName<<std::endl ;
+                #endif
             }
 
             if (pszName[0] == 'u')

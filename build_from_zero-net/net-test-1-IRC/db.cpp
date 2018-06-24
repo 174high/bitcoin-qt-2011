@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string.h>
 #include <db_cxx.h>
-#include <db.h>
+//#include <db.h>
 #include <QtDebug>
 #include <sys/stat.h>
 #include <boost/filesystem.hpp>
@@ -11,6 +11,7 @@
 #include "util.h"
 #include "serialize.h"
 #include "net.h"
+#include "db.h"
 #include "main.h"
 
 using namespace std; 
@@ -265,3 +266,97 @@ bool CTxDB::LoadBlockIndex()
 
 
 }
+
+//  
+// CAddrDB
+//  
+
+bool CAddrDB::WriteAddress(const CAddress& addr)
+{   
+    return Write(make_pair(string("addr"), addr.GetKey()), addr);
+}
+
+
+bool CAddrDB::LoadAddresses()
+{
+
+    #ifdef DEBUG_WALLET
+    qDebug()<<__FUNCTION__<<" 1:";
+    #endif
+
+//    CRITICAL_BLOCK(cs_mapAddresses)
+    {
+        // Load user provided addresses
+        CAutoFile filein = fopen((GetDataDir() + "/addr.txt").c_str(), "rt");
+
+        #ifdef DEBUG_WALLET
+        qDebug()<<__FUNCTION__<<(GetDataDir() + "/addr.txt").c_str() ;
+        #endif
+
+        if (filein)
+        {
+
+        #ifdef DEBUG_WALLET
+        qDebug()<<__FUNCTION__<<" 2:";
+        #endif
+
+            try
+            {
+                char psz[1000];
+                while (fgets(psz, sizeof(psz), filein))
+                {
+                    CAddress addr(psz, NODE_NETWORK);
+                    addr.nTime = 0; // so it won't relay unless successfully connected
+                    if (addr.IsValid())
+                      ;//  AddAddress(addr);
+                }
+            }
+            catch (...) { }
+        }
+
+        // Get cursor
+        Dbc* pcursor = GetCursor();
+        if (!pcursor)
+            return false;
+
+        loop
+        {
+            // Read next record
+            CDataStream ssKey;
+            CDataStream ssValue;
+            int ret = ReadAtCursor(pcursor, ssKey, ssValue);
+            if (ret == DB_NOTFOUND)
+                break;
+            else if (ret != 0)
+                return false;
+
+            // Unserialize
+            string strType;
+            ssKey >> strType;
+            #ifdef DEBUG_WALLET
+            qDebug()<<__FUNCTION__<<" Read next record "<<strType.c_str();
+            #endif
+            if (strType == "addr")
+            {
+                CAddress addr;
+                ssValue >> addr;
+                mapAddresses.insert(make_pair(addr.GetKey(), addr));
+                addr.print();
+            }
+        }
+        pcursor->close();
+
+        printf("Loaded %d addresses\n", mapAddresses.size());
+    }
+
+    return true;
+}
+
+bool LoadAddresses()
+{
+    #ifdef DEBUG_WALLET
+    qDebug()<<__FUNCTION__<<" a function here";
+    #endif
+    return CAddrDB("cr+").LoadAddresses();
+}
+

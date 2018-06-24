@@ -1,5 +1,6 @@
 CONFIG += qt
 #QT -= 
+DEFINES += QT_GUI DEBUG_NET DEBUG_IRC
 INCLUDEPATH +=cryptopp
 
 
@@ -7,13 +8,16 @@ unix:LIBS +=  -ldb_cxx -lcrypto   -lboost_filesystem -lboost_system -lboost_thre
 
 SOURCES += main.cpp \
            net.cpp \ 
+           db.cpp \
            util.cpp \       
            cryptopp/sha.cpp \
            cryptopp/cpu.cpp
 
 HEADERS += serialize.h \
            net.h  \
+           db.h   \
            util.h \
+           main.h \
            uint256.h \
            bignum.h \
            base58.h \
