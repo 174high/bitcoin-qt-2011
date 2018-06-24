@@ -24,6 +24,8 @@ using std::vector;
 
 using namespace boost;
 
+bool fGotExternalIP = false;
+
 #pragma pack(push, 1)
 struct ircaddr
 {
@@ -193,6 +195,60 @@ bool Wait(int nSeconds)
     return true;
 }
 
+bool RecvCodeLine(SOCKET hSocket, const char* psz1, string& strRet)
+{
+    strRet.clear();
+    loop
+    {
+        string strLine;
+        if (!RecvLineIRC(hSocket, strLine))
+            return false;
+
+        vector<string> vWords;
+        ParseString(strLine, ' ', vWords);
+        if (vWords.size() < 2)
+            continue;
+
+        if (vWords[1] == psz1)
+        {
+            printf("IRC %s\n", strLine.c_str());
+            strRet = strLine;
+            return true;
+        }
+    }
+}
+
+
+bool GetIPFromIRC(SOCKET hSocket, string strMyName, unsigned int& ipRet)
+{
+    Send(hSocket, strprintf("USERHOST %s\r", strMyName.c_str()).c_str());
+
+    string strLine;
+    if (!RecvCodeLine(hSocket, "302", strLine))
+        return false;
+
+    vector<string> vWords;
+    ParseString(strLine, ' ', vWords);
+    if (vWords.size() < 4)
+        return false;
+
+    string str = vWords[3];
+    if (str.rfind("@") == string::npos)
+        return false;
+    string strHost = str.substr(str.rfind("@")+1);
+
+    // Hybrid IRC used by lfnet always returns IP when you userhost yourself,
+    // but in case another IRC is ever used this should work.
+    printf("GetIPFromIRC() got userhost %s\n", strHost.c_str());
+    if (fUseProxy)
+        return false;
+    CAddress addr(strHost, 0, true);
+    if (!addr.IsValid())
+        return false;
+    ipRet = addr.ip;
+
+    return true;
+}
 
 
 int main (int argc, char *argv[])
@@ -273,6 +329,25 @@ int main (int argc, char *argv[])
                 return 0;
         }
         Sleep(500);
+
+     // Get our external IP from the IRC server and re-nick before joining the channel
+        CAddress addrFromIRC;
+        if (GetIPFromIRC(hSocket, strMyName, addrFromIRC.ip))
+        {
+            printf("GetIPFromIRC() returned %s\n", addrFromIRC.ToStringIP().c_str());
+             #ifdef DEBUG_NET && DEBUG_IRC
+            std::cout<<__FUNCTION__<<"get ip from irc="<<addrFromIRC.ToStringIP()<<std::endl ;
+            #endif
+            if (!fUseProxy && addrFromIRC.IsRoutable())
+            {
+                // IRC lets you to re-nick
+                fGotExternalIP = true;
+                addrLocalHost.ip = addrFromIRC.ip;
+                strMyName = EncodeAddress(addrLocalHost);
+                Send(hSocket, strprintf("NICK %s\r", strMyName.c_str()).c_str());
+            }
+        }
+
 
 
 
