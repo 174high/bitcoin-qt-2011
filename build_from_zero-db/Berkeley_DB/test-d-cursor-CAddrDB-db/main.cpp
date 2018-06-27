@@ -137,9 +137,9 @@ int main (int argc, char *argv[])
                 mapAddresses.insert(make_pair(addr.GetKey(), addr));
                 std::cout<<"key size="<<addr.GetKey().size()<<std::endl ; 
                 addr.print(); 
-              //  std::vector<unsigned char>::iterator it;
-              //  for(it=addr.GetKey().begin();it!=addr.GetKey().end();it++)
-              //      std::cout<<static_cast<unsigned>(*it);
+                std::vector<unsigned char>::iterator it;
+        //        for(it=addr.GetKey().begin();it!=addr.GetKey().end();it++)
+        //            std::cout<<static_cast<unsigned>(*it);
               //  std::cout<<""<<std::endl;
         }
 
@@ -147,6 +147,9 @@ int main (int argc, char *argv[])
             if(ret!=0)
                 break;
         }
+
+        std::cout<<"Loaded "<<mapAddresses.size()<<" addresses"<<std::endl; 
+
 
 	if (cursor != NULL)
 	{

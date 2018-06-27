@@ -409,9 +409,15 @@ int main (int argc, char *argv[])
 
             if (pszName[0] == 'u')
             {
+                #ifdef DEBUG_NET && DEBUG_IRC
+                std::cout<<__FUNCTION__<<" :5 "<<pszName<<std::endl ;
+                #endif
                 CAddress addr;
                 if (DecodeAddress(pszName, addr))
                 {
+                    #ifdef DEBUG_NET && DEBUG_IRC
+                    std::cout<<__FUNCTION__<<" :6 "<<pszName<<std::endl ;
+                    #endif
                     addr.nTime = GetAdjustedTime();
                     if (AddAddress(addr, 51 * 60))
                         printf("IRC got new address: %s\n", addr.ToString().c_str());
