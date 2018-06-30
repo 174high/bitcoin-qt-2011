@@ -10,6 +10,7 @@ bool LoadBlockIndex(bool fAllowNew=true);
 extern std::map<uint256, CBlockIndex*> mapBlockIndex;
 extern CBlockIndex* pindexGenesisBlock;
 extern uint256 hashGenesisBlock;
+extern int nBestHeight;
 
 //
 // The basic transaction that is broadcasted on the network and contained in

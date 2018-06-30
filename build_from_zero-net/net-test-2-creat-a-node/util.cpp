@@ -11,6 +11,7 @@ using std::vector;
 
 bool fTestNet = false;
 bool fShutdown = false;
+bool fDebug = false;
 
 string strMiscWarning;
 

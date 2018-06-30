@@ -21,6 +21,8 @@ bool fClient = false;
 //bool fAllowDNS = false;
 uint64 nLocalServices = (fClient ? 0 : NODE_NETWORK);
 CAddress addrLocalHost("0.0.0.0", 0, false, nLocalServices);
+CNode* pnodeLocalHost = NULL;
+uint64 nLocalHostNonce = 0;
 CCriticalSection cs_mapAddresses;
 
 // Settings
@@ -300,6 +302,8 @@ void StartNode(void* parg)
 	std::cout<<__FUNCTION__<<" 1:"<<std::endl ;
 #endif
 
+    if (pnodeLocalHost == NULL)
+        pnodeLocalHost = new CNode(INVALID_SOCKET, CAddress("127.0.0.1", 0, false, nLocalServices));
 
    // Get addresses from IRC and advertise ours
     if (!CreateThread(ThreadIRCSeed, NULL))

@@ -9,6 +9,8 @@
 #include "uint256.h"
 #include "util.h"
 #include "serialize.h"
+#include "headers.h"
+#include "irc.h"
 #include "net.h"
 #include "db.h"
 #include <openssl/sha.h>

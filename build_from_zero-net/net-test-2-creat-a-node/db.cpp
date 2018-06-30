@@ -6,13 +6,13 @@
 #include <sys/stat.h>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
+#include "headers.h"
 #include "bignum.h"
 #include "uint256.h"
 #include "util.h"
 #include "serialize.h"
 #include "net.h"
 #include "db.h"
-#include "main.h"
 
 using namespace std; 
 using namespace boost;
