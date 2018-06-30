@@ -32,6 +32,13 @@ CAddress addrProxy("127.0.0.1",9050);
 
 map<vector<unsigned char>, CAddress> mapAddresses;
 
+
+unsigned short GetListenPort()
+{
+    return (unsigned short)(GetArg("-port", GetDefaultPort()));
+}
+
+
 bool ConnectSocket(const CAddress& addrConnect, SOCKET& hSocketRet, int nTimeout)
 {
     hSocketRet = INVALID_SOCKET;
@@ -304,6 +311,47 @@ void StartNode(void* parg)
 
     if (pnodeLocalHost == NULL)
         pnodeLocalHost = new CNode(INVALID_SOCKET, CAddress("127.0.0.1", 0, false, nLocalServices));
+
+   // Get local host ip
+    struct ifaddrs* myaddrs;
+    if (getifaddrs(&myaddrs) == 0)
+    {
+        for (struct ifaddrs* ifa = myaddrs; ifa != NULL; ifa = ifa->ifa_next)
+        {
+            if (ifa->ifa_addr == NULL) continue;
+            if ((ifa->ifa_flags & IFF_UP) == 0) continue;
+            if (strcmp(ifa->ifa_name, "lo") == 0) continue;
+            if (strcmp(ifa->ifa_name, "lo0") == 0) continue;
+            char pszIP[100];
+            if (ifa->ifa_addr->sa_family == AF_INET)
+            {
+                struct sockaddr_in* s4 = (struct sockaddr_in*)(ifa->ifa_addr);
+                if (inet_ntop(ifa->ifa_addr->sa_family, (void*)&(s4->sin_addr), pszIP, sizeof(pszIP)) != NULL)
+                    printf("ipv4 %s: %s\n", ifa->ifa_name, pszIP);
+
+                // Take the first IP that isn't loopback 127.x.x.x
+                CAddress addr(*(unsigned int*)&s4->sin_addr, GetListenPort(), nLocalServices);
+                if (addr.IsValid() && addr.GetByte(3) != 127)
+                {
+                    addrLocalHost = addr;
+                #ifdef DEBUG_NET
+                        std::cout<<__FUNCTION__<<" 2:"<<"############"<<"get addrLocalHost="<<std::endl ;
+                        addrLocalHost.print();
+                #endif
+                    break;
+                }
+            }
+            else if (ifa->ifa_addr->sa_family == AF_INET6)
+            {
+                struct sockaddr_in6* s6 = (struct sockaddr_in6*)(ifa->ifa_addr);
+                if (inet_ntop(ifa->ifa_addr->sa_family, (void*)&(s6->sin6_addr), pszIP, sizeof(pszIP)) != NULL)
+                    printf("ipv6 %s: %s\n", ifa->ifa_name, pszIP);
+            }
+        }
+        freeifaddrs(myaddrs);
+    }
+
+
 
    // Get addresses from IRC and advertise ours
     if (!CreateThread(ThreadIRCSeed, NULL))

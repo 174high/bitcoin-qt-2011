@@ -1,3 +1,4 @@
+#include "headers.h"
 #include "util.h"
 #include "strlcpy.h"
 #include "string"
@@ -5,13 +6,13 @@
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 
-
-using std::string ;
-using std::vector;
+using namespace std; 
 
 bool fTestNet = false;
 bool fShutdown = false;
 bool fDebug = false;
+
+map<string, string> mapArgs;
 
 string strMiscWarning;
 
