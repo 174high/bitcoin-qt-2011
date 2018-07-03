@@ -4,6 +4,12 @@
 #ifndef BITCOIN_NET_H
 #define BITCOIN_NET_H
 
+#include <deque>
+#include <boost/array.hpp>
+#include <boost/foreach.hpp>
+#include <openssl/rand.h>
+
+
 #include <arpa/inet.h>　
 
 #include <vector>
@@ -16,7 +22,8 @@ class CRequestTracker;
 
 extern int nConnectTimeout;
 
-
+inline unsigned int ReceiveBufferSize() { return 1000*GetArg("-maxreceivebuffer", 10*1000); }
+inline unsigned int SendBufferSize() { return 1000*GetArg("-maxsendbuffer", 10*1000); }
 inline unsigned short GetDefaultPort() { return fTestNet ? 18333 : 8333; } 
 enum
 {
@@ -560,6 +567,25 @@ private:
     void operator=(const CNode&);
 public:
 
+    int GetRefCount()
+    {
+        return std::max(nRefCount, 0) + (GetTime() < nReleaseTime ? 1 : 0);
+    }
+
+    CNode* AddRef(int64 nTimeout=0)
+    {
+        if (nTimeout != 0)
+            nReleaseTime = std::max(nReleaseTime, GetTime() + nTimeout);
+        else
+            nRefCount++;
+        return this;
+    }
+
+    void Release()
+    {
+        nRefCount--;
+    }
+
   void BeginMessage(const char* pszCommand)
     {
         cs_vSend.Enter();
@@ -630,9 +656,6 @@ public:
         nMessageStart = -1;
         cs_vSend.Leave();
     }
-
-
-
 
 
     void PushMessage(const char* pszCommand)
@@ -793,8 +816,12 @@ public:
         }
     }
 
-
-
+    void PushGetBlocks(CBlockIndex* pindexBegin, uint256 hashEnd);
+    bool IsSubscribed(unsigned int nChannel);
+    void Subscribe(unsigned int nChannel, unsigned int nHops=0);
+    void CancelSubscribe(unsigned int nChannel);
+    void CloseSocketDisconnect();
+    void Cleanup();
 };
 
 

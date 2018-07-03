@@ -11,9 +11,14 @@
 #include <sys/socket.h>  
 #include <netdb.h>
 #include <fcntl.h> 
+#include <iostream>
 
 using namespace std;
+using namespace boost;
 
+static const int MAX_OUTBOUND_CONNECTIONS = 8;
+
+void ThreadSocketHandler2(void* parg);
 //
 // Global state variables
 //
@@ -24,13 +29,90 @@ CAddress addrLocalHost("0.0.0.0", 0, false, nLocalServices);
 CNode* pnodeLocalHost = NULL;
 uint64 nLocalHostNonce = 0;
 CCriticalSection cs_mapAddresses;
+CCriticalSection cs_vNodes;
 
+
+
+vector<CNode*> vNodes;
 // Settings
 int fUseProxy = false;
 int nConnectTimeout = 5000;
 CAddress addrProxy("127.0.0.1",9050);
 
+array<int, 10> vnThreadsRunning;
+SOCKET hListenSocket = INVALID_SOCKET;
 map<vector<unsigned char>, CAddress> mapAddresses;
+
+
+bool AnySubscribed(unsigned int nChannel)
+{
+    if (pnodeLocalHost->IsSubscribed(nChannel))
+        return true;
+    CRITICAL_BLOCK(cs_vNodes)
+        BOOST_FOREACH(CNode* pnode, vNodes)
+            if (pnode->IsSubscribed(nChannel))
+                return true;
+    return false;
+}
+
+bool CNode::IsSubscribed(unsigned int nChannel)
+{
+    if (nChannel >= vfSubscribe.size())
+        return false;
+    return vfSubscribe[nChannel];
+}
+
+
+void CNode::CancelSubscribe(unsigned int nChannel)
+{
+    if (nChannel >= vfSubscribe.size())
+        return;
+
+    // Prevent from relaying cancel if wasn't subscribed
+    if (!vfSubscribe[nChannel])
+        return;
+    vfSubscribe[nChannel] = false;
+
+    if (!AnySubscribed(nChannel))
+    {
+        // Relay subscription cancel
+        CRITICAL_BLOCK(cs_vNodes)
+            BOOST_FOREACH(CNode* pnode, vNodes)
+                if (pnode != this)
+                    pnode->PushMessage("sub-cancel", nChannel);
+    }
+}
+
+
+
+void CNode::CloseSocketDisconnect()
+{
+    fDisconnect = true;
+    if (hSocket != INVALID_SOCKET)
+    {
+        if (fDebug)
+            printf("%s ", DateTimeStrFormat("%x %H:%M:%S", GetTime()).c_str());
+        printf("disconnecting node %s\n", addr.ToString().c_str());
+        closesocket(hSocket);
+        hSocket = INVALID_SOCKET;
+    }
+}
+
+void CNode::Cleanup()
+{
+    // All of a nodes broadcasts and subscriptions are automatically torn down
+    // when it goes down, so a node has to stay up to keep its broadcast going.
+
+    // Cancel subscriptions
+    for (unsigned int nChannel = 0; nChannel < vfSubscribe.size(); nChannel++)
+        if (vfSubscribe[nChannel])
+            CancelSubscribe(nChannel);
+}
+
+
+void MainFrameRepaint()
+{
+}
 
 
 unsigned short GetListenPort()
@@ -303,6 +385,313 @@ bool AddAddress(CAddress addr, int64 nTimePenalty, CAddrDB *pAddrDB)
 }
 
 
+void ThreadSocketHandler(void* parg)
+{
+    IMPLEMENT_RANDOMIZE_STACK(ThreadSocketHandler(parg));
+    try
+    {
+        vnThreadsRunning[0]++;
+        ThreadSocketHandler2(parg);
+        vnThreadsRunning[0]--;
+    }
+    catch (std::exception& e) {
+        vnThreadsRunning[0]--;
+        PrintException(&e, "ThreadSocketHandler()");
+    } catch (...) {
+        vnThreadsRunning[0]--;
+        throw; // support pthread_cancel()
+    }
+    printf("ThreadSocketHandler exiting\n");
+}
+
+void ThreadSocketHandler2(void* parg)
+{
+    printf("ThreadSocketHandler started\n");
+    list<CNode*> vNodesDisconnected;
+    int nPrevNodeCount = 0;
+
+    loop
+    {
+        //
+        // Disconnect nodes
+        //
+        CRITICAL_BLOCK(cs_vNodes)
+        {
+            // Disconnect unused nodes
+            vector<CNode*> vNodesCopy = vNodes;
+            BOOST_FOREACH(CNode* pnode, vNodesCopy)
+            {
+                if (pnode->fDisconnect ||
+                    (pnode->GetRefCount() <= 0 && pnode->vRecv.empty() && pnode->vSend.empty()))
+                {
+                    // remove from vNodes
+                    vNodes.erase(remove(vNodes.begin(), vNodes.end(), pnode), vNodes.end());
+
+                    // close socket and cleanup
+                    pnode->CloseSocketDisconnect();
+                    pnode->Cleanup();
+
+                    // hold in disconnected pool until all refs are released
+                    pnode->nReleaseTime = max(pnode->nReleaseTime, GetTime() + 15 * 60);
+                    if (pnode->fNetworkNode || pnode->fInbound)
+                        pnode->Release();
+                    vNodesDisconnected.push_back(pnode);
+                }
+            }
+
+            // Delete disconnected nodes
+            list<CNode*> vNodesDisconnectedCopy = vNodesDisconnected;
+            BOOST_FOREACH(CNode* pnode, vNodesDisconnectedCopy)
+            {
+                // wait until threads are done using it
+                if (pnode->GetRefCount() <= 0)
+                {
+                    bool fDelete = false;
+                    TRY_CRITICAL_BLOCK(pnode->cs_vSend)
+                     TRY_CRITICAL_BLOCK(pnode->cs_vRecv)
+                      TRY_CRITICAL_BLOCK(pnode->cs_mapRequests)
+                       TRY_CRITICAL_BLOCK(pnode->cs_inventory)
+                        fDelete = true;
+                    if (fDelete)
+                    {
+                        vNodesDisconnected.remove(pnode);
+                        delete pnode;
+                    }
+                }
+            }
+        }
+        if (vNodes.size() != nPrevNodeCount)
+        {
+            nPrevNodeCount = vNodes.size();
+            MainFrameRepaint();
+        }
+
+
+        //
+        // Find which sockets have data to receive
+        //
+        struct timeval timeout;
+        timeout.tv_sec  = 0;
+        timeout.tv_usec = 50000; // frequency to poll pnode->vSend
+
+        fd_set fdsetRecv;
+        fd_set fdsetSend;
+        fd_set fdsetError;
+        FD_ZERO(&fdsetRecv);
+        FD_ZERO(&fdsetSend);
+        FD_ZERO(&fdsetError);
+        SOCKET hSocketMax = 0;
+
+        if(hListenSocket != INVALID_SOCKET)
+            FD_SET(hListenSocket, &fdsetRecv);
+        hSocketMax = max(hSocketMax, hListenSocket);
+        CRITICAL_BLOCK(cs_vNodes)
+        {
+            BOOST_FOREACH(CNode* pnode, vNodes)
+            {
+                if (pnode->hSocket == INVALID_SOCKET)
+                    continue;
+                FD_SET(pnode->hSocket, &fdsetRecv);
+                FD_SET(pnode->hSocket, &fdsetError);
+                hSocketMax = max(hSocketMax, pnode->hSocket);
+                TRY_CRITICAL_BLOCK(pnode->cs_vSend)
+                    if (!pnode->vSend.empty())
+                        FD_SET(pnode->hSocket, &fdsetSend);
+            }
+        }
+
+        vnThreadsRunning[0]--;
+        int nSelect = select(hSocketMax + 1, &fdsetRecv, &fdsetSend, &fdsetError, &timeout);
+        vnThreadsRunning[0]++;
+        if (fShutdown)
+            return;
+        if (nSelect == SOCKET_ERROR)
+        {
+            int nErr = WSAGetLastError();
+            if (hSocketMax > -1)
+            {
+                printf("socket select error %d\n", nErr);
+                for (int i = 0; i <= hSocketMax; i++)
+                    FD_SET(i, &fdsetRecv);
+            }
+            FD_ZERO(&fdsetSend);
+            FD_ZERO(&fdsetError);
+            Sleep(timeout.tv_usec/1000);
+        }
+
+
+        //
+        // Accept new connections
+        //
+        if (hListenSocket != INVALID_SOCKET && FD_ISSET(hListenSocket, &fdsetRecv))
+        {
+            struct sockaddr_in sockaddr;
+            socklen_t len = sizeof(sockaddr);
+            SOCKET hSocket = accept(hListenSocket, (struct sockaddr*)&sockaddr, &len);
+            CAddress addr(sockaddr);
+            int nInbound = 0;
+
+            CRITICAL_BLOCK(cs_vNodes)
+                BOOST_FOREACH(CNode* pnode, vNodes)
+                if (pnode->fInbound)
+                    nInbound++;
+            if (hSocket == INVALID_SOCKET)
+            {
+                if (WSAGetLastError() != WSAEWOULDBLOCK)
+                    printf("socket error accept failed: %d\n", WSAGetLastError());
+            }
+            else if (nInbound >= GetArg("-maxconnections", 125) - MAX_OUTBOUND_CONNECTIONS)
+            {
+                closesocket(hSocket);
+            }
+            else
+            {
+                printf("accepted connection %s\n", addr.ToString().c_str());
+                CNode* pnode = new CNode(hSocket, addr, true);
+                pnode->AddRef();
+                CRITICAL_BLOCK(cs_vNodes)
+                    vNodes.push_back(pnode);
+            }
+        }
+
+
+        //
+        // Service each socket
+        //
+        vector<CNode*> vNodesCopy;
+        CRITICAL_BLOCK(cs_vNodes)
+        {
+            vNodesCopy = vNodes;
+            BOOST_FOREACH(CNode* pnode, vNodesCopy)
+                pnode->AddRef();
+        }
+        BOOST_FOREACH(CNode* pnode, vNodesCopy)
+        {
+            if (fShutdown)
+                return;
+
+            //
+            // Receive
+            //
+            if (pnode->hSocket == INVALID_SOCKET)
+                continue;
+            if (FD_ISSET(pnode->hSocket, &fdsetRecv) || FD_ISSET(pnode->hSocket, &fdsetError))
+            {
+                TRY_CRITICAL_BLOCK(pnode->cs_vRecv)
+                {
+                    CDataStream& vRecv = pnode->vRecv;
+                    unsigned int nPos = vRecv.size();
+
+                    if (nPos > ReceiveBufferSize()) {
+                        if (!pnode->fDisconnect)
+                            printf("socket recv flood control disconnect (%d bytes)\n", vRecv.size());
+                        pnode->CloseSocketDisconnect();
+                    }
+                    else {
+                        // typical socket buffer is 8K-64K
+                        char pchBuf[0x10000];
+                        int nBytes = recv(pnode->hSocket, pchBuf, sizeof(pchBuf), MSG_DONTWAIT);
+                        if (nBytes > 0)
+                        {
+                            vRecv.resize(nPos + nBytes);
+                            memcpy(&vRecv[nPos], pchBuf, nBytes);
+                            pnode->nLastRecv = GetTime();
+                        }
+                        else if (nBytes == 0)
+                        {
+                            // socket closed gracefully
+                            if (!pnode->fDisconnect)
+                                printf("socket closed\n");
+                            pnode->CloseSocketDisconnect();
+                        }
+                        else if (nBytes < 0)
+                        {
+                            // error
+                            int nErr = WSAGetLastError();
+                            if (nErr != WSAEWOULDBLOCK && nErr != WSAEMSGSIZE && nErr != WSAEINTR && nErr != WSAEINPROGRESS)
+                            {
+                                if (!pnode->fDisconnect)
+                                    printf("socket recv error %d\n", nErr);
+                                pnode->CloseSocketDisconnect();
+                            }
+                        }
+                    }
+                }
+            }
+
+            //
+            // Send
+            //
+            if (pnode->hSocket == INVALID_SOCKET)
+                continue;
+            if (FD_ISSET(pnode->hSocket, &fdsetSend))
+            {
+                TRY_CRITICAL_BLOCK(pnode->cs_vSend)
+                {
+                    CDataStream& vSend = pnode->vSend;
+                    if (!vSend.empty())
+                    {
+                        int nBytes = send(pnode->hSocket, &vSend[0], vSend.size(), MSG_NOSIGNAL | MSG_DONTWAIT);
+                        if (nBytes > 0)
+                        {
+                            vSend.erase(vSend.begin(), vSend.begin() + nBytes);
+                            pnode->nLastSend = GetTime();
+                        }
+                        else if (nBytes < 0)
+                        {
+                            // error
+                            int nErr = WSAGetLastError();
+                            if (nErr != WSAEWOULDBLOCK && nErr != WSAEMSGSIZE && nErr != WSAEINTR && nErr != WSAEINPROGRESS)
+                            {
+                                printf("socket send error %d\n", nErr);
+                                pnode->CloseSocketDisconnect();
+                            }
+                        }
+                        if (vSend.size() > SendBufferSize()) {
+                            if (!pnode->fDisconnect)
+                                printf("socket send flood control disconnect (%d bytes)\n", vSend.size());
+                            pnode->CloseSocketDisconnect();
+                        }
+                    }
+                }
+            }
+
+            //
+            // Inactivity checking
+            //
+            if (pnode->vSend.empty())
+                pnode->nLastSendEmpty = GetTime();
+            if (GetTime() - pnode->nTimeConnected > 60)
+            {
+                if (pnode->nLastRecv == 0 || pnode->nLastSend == 0)
+                {
+                    printf("socket no message in first 60 seconds, %d %d\n", pnode->nLastRecv != 0, pnode->nLastSend != 0);
+                    pnode->fDisconnect = true;
+                }
+                else if (GetTime() - pnode->nLastSend > 90*60 && GetTime() - pnode->nLastSendEmpty > 90*60)
+                {
+                    printf("socket not sending\n");
+                    pnode->fDisconnect = true;
+                }
+                else if (GetTime() - pnode->nLastRecv > 90*60)
+                {
+                    printf("socket inactivity timeout\n");
+                    pnode->fDisconnect = true;
+                }
+            }
+        }
+        CRITICAL_BLOCK(cs_vNodes)
+        {
+            BOOST_FOREACH(CNode* pnode, vNodesCopy)
+                pnode->Release();
+        }
+
+        Sleep(10);
+    }
+}
+
+
+
 void StartNode(void* parg)
 {
 #ifdef DEBUG_NET
@@ -358,17 +747,14 @@ void StartNode(void* parg)
         printf("Error: CreateThread(ThreadIRCSeed) failed\n");
 
 
-
-
-
-
+   // Send and receive from sockets, accept connections
+    CreateThread(ThreadSocketHandler, NULL, true); 
 
 
 
 
 
 }
-
 
 
 

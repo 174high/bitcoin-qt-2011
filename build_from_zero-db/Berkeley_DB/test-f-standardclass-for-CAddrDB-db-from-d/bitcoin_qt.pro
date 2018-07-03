@@ -1,5 +1,6 @@
 CONFIG += qt
 #QT -= 
+DEFINES +=DEBUG_DB
 
 unix:LIBS += -ldb_cxx  -lcrypto   -lboost_filesystem -lboost_system
 

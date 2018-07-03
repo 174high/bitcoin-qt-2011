@@ -246,37 +246,6 @@ string GetDataDir()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void FormatException(char* pszMessage, std::exception* pex, const char* pszThread)
 {
 #ifdef __WXMSW__
@@ -296,6 +265,21 @@ void FormatException(char* pszMessage, std::exception* pex, const char* pszThrea
 
 
 
+
+
+void PrintException(std::exception* pex, const char* pszThread)
+{
+    char pszMessage[10000];
+    FormatException(pszMessage, pex, pszThread);
+    printf("\n\n************************\n%s\n", pszMessage);
+    fprintf(stderr, "\n\n************************\n%s\n", pszMessage);
+    strMiscWarning = pszMessage;
+#ifdef GUI
+    if (wxTheApp && !fDaemon)
+        MyMessageBox(pszMessage, "Bitcoin", wxOK | wxICON_ERROR);
+#endif
+    throw;
+}
 
 
 

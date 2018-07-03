@@ -46,7 +46,7 @@ instance_of_cdbinit;
 
 CDB::CDB(const char* pszFile, const char* pszMode) : pdb(NULL)
 {
-    #ifdef DEBUG_WALLET 
+    #ifdef DEBUG_DB 
     qDebug()<<__FUNCTION__<<"created base class !!!"<<pszFile;
     #endif
 
@@ -79,7 +79,7 @@ CDB::CDB(const char* pszFile, const char* pszMode) : pdb(NULL)
             dbenv.set_errfile(fopen(strErrorFile.c_str(), "a")); /// debug
             dbenv.set_flags(DB_AUTO_COMMIT, 1);
 
-            #ifdef DEBUG_WALLET 
+            #ifdef DEBUG_DB 
             qDebug()<<__FUNCTION__<<"open:1"<<strDataDir.c_str() ;
             #endif
             ret = dbenv.open(strDataDir.c_str(),
@@ -103,7 +103,7 @@ CDB::CDB(const char* pszFile, const char* pszMode) : pdb(NULL)
         {
             pdb = new Db(&dbenv, 0);
 
-           #ifdef DEBUG_WALLET 
+           #ifdef DEBUG_DB 
             qDebug()<<__FUNCTION__<<"open:2 " <<pszFile ;
             #endif
 
@@ -186,7 +186,7 @@ CBlockIndex static * InsertBlockIndex(uint256 hash)
 
 bool CTxDB::LoadBlockIndex()
 {
-#ifdef DEBUG_WALLET
+#ifdef DEBUG_DB
     qDebug()<<__FUNCTION__ ; 
 #endif 
 
@@ -269,7 +269,7 @@ bool CTxDB::LoadBlockIndex()
 bool CAddrDB::LoadAddresses()
 {
 
-    #ifdef DEBUG_WALLET
+    #ifdef DEBUG_DB
     qDebug()<<__FUNCTION__<<" 1:";
     #endif
 
@@ -278,14 +278,14 @@ bool CAddrDB::LoadAddresses()
         // Load user provided addresses
         CAutoFile filein = fopen((GetDataDir() + "/addr.txt").c_str(), "rt");
 
-        #ifdef DEBUG_WALLET
+        #ifdef DEBUG_DB
         qDebug()<<__FUNCTION__<<(GetDataDir() + "/addr.txt").c_str() ;
         #endif
 
         if (filein)
         {
 
-        #ifdef DEBUG_WALLET
+        #ifdef DEBUG_DB
         qDebug()<<__FUNCTION__<<" 2:";
         #endif
 
@@ -322,7 +322,7 @@ bool CAddrDB::LoadAddresses()
             // Unserialize
             string strType;
             ssKey >> strType;
-            #ifdef DEBUG_WALLET
+            #ifdef DEBUG_DB
             qDebug()<<__FUNCTION__<<" Read next record "<<strType.c_str();
             #endif
             if (strType == "addr")
@@ -343,7 +343,7 @@ bool CAddrDB::LoadAddresses()
 
 bool LoadAddresses()
 {
-    #ifdef DEBUG_WALLET
+    #ifdef DEBUG_DB
     qDebug()<<__FUNCTION__<<" a function here";
     #endif
     return CAddrDB("cr+").LoadAddresses();
