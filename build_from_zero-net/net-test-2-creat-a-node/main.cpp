@@ -2,7 +2,8 @@
 #include "util.h"
 #include <iostream>
 #include "main.h"
-#include"net.h"
+#include "net.h"
+#include "db.h"
 
 int nBestHeight = -1;
 
@@ -19,6 +20,7 @@ char pchMessageStart[4] = { 0xf9, 0xbe, 0xb4, 0xd9 };
 int main(void)
 {
 
+    if (!LoadAddresses()) ;
 
     if (!CreateThread(StartNode, NULL))
     {
