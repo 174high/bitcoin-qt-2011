@@ -13,7 +13,7 @@ bool fShutdown = false;
 bool fDebug = false;
 
 map<string, string> mapArgs;
-
+map<string, vector<string> > mapMultiArgs;
 string strMiscWarning;
 
 char pszSetDataDir[MAX_PATH] = "";

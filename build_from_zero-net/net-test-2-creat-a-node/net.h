@@ -18,9 +18,10 @@ class CInv;
 class CAddress;
 class CAddrDB;
 class CRequestTracker;
-
+class CNode;
 
 extern int nConnectTimeout;
+extern bool fAllowDNS;
 
 inline unsigned int ReceiveBufferSize() { return 1000*GetArg("-maxreceivebuffer", 10*1000); }
 inline unsigned int SendBufferSize() { return 1000*GetArg("-maxsendbuffer", 10*1000); }
@@ -36,7 +37,7 @@ bool ConnectSocket(const CAddress& addrConnect, SOCKET& hSocketRet, int nTimeout
 bool Lookup(const char *pszName, std::vector<CAddress>& vaddr, int nServices, int nMaxSolutions, bool fAllowLookup = false, int portDefault = 0, bool fAllowPort = false);
 bool Lookup(const char *pszName, CAddress& addr, int nServices, bool fAllowLookup = false, int portDefault = 0, bool fAllowPort = false);
 void StartNode(void* parg);
-
+CNode* ConnectNode(CAddress addrConnect, int64 nTimeout=0);
 static const unsigned char pchIPv4[12] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xff, 0xff };
 
 
