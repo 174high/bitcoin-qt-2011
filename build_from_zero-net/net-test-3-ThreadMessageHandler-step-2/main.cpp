@@ -5,6 +5,10 @@
 #include "net.h"
 #include "db.h"
 
+using namespace std; 
+
+CCriticalSection cs_main;
+
 int nBestHeight = -1;
 
 
@@ -12,8 +16,20 @@ int nBestHeight = -1;
 bool ProcessMessages(CNode* pfrom)
 {
     CDataStream& vRecv = pfrom->vRecv;
+
+#ifdef DEBUG_NODE&&DEBUG_MAIN
+    std::cout<<__FUNCTION__<<std::endl; 
+    std::cout<<"1: vRecv size= "<<vRecv.size()<<std::endl; 
+    std::cout<<"2: vRecv empty= "<<vRecv.empty()<<std::endl; 
+#endif 
+
     if (vRecv.empty())
         return true;
+
+#ifdef DEBUG_NODE&&DEBUG_MAIN
+    std::cout<<"3: vRecv size= "<<vRecv.size()<<std::endl;
+#endif
+
     //if (fDebug)
     //    printf("ProcessMessages(%u bytes)\n", vRecv.size());
 
@@ -30,7 +46,15 @@ bool ProcessMessages(CNode* pfrom)
     {
         // Scan for message start
         CDataStream::iterator pstart = search(vRecv.begin(), vRecv.end(), BEGIN(pchMessageStart), END(pchMessageStart));
+
+#ifdef DEBUG_NODE&&DEBUG_MAIN
+//        std::cout<<" CMessageHeader()  "<<CMessageHeader()<<std::endl;
+#endif        
         int nHeaderSize = vRecv.GetSerializeSize(CMessageHeader());
+#ifdef DEBUG_NODE&&DEBUG_MAIN
+//	std::cout<<" nHeaderSize= "<<nHeaderSize<<std::endl;
+#endif
+
         if (vRecv.end() - pstart < nHeaderSize)
         {
             if (vRecv.size() > nHeaderSize)
@@ -40,10 +64,15 @@ bool ProcessMessages(CNode* pfrom)
             }
             break;
         }
+
+#ifdef DEBUG_NODE&&DEBUG_MAIN
+//    std::cout<<" pstart - vRecv.begin()= "<<(pstart - vRecv.begin())<<std::endl;
+#endif
+
         if (pstart - vRecv.begin() > 0)
             printf("\n\nPROCESSMESSAGE SKIPPED %d BYTES\n\n", pstart - vRecv.begin());
         vRecv.erase(vRecv.begin(), pstart);
-/*
+
         // Read header
         vector<char> vHeaderSave(vRecv.begin(), vRecv.begin() + nHeaderSize);
         CMessageHeader hdr;
@@ -81,6 +110,11 @@ bool ProcessMessages(CNode* pfrom)
                        strCommand.c_str(), nMessageSize, nChecksum, hdr.nChecksum);
                 continue;
             }
+	    else
+	    {
+		 printf("ProcessMessage(%s, %u bytes) : CHECKSUM correct nChecksum=%08x hdr.nChecksum=%08x\n",
+                       strCommand.c_str(), nMessageSize, nChecksum, hdr.nChecksum);
+	    }
         }
 
         // Copy message to its own buffer
@@ -92,7 +126,7 @@ bool ProcessMessages(CNode* pfrom)
         try
         {
             CRITICAL_BLOCK(cs_main)
-                fRet = ProcessMessage(pfrom, strCommand, vMsg);
+//                fRet = ProcessMessage(pfrom, strCommand, vMsg);
             if (fShutdown)
                 return true;
         }
@@ -121,7 +155,7 @@ bool ProcessMessages(CNode* pfrom)
 
         if (!fRet)
             printf("ProcessMessage(%s, %u bytes) FAILED\n", strCommand.c_str(), nMessageSize);
-*/
+
     }
 
     vRecv.Compact();
