@@ -459,8 +459,28 @@ public:
     }
 };
 
-extern uint64 nLocalHostNonce;
+
+extern bool fClient;
+extern bool fAllowDNS;
 extern uint64 nLocalServices;
+extern CAddress addrLocalHost;
+extern CNode* pnodeLocalHost;
+extern uint64 nLocalHostNonce;
+extern boost::array<int, 10> vnThreadsRunning;
+extern SOCKET hListenSocket;
+
+extern std::vector<CNode*> vNodes;
+extern CCriticalSection cs_vNodes;
+extern std::map<std::vector<unsigned char>, CAddress> mapAddresses;
+extern CCriticalSection cs_mapAddresses;
+extern std::map<CInv, CDataStream> mapRelay;
+extern std::deque<std::pair<int64, CInv> > vRelayExpiration;
+extern CCriticalSection cs_mapRelay;
+extern std::map<CInv, int64> mapAlreadyAskedFor;
+
+// Settings
+extern int fUseProxy;
+extern CAddress addrProxy;
 
 class CNode
 {
@@ -610,6 +630,15 @@ public:
         nMessageStart = -1;
         cs_vSend.Leave();
         printf("(aborted)\n");
+    }
+
+   void PushAddress(const CAddress& addr)
+    {
+        // Known checking here is only to save space from duplicates.
+        // SendMessages will filter it again for knowns that were added
+        // after addresses were pushed.
+        if (addr.IsValid() && !setAddrKnown.count(addr))
+            vAddrToSend.push_back(addr);
     }
 
 

@@ -300,3 +300,39 @@ void PrintExceptionContinue(std::exception* pex, const char* pszThread)
 #endif
 }
 
+
+void RandAddSeed()
+{
+    // Seed with CPU performance counter
+    int64 nCounter = GetPerformanceCounter();
+    RAND_add(&nCounter, sizeof(nCounter), 1.5);
+    memset(&nCounter, 0, sizeof(nCounter));
+}
+
+void RandAddSeedPerfmon()
+{
+    RandAddSeed();
+
+    // This can take up to 2 seconds, so only do it every 10 minutes
+    static int64 nLastPerfmon;
+    if (GetTime() < nLastPerfmon + 10 * 60)
+        return;
+    nLastPerfmon = GetTime();
+
+#ifdef __WXMSW__
+    // Don't need this on Linux, OpenSSL automatically uses /dev/urandom
+    // Seed with the entire set of perfmon data
+    unsigned char pdata[250000];
+    memset(pdata, 0, sizeof(pdata));
+    unsigned long nSize = sizeof(pdata);
+    long ret = RegQueryValueExA(HKEY_PERFORMANCE_DATA, "Global", NULL, NULL, pdata, &nSize);
+    RegCloseKey(HKEY_PERFORMANCE_DATA);
+    if (ret == ERROR_SUCCESS)
+    {
+        RAND_add(pdata, nSize, nSize/100.0);
+        memset(pdata, 0, nSize);
+        printf("%s RandAddSeed() %d bytes\n", DateTimeStrFormat("%x %H:%M", GetTime()).c_str(), nSize);
+    }
+#endif
+}
+
