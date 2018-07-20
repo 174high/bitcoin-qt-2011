@@ -17,6 +17,7 @@ SOURCES += main.cpp \
 
 HEADERS += serialize.h \
            headers.h \
+           script.h \
            init.h \
            irc.h  \
            net.h  \
