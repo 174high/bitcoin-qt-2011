@@ -5,7 +5,7 @@
 #define BITCOIN_MAIN_H
 
 #include "net.h"
-
+#include "script.h"
 
 class CBlockIndex;
 
@@ -20,6 +20,86 @@ extern CBigNum bnProofOfWorkLimit ;
 bool ProcessMessages(CNode* pfrom);
 
 
+class COutPoint
+{
+public:
+    uint256 hash;
+    unsigned int n;
+
+    COutPoint() { SetNull(); }
+    COutPoint(uint256 hashIn, unsigned int nIn) { hash = hashIn; n = nIn; }
+    IMPLEMENT_SERIALIZE( READWRITE(FLATDATA(*this)); )
+    void SetNull() { hash = 0; n = -1; }
+    bool IsNull() const { return (hash == 0 && n == -1); }
+
+    friend bool operator<(const COutPoint& a, const COutPoint& b)
+    {
+        return (a.hash < b.hash || (a.hash == b.hash && a.n < b.n));
+    }
+
+    friend bool operator==(const COutPoint& a, const COutPoint& b)
+    {
+       return (a.hash == b.hash && a.n == b.n);
+    }
+
+    friend bool operator!=(const COutPoint& a, const COutPoint& b)
+    {
+        return !(a == b);
+    }
+
+    std::string ToString() const
+    {
+        return strprintf("COutPoint(%s, %d)", hash.ToString().substr(0,10).c_str(), n);
+    }
+
+    void print() const
+    {
+        printf("%s\n", ToString().c_str());
+    }
+};
+
+
+//
+// An input of a transaction.  It contains the location of the previous
+// transaction's output that it claims and a signature that matches the
+// output's public key.
+//
+class CTxIn
+{
+public:
+     COutPoint prevout;
+     CScript scriptSig;
+    unsigned int nSequence;
+
+    CTxIn()
+    {
+        nSequence = UINT_MAX;
+    }
+/*
+    explicit CTxIn(COutPoint prevoutIn, CScript scriptSigIn=CScript(), unsigned int nSequenceIn=UINT_MAX)
+    {
+        prevout = prevoutIn;
+        scriptSig = scriptSigIn;
+        nSequence = nSequenceIn;
+    }
+
+    CTxIn(uint256 hashPrevTx, unsigned int nOut, CScript scriptSigIn=CScript(), unsigned int nSequenceIn=UINT_MAX)
+    {
+        prevout = COutPoint(hashPrevTx, nOut);
+        scriptSig = scriptSigIn;
+        nSequence = nSequenceIn;
+    }
+*/
+    IMPLEMENT_SERIALIZE
+    (
+  //      READWRITE(prevout);
+  //      READWRITE(scriptSig);
+        READWRITE(nSequence);
+    )
+
+};
+
+
 
 //
 // The basic transaction that is broadcasted on the network and contained in
@@ -29,7 +109,7 @@ class CTransaction
 {
 public:
     int nVersion;
-//    std::vector<CTxIn> vin;
+    std::vector<CTxIn> vin;
 //    std::vector<CTxOut> vout;
     unsigned int nLockTime;
 
