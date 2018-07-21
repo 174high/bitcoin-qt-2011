@@ -7,7 +7,11 @@
 #include "net.h"
 #include "script.h"
 
+class CBlock;
 class CBlockIndex;
+
+
+static const int64 COIN = 100000000;
 
 bool LoadBlockIndex(bool fAllowNew=true);
 extern std::map<uint256, CBlockIndex*> mapBlockIndex;
@@ -75,7 +79,7 @@ public:
     {
         nSequence = UINT_MAX;
     }
-/*
+
     explicit CTxIn(COutPoint prevoutIn, CScript scriptSigIn=CScript(), unsigned int nSequenceIn=UINT_MAX)
     {
         prevout = prevoutIn;
@@ -89,17 +93,120 @@ public:
         scriptSig = scriptSigIn;
         nSequence = nSequenceIn;
     }
-*/
+
     IMPLEMENT_SERIALIZE
     (
-  //      READWRITE(prevout);
-  //      READWRITE(scriptSig);
+        READWRITE(prevout);
+        READWRITE(scriptSig);
         READWRITE(nSequence);
     )
+
+    bool IsFinal() const
+    {
+        return (nSequence == UINT_MAX);
+    }
+
+    friend bool operator==(const CTxIn& a, const CTxIn& b)
+    {
+        return (a.prevout   == b.prevout &&
+                a.scriptSig == b.scriptSig &&
+                a.nSequence == b.nSequence);
+    }
+
+    friend bool operator!=(const CTxIn& a, const CTxIn& b)
+    {
+        return !(a == b);
+    }
+
+    std::string ToString() const
+    {
+        std::string str;
+        str += strprintf("CTxIn(");
+        str += prevout.ToString();
+        if (prevout.IsNull())
+            str += strprintf(", coinbase %s", HexStr(scriptSig).c_str());
+        else
+            str += strprintf(", scriptSig=%s", scriptSig.ToString().substr(0,24).c_str());
+        if (nSequence != UINT_MAX)
+            str += strprintf(", nSequence=%u", nSequence);
+        str += ")";
+        return str;
+    }
+
+    void print() const
+    {
+        printf("%s\n", ToString().c_str());
+    }
 
 };
 
 
+//
+// An output of a transaction.  It contains the public key that the next input
+// must be able to sign with to claim it.
+//
+class CTxOut
+{
+public:
+    int64 nValue;
+    CScript scriptPubKey;
+
+    CTxOut()
+    {
+        SetNull();
+    }
+
+    CTxOut(int64 nValueIn, CScript scriptPubKeyIn)
+    {
+        nValue = nValueIn;
+        scriptPubKey = scriptPubKeyIn;
+    }
+
+    IMPLEMENT_SERIALIZE
+    (
+        READWRITE(nValue);
+        READWRITE(scriptPubKey);
+    )
+   void SetNull()
+    {
+        nValue = -1;
+        scriptPubKey.clear();
+    }
+
+    bool IsNull()
+    {
+        return (nValue == -1);
+    }
+
+    uint256 GetHash() const
+    {
+        return SerializeHash(*this);
+    }
+
+    friend bool operator==(const CTxOut& a, const CTxOut& b)
+    {
+        return (a.nValue       == b.nValue &&
+                a.scriptPubKey == b.scriptPubKey);
+    }
+
+    friend bool operator!=(const CTxOut& a, const CTxOut& b)
+    {
+        return !(a == b);
+    }
+
+    std::string ToString() const
+    {
+        if (scriptPubKey.size() < 6)
+            return "CTxOut(error)";
+        return strprintf("CTxOut(nValue=%"PRI64d".%08"PRI64d", scriptPubKey=%s)", nValue / COIN, nValue % COIN, scriptPubKey.ToString().substr(0,30).c_str());
+    }
+
+    void print() const
+    {
+        printf("%s\n", ToString().c_str());
+    }
+
+};
 
 //
 // The basic transaction that is broadcasted on the network and contained in
@@ -110,7 +217,7 @@ class CTransaction
 public:
     int nVersion;
     std::vector<CTxIn> vin;
-//    std::vector<CTxOut> vout;
+    std::vector<CTxOut> vout;
     unsigned int nLockTime;
 
 
@@ -123,18 +230,50 @@ public:
     (
         READWRITE(this->nVersion);
         nVersion = this->nVersion;
-//        READWRITE(vin);
-//        READWRITE(vout);
+        READWRITE(vin);
+        READWRITE(vout);
         READWRITE(nLockTime);
     )
 
     void SetNull()
     {
         nVersion = 1;
-//        vin.clear();
-//        vout.clear();
+        vin.clear();
+        vout.clear();
         nLockTime = 0;
     }
+
+    bool IsNull() const
+    {
+        return (vin.empty() && vout.empty());
+    }
+
+    uint256 GetHash() const
+    {
+        return SerializeHash(*this);
+    }
+
+    std::string ToString() const
+    {
+        std::string str;
+        str += strprintf("CTransaction(hash=%s, ver=%d, vin.size=%d, vout.size=%d, nLockTime=%d)\n",
+            GetHash().ToString().substr(0,10).c_str(),
+            nVersion,
+            vin.size(),
+            vout.size(),
+            nLockTime);
+        for (int i = 0; i < vin.size(); i++)
+            str += "    " + vin[i].ToString() + "\n";
+        for (int i = 0; i < vout.size(); i++)
+            str += "    " + vout[i].ToString() + "\n";
+        return str;
+    }
+
+    void print() const
+    {
+        printf("%s", ToString().c_str());
+    }
+
 };
 
 
@@ -189,9 +328,48 @@ public:
         return Hash(BEGIN(nVersion), END(nNonce));
     }
 
+    uint256 BuildMerkleTree() const
+    {
+        vMerkleTree.clear();
+        BOOST_FOREACH(const CTransaction& tx, vtx)
+            vMerkleTree.push_back(tx.GetHash());
+        int j = 0;
+        for (int nSize = vtx.size(); nSize > 1; nSize = (nSize + 1) / 2)
+        {
+            for (int i = 0; i < nSize; i += 2)
+            {
+                int i2 = std::min(i+1, nSize-1);
+                vMerkleTree.push_back(Hash(BEGIN(vMerkleTree[j+i]),  END(vMerkleTree[j+i]),
+                                           BEGIN(vMerkleTree[j+i2]), END(vMerkleTree[j+i2])));
+            }
+            j += nSize;
+        }
+        return (vMerkleTree.empty() ? 0 : vMerkleTree.back());
+    }
+
+    void print() const
+    {
+        printf("CBlock(hash=%s, ver=%d, hashPrevBlock=%s, hashMerkleRoot=%s, nTime=%u, nBits=%08x, nNonce=%u, vtx=%d)\n",
+            GetHash().ToString().substr(0,20).c_str(),
+            nVersion,
+            hashPrevBlock.ToString().substr(0,20).c_str(),
+            hashMerkleRoot.ToString().substr(0,10).c_str(),
+            nTime, nBits, nNonce,
+            vtx.size());
+        for (int i = 0; i < vtx.size(); i++)
+        {
+            printf("  ");
+            vtx[i].print();
+        }
+        printf("  vMerkleTree: ");
+        for (int i = 0; i < vMerkleTree.size(); i++)
+            printf("%s ", vMerkleTree[i].ToString().substr(0,10).c_str());
+        printf("\n");
+    }
+
+
 };
 
-//
 // The block chain is a tree shaped structure starting with the
 // genesis block at the root, with each block potentially having multiple
 // candidates to be the next block.  pprev and pnext link a path through the
