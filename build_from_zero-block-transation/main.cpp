@@ -7,12 +7,260 @@
 
 using namespace std; 
 
+//
+// Global state
+//
+
+CCriticalSection cs_setpwalletRegistered;
+set<CWallet*> setpwalletRegistered;
+
 CCriticalSection cs_main;
-CBlockIndex* pindexBest = NULL;
 
+CCriticalSection cs_mapPubKeys;
+map<uint160, vector<unsigned char> > mapPubKeys;
+
+map<uint256, CTransaction> mapTransactions;
+CCriticalSection cs_mapTransactions;
+unsigned int nTransactionsUpdated = 0;
+//map<COutPoint, CInPoint> mapNextTx;
+
+map<uint256, CBlockIndex*> mapBlockIndex;
+uint256 hashGenesisBlock("0x000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f");
 CBigNum bnProofOfWorkLimit(~uint256(0) >> 32);
-
+int nTotalBlocksEstimate = 134444; // Conservative estimate of total nr of blocks on main chain
+const int nInitialBlockThreshold = 120; // Regard blocks up until N-threshold as "initial download"
+CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
+CBigNum bnBestChainWork = 0;
+CBigNum bnBestInvalidWork = 0;
+uint256 hashBestChain = 0;
+CBlockIndex* pindexBest = NULL;
+int64 nTimeBestReceived = 0;
+
+map<uint256, CBlock*> mapOrphanBlocks;
+multimap<uint256, CBlock*> mapOrphanBlocksByPrev;
+
+map<uint256, CDataStream*> mapOrphanTransactions;
+multimap<uint256, CDataStream*> mapOrphanTransactionsByPrev;
+
+
+double dHashesPerSec;
+int64 nHPSTimerStart;
+
+// Settings
+int fGenerateBitcoins = false;
+int64 nTransactionFee = 0;
+int fLimitProcessors = false;
+int nLimitProcessors = 1;
+int fMinimizeToTray = true;
+int fMinimizeOnClose = true;
+#if USE_UPNP
+int fUseUPnP = true;
+#else
+int fUseUPnP = false;
+#endif
+
+void static SetBestChain(const CBlockLocator& loc)
+{
+//    BOOST_FOREACH(CWallet* pwallet, setpwalletRegistered)
+//        pwallet->SetBestChain(loc);
+}
+
+
+void static UpdatedTransaction(const uint256& hashTx)
+{
+//    BOOST_FOREACH(CWallet* pwallet, setpwalletRegistered)
+        //pwallet->UpdatedTransaction(hashTx);
+        //snq 
+}
+
+FILE* OpenBlockFile(unsigned int nFile, unsigned int nBlockPos, const char* pszMode)
+{
+    #ifdef DEBUG_BLOCK
+    std::cout<<__FUNCTION__<<" main.cpp"<<std::endl;
+    #endif
+
+    if (nFile == -1)
+        return NULL;
+    FILE* file = fopen(strprintf("%s/blk%04d.dat", GetDataDir().c_str(), nFile).c_str(), pszMode);
+    if (!file)
+        return NULL;
+    if (nBlockPos != 0 && !strchr(pszMode, 'a') && !strchr(pszMode, 'w'))
+    {
+        if (fseek(file, nBlockPos, SEEK_SET) != 0)
+        {
+            fclose(file);
+            return NULL;
+        }
+    }
+    return file;
+}
+
+inline void MainFrameRepaint()
+{
+}
+
+bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
+{
+/*    uint256 hash = GetHash();
+
+    txdb.TxnBegin();
+    if (pindexGenesisBlock == NULL && hash == hashGenesisBlock)
+    {
+        txdb.WriteHashBestChain(hash);
+        if (!txdb.TxnCommit())
+            return error("SetBestChain() : TxnCommit failed");
+        pindexGenesisBlock = pindexNew;
+    }
+    else if (hashPrevBlock == hashBestChain)
+    {
+        // Adding to current best branch
+        if (!ConnectBlock(txdb, pindexNew) || !txdb.WriteHashBestChain(hash))
+        {
+            txdb.TxnAbort();
+            InvalidChainFound(pindexNew);
+            return error("SetBestChain() : ConnectBlock failed");
+        }
+        if (!txdb.TxnCommit())
+            return error("SetBestChain() : TxnCommit failed");
+
+        // Add to current best branch
+        pindexNew->pprev->pnext = pindexNew;
+
+        // Delete redundant memory transactions
+        BOOST_FOREACH(CTransaction& tx, vtx)
+            tx.RemoveFromMemoryPool();
+    }
+    else
+    {
+        // New best branch
+        if (!Reorganize(txdb, pindexNew))
+        {
+            txdb.TxnAbort();
+            InvalidChainFound(pindexNew);
+            return error("SetBestChain() : Reorganize failed");
+        }
+    }
+
+    // Update best block in wallet (so we can detect restored wallets)
+    if (!IsInitialBlockDownload())
+    {
+        const CBlockLocator locator(pindexNew);
+        ::SetBestChain(locator);
+    }
+
+    // New best block
+    hashBestChain = hash;
+    pindexBest = pindexNew;
+    nBestHeight = pindexBest->nHeight;
+    bnBestChainWork = pindexNew->bnChainWork;
+    nTimeBestReceived = GetTime();
+    nTransactionsUpdated++;
+    printf("SetBestChain: new best=%s  height=%d  work=%s\n", hashBestChain.ToString().substr(0,20).c_str(), nBestHeight, bnBestChainWork.ToString().c_str());
+*/
+    return true;
+}
+
+
+bool CBlock::AddToBlockIndex(unsigned int nFile, unsigned int nBlockPos)
+{
+    // Check for duplicate
+    uint256 hash = GetHash();
+    if (mapBlockIndex.count(hash))
+        return error("AddToBlockIndex() : %s already exists", hash.ToString().substr(0,20).c_str());
+
+    // Construct new block index object
+    CBlockIndex* pindexNew = new CBlockIndex(nFile, nBlockPos, *this);
+    if (!pindexNew)
+        return error("AddToBlockIndex() : new CBlockIndex failed");
+    map<uint256, CBlockIndex*>::iterator mi = mapBlockIndex.insert(make_pair(hash, pindexNew)).first;
+    pindexNew->phashBlock = &((*mi).first);
+    map<uint256, CBlockIndex*>::iterator miPrev = mapBlockIndex.find(hashPrevBlock);
+    if (miPrev != mapBlockIndex.end())
+    {
+        pindexNew->pprev = (*miPrev).second;
+        pindexNew->nHeight = pindexNew->pprev->nHeight + 1;
+    }
+    pindexNew->bnChainWork = (pindexNew->pprev ? pindexNew->pprev->bnChainWork : 0) + pindexNew->GetBlockWork();
+
+    CTxDB txdb;
+    txdb.TxnBegin();
+    txdb.WriteBlockIndex(CDiskBlockIndex(pindexNew));
+    if (!txdb.TxnCommit())
+        return false;
+
+    // New best
+    if (pindexNew->bnChainWork > bnBestChainWork)
+        if (!SetBestChain(txdb, pindexNew))
+            return false;
+
+    txdb.Close();
+
+    if (pindexNew == pindexBest)
+    {
+        // Notify UI to display prev block's coinbase if it was ours
+        static uint256 hashPrevBestCoinBase;
+        UpdatedTransaction(hashPrevBestCoinBase);
+        hashPrevBestCoinBase = vtx[0].GetHash();
+    }
+
+    MainFrameRepaint();
+    return true;
+}
+
+
+static unsigned int nCurrentBlockFile = 1;
+
+// Return conservative estimate of total number of blocks, 0 if unknown
+int GetTotalBlocksEstimate()
+{
+    if(fTestNet) 
+    {
+        return 0;
+    }
+    else
+    {
+        return nTotalBlocksEstimate;
+    }
+}
+
+bool IsInitialBlockDownload()
+{
+    if (pindexBest == NULL || nBestHeight < (GetTotalBlocksEstimate()-nInitialBlockThreshold))
+        return true;
+    static int64 nLastUpdate;
+    static CBlockIndex* pindexLastBest;
+    if (pindexBest != pindexLastBest)
+    {
+        pindexLastBest = pindexBest;
+        nLastUpdate = GetTime();
+    }
+    return (GetTime() - nLastUpdate < 10 &&
+            pindexBest->GetBlockTime() < GetTime() - 24 * 60 * 60);
+}
+
+
+FILE* AppendBlockFile(unsigned int& nFileRet)
+{
+    nFileRet = 0;
+    loop
+    {
+        FILE* file = OpenBlockFile(nCurrentBlockFile, 0, "ab");
+        if (!file)
+            return NULL;
+        if (fseek(file, 0, SEEK_END) != 0)
+            return NULL;
+        // FAT32 filesize max 4GB, fseek and ftell max 2GB, so we must stay under 2GB
+        if (ftell(file) < 0x7F000000 - MAX_SIZE)
+        {
+            nFileRet = nCurrentBlockFile;
+            return file;
+        }
+        fclose(file);
+        nCurrentBlockFile++;
+    }
+}
+
 
 // The message start string is designed to be unlikely to occur in normal data.
 // The characters are rarely used upper ascii, not valid as UTF-8, and produce
@@ -751,15 +999,15 @@ bool LoadBlockIndex(bool fAllowNew)
         assert(block.hashMerkleRoot == uint256("0x4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"));
         block.print();
         assert(block.GetHash() == hashGenesisBlock);
-/*
+
         // Start new block file
         unsigned int nFile;
         unsigned int nBlockPos;
-        if (!block.WriteToDisk(nFile, nBlockPos))
-            return error("LoadBlockIndex() : writing genesis block to disk failed");
+//        if (!block.WriteToDisk(nFile, nBlockPos))
+//            return error("LoadBlockIndex() : writing genesis block to disk failed");
         if (!block.AddToBlockIndex(nFile, nBlockPos))
             return error("LoadBlockIndex() : genesis block not accepted");
-*/  
+ 
   }
 
     return true;

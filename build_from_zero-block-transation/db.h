@@ -14,8 +14,25 @@
 
 #include <db_cxx.h>
 
+class CTxIndex;
+class CDiskBlockIndex;
+class CDiskTxPos;
+class COutPoint;
 class CAddress;
+class CWalletTx;
+class CWallet;
+class CAccount;
+class CAccountingEntry;
+class CBlockLocator;
 
+
+extern unsigned int nWalletDBUpdated;
+extern DbEnv dbenv;
+
+
+extern void DBFlush(bool fShutdown);
+void ThreadFlushWalletDB(void* parg);
+bool BackupWallet(const CWallet& wallet, const std::string& strDest);
 
 class CDB
 {
@@ -143,6 +160,43 @@ protected:
             return NULL;
     }
 
+public:
+
+    bool TxnBegin()
+    {
+        if (!pdb)
+            return false;
+        DbTxn* ptxn = NULL;
+        int ret = dbenv.txn_begin(GetTxn(), &ptxn, DB_TXN_NOSYNC);
+        if (!ptxn || ret != 0)
+            return false;
+        vTxn.push_back(ptxn);
+        return true;
+    }
+
+    bool TxnCommit()
+    {
+        if (!pdb)
+            return false;
+        if (vTxn.empty())
+            return false;
+        int ret = vTxn.back()->commit(0);
+        vTxn.pop_back();
+        return (ret == 0);
+    }
+
+    bool TxnAbort()
+    {
+        if (!pdb)
+            return false;
+        if (vTxn.empty())
+            return false;
+        int ret = vTxn.back()->abort();
+        vTxn.pop_back();
+        return (ret == 0);
+    }
+
+
 } ;
 
 
@@ -157,6 +211,22 @@ public:
 private:
     CTxDB(const CTxDB&);
 public:
+    bool ReadTxIndex(uint256 hash, CTxIndex& txindex);
+    bool UpdateTxIndex(uint256 hash, const CTxIndex& txindex);
+    bool AddTxIndex(const CTransaction& tx, const CDiskTxPos& pos, int nHeight);
+    bool EraseTxIndex(const CTransaction& tx);
+    bool ContainsTx(uint256 hash);
+    bool ReadOwnerTxes(uint160 hash160, int nHeight, std::vector<CTransaction>& vtx);
+    bool ReadDiskTx(uint256 hash, CTransaction& tx, CTxIndex& txindex);
+    bool ReadDiskTx(uint256 hash, CTransaction& tx);
+    bool ReadDiskTx(COutPoint outpoint, CTransaction& tx, CTxIndex& txindex);
+    bool ReadDiskTx(COutPoint outpoint, CTransaction& tx);
+    bool WriteBlockIndex(const CDiskBlockIndex& blockindex);
+    bool EraseBlockIndex(uint256 hash);
+    bool ReadHashBestChain(uint256& hashBestChain);
+    bool WriteHashBestChain(uint256 hashBestChain);
+    bool ReadBestInvalidWork(CBigNum& bnBestInvalidWork);
+    bool WriteBestInvalidWork(CBigNum bnBestInvalidWork);
     bool LoadBlockIndex();
 };
 

@@ -267,6 +267,12 @@ bool CTxDB::LoadBlockIndex()
 
 }
 
+bool CTxDB::WriteBlockIndex(const CDiskBlockIndex& blockindex)
+{
+    return Write(make_pair(string("blockindex"), blockindex.GetBlockHash()), blockindex);
+}
+
+
 //  
 // CAddrDB
 //  

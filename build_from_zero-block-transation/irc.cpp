@@ -24,9 +24,6 @@
 using namespace std;
 using namespace boost;
 
-map<uint256, CBlockIndex*> mapBlockIndex;
-CBlockIndex* pindexGenesisBlock = NULL;
-uint256 hashGenesisBlock("0x000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f");
 
 int nGotIRCAddresses = 0;
 bool fGotExternalIP = false;
