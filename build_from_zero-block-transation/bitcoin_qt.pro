@@ -17,7 +17,11 @@ SOURCES += main.cpp \
 
 HEADERS += serialize.h \
            headers.h \
-           script.h \
+           wallet.h  \
+           key.h    \
+           keystore.h \
+	   crypter.h \
+	   script.h \
            init.h \
            irc.h  \
            net.h  \

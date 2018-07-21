@@ -4,6 +4,7 @@
 #include "main.h"
 #include "net.h"
 #include "db.h"
+#include "wallet.h"
 
 using namespace std; 
 
