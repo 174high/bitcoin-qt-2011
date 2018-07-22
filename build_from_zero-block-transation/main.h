@@ -90,6 +90,67 @@ int GetTotalBlocksEstimate();
 bool IsInitialBlockDownload();
 std::string GetWarnings(std::string strFor);
 
+class CDiskTxPos
+{
+public:
+    unsigned int nFile;
+    unsigned int nBlockPos;
+    unsigned int nTxPos;
+
+    CDiskTxPos()
+    {
+        SetNull();
+    }
+
+    CDiskTxPos(unsigned int nFileIn, unsigned int nBlockPosIn, unsigned int nTxPosIn)
+    {
+        nFile = nFileIn;
+        nBlockPos = nBlockPosIn;
+        nTxPos = nTxPosIn;
+    }
+
+    IMPLEMENT_SERIALIZE( READWRITE(FLATDATA(*this)); )
+    void SetNull() { nFile = -1; nBlockPos = 0; nTxPos = 0; }
+    bool IsNull() const { return (nFile == -1); }
+
+    friend bool operator==(const CDiskTxPos& a, const CDiskTxPos& b)
+    {
+        return (a.nFile     == b.nFile &&
+                a.nBlockPos == b.nBlockPos &&
+                a.nTxPos    == b.nTxPos);
+    }
+
+    friend bool operator!=(const CDiskTxPos& a, const CDiskTxPos& b)
+    {
+        return !(a == b);
+    }
+
+    std::string ToString() const
+    {
+        if (IsNull())
+            return strprintf("null");
+        else
+            return strprintf("(nFile=%d, nBlockPos=%d, nTxPos=%d)", nFile, nBlockPos, nTxPos);
+    }
+
+    void print() const
+    {
+        printf("%s", ToString().c_str());
+    }
+};
+
+class CInPoint
+{
+public:
+    CTransaction* ptx;
+    unsigned int n;
+
+    CInPoint() { SetNull(); }
+    CInPoint(CTransaction* ptxIn, unsigned int nIn) { ptx = ptxIn; n = nIn; }
+    void SetNull() { ptx = NULL; n = -1; }
+    bool IsNull() const { return (ptx == NULL && n == -1); }
+};
+
 
 class COutPoint
 {
@@ -402,6 +463,21 @@ public:
         printf("%s", ToString().c_str());
     }
 
+    bool ReadFromDisk(CTxDB& txdb, COutPoint prevout, CTxIndex& txindexRet);
+    bool ReadFromDisk(CTxDB& txdb, COutPoint prevout);
+    bool ReadFromDisk(COutPoint prevout);
+    bool DisconnectInputs(CTxDB& txdb);
+    bool ConnectInputs(CTxDB& txdb, std::map<uint256, CTxIndex>& mapTestPool, CDiskTxPos posThisTx,
+                       CBlockIndex* pindexBlock, int64& nFees, bool fBlock, bool fMiner, int64 nMinFee=0);
+    bool ClientConnectInputs();
+    bool CheckTransaction() const;
+    bool AcceptToMemoryPool(CTxDB& txdb, bool fCheckInputs=true, bool* pfMissingInputs=NULL);
+    bool AcceptToMemoryPool(bool fCheckInputs=true, bool* pfMissingInputs=NULL);
+protected:
+    bool AddToMemoryPoolUnchecked();
+public:
+    bool RemoveFromMemoryPool();
+
 };
 
 
@@ -595,7 +671,7 @@ public:
         printf("\n");
     }
 
-    bool DisconnectBlock(CTxDB& txdb, CBlockIndex* pindex);
+   bool DisconnectBlock(CTxDB& txdb, CBlockIndex* pindex);
     bool ConnectBlock(CTxDB& txdb, CBlockIndex* pindex);
     bool ReadFromDisk(const CBlockIndex* pindex, bool fReadTransactions=true);
     bool SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew);

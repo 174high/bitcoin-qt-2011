@@ -235,6 +235,7 @@ bool CTxDB::LoadBlockIndex()
             pindexNew->nNonce         = diskindex.nNonce;
 
 
+            #ifdef DEBUG_DB
             std::cout<<"BlockHash:"<<diskindex.GetBlockHash().ToString()<<std::endl ;
             std::cout<<"hashPrev :"<<diskindex.hashPrev.ToString()<<std::endl ;
             std::cout<<"hashNext :"<<diskindex.hashNext.ToString()<<std::endl;
@@ -246,7 +247,8 @@ bool CTxDB::LoadBlockIndex()
             std::cout<<"nTime    :"<<diskindex.nTime<<std::endl;
             std::cout<<"nBits    :"<<diskindex.nBits<<std::endl;
             std::cout<<"nNonce   :"<<diskindex.nNonce<<std::endl;
-
+	    #endif 
+	
             // Watch for genesis block
             if (pindexGenesisBlock == NULL && diskindex.GetBlockHash() == hashGenesisBlock)
             {
@@ -287,7 +289,7 @@ bool CAddrDB::WriteAddress(const CAddress& addr)
 bool CAddrDB::LoadAddresses()
 {
 
-    #ifdef DEBUG_WALLET
+    #ifdef DEBUG_DB
     qDebug()<<__FUNCTION__<<" 1:";
     #endif
 
@@ -296,14 +298,14 @@ bool CAddrDB::LoadAddresses()
         // Load user provided addresses
         CAutoFile filein = fopen((GetDataDir() + "/addr.txt").c_str(), "rt");
 
-        #ifdef DEBUG_WALLET
+        #ifdef DEBUG_DB
         qDebug()<<__FUNCTION__<<(GetDataDir() + "/addr.txt").c_str() ;
         #endif
 
         if (filein)
         {
 
-        #ifdef DEBUG_WALLET
+        #ifdef DEBUG_DB
         qDebug()<<__FUNCTION__<<" 2:";
         #endif
 
@@ -340,7 +342,7 @@ bool CAddrDB::LoadAddresses()
             // Unserialize
             string strType;
             ssKey >> strType;
-            #ifdef DEBUG_WALLET
+            #ifdef DEBUG_DB
             qDebug()<<__FUNCTION__<<" Read next record "<<strType.c_str();
             #endif
             if (strType == "addr")
@@ -348,7 +350,9 @@ bool CAddrDB::LoadAddresses()
                 CAddress addr;
                 ssValue >> addr;
                 mapAddresses.insert(make_pair(addr.GetKey(), addr));
+           	#ifdef DEBUG_DB
                 addr.print();
+ 	  	#endif 
             }
         }
         pcursor->close();

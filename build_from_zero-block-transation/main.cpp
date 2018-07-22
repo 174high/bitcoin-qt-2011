@@ -23,7 +23,7 @@ map<uint160, vector<unsigned char> > mapPubKeys;
 map<uint256, CTransaction> mapTransactions;
 CCriticalSection cs_mapTransactions;
 unsigned int nTransactionsUpdated = 0;
-//map<COutPoint, CInPoint> mapNextTx;
+map<COutPoint, CInPoint> mapNextTx;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
 uint256 hashGenesisBlock("0x000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f");
@@ -100,6 +100,21 @@ inline void MainFrameRepaint()
 {
 }
 
+void static InvalidChainFound(CBlockIndex* pindexNew)
+{
+    if (pindexNew->bnChainWork > bnBestInvalidWork)
+    {
+        bnBestInvalidWork = pindexNew->bnChainWork;
+        CTxDB().WriteBestInvalidWork(bnBestInvalidWork);
+        MainFrameRepaint();
+    }
+    printf("InvalidChainFound: invalid block=%s  height=%d  work=%s\n", pindexNew->GetBlockHash().ToString().substr(0,20).c_str(), pindexNew->nHeight, pindexNew->bnChainWork.ToString().c_str());
+    printf("InvalidChainFound:  current best=%s  height=%d  work=%s\n", hashBestChain.ToString().substr(0,20).c_str(), nBestHeight, bnBestChainWork.ToString().c_str());
+    if (pindexBest && bnBestInvalidWork > bnBestChainWork + pindexBest->GetBlockWork() * 6)
+        printf("InvalidChainFound: WARNING: Displayed transactions may not be correct!  You may need to upgrade, or other nodes may need to upgrade.\n");
+}
+
+
 bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
 {
 /*    uint256 hash = GetHash();
@@ -158,6 +173,19 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
     nTransactionsUpdated++;
     printf("SetBestChain: new best=%s  height=%d  work=%s\n", hashBestChain.ToString().substr(0,20).c_str(), nBestHeight, bnBestChainWork.ToString().c_str());
 */
+    return true;
+}
+
+bool CTransaction::RemoveFromMemoryPool()
+{
+    // Remove transaction from memory pool
+    CRITICAL_BLOCK(cs_mapTransactions)
+    {
+        BOOST_FOREACH(const CTxIn& txin, vin)
+            mapNextTx.erase(txin.prevout);
+        mapTransactions.erase(GetHash());
+        nTransactionsUpdated++;
+    }
     return true;
 }
 
