@@ -65,6 +65,50 @@ public:
         walletdb.WriteBestBlock(loc);
     }
 
+   // keystore implementation
+    bool AddKey(const CKey& key);
+    bool LoadKey(const CKey& key) { return CCryptoKeyStore::AddKey(key); }
+    bool AddCryptedKey(const std::vector<unsigned char> &vchPubKey, const std::vector<unsigned char> &vchCryptedSecret);
+    bool LoadCryptedKey(const std::vector<unsigned char> &vchPubKey, const std::vector<unsigned char> &vchCryptedSecret) { return CCryptoKeyStore::AddCryptedKey(vchPubKey, vchCryptedSecret); }
+
+    bool Unlock(const std::string& strWalletPassphrase);
+    bool ChangeWalletPassphrase(const std::string& strOldWalletPassphrase, const std::string& strNewWalletPassphrase);
+    bool EncryptWallet(const std::string& strWalletPassphrase);
+
+    bool AddToWallet(const CWalletTx& wtxIn);
+    bool AddToWalletIfInvolvingMe(const CTransaction& tx, const CBlock* pblock, bool fUpdate = false);
+    bool EraseFromWallet(uint256 hash);
+    void WalletUpdateSpent(const CTransaction& prevout);
+    int ScanForWalletTransactions(CBlockIndex* pindexStart, bool fUpdate = false);
+    void ReacceptWalletTransactions();
+    void ResendWalletTransactions();
+    int64 GetBalance() const;
+    int64 GetUnconfirmedBalance() const;
+    bool CreateTransaction(const std::vector<std::pair<CScript, int64> >& vecSend, CWalletTx& wtxNew, CReserveKey& reservekey, int64& nFeeRet);
+    bool CreateTransaction(CScript scriptPubKey, int64 nValue, CWalletTx& wtxNew, CReserveKey& reservekey, int64& nFeeRet);
+    bool CommitTransaction(CWalletTx& wtxNew, CReserveKey& reservekey);
+    bool BroadcastTransaction(CWalletTx& wtxNew);
+    std::string SendMoney(CScript scriptPubKey, int64 nValue, CWalletTx& wtxNew, bool fAskFee=false);
+    std::string SendMoneyToBitcoinAddress(std::string strAddress, int64 nValue, CWalletTx& wtxNew, bool fAskFee=false);
+
+    bool TopUpKeyPool();
+ //   void ReserveKeyFromKeyPool(int64& nIndex, CKeyPool& keypool);
+    void KeepKey(int64 nIndex);
+    void ReturnKey(int64 nIndex);
+    std::vector<unsigned char> GetOrReuseKeyFromPool();
+    int64 GetOldestKeyPoolTime();
+   bool IsMine(const CTxIn& txin) const;
+    int64 GetDebit(const CTxIn& txin) const;
+    bool IsMine(const CTxOut& txout) const
+    {
+//        return ::IsMine(*this, txout.scriptPubKey);
+   }
+    int64 GetCredit(const CTxOut& txout) const
+    {
+        if (!MoneyRange(txout.nValue))
+            throw std::runtime_error("CWallet::GetCredit() : value out of range");
+        return (IsMine(txout) ? txout.nValue : 0);
+    }
 
 };
 

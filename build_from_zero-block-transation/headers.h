@@ -96,6 +96,9 @@
 #include "bignum.h"
 #include "base58.h"
 #include "main.h"
+#include "db.h"
+#include "key.h"
+#include "wallet.h"
 #ifdef GUI
 #include "uibase.h"
 #include "ui.h"

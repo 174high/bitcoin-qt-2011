@@ -12,6 +12,7 @@ SOURCES += main.cpp \
            init.cpp \ 
            db.cpp \
            util.cpp \       
+	   script.cpp \
            cryptopp/sha.cpp \
            cryptopp/cpu.cpp
 
