@@ -13,6 +13,7 @@
 #include "serialize.h"
 #include "net.h"
 #include "db.h"
+#include "wallet.h"
 
 using namespace std; 
 using namespace boost;

@@ -4,7 +4,7 @@
 #ifndef BITCOIN_DB_H
 #define BITCOIN_DB_H
 
-//#include "key.h"
+#include "key.h"
 #include "serialize.h"
 
 
@@ -123,6 +123,37 @@ protected:
     }
 
     template<typename K, typename T>
+    bool Read(const K& key, T& value)
+    {
+        if (!pdb)
+            return false;
+
+        // Key
+        CDataStream ssKey(SER_DISK);
+        ssKey.reserve(1000);
+        ssKey << key;
+        Dbt datKey(&ssKey[0], ssKey.size());
+
+        // Read
+        Dbt datValue;
+        datValue.set_flags(DB_DBT_MALLOC);
+        int ret = pdb->get(GetTxn(), &datKey, &datValue, 0);
+        memset(datKey.get_data(), 0, datKey.get_size());
+        if (datValue.get_data() == NULL)
+            return false;
+
+        // Unserialize value
+        CDataStream ssValue((char*)datValue.get_data(), (char*)datValue.get_data() + datValue.get_size(), SER_DISK);
+        ssValue >> value;
+
+        // Clear and free memory
+        memset(datValue.get_data(), 0, datValue.get_size());
+        free(datValue.get_data());
+        return (ret == 0);
+    }
+
+
+    template<typename K, typename T>
     bool Write(const K& key, const T& value, bool fOverwrite=true)
     {
         if (!pdb)
@@ -151,6 +182,27 @@ protected:
         return (ret == 0);
     }
 
+    template<typename K>
+    bool Erase(const K& key)
+    {
+        if (!pdb)
+            return false;
+        if (fReadOnly)
+            assert(!"Erase called on database in read-only mode");
+
+        // Key
+        CDataStream ssKey(SER_DISK);
+        ssKey.reserve(1000);
+        ssKey << key;
+        Dbt datKey(&ssKey[0], ssKey.size());
+
+        // Erase
+        int ret = pdb->del(GetTxn(), &datKey, 0);
+
+        // Clear memory
+        memset(datKey.get_data(), 0, datKey.get_size());
+        return (ret == 0 || ret == DB_NOTFOUND);
+    }
 
     DbTxn* GetTxn()
     {
@@ -244,6 +296,72 @@ public:
 };
 
 bool LoadAddresses();
+
+
+enum DBErrors
+{
+    DB_LOAD_OK,
+    DB_CORRUPT,
+    DB_TOO_NEW,
+    DB_LOAD_FAIL,
+};
+
+class CWalletDB : public CDB
+{   
+public:
+    CWalletDB(std::string strFilename, const char* pszMode="r+") : CDB(strFilename.c_str(), pszMode)
+    {
+    }
+private:
+    CWalletDB(const CWalletDB&);
+    void operator=(const CWalletDB&);
+public:
+   bool ReadName(const std::string& strAddress, std::string& strName)
+    {
+        strName = "";
+        return Read(std::make_pair(std::string("name"), strAddress), strName);
+    }
+
+    bool WriteName(const std::string& strAddress, const std::string& strName);
+
+    bool EraseName(const std::string& strAddress);
+
+    bool ReadTx(uint256 hash, CWalletTx& wtx)
+    {
+        return Read(std::make_pair(std::string("tx"), hash), wtx);
+    }
+
+    bool WriteTx(uint256 hash, const CWalletTx& wtx)
+    {
+        nWalletDBUpdated++;
+        return Write(std::make_pair(std::string("tx"), hash), wtx);
+    }
+
+    bool EraseTx(uint256 hash)
+    {
+        nWalletDBUpdated++;
+        return Erase(std::make_pair(std::string("tx"), hash));
+    }
+
+    bool ReadKey(const std::vector<unsigned char>& vchPubKey, CPrivKey& vchPrivKey)
+    {
+        vchPrivKey.clear();
+        return Read(std::make_pair(std::string("key"), vchPubKey), vchPrivKey);
+    }
+
+    bool WriteKey(const std::vector<unsigned char>& vchPubKey, const CPrivKey& vchPrivKey)
+    {
+        nWalletDBUpdated++;
+        return Write(std::make_pair(std::string("key"), vchPubKey), vchPrivKey, false);
+    }
+
+   bool WriteBestBlock(const CBlockLocator& locator)
+    {
+        nWalletDBUpdated++;
+        return Write(std::string("bestblock"), locator);
+    }
+
+};
 
 
 

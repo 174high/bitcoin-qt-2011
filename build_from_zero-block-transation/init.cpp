@@ -4,6 +4,7 @@
 #include "headers.h"
 #include "db.h"
 //#include "bitcoinrpc.h"
+#include "wallet.h"
 #include "net.h"
 #include "init.h"
 #include "strlcpy.h"

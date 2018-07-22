@@ -13,6 +13,7 @@
 #include <fcntl.h> 
 #include <iostream>
 #include "init.h"
+#include "wallet.h"
 
 using namespace std;
 using namespace boost;

@@ -20,6 +20,8 @@
 #include <stdlib.h>
 #include "strlcpy.h"
 #include "main.h"
+#include "wallet.h"
+
 
 using namespace std;
 using namespace boost;
