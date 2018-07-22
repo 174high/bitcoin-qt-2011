@@ -1003,8 +1003,8 @@ bool LoadBlockIndex(bool fAllowNew)
         // Start new block file
         unsigned int nFile;
         unsigned int nBlockPos;
-//        if (!block.WriteToDisk(nFile, nBlockPos))
-//            return error("LoadBlockIndex() : writing genesis block to disk failed");
+        if (!block.WriteToDisk(nFile, nBlockPos))
+            return error("LoadBlockIndex() : writing genesis block to disk failed");
         if (!block.AddToBlockIndex(nFile, nBlockPos))
             return error("LoadBlockIndex() : genesis block not accepted");
  

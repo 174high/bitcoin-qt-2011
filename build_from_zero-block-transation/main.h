@@ -439,6 +439,24 @@ public:
         SetNull();
     }
 
+    IMPLEMENT_SERIALIZE
+    (
+        READWRITE(this->nVersion);
+        nVersion = this->nVersion;
+        READWRITE(hashPrevBlock);
+        READWRITE(hashMerkleRoot);
+        READWRITE(nTime);
+        READWRITE(nBits);
+        READWRITE(nNonce);
+
+        // ConnectBlock depends on vtx being last so it can calculate offset
+        if (!(nType & (SER_GETHASH|SER_BLOCKHEADERONLY)))
+            READWRITE(vtx);
+        else if (fRead)
+            const_cast<CBlock*>(this)->vtx.clear();
+    )
+
+
     void SetNull()
     {
         nVersion = 1;
@@ -524,7 +542,7 @@ public:
         return hash;
     }
 
-/*
+
     bool WriteToDisk(unsigned int& nFileRet, unsigned int& nBlockPosRet)
     {
         // Open history file to append
@@ -556,7 +574,7 @@ public:
         return true;
     }
 
-*/
+
     void print() const
     {
         printf("CBlock(hash=%s, ver=%d, hashPrevBlock=%s, hashMerkleRoot=%s, nTime=%u, nBits=%08x, nNonce=%u, vtx=%d)\n",
