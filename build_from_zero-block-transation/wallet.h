@@ -59,11 +59,6 @@ public:
 
     std::vector<unsigned char> vchDefaultKey;
 
-    void SetBestChain(const CBlockLocator& loc)
-    {
-        CWalletDB walletdb(strWalletFile);
-        walletdb.WriteBestBlock(loc);
-    }
 
    // keystore implementation
     bool AddKey(const CKey& key);
@@ -108,6 +103,19 @@ public:
         if (!MoneyRange(txout.nValue))
             throw std::runtime_error("CWallet::GetCredit() : value out of range");
         return (IsMine(txout) ? txout.nValue : 0);
+    }
+
+  void SetBestChain(const CBlockLocator& loc)
+    {
+        CWalletDB walletdb(strWalletFile);
+        walletdb.WriteBestBlock(loc);
+    }
+
+
+    void UpdatedTransaction(const uint256 &hashTx)
+    {
+        CRITICAL_BLOCK(cs_mapWallet)
+            vWalletUpdated.push_back(hashTx);
     }
 
 };

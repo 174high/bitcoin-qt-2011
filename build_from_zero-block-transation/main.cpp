@@ -63,16 +63,15 @@ int fUseUPnP = false;
 
 void static SetBestChain(const CBlockLocator& loc)
 {
-//    BOOST_FOREACH(CWallet* pwallet, setpwalletRegistered)
-//        pwallet->SetBestChain(loc);
+    BOOST_FOREACH(CWallet* pwallet, setpwalletRegistered)
+        pwallet->SetBestChain(loc);
 }
 
 
 void static UpdatedTransaction(const uint256& hashTx)
 {
-//    BOOST_FOREACH(CWallet* pwallet, setpwalletRegistered)
-        //pwallet->UpdatedTransaction(hashTx);
-        //snq 
+    BOOST_FOREACH(CWallet* pwallet, setpwalletRegistered)
+    	pwallet->UpdatedTransaction(hashTx);
 }
 
 FILE* OpenBlockFile(unsigned int nFile, unsigned int nBlockPos, const char* pszMode)
