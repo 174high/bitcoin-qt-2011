@@ -161,6 +161,14 @@ public:
         return *phashBlock;
     }
 
+    CBigNum GetBlockWork() const
+    {
+        CBigNum bnTarget;
+        bnTarget.SetCompact(nBits);
+        if (bnTarget <= 0)
+            return 0;
+        return (CBigNum(1)<<256) / (bnTarget+1);
+    }
 
 }; 
 

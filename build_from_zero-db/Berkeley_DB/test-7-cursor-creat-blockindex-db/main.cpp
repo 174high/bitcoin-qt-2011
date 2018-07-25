@@ -283,26 +283,29 @@ int main(int argc, char *argv[])
 	    std::cout<<"nNonce   :"<<pindex->nNonce<<std::endl;
             std::cout<<""<<std::endl; 
     }
-/*
+
     BOOST_FOREACH(const PAIRTYPE(int, CBlockIndex*)& item, vSortedByHeight)
     {
         CBlockIndex* pindex = item.second;
+	std::cout<<"nHeight  :"<<pindex->nHeight<<std::endl;
+      	if(pindex->pprev==NULL)
+        {
+	    std::cout<<"pindex->pprev==NULL"<<std::endl; 
+	}
+
         if(pindex->pprev!=NULL)
         {    
-            std::cout<<"pprev->bnChainWork="<<pindex->pprev->bnChainWork.ToString()<<std::endl;
-            std::cout<<"pindex->GetBlockWork="<<pindex->GetBlockWork().ToString()<<std::endl; 
+            std::cout<<"a:pprev->bnChainWork="<<pindex->pprev->bnChainWork.ToString()<<std::endl;
+            std::cout<<"b:pindex->GetBlockWork="<<pindex->GetBlockWork().ToString()<<std::endl; 
         }
 //        std::cout<<"pprev->bnChainWork="<<pindex->pprev->bnChainWork.getuint256().ToString()<<std::endl; 
         pindex->bnChainWork = (pindex->pprev ? pindex->pprev->bnChainWork : 0) + pindex->GetBlockWork();
         
-        if(pindex->pprev!=NULL)
-        {
 
-            std::cout<<"pindex->bnChainWork="<<pindex->bnChainWork.ToString()<<std::endl;
-        }
+       std::cout<<"a+b=pindex->bnChainWork="<<pindex->bnChainWork.ToString()<<std::endl;
 
     }
-*/
+
 
     return ret; 
 
