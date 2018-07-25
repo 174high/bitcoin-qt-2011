@@ -183,7 +183,20 @@ CBlockIndex static * InsertBlockIndex(uint256 hash)
     return pindexNew;
 }
 
+bool CTxDB::ReadHashBestChain(uint256& hashBestChain)
+{
+    return Read(string("hashBestChain"), hashBestChain);
+}
 
+bool CTxDB::ReadBestInvalidWork(CBigNum& bnBestInvalidWork)
+{
+    return Read(string("bnBestInvalidWork"), bnBestInvalidWork);
+}
+
+bool CTxDB::WriteBestInvalidWork(CBigNum bnBestInvalidWork)
+{
+    return Write(string("bnBestInvalidWork"), bnBestInvalidWork);
+}
 
 
 bool CTxDB::LoadBlockIndex()
@@ -267,7 +280,51 @@ bool CTxDB::LoadBlockIndex()
     }
     pcursor->close();
 
+  // Calculate bnChainWork
+    vector<pair<int, CBlockIndex*> > vSortedByHeight;
+    vSortedByHeight.reserve(mapBlockIndex.size());
+    BOOST_FOREACH(const PAIRTYPE(uint256, CBlockIndex*)& item, mapBlockIndex)
+    {
+        CBlockIndex* pindex = item.second;
+        vSortedByHeight.push_back(make_pair(pindex->nHeight, pindex));
+    }
+    sort(vSortedByHeight.begin(), vSortedByHeight.end());
+    BOOST_FOREACH(const PAIRTYPE(int, CBlockIndex*)& item, vSortedByHeight)
+    {
+        CBlockIndex* pindex = item.second;
+        pindex->bnChainWork = (pindex->pprev ? pindex->pprev->bnChainWork : 0) + pindex->GetBlockWork();
+    }
 
+    std::cout<<"ReadHashBestChain 1"<<std::endl;
+    std::cout<<"in hashBestChain="<<hashBestChain.ToString()<<std::endl;
+    // Load hashBestChain pointer to end of best chain
+    if (!ReadHashBestChain(hashBestChain))
+    {
+        qDebug()<<"ReadHashBestChain 2";
+        if (pindexGenesisBlock == NULL)
+            return true;
+        return error("CTxDB::LoadBlockIndex() : hashBestChain not loaded");
+    }
+
+    std::cout<<"out hashBestChain="<<hashBestChain.ToString()<<std::endl;
+
+    if (!mapBlockIndex.count(hashBestChain))
+    {        qDebug()<<"ReadHashBestChain 3";
+         return error("CTxDB::LoadBlockIndex() : hashBestChain not found in the block index");
+    }
+
+    qDebug()<<"ReadHashBestChain 4";
+
+    pindexBest = mapBlockIndex[hashBestChain];
+    nBestHeight = pindexBest->nHeight;
+    bnBestChainWork = pindexBest->bnChainWork;
+    printf("LoadBlockIndex(): hashBestChain=%s  height=%d\n", hashBestChain.ToString().substr(0,20).c_str(), nBestHeight);
+    qDebug()<<"LoadBlockIndex(): hashBestChain="<<hashBestChain.ToString().substr(0,20).c_str()<<" height="<<nBestHeight;
+
+    // Load bnBestInvalidWork, OK if it doesn't exist
+    ReadBestInvalidWork(bnBestInvalidWork);
+
+    return true; 
 }
 
 bool CTxDB::WriteBlockIndex(const CDiskBlockIndex& blockindex)
