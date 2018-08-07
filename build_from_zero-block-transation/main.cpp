@@ -77,7 +77,7 @@ void static UpdatedTransaction(const uint256& hashTx)
 FILE* OpenBlockFile(unsigned int nFile, unsigned int nBlockPos, const char* pszMode)
 {
     #ifdef DEBUG_BLOCK
-    std::cout<<__FUNCTION__<<" main.cpp"<<std::endl;
+    std::cout<<__FUNCTION__<<" main.cpp"<<" nFile="<<nFile<<" nBlockPos="<<nBlockPos<<std::endl;
     #endif
 
     if (nFile == -1)
@@ -186,6 +186,83 @@ bool CTransaction::RemoveFromMemoryPool()
         mapTransactions.erase(GetHash());
         nTransactionsUpdated++;
     }
+    return true;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+//      
+// CBlock and CBlockIndex
+//      
+        
+bool CBlock::ReadFromDisk(const CBlockIndex* pindex, bool fReadTransactions)
+{
+    std::cout<<__FUNCTION__<<" fReadTransactions="<<fReadTransactions<<std::endl; 
+    if (!fReadTransactions)
+    {   
+        *this = pindex->GetBlockHeader();
+        return true;
+    }
+    if (!ReadFromDisk(pindex->nFile, pindex->nBlockPos, fReadTransactions))
+        return false;
+    if (GetHash() != pindex->GetBlockHash())
+        return error("CBlock::ReadFromDisk() : GetHash() doesn't match index");
+    return true;
+}
+
+bool CBlock::CheckBlock() const
+{
+/*    // These are checks that are independent of context
+    // that can be verified before saving an orphan block.
+
+    // Size limits
+    if (vtx.empty() || vtx.size() > MAX_BLOCK_SIZE || ::GetSerializeSize(*this, SER_NETWORK) > MAX_BLOCK_SIZE)
+        return error("CheckBlock() : size limits failed");
+
+    // Check proof of work matches claimed amount
+    if (!CheckProofOfWork(GetHash(), nBits))
+        return error("CheckBlock() : proof of work failed");
+
+    // Check timestamp
+    if (GetBlockTime() > GetAdjustedTime() + 2 * 60 * 60)
+        return error("CheckBlock() : block timestamp too far in the future");
+
+    // First transaction must be coinbase, the rest must not be
+    if (vtx.empty() || !vtx[0].IsCoinBase())
+        return error("CheckBlock() : first tx is not coinbase");
+    for (int i = 1; i < vtx.size(); i++)
+        if (vtx[i].IsCoinBase())
+            return error("CheckBlock() : more than one coinbase");
+
+    // Check transactions
+    BOOST_FOREACH(const CTransaction& tx, vtx)
+        if (!tx.CheckTransaction())
+            return error("CheckBlock() : CheckTransaction failed");
+
+    // Check that it's not full of nonstandard transactions
+    if (GetSigOpCount() > MAX_BLOCK_SIGOPS)
+        return error("CheckBlock() : too many nonstandard transactions");
+
+    // Check merkleroot
+    if (hashMerkleRoot != BuildMerkleTree())
+        return error("CheckBlock() : hashMerkleRoot mismatch");
+*/
+    return true;
+}
+
+
+bool CheckProofOfWork(uint256 hash, unsigned int nBits)
+{
+    CBigNum bnTarget;
+    bnTarget.SetCompact(nBits);
+
+    // Check range
+    if (bnTarget <= 0 || bnTarget > bnProofOfWorkLimit)
+        return error("CheckProofOfWork() : nBits below minimum work");
+
+    // Check proof of work matches claimed amount
+    if (hash > bnTarget.getuint256())
+        return error("CheckProofOfWork() : hash doesn't match nBits");
+
     return true;
 }
 

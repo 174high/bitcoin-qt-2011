@@ -650,6 +650,27 @@ public:
         return true;
     }
 
+    bool ReadFromDisk(unsigned int nFile, unsigned int nBlockPos, bool fReadTransactions=true)
+    {
+        SetNull();
+
+        std::cout<<__FUNCTION__<<" cblock"<<std::endl;
+        // Open history file to read
+        CAutoFile filein = OpenBlockFile(nFile, nBlockPos, "rb");
+        if (!filein)
+            return error("CBlock::ReadFromDisk() : OpenBlockFile failed");
+        if (!fReadTransactions)
+            filein.nType |= SER_BLOCKHEADERONLY;
+
+        // Read block
+        filein >> *this;
+
+        // Check the header
+        if (!CheckProofOfWork(GetHash(), nBits))
+            return error("CBlock::ReadFromDisk() : errors in block header");
+
+        return true;
+    }
 
     void print() const
     {
@@ -740,6 +761,20 @@ public:
         nBits          = block.nBits;
         nNonce         = block.nNonce;
     }
+
+    CBlock GetBlockHeader() const
+    {
+        CBlock block;
+        block.nVersion       = nVersion;
+        if (pprev)
+            block.hashPrevBlock = pprev->GetBlockHash();
+        block.hashMerkleRoot = hashMerkleRoot;
+        block.nTime          = nTime;
+        block.nBits          = nBits;
+        block.nNonce         = nNonce;
+        return block;
+    }
+
 
     uint256 GetBlockHash() const
     {

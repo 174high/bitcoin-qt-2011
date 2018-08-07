@@ -324,6 +324,30 @@ bool CTxDB::LoadBlockIndex()
     // Load bnBestInvalidWork, OK if it doesn't exist
     ReadBestInvalidWork(bnBestInvalidWork);
 
+    std::cout<<"ReadBestInvalidWork="<<bnBestInvalidWork.ToString().c_str()<<std::endl; 
+
+    std::cout<<"CheckBlock in:"<<std::endl;
+    // Verify blocks in the best chain
+    CBlockIndex* pindexFork = NULL;
+    for (CBlockIndex* pindex = pindexBest; pindex && pindex->pprev; pindex = pindex->pprev)
+    {
+        std::cout<<"CheckBlock 1:"<<std::endl;
+        if (pindex->nHeight < nBestHeight-2500 && !mapArgs.count("-checkblocks"))
+            break;
+        CBlock block;
+        std::cout<<"CheckBlock 2:"<<std::endl;
+        if (!block.ReadFromDisk(pindex))
+            return error("LoadBlockIndex() : block.ReadFromDisk failed");
+//        std::cout<<"CheckBlock 3:"<<std::endl;
+//        if (!block.CheckBlock())
+//        {
+//            printf("LoadBlockIndex() : *** found bad block at %d, hash=%s\n", pindex->nHeight, pindex->GetBlockHash().ToString().c_str());
+//            pindexFork = pindex->pprev;
+//        }
+    }
+
+    std::cout<<"CheckBlock out:"<<std::endl;
+
     return true; 
 }
 
