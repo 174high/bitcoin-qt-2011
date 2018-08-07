@@ -338,12 +338,12 @@ bool CTxDB::LoadBlockIndex()
         std::cout<<"CheckBlock 2:"<<std::endl;
         if (!block.ReadFromDisk(pindex))
             return error("LoadBlockIndex() : block.ReadFromDisk failed");
-//        std::cout<<"CheckBlock 3:"<<std::endl;
-//        if (!block.CheckBlock())
-//        {
-//            printf("LoadBlockIndex() : *** found bad block at %d, hash=%s\n", pindex->nHeight, pindex->GetBlockHash().ToString().c_str());
-//            pindexFork = pindex->pprev;
-//        }
+        std::cout<<"CheckBlock 3:"<<std::endl;
+        if (!block.CheckBlock())
+        {
+            printf("LoadBlockIndex() : *** found bad block at %d, hash=%s\n", pindex->nHeight, pindex->GetBlockHash().ToString().c_str());
+            pindexFork = pindex->pprev;
+        }
     }
 
     std::cout<<"CheckBlock out:"<<std::endl;

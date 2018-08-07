@@ -665,6 +665,9 @@ public:
         // Read block
         filein >> *this;
 
+#ifdef DEBUG_BLOCK
+	std::cout<<"GetHash()"<<GetHash().ToString()<<" nBits="<<nBits<<std::endl ;
+#endif 
         // Check the header
         if (!CheckProofOfWork(GetHash(), nBits))
             return error("CBlock::ReadFromDisk() : errors in block header");

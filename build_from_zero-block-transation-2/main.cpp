@@ -77,7 +77,7 @@ void static UpdatedTransaction(const uint256& hashTx)
 FILE* OpenBlockFile(unsigned int nFile, unsigned int nBlockPos, const char* pszMode)
 {
     #ifdef DEBUG_BLOCK
-    std::cout<<__FUNCTION__<<" main.cpp"<<" nFile="<<nFile<<" nBlockPos="<<nBlockPos<<std::endl;
+    std::cout<<__FUNCTION__<<" main.cpp"<<" nFile="<<nFile<<" nBlockPos="<<nBlockPos<<" pszMode="<<pszMode<<std::endl;
     #endif
 
     if (nFile == -1)
@@ -211,7 +211,7 @@ bool CBlock::ReadFromDisk(const CBlockIndex* pindex, bool fReadTransactions)
 
 bool CBlock::CheckBlock() const
 {
-/*    // These are checks that are independent of context
+    // These are checks that are independent of context
     // that can be verified before saving an orphan block.
 
     // Size limits
@@ -221,7 +221,7 @@ bool CBlock::CheckBlock() const
     // Check proof of work matches claimed amount
     if (!CheckProofOfWork(GetHash(), nBits))
         return error("CheckBlock() : proof of work failed");
-
+/*
     // Check timestamp
     if (GetBlockTime() > GetAdjustedTime() + 2 * 60 * 60)
         return error("CheckBlock() : block timestamp too far in the future");
