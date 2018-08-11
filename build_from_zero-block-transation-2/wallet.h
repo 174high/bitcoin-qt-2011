@@ -96,8 +96,21 @@ public:
     int64 GetDebit(const CTxIn& txin) const;
     bool IsMine(const CTxOut& txout) const
     {
-//        return ::IsMine(*this, txout.scriptPubKey);  snq cautious
+        return ::IsMine(*this, txout.scriptPubKey);  
    }
+
+   int64 GetDebit(const CTransaction& tx) const
+    {
+        int64 nDebit = 0;
+        BOOST_FOREACH(const CTxIn& txin, tx.vin)
+        {
+            nDebit += GetDebit(txin);
+            if (!MoneyRange(nDebit))
+                throw std::runtime_error("CWallet::GetDebit() : value out of range");
+        }
+        return nDebit;
+    }
+
 
    int64 GetCredit(const CTxOut& txout) const
     {
@@ -106,9 +119,22 @@ public:
         return (IsMine(txout) ? txout.nValue : 0);
     }
 
+    int64 GetCredit(const CTransaction& tx) const
+    {
+        int64 nCredit = 0;
+        BOOST_FOREACH(const CTxOut& txout, tx.vout)
+        {
+            nCredit += GetCredit(txout);
+            if (!MoneyRange(nCredit))
+                throw std::runtime_error("CWallet::GetCredit() : value out of range");
+        }
+        return nCredit;
+    }
+
+
     bool IsFromMe(const CTransaction& tx) const
     {
-//        return (GetDebit(tx) > 0);    snq cautions
+        return (GetDebit(tx) > 0);  
     }
 
   void SetBestChain(const CBlockLocator& loc)
@@ -117,6 +143,13 @@ public:
         walletdb.WriteBestBlock(loc);
     }
 
+    bool IsMine(const CTransaction& tx) const
+    {
+        BOOST_FOREACH(const CTxOut& txout, tx.vout)
+            if (IsMine(txout))
+                return true;
+        return false;
+    }
 
     void UpdatedTransaction(const uint256 &hashTx)
     {
@@ -248,7 +281,175 @@ public:
         pthis->mapValue.erase("version");
         pthis->mapValue.erase("spent");
     )
+    // marks certain txout's as spent
+    // returns true if any update took place
+    bool UpdateSpent(const std::vector<char>& vfNewSpent)
+    {
+        bool fReturn = false;
+        for (int i=0; i < vfNewSpent.size(); i++)
+        {
+            if (i == vfSpent.size())
+                break;
 
+            if (vfNewSpent[i] && !vfSpent[i])
+            {
+                vfSpent[i] = true;
+                fReturn = true;
+                fAvailableCreditCached = false;
+            }
+        }
+        return fReturn;
+    }
+  void MarkDirty()
+    {
+        fCreditCached = false;
+        fAvailableCreditCached = false;
+        fDebitCached = false;
+        fChangeCached = false;
+    }
+
+    void MarkSpent(unsigned int nOut)
+    {
+        if (nOut >= vout.size())
+            throw std::runtime_error("CWalletTx::MarkSpent() : nOut out of range");
+        vfSpent.resize(vout.size());
+        if (!vfSpent[nOut])
+        {
+            vfSpent[nOut] = true;
+            fAvailableCreditCached = false;
+        }
+    }
+
+    bool IsSpent(unsigned int nOut) const
+    {
+        if (nOut >= vout.size())
+            throw std::runtime_error("CWalletTx::IsSpent() : nOut out of range");
+        if (nOut >= vfSpent.size())
+            return false;
+        return (!!vfSpent[nOut]);
+    }
+
+    int64 GetDebit() const
+    {
+        if (vin.empty())
+            return 0;
+        if (fDebitCached)
+            return nDebitCached;
+        nDebitCached = pwallet->GetDebit(*this);
+        fDebitCached = true;
+        return nDebitCached;
+    }
+    int64 GetCredit(bool fUseCache=true) const
+    {
+        // Must wait until coinbase is safely deep enough in the chain before valuing it
+        if (IsCoinBase() && GetBlocksToMaturity() > 0)
+            return 0;
+
+        // GetBalance can assume transactions in mapWallet won't change
+        if (fUseCache && fCreditCached)
+            return nCreditCached;
+        nCreditCached = pwallet->GetCredit(*this);
+        fCreditCached = true;
+        return nCreditCached;
+    }
+/*
+    int64 GetAvailableCredit(bool fUseCache=true) const
+    {
+        // Must wait until coinbase is safely deep enough in the chain before valuing it
+        if (IsCoinBase() && GetBlocksToMaturity() > 0)
+            return 0;
+
+        if (fUseCache && fAvailableCreditCached)
+            return nAvailableCreditCached;
+
+        int64 nCredit = 0;
+        for (int i = 0; i < vout.size(); i++)
+        {
+            if (!IsSpent(i))
+            {
+                const CTxOut &txout = vout[i];
+                nCredit += pwallet->GetCredit(txout);
+                if (!MoneyRange(nCredit))
+                    throw std::runtime_error("CWalletTx::GetAvailableCredit() : value out of range");
+            }
+        }
+
+        nAvailableCreditCached = nCredit;
+        fAvailableCreditCached = true;
+        return nCredit;
+    }
+   int64 GetChange() const
+    {
+        if (fChangeCached)
+            return nChangeCached;
+        nChangeCached = pwallet->GetChange(*this);
+        fChangeCached = true;
+        return nChangeCached;
+    }
+*/
+    void GetAmounts(int64& nGeneratedImmature, int64& nGeneratedMature, std::list<std::pair<std::string /* address */, int64> >& listReceived,
+                    std::list<std::pair<std::string /* address */, int64> >& listSent, int64& nFee, std::string& strSentAccount) const;
+/*
+    void GetAccountAmounts(const std::string& strAccount, int64& nGenerated, int64& nReceived,
+                           int64& nSent, int64& nFee) const;
+
+    bool IsFromMe() const
+    {
+        return (GetDebit() > 0);
+    }
+    bool IsConfirmed() const
+    {
+        // Quick answer in most cases
+        if (!IsFinal())
+            return false;
+        if (GetDepthInMainChain() >= 1)
+            return true;
+        if (!IsFromMe()) // using wtx's cached debit
+            return false;
+
+        // If no confirmations but it's from us, we can still
+        // consider it confirmed if all dependencies are confirmed
+        std::map<uint256, const CMerkleTx*> mapPrev;
+        std::vector<const CMerkleTx*> vWorkQueue;
+        vWorkQueue.reserve(vtxPrev.size()+1);
+        vWorkQueue.push_back(this);
+        for (int i = 0; i < vWorkQueue.size(); i++)
+        {
+            const CMerkleTx* ptx = vWorkQueue[i];
+
+            if (!ptx->IsFinal())
+                return false;
+            if (ptx->GetDepthInMainChain() >= 1)
+                continue;
+            if (!pwallet->IsFromMe(*ptx))
+                return false;
+
+            if (mapPrev.empty())
+                BOOST_FOREACH(const CMerkleTx& tx, vtxPrev)
+                    mapPrev[tx.GetHash()] = &tx;
+
+            BOOST_FOREACH(const CTxIn& txin, ptx->vin)
+            {
+                if (!mapPrev.count(txin.prevout.hash))
+                    return false;
+                vWorkQueue.push_back(mapPrev[txin.prevout.hash]);
+            }
+        }
+        return true;
+    }
+ */
+     bool WriteToDisk();
+
+    int64 GetTxTime() const;
+    int GetRequestCount() const;
+
+    void AddSupportingTransactions(CTxDB& txdb);
+
+    bool AcceptWalletTransaction(CTxDB& txdb, bool fCheckInputs=true);
+    bool AcceptWalletTransaction();
+
+    void RelayWalletTransaction(CTxDB& txdb);
+    void RelayWalletTransaction();
 
 };
 

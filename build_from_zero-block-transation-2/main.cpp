@@ -71,6 +71,11 @@ bool static IsFromMe(CTransaction& tx)
     return false;
 }
 
+void static EraseFromWallets(uint256 hash)
+{
+    BOOST_FOREACH(CWallet* pwallet, setpwalletRegistered)
+        pwallet->EraseFromWallet(hash);
+}
 
 
 void static SetBestChain(const CBlockLocator& loc)
@@ -85,6 +90,13 @@ void static UpdatedTransaction(const uint256& hashTx)
     BOOST_FOREACH(CWallet* pwallet, setpwalletRegistered)
     	pwallet->UpdatedTransaction(hashTx);
 }
+
+void static SyncWithWallets(const CTransaction& tx, const CBlock* pblock = NULL, bool fUpdate = false)
+{
+    BOOST_FOREACH(CWallet* pwallet, setpwalletRegistered)
+        pwallet->AddToWalletIfInvolvingMe(tx, pblock, fUpdate);
+}
+
 
 FILE* OpenBlockFile(unsigned int nFile, unsigned int nBlockPos, const char* pszMode)
 {
@@ -126,6 +138,17 @@ void static InvalidChainFound(CBlockIndex* pindexNew)
         printf("InvalidChainFound: WARNING: Displayed transactions may not be correct!  You may need to upgrade, or other nodes may need to upgrade.\n");
 }
 
+int64 static GetBlockValue(int nHeight, int64 nFees)
+{
+    int64 nSubsidy = 50 * COIN;
+
+    // Subsidy is cut in half every 4 years
+    nSubsidy >>= (nHeight / 210000);
+
+    return nSubsidy + nFees;
+}
+
+
 bool CBlock::DisconnectBlock(CTxDB& txdb, CBlockIndex* pindex)
 {
     // Disconnect in reverse order
@@ -166,7 +189,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
         if (!tx.ConnectInputs(txdb, mapUnused, posThisTx, pindex, nFees, true, false))
             return false;
     }
-/*
+
     if (vtx[0].GetValueOut() > GetBlockValue(pindex->nHeight, nFees))
         return false;
 
@@ -183,7 +206,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     // Watch for transactions paying to me
     BOOST_FOREACH(CTransaction& tx, vtx)
         SyncWithWallets(tx, this, true);
-*/
+
     return true;
 }
 
@@ -247,6 +270,60 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
     printf("SetBestChain: new best=%s  height=%d  work=%s\n", hashBestChain.ToString().substr(0,20).c_str(), nBestHeight, bnBestChainWork.ToString().c_str());
 */
     return true;
+}
+
+
+int CMerkleTx::SetMerkleBranch(const CBlock* pblock)
+{
+/*    if (fClient)
+    {
+        if (hashBlock == 0)
+            return 0;
+    }
+    else
+    {
+        CBlock blockTmp;
+        if (pblock == NULL)
+        {
+            // Load the block this tx is in
+            CTxIndex txindex;
+            if (!CTxDB("r").ReadTxIndex(GetHash(), txindex))
+                return 0;
+            if (!blockTmp.ReadFromDisk(txindex.pos.nFile, txindex.pos.nBlockPos))
+                return 0;
+            pblock = &blockTmp;
+        }
+
+        // Update the tx's hashBlock
+        hashBlock = pblock->GetHash();
+
+        // Locate the transaction
+        for (nIndex = 0; nIndex < pblock->vtx.size(); nIndex++)
+            if (pblock->vtx[nIndex] == *(CTransaction*)this)
+                break;
+        if (nIndex == pblock->vtx.size())
+        {
+            vMerkleBranch.clear();
+            nIndex = -1;
+            printf("ERROR: SetMerkleBranch() : couldn't find tx in block\n");
+            return 0;
+        }
+
+        // Fill in merkle branch
+        vMerkleBranch = pblock->GetMerkleBranch(nIndex);
+    }
+
+    // Is the tx in a block that's in the main chain
+    map<uint256, CBlockIndex*>::iterator mi = mapBlockIndex.find(hashBlock);
+    if (mi == mapBlockIndex.end())
+        return 0;
+    CBlockIndex* pindex = (*mi).second;
+    if (!pindex || !pindex->IsInMainChain())
+        return 0;
+
+    return pindexBest->nHeight - pindex->nHeight + 1;
+*/
+	return 0;  
 }
 
 bool CTransaction::AcceptToMemoryPool(CTxDB& txdb, bool fCheckInputs, bool* pfMissingInputs)
@@ -360,7 +437,7 @@ bool CTransaction::AcceptToMemoryPool(CTxDB& txdb, bool fCheckInputs, bool* pfMi
             }
         }
     }
-/*
+
     // Store transaction in memory
     CRITICAL_BLOCK(cs_mapTransactions)
     {
@@ -378,7 +455,7 @@ bool CTransaction::AcceptToMemoryPool(CTxDB& txdb, bool fCheckInputs, bool* pfMi
         EraseFromWallets(ptxOld->GetHash());
 
     printf("AcceptToMemoryPool(): accepted %s\n", hash.ToString().substr(0,10).c_str());
-*/    return true;
+    return true;
 }
 
 
@@ -533,6 +610,21 @@ bool CTransaction::ConnectInputs(CTxDB& txdb, map<uint256, CTxIndex>& mapTestPoo
     }
 
    return true; 
+}
+
+bool CTransaction::AddToMemoryPoolUnchecked()
+{
+    // Add to memory pool without checking anything.  Don't call this directly,
+    // call AcceptToMemoryPool to properly check the transaction first.
+    CRITICAL_BLOCK(cs_mapTransactions)
+    {
+        uint256 hash = GetHash();
+        mapTransactions[hash] = *this;
+        for (int i = 0; i < vin.size(); i++)
+            mapNextTx[vin[i].prevout] = CInPoint(&mapTransactions[hash], i);
+        nTransactionsUpdated++;
+    }
+    return true;
 }
 
 bool CTransaction::RemoveFromMemoryPool()

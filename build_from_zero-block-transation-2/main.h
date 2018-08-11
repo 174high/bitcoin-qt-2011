@@ -1207,6 +1207,14 @@ public:
         READWRITE(vMerkleBranch);
         READWRITE(nIndex);
     )
+
+    int SetMerkleBranch(const CBlock* pblock=NULL);
+    int GetDepthInMainChain(int& nHeightRet) const;
+    int GetDepthInMainChain() const { int nHeight; return GetDepthInMainChain(nHeight); }
+    bool IsInMainChain() const { return GetDepthInMainChain() > 0; }
+    int GetBlocksToMaturity() const;
+    bool AcceptToMemoryPool(CTxDB& txdb, bool fCheckInputs=true);
+    bool AcceptToMemoryPool();
 };
 
 extern std::map<uint256, CTransaction> mapTransactions;
