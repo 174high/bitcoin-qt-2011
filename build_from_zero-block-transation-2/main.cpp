@@ -114,6 +114,46 @@ void static InvalidChainFound(CBlockIndex* pindexNew)
         printf("InvalidChainFound: WARNING: Displayed transactions may not be correct!  You may need to upgrade, or other nodes may need to upgrade.\n");
 }
 
+bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
+{
+    // Check it again in case a previous version let a bad block in
+    if (!CheckBlock())
+        return false;
+
+    //// issue here: it doesn't know the version
+    unsigned int nTxPos = pindex->nBlockPos + ::GetSerializeSize(CBlock(), SER_DISK) - 1 + GetSizeOfCompactSize(vtx.size());
+
+    map<uint256, CTxIndex> mapUnused;
+    int64 nFees = 0;
+    BOOST_FOREACH(CTransaction& tx, vtx)
+    {
+        CDiskTxPos posThisTx(pindex->nFile, pindex->nBlockPos, nTxPos);
+        nTxPos += ::GetSerializeSize(tx, SER_DISK);
+
+        if (!tx.ConnectInputs(txdb, mapUnused, posThisTx, pindex, nFees, true, false))
+            return false;
+    }
+/*
+    if (vtx[0].GetValueOut() > GetBlockValue(pindex->nHeight, nFees))
+        return false;
+
+    // Update block index on disk without changing it in memory.
+    // The memory index structure will be changed after the db commits.
+    if (pindex->pprev)
+    {
+        CDiskBlockIndex blockindexPrev(pindex->pprev);
+        blockindexPrev.hashNext = pindex->GetBlockHash();
+        if (!txdb.WriteBlockIndex(blockindexPrev))
+            return error("ConnectBlock() : WriteBlockIndex failed");
+    }
+
+    // Watch for transactions paying to me
+    BOOST_FOREACH(CTransaction& tx, vtx)
+        SyncWithWallets(tx, this, true);
+*/
+    return true;
+}
+
 
 bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
 {
@@ -127,7 +167,7 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
             return error("SetBestChain() : TxnCommit failed");
         pindexGenesisBlock = pindexNew;
     }
-/*    else if (hashPrevBlock == hashBestChain)
+   else if (hashPrevBlock == hashBestChain)
     {
         // Adding to current best branch
         if (!ConnectBlock(txdb, pindexNew) || !txdb.WriteHashBestChain(hash))
@@ -146,7 +186,7 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
         BOOST_FOREACH(CTransaction& tx, vtx)
             tx.RemoveFromMemoryPool();
     }
-    else
+/*    else
     {
         // New best branch
         if (!Reorganize(txdb, pindexNew))
@@ -174,6 +214,125 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
     printf("SetBestChain: new best=%s  height=%d  work=%s\n", hashBestChain.ToString().substr(0,20).c_str(), nBestHeight, bnBestChainWork.ToString().c_str());
 */
     return true;
+}
+
+bool CTransaction::ConnectInputs(CTxDB& txdb, map<uint256, CTxIndex>& mapTestPool, CDiskTxPos posThisTx,
+                                 CBlockIndex* pindexBlock, int64& nFees, bool fBlock, bool fMiner, int64 nMinFee)
+{
+    #ifdef DEBUG_BLOCK
+    std::cout<<__FUNCTION__<<" CTransaction "<<std::endl;
+    #endif
+
+   // Take over previous transactions' spent pointers
+    if (!IsCoinBase())
+    {
+        int64 nValueIn = 0;
+        for (int i = 0; i < vin.size(); i++)
+        {
+            COutPoint prevout = vin[i].prevout;
+
+            // Read txindex
+            CTxIndex txindex;
+            bool fFound = true;
+            if (fMiner && mapTestPool.count(prevout.hash))
+            {
+                // Get txindex from current proposed changes
+                txindex = mapTestPool[prevout.hash];
+            }
+            else
+            {
+                // Read txindex from txdb
+                fFound = txdb.ReadTxIndex(prevout.hash, txindex);
+            }
+            if (!fFound && (fBlock || fMiner))
+                return fMiner ? false : error("ConnectInputs() : %s prev tx %s index entry not found", GetHash().ToString().substr(0,10).c_str(),  prevout.hash.ToString().substr(0,10).c_str());
+
+            // Read txPrev
+            CTransaction txPrev;
+            if (!fFound || txindex.pos == CDiskTxPos(1,1,1))
+            {
+                // Get prev tx from single transactions in memory
+                CRITICAL_BLOCK(cs_mapTransactions)
+                {
+                    if (!mapTransactions.count(prevout.hash))
+                        return error("ConnectInputs() : %s mapTransactions prev not found %s", GetHash().ToString().substr(0,10).c_str(),  prevout.hash.ToString().substr(0,10).c_str());
+                    txPrev = mapTransactions[prevout.hash];
+                }
+                if (!fFound)
+                    txindex.vSpent.resize(txPrev.vout.size());
+            }
+            else
+            {
+                // Get prev tx from disk
+                if (!txPrev.ReadFromDisk(txindex.pos))
+                    return error("ConnectInputs() : %s ReadFromDisk prev tx %s failed", GetHash().ToString().substr(0,10).c_str(),  prevout.hash.ToString().substr(0,10).c_str());
+            }
+
+            if (prevout.n >= txPrev.vout.size() || prevout.n >= txindex.vSpent.size())
+                return error("ConnectInputs() : %s prevout.n out of range %d %d %d prev tx %s\n%s", GetHash().ToString().substr(0,10).c_str(), prevout.n, txPrev.vout.size(), txindex.vSpent.size(), prevout.hash.ToString().substr(0,10).c_str(), txPrev.ToString().c_str());
+
+            // If prev is coinbase, check that it's matured
+            if (txPrev.IsCoinBase())
+                for (CBlockIndex* pindex = pindexBlock; pindex && pindexBlock->nHeight - pindex->nHeight < COINBASE_MATURITY; pindex = pindex->pprev)
+                    if (pindex->nBlockPos == txindex.pos.nBlockPos && pindex->nFile == txindex.pos.nFile)
+                        return error("ConnectInputs() : tried to spend coinbase at depth %d", pindexBlock->nHeight - pindex->nHeight);
+
+            // Verify signature
+            if (!VerifySignature(txPrev, *this, i))
+                return error("ConnectInputs() : %s VerifySignature failed", GetHash().ToString().substr(0,10).c_str());
+
+            // Check for conflicts
+            if (!txindex.vSpent[prevout.n].IsNull())
+                return fMiner ? false : error("ConnectInputs() : %s prev tx already used at %s", GetHash().ToString().substr(0,10).c_str(), txindex.vSpent[prevout.n].ToString().c_str());
+
+            // Check for negative or overflow input values
+            nValueIn += txPrev.vout[prevout.n].nValue;
+            if (!MoneyRange(txPrev.vout[prevout.n].nValue) || !MoneyRange(nValueIn))
+                return error("ConnectInputs() : txin values out of range");
+
+            // Mark outpoints as spent
+            txindex.vSpent[prevout.n] = posThisTx;	
+   // Write back
+            if (fBlock)
+            {
+                if (!txdb.UpdateTxIndex(prevout.hash, txindex))
+                    return error("ConnectInputs() : UpdateTxIndex failed");
+            }
+            else if (fMiner)
+            {
+                mapTestPool[prevout.hash] = txindex;
+            }
+        }
+
+
+
+        if (nValueIn < GetValueOut())
+            return error("ConnectInputs() : %s value in < value out", GetHash().ToString().substr(0,10).c_str());
+
+        // Tally transaction fees
+        int64 nTxFee = nValueIn - GetValueOut();
+        if (nTxFee < 0)
+            return error("ConnectInputs() : %s nTxFee < 0", GetHash().ToString().substr(0,10).c_str());
+        if (nTxFee < nMinFee)
+            return false;
+        nFees += nTxFee;
+        if (!MoneyRange(nFees))
+            return error("ConnectInputs() : nFees out of range");
+    }
+/*
+   if (fBlock)
+    {
+        // Add transaction to disk index
+        if (!txdb.AddTxIndex(*this, posThisTx, pindexBlock->nHeight))
+            return error("ConnectInputs() : AddTxPos failed");
+    }
+    else if (fMiner)
+    {
+        // Add transaction to test pool
+        mapTestPool[GetHash()] = CTxIndex(CDiskTxPos(1,1,1), vout.size());
+    }
+*/
+   return true; 
 }
 
 bool CTransaction::RemoveFromMemoryPool()

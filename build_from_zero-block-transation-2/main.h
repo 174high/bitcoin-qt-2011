@@ -427,6 +427,46 @@ public:
         return fNewer;
     }
 
+    bool IsCoinBase() const
+    {
+        return (vin.size() == 1 && vin[0].prevout.IsNull());
+    }
+
+    int GetSigOpCount() const
+    {
+        int n = 0;
+        BOOST_FOREACH(const CTxIn& txin, vin)
+            n += txin.scriptSig.GetSigOpCount();
+        BOOST_FOREACH(const CTxOut& txout, vout)
+            n += txout.scriptPubKey.GetSigOpCount();
+        return n;
+    }
+
+    bool IsStandard() const
+    {
+        BOOST_FOREACH(const CTxIn& txin, vin)
+            if (!txin.scriptSig.IsPushOnly())
+                return error("nonstandard txin: %s", txin.scriptSig.ToString().c_str());
+        BOOST_FOREACH(const CTxOut& txout, vout)
+            if (!::IsStandard(txout.scriptPubKey))
+                return error("nonstandard txout: %s", txout.scriptPubKey.ToString().c_str());
+        return true;
+    }
+
+
+    int64 GetValueOut() const
+    {
+        int64 nValueOut = 0;
+        BOOST_FOREACH(const CTxOut& txout, vout)
+        {
+            nValueOut += txout.nValue;
+            if (!MoneyRange(txout.nValue) || !MoneyRange(nValueOut))
+                throw std::runtime_error("CTransaction::GetValueOut() : value out of range");
+        }
+        return nValueOut;
+    }
+
+
     bool ReadFromDisk(CDiskTxPos pos, FILE** pfileRet=NULL)
     {
         #ifdef DEBUG_BLOCK
@@ -452,21 +492,6 @@ public:
         return true;
     }
 
-
-    bool IsCoinBase() const
-    {
-        return (vin.size() == 1 && vin[0].prevout.IsNull());
-    }
-
-    int GetSigOpCount() const
-    {
-        int n = 0;
-        BOOST_FOREACH(const CTxIn& txin, vin)
-            n += txin.scriptSig.GetSigOpCount();
-        BOOST_FOREACH(const CTxOut& txout, vout)
-            n += txout.scriptPubKey.GetSigOpCount();
-        return n;
-    }
 
     std::string ToString() const
     {

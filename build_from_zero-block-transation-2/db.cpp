@@ -194,6 +194,95 @@ bool CTxDB::ReadTxIndex(uint256 hash, CTxIndex& txindex)
     return Read(make_pair(string("tx"), hash), txindex);
 }
 
+bool CTxDB::UpdateTxIndex(uint256 hash, const CTxIndex& txindex)
+{
+    assert(!fClient);
+    return Write(make_pair(string("tx"), hash), txindex);
+}
+
+bool CTxDB::AddTxIndex(const CTransaction& tx, const CDiskTxPos& pos, int nHeight)
+{
+    assert(!fClient);
+
+    // Add to tx index
+    uint256 hash = tx.GetHash();
+    CTxIndex txindex(pos, tx.vout.size());
+    return Write(make_pair(string("tx"), hash), txindex);
+}
+
+bool CTxDB::EraseTxIndex(const CTransaction& tx)
+{
+    assert(!fClient);
+    uint256 hash = tx.GetHash();
+
+    return Erase(make_pair(string("tx"), hash));
+}
+
+bool CTxDB::ContainsTx(uint256 hash)
+{
+    assert(!fClient);
+    return Exists(make_pair(string("tx"), hash));
+}
+
+bool CTxDB::ReadOwnerTxes(uint160 hash160, int nMinHeight, vector<CTransaction>& vtx)
+{
+    #ifdef DEBUG_BLOCK
+    std::cout<<__FUNCTION__<<std::endl;
+    #endif
+
+    assert(!fClient);
+    vtx.clear();
+
+    // Get cursor
+    Dbc* pcursor = GetCursor();
+    if (!pcursor)
+        return false;
+
+    unsigned int fFlags = DB_SET_RANGE;
+    loop
+    {
+        // Read next record
+        CDataStream ssKey;
+        if (fFlags == DB_SET_RANGE)
+            ssKey << string("owner") << hash160 << CDiskTxPos(0, 0, 0);
+        CDataStream ssValue;
+        int ret = ReadAtCursor(pcursor, ssKey, ssValue, fFlags);
+        fFlags = DB_NEXT;
+        if (ret == DB_NOTFOUND)
+            break;
+        else if (ret != 0)
+        {
+            pcursor->close();
+            return false;
+        }
+
+        // Unserialize
+        string strType;
+        uint160 hashItem;
+        CDiskTxPos pos;
+        ssKey >> strType >> hashItem >> pos;
+        int nItemHeight;
+        ssValue >> nItemHeight;
+
+        // Read transaction
+        if (strType != "owner" || hashItem != hash160)
+            break;
+        if (nItemHeight >= nMinHeight)
+        {
+            vtx.resize(vtx.size()+1);
+            if (!vtx.back().ReadFromDisk(pos))
+            {
+                pcursor->close();
+                return false;
+            }
+        }
+    }
+
+    pcursor->close();
+    return true;
+}
+
+
 bool CTxDB::ReadDiskTx(uint256 hash, CTransaction& tx, CTxIndex& txindex)
 {
    #ifdef DEBUG_BLOCK
