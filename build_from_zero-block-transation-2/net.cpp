@@ -489,6 +489,28 @@ bool AddAddress(CAddress addr, int64 nTimePenalty, CAddrDB *pAddrDB)
     return false;
 }
 
+void AddressCurrentlyConnected(const CAddress& addr)
+{
+    CRITICAL_BLOCK(cs_mapAddresses)
+    {
+        // Only if it's been published already
+        map<vector<unsigned char>, CAddress>::iterator it = mapAddresses.find(addr.GetKey());
+        if (it != mapAddresses.end())
+        {
+            CAddress& addrFound = (*it).second;
+            int64 nUpdateInterval = 20 * 60;
+            if (addrFound.nTime < GetAdjustedTime() - nUpdateInterval)
+            {
+                // Periodically update most recently seen time
+                addrFound.nTime = GetAdjustedTime();
+                CAddrDB addrdb;
+                addrdb.WriteAddress(addrFound);
+            }
+        }
+    }
+}
+
+
 void ThreadMessageHandler(void* parg)
 {
     IMPLEMENT_RANDOMIZE_STACK(ThreadMessageHandler(parg));

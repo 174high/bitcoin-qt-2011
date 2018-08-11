@@ -87,7 +87,7 @@ public:
     std::string SendMoneyToBitcoinAddress(std::string strAddress, int64 nValue, CWalletTx& wtxNew, bool fAskFee=false);
 
     bool TopUpKeyPool();
- //   void ReserveKeyFromKeyPool(int64& nIndex, CKeyPool& keypool);
+    void ReserveKeyFromKeyPool(int64& nIndex, CKeyPool& keypool);
     void KeepKey(int64 nIndex);
     void ReturnKey(int64 nIndex);
     std::vector<unsigned char> GetOrReuseKeyFromPool();

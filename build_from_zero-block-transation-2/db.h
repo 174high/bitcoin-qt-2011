@@ -24,7 +24,7 @@ class CWallet;
 class CAccount;
 class CAccountingEntry;
 class CBlockLocator;
-
+class CKeyPool; 
 
 extern unsigned int nWalletDBUpdated;
 extern DbEnv dbenv;
@@ -355,6 +355,24 @@ public:
         return Write(std::make_pair(std::string("key"), vchPubKey), vchPrivKey, false);
     }
 
+   bool ReadPool(int64 nPool, CKeyPool& keypool)
+    {
+        return Read(std::make_pair(std::string("pool"), nPool), keypool);
+    }
+
+    bool WritePool(int64 nPool, const CKeyPool& keypool)
+    {
+        nWalletDBUpdated++;
+        return Write(std::make_pair(std::string("pool"), nPool), keypool);
+    }
+
+   bool ErasePool(int64 nPool)
+    {
+        nWalletDBUpdated++;
+        return Erase(std::make_pair(std::string("pool"), nPool));
+    }
+
+
    bool WriteCryptedKey(const std::vector<unsigned char>& vchPubKey, const std::vector<unsigned char>& vchCryptedSecret, bool fEraseUnencryptedKey = true)
     {
         nWalletDBUpdated++;
@@ -375,8 +393,55 @@ public:
         return Write(std::string("bestblock"), locator);
     }
 
+    template<typename T>
+    bool ReadSetting(const std::string& strKey, T& value)
+    {
+        return Read(std::make_pair(std::string("setting"), strKey), value);
+    }
+
+    template<typename T>
+    bool WriteSetting(const std::string& strKey, const T& value)
+    {
+        nWalletDBUpdated++;
+        return Write(std::make_pair(std::string("setting"), strKey), value);
+    }
+
+    bool ReadAccount(const std::string& strAccount, CAccount& account);
+    bool WriteAccount(const std::string& strAccount, const CAccount& account);
+    bool WriteAccountingEntry(const CAccountingEntry& acentry);
+    int64 GetAccountCreditDebit(const std::string& strAccount);
+    void ListAccountCreditDebit(const std::string& strAccount, std::list<CAccountingEntry>& acentries);
+
+    int LoadWallet(CWallet* pwallet);
+
 };
 
+
+class CKeyPool
+{   
+public:
+    int64 nTime;
+    std::vector<unsigned char> vchPubKey;
+
+    CKeyPool()
+    {
+        nTime = GetTime();
+    }
+    
+    CKeyPool(const std::vector<unsigned char>& vchPubKeyIn)
+    {
+        nTime = GetTime();
+        vchPubKey = vchPubKeyIn;
+    }
+
+    IMPLEMENT_SERIALIZE
+    (
+        if (!(nType & SER_GETHASH))
+            READWRITE(nVersion);
+        READWRITE(nTime);
+        READWRITE(vchPubKey);
+    )
+};  
 
 
 #endif 

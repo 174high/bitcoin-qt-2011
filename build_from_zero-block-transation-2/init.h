@@ -4,7 +4,7 @@
 #ifndef BITCOIN_INIT_H
 #define BITCOIN_INIT_H
 
-//extern CWallet* pwalletMain;
+extern CWallet* pwalletMain;
 
 void Shutdown(void* parg);
 //bool AppInit(int argc, char* argv[]);

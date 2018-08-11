@@ -16,6 +16,18 @@ bool CWallet::AddKey(const CKey& key)
     return true;
 }
 
+vector<unsigned char> CWallet::GetOrReuseKeyFromPool()
+{
+    int64 nIndex = 0;
+    CKeyPool keypool;
+    ReserveKeyFromKeyPool(nIndex, keypool);
+    if(nIndex == -1)
+        return vchDefaultKey;
+    KeepKey(nIndex);
+    return keypool.vchPubKey;
+}
+
+
 bool CWallet::AddCryptedKey(const vector<unsigned char> &vchPubKey, const vector<unsigned char> &vchCryptedSecret)
 {
     if (!CCryptoKeyStore::AddCryptedKey(vchPubKey, vchCryptedSecret))
@@ -182,5 +194,78 @@ void CWallet::WalletUpdateSpent(const CTransaction &tx)
 bool CWalletTx::WriteToDisk()
 {
     return CWalletDB(pwallet->strWalletFile).WriteTx(GetHash(), *this);
+}
+
+
+void CWallet::ReserveKeyFromKeyPool(int64& nIndex, CKeyPool& keypool)
+{
+    nIndex = -1;
+    keypool.vchPubKey.clear();
+    CRITICAL_BLOCK(cs_main)
+    CRITICAL_BLOCK(cs_mapWallet)
+    CRITICAL_BLOCK(cs_setKeyPool)
+    {
+        if (!IsLocked())
+            TopUpKeyPool();
+
+        // Get the oldest key
+        if(setKeyPool.empty())
+            return;
+
+        CWalletDB walletdb(strWalletFile);
+
+        nIndex = *(setKeyPool.begin());
+        setKeyPool.erase(setKeyPool.begin());
+        if (!walletdb.ReadPool(nIndex, keypool))
+            throw runtime_error("ReserveKeyFromKeyPool() : read failed");
+        if (!HaveKey(keypool.vchPubKey))
+            throw runtime_error("ReserveKeyFromKeyPool() : unknown key in key pool");
+        assert(!keypool.vchPubKey.empty());
+        printf("keypool reserve %"PRI64d"\n", nIndex);
+    }
+}
+
+
+bool CWallet::TopUpKeyPool()
+{
+    CRITICAL_BLOCK(cs_main)
+    CRITICAL_BLOCK(cs_mapWallet)
+    CRITICAL_BLOCK(cs_setKeyPool)
+    CRITICAL_BLOCK(cs_vMasterKey)
+    {
+        if (IsLocked())
+            return false;
+
+        CWalletDB walletdb(strWalletFile);
+
+        // Top up key pool
+        int64 nTargetSize = max(GetArg("-keypool", 100), (int64)0);
+        while (setKeyPool.size() < nTargetSize+1)
+        {
+            int64 nEnd = 1;
+            if (!setKeyPool.empty())
+                nEnd = *(--setKeyPool.end()) + 1;
+            if (!walletdb.WritePool(nEnd, CKeyPool(GenerateNewKey())))
+                throw runtime_error("TopUpKeyPool() : writing generated key failed");
+            setKeyPool.insert(nEnd);
+            printf("keypool added key %"PRI64d", size=%d\n", nEnd, setKeyPool.size());
+        }
+    }
+    return true;
+}
+
+
+void CWallet::KeepKey(int64 nIndex)
+{
+    // Remove from key pool
+    if (fFileBacked)
+    {
+        CWalletDB walletdb(strWalletFile);
+        CRITICAL_BLOCK(cs_main)
+        {
+            walletdb.ErasePool(nIndex);
+        }
+    }
+    printf("keypool keep %"PRI64d"\n", nIndex);
 }
 
