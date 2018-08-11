@@ -117,7 +117,7 @@ void static InvalidChainFound(CBlockIndex* pindexNew)
 
 bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
 {
-/*    uint256 hash = GetHash();
+    uint256 hash = GetHash();
 
     txdb.TxnBegin();
     if (pindexGenesisBlock == NULL && hash == hashGenesisBlock)
@@ -127,7 +127,7 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
             return error("SetBestChain() : TxnCommit failed");
         pindexGenesisBlock = pindexNew;
     }
-    else if (hashPrevBlock == hashBestChain)
+/*    else if (hashPrevBlock == hashBestChain)
     {
         // Adding to current best branch
         if (!ConnectBlock(txdb, pindexNew) || !txdb.WriteHashBestChain(hash))

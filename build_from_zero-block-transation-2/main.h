@@ -427,6 +427,32 @@ public:
         return fNewer;
     }
 
+    bool ReadFromDisk(CDiskTxPos pos, FILE** pfileRet=NULL)
+    {
+        #ifdef DEBUG_BLOCK
+        std::cout<<"ctransation"<<__FUNCTION__<<":1"<<std::endl;
+        #endif
+
+        CAutoFile filein = OpenBlockFile(pos.nFile, 0, pfileRet ? "rb+" : "rb");
+        if (!filein)
+            return error("CTransaction::ReadFromDisk() : OpenBlockFile failed");
+
+        // Read transaction
+        if (fseek(filein, pos.nTxPos, SEEK_SET) != 0)
+            return error("CTransaction::ReadFromDisk() : fseek failed");
+        filein >> *this;
+
+        // Return file pointer
+        if (pfileRet)
+        {
+            if (fseek(filein, pos.nTxPos, SEEK_SET) != 0)
+                return error("CTransaction::ReadFromDisk() : second fseek failed");
+            *pfileRet = filein.release();
+        }
+        return true;
+    }
+
+
     bool IsCoinBase() const
     {
         return (vin.size() == 1 && vin[0].prevout.IsNull());
@@ -478,6 +504,61 @@ protected:
 public:
     bool RemoveFromMemoryPool();
 
+};
+
+
+//
+// A txdb record that contains the disk location of a transaction and the
+// locations of transactions that spend its outputs.  vSpent is really only
+// used as a flag, but having the location is very helpful for debugging.
+//
+class CTxIndex
+{
+public:
+    CDiskTxPos pos;
+    std::vector<CDiskTxPos> vSpent;
+
+    CTxIndex()
+    {
+        SetNull();
+    }
+
+    CTxIndex(const CDiskTxPos& posIn, unsigned int nOutputs)
+    {
+        pos = posIn;
+        vSpent.resize(nOutputs);
+    }
+
+    IMPLEMENT_SERIALIZE
+    (
+        if (!(nType & SER_GETHASH))
+            READWRITE(nVersion);
+        READWRITE(pos);
+        READWRITE(vSpent);
+    )
+
+    void SetNull()
+    {
+        pos.SetNull();
+        vSpent.clear();
+    }
+
+    bool IsNull()
+    {
+        return pos.IsNull();
+    }
+
+    friend bool operator==(const CTxIndex& a, const CTxIndex& b)
+    {
+        return (a.pos    == b.pos &&
+                a.vSpent == b.vSpent);
+    }
+
+    friend bool operator!=(const CTxIndex& a, const CTxIndex& b)
+    {
+        return !(a == b);
+    }
+    int GetDepthInMainChain() const;
 };
 
 
@@ -654,7 +735,7 @@ public:
     {
         SetNull();
 
-        std::cout<<"2:"<<__FUNCTION__<<" cblock"<<std::endl;
+        std::cout<<"CBlock"<<__FUNCTION__<<std::endl;
         // Open history file to read
         CAutoFile filein = OpenBlockFile(nFile, nBlockPos, "rb");
         if (!filein)

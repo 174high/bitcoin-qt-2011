@@ -183,10 +183,60 @@ CBlockIndex static * InsertBlockIndex(uint256 hash)
     return pindexNew;
 }
 
+//
+// CTxDB
+//
+
+bool CTxDB::ReadTxIndex(uint256 hash, CTxIndex& txindex)
+{
+    assert(!fClient);
+    txindex.SetNull();
+    return Read(make_pair(string("tx"), hash), txindex);
+}
+
+bool CTxDB::ReadDiskTx(uint256 hash, CTransaction& tx, CTxIndex& txindex)
+{
+   #ifdef DEBUG_BLOCK
+    std::cout<<__FUNCTION__<<std::endl;
+    #endif
+    assert(!fClient);
+    tx.SetNull();
+    if (!ReadTxIndex(hash, txindex))
+        return false;
+    return (tx.ReadFromDisk(txindex.pos));
+}
+
+bool CTxDB::ReadDiskTx(COutPoint outpoint, CTransaction& tx, CTxIndex& txindex)
+{
+    return ReadDiskTx(outpoint.hash, tx, txindex);
+}
+
+bool CTxDB::ReadDiskTx(COutPoint outpoint, CTransaction& tx)
+{
+    CTxIndex txindex;
+    return ReadDiskTx(outpoint.hash, tx, txindex);
+}
+
+bool CTxDB::WriteBlockIndex(const CDiskBlockIndex& blockindex)
+{
+    return Write(make_pair(string("blockindex"), blockindex.GetBlockHash()), blockindex);
+}
+
+bool CTxDB::EraseBlockIndex(uint256 hash)
+{
+    return Erase(make_pair(string("blockindex"), hash));
+}
+
 bool CTxDB::ReadHashBestChain(uint256& hashBestChain)
 {
     return Read(string("hashBestChain"), hashBestChain);
 }
+
+bool CTxDB::WriteHashBestChain(uint256 hashBestChain)
+{
+    return Write(string("hashBestChain"), hashBestChain);
+}
+
 
 bool CTxDB::ReadBestInvalidWork(CBigNum& bnBestInvalidWork)
 {
@@ -269,9 +319,8 @@ bool CTxDB::LoadBlockIndex()
                 pindexGenesisBlock = pindexNew;
             }
  
-
-          //  if (!pindexNew->CheckIndex())
-          //      return error("LoadBlockIndex() : CheckIndex failed at %d", pindexNew->nHeight);
+            if (!pindexNew->CheckIndex())
+                return error("LoadBlockIndex() : CheckIndex failed at %d", pindexNew->nHeight);
         }
         else
         {
@@ -360,11 +409,6 @@ bool CTxDB::LoadBlockIndex()
     std::cout<<"CheckBlock out:"<<std::endl;
 
     return true; 
-}
-
-bool CTxDB::WriteBlockIndex(const CDiskBlockIndex& blockindex)
-{
-    return Write(make_pair(string("blockindex"), blockindex.GetBlockHash()), blockindex);
 }
 
 
