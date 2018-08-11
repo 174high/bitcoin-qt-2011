@@ -654,7 +654,7 @@ public:
     {
         SetNull();
 
-        std::cout<<__FUNCTION__<<" cblock"<<std::endl;
+        std::cout<<"2:"<<__FUNCTION__<<" cblock"<<std::endl;
         // Open history file to read
         CAutoFile filein = OpenBlockFile(nFile, nBlockPos, "rb");
         if (!filein)
@@ -666,7 +666,7 @@ public:
         filein >> *this;
 
 #ifdef DEBUG_BLOCK
-	std::cout<<"GetHash()"<<GetHash().ToString()<<" nBits="<<nBits<<std::endl ;
+	std::cout<<"2: GetHash()"<<GetHash().ToString()<<" nBits="<<nBits<<std::endl ;
 #endif 
         // Check the header
         if (!CheckProofOfWork(GetHash(), nBits))

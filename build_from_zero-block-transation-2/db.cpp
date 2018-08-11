@@ -346,6 +346,17 @@ bool CTxDB::LoadBlockIndex()
         }
     }
 
+    if (pindexFork)
+    {
+        // Reorg back to the fork
+        printf("LoadBlockIndex() : *** moving best chain pointer back to block %d\n", pindexFork->nHeight);
+        CBlock block;
+        if (!block.ReadFromDisk(pindexFork))
+            return error("LoadBlockIndex() : block.ReadFromDisk failed");
+        CTxDB txdb;
+        block.SetBestChain(txdb, pindexFork);
+    }
+
     std::cout<<"CheckBlock out:"<<std::endl;
 
     return true; 

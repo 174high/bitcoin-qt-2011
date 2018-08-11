@@ -189,6 +189,45 @@ bool CTransaction::RemoveFromMemoryPool()
     return true;
 }
 
+bool CTransaction::CheckTransaction() const
+{
+    // Basic checks that don't depend on any context
+    if (vin.empty() || vout.empty())
+        return error("CTransaction::CheckTransaction() : vin or vout empty");
+
+    // Size limits
+    if (::GetSerializeSize(*this, SER_NETWORK) > MAX_BLOCK_SIZE)
+        return error("CTransaction::CheckTransaction() : size limits failed");
+
+    // Check for negative or overflow output values
+    int64 nValueOut = 0;
+    BOOST_FOREACH(const CTxOut& txout, vout)
+    {
+        if (txout.nValue < 0)
+            return error("CTransaction::CheckTransaction() : txout.nValue negative");
+        if (txout.nValue > MAX_MONEY)
+            return error("CTransaction::CheckTransaction() : txout.nValue too high");
+        nValueOut += txout.nValue;
+        if (!MoneyRange(nValueOut))
+            return error("CTransaction::CheckTransaction() : txout total out of range");
+    }
+
+    if (IsCoinBase())
+    {
+        if (vin[0].scriptSig.size() < 2 || vin[0].scriptSig.size() > 100)
+            return error("CTransaction::CheckTransaction() : coinbase script size");
+    }
+    else
+    {
+        BOOST_FOREACH(const CTxIn& txin, vin)
+            if (txin.prevout.IsNull())
+                return error("CTransaction::CheckTransaction() : prevout is null");
+    }
+
+    return true;
+}
+
+
 //////////////////////////////////////////////////////////////////////////////
 //      
 // CBlock and CBlockIndex
@@ -196,7 +235,7 @@ bool CTransaction::RemoveFromMemoryPool()
         
 bool CBlock::ReadFromDisk(const CBlockIndex* pindex, bool fReadTransactions)
 {
-    std::cout<<__FUNCTION__<<" fReadTransactions="<<fReadTransactions<<std::endl; 
+    std::cout<<"1:"<<__FUNCTION__<<" fReadTransactions="<<fReadTransactions<<std::endl; 
     if (!fReadTransactions)
     {   
         *this = pindex->GetBlockHeader();
@@ -204,6 +243,11 @@ bool CBlock::ReadFromDisk(const CBlockIndex* pindex, bool fReadTransactions)
     }
     if (!ReadFromDisk(pindex->nFile, pindex->nBlockPos, fReadTransactions))
         return false;
+
+#ifdef DEBUG_BLOCK
+        std::cout<<"1: GetHash()"<<GetHash().ToString()<<" pindex->GetBlockHash="<<pindex->GetBlockHash().ToString()<<std::endl ;
+#endif
+
     if (GetHash() != pindex->GetBlockHash())
         return error("CBlock::ReadFromDisk() : GetHash() doesn't match index");
     return true;
@@ -221,7 +265,7 @@ bool CBlock::CheckBlock() const
     // Check proof of work matches claimed amount
     if (!CheckProofOfWork(GetHash(), nBits))
         return error("CheckBlock() : proof of work failed");
-/*
+
     // Check timestamp
     if (GetBlockTime() > GetAdjustedTime() + 2 * 60 * 60)
         return error("CheckBlock() : block timestamp too far in the future");
@@ -245,7 +289,7 @@ bool CBlock::CheckBlock() const
     // Check merkleroot
     if (hashMerkleRoot != BuildMerkleTree())
         return error("CheckBlock() : hashMerkleRoot mismatch");
-*/
+
     return true;
 }
 
@@ -258,6 +302,10 @@ bool CheckProofOfWork(uint256 hash, unsigned int nBits)
     // Check range
     if (bnTarget <= 0 || bnTarget > bnProofOfWorkLimit)
         return error("CheckProofOfWork() : nBits below minimum work");
+
+#ifdef DEBUG_BLOCK
+        std::cout<<__FUNCTION__<<"Hash()"<<hash.ToString()<<" bnTarget.getuint256()="<<bnTarget.getuint256().ToString()<<std::endl ;
+#endif
 
     // Check proof of work matches claimed amount
     if (hash > bnTarget.getuint256())
