@@ -513,6 +513,10 @@ bool CAddrDB::WriteAddress(const CAddress& addr)
     return Write(make_pair(string("addr"), addr.GetKey()), addr);
 }
 
+bool CAddrDB::EraseAddress(const CAddress& addr)
+{
+    return Erase(make_pair(string("addr"), addr.GetKey()));
+}
 
 bool CAddrDB::LoadAddresses()
 {

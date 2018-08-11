@@ -562,7 +562,7 @@ void ThreadMessageHandler2(void* parg)
 
             // Send messages
             TRY_CRITICAL_BLOCK(pnode->cs_vSend)
-//                SendMessages(pnode, pnode == pnodeTrickle);
+                SendMessages(pnode, pnode == pnodeTrickle);
             if (fShutdown)
                 return;
         }

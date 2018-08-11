@@ -69,6 +69,15 @@ int fUseUPnP = false;
 bool static Reorganize(CTxDB& txdb, CBlockIndex* pindexNew);
 int64 static GetBlockValue(int nHeight, int64 nFees); 
 
+
+bool static GetTransaction(const uint256& hashTx, CWalletTx& wtx)
+{
+    BOOST_FOREACH(CWallet* pwallet, setpwalletRegistered)
+        if (pwallet->GetTransaction(hashTx,wtx))
+            return true;
+    return false;
+}
+
 bool static IsFromMe(CTransaction& tx)
 {
     BOOST_FOREACH(CWallet* pwallet, setpwalletRegistered)
@@ -107,6 +116,12 @@ void static Inventory(const uint256& hash)
 {
     BOOST_FOREACH(CWallet* pwallet, setpwalletRegistered)
         pwallet->Inventory(hash);
+}
+
+void static ResendWalletTransactions()
+{
+    BOOST_FOREACH(CWallet* pwallet, setpwalletRegistered)
+        pwallet->ResendWalletTransactions();
 }
 
 
@@ -2055,6 +2070,188 @@ bool ProcessMessages(CNode* pfrom)
     vRecv.Compact();
     return true;
 }
+
+bool SendMessages(CNode* pto, bool fSendTrickle)
+{
+    CRITICAL_BLOCK(cs_main)
+    {
+        // Don't send anything until we get their version message
+        if (pto->nVersion == 0)
+            return true;
+
+        // Keep-alive ping
+        if (pto->nLastSend && GetTime() - pto->nLastSend > 30 * 60 && pto->vSend.empty())
+            pto->PushMessage("ping");
+
+        // Resend wallet transactions that haven't gotten in a block yet
+        ResendWalletTransactions();
+
+        // Address refresh broadcast
+        static int64 nLastRebroadcast;
+        if (GetTime() - nLastRebroadcast > 24 * 60 * 60)
+        {
+            nLastRebroadcast = GetTime();
+            CRITICAL_BLOCK(cs_vNodes)
+            {
+                BOOST_FOREACH(CNode* pnode, vNodes)
+                {
+                    // Periodically clear setAddrKnown to allow refresh broadcasts
+                    pnode->setAddrKnown.clear();
+
+                    // Rebroadcast our address
+                    if (addrLocalHost.IsRoutable() && !fUseProxy)
+                    {
+                        CAddress addr(addrLocalHost);
+                        addr.nTime = GetAdjustedTime();
+                        pnode->PushAddress(addr);
+                    }
+                }
+            }
+        }
+
+       // Clear out old addresses periodically so it's not too much work at once
+        static int64 nLastClear;
+        if (nLastClear == 0)
+            nLastClear = GetTime();
+        if (GetTime() - nLastClear > 10 * 60 && vNodes.size() >= 3)
+        {
+            nLastClear = GetTime();
+            CRITICAL_BLOCK(cs_mapAddresses)
+            {
+                CAddrDB addrdb;
+                int64 nSince = GetAdjustedTime() - 14 * 24 * 60 * 60;
+                for (map<vector<unsigned char>, CAddress>::iterator mi = mapAddresses.begin();
+                     mi != mapAddresses.end();)
+                {
+                    const CAddress& addr = (*mi).second;
+                    if (addr.nTime < nSince)
+                    {
+                        if (mapAddresses.size() < 1000 || GetTime() > nLastClear + 20)
+                            break;
+                        addrdb.EraseAddress(addr);
+                        mapAddresses.erase(mi++);
+                    }
+                    else
+                        mi++;
+                }
+            }
+        }
+
+
+        //
+        // Message: addr
+        //
+        if (fSendTrickle)
+        {
+            vector<CAddress> vAddr;
+            vAddr.reserve(pto->vAddrToSend.size());
+            BOOST_FOREACH(const CAddress& addr, pto->vAddrToSend)
+            {
+                // returns true if wasn't already contained in the set
+                if (pto->setAddrKnown.insert(addr).second)
+                {
+                    vAddr.push_back(addr);
+                    // receiver rejects addr messages larger than 1000
+                    if (vAddr.size() >= 1000)
+                    {
+                        pto->PushMessage("addr", vAddr);
+                        vAddr.clear();
+                    }
+                }
+            }
+            pto->vAddrToSend.clear();
+            if (!vAddr.empty())
+                pto->PushMessage("addr", vAddr);
+        }
+
+
+        //
+        // Message: inventory
+        //
+        vector<CInv> vInv;
+        vector<CInv> vInvWait;
+        CRITICAL_BLOCK(pto->cs_inventory)
+        {
+            vInv.reserve(pto->vInventoryToSend.size());
+            vInvWait.reserve(pto->vInventoryToSend.size());
+            BOOST_FOREACH(const CInv& inv, pto->vInventoryToSend)
+            {
+                if (pto->setInventoryKnown.count(inv))
+                    continue;
+
+                // trickle out tx inv to protect privacy
+                if (inv.type == MSG_TX && !fSendTrickle)
+                {
+                    // 1/4 of tx invs blast to all immediately
+                    static uint256 hashSalt;
+                    if (hashSalt == 0)
+                        RAND_bytes((unsigned char*)&hashSalt, sizeof(hashSalt));
+                    uint256 hashRand = inv.hash ^ hashSalt;
+                    hashRand = Hash(BEGIN(hashRand), END(hashRand));
+                    bool fTrickleWait = ((hashRand & 3) != 0);
+
+                    // always trickle our own transactions
+                    if (!fTrickleWait)
+                    {
+                        CWalletTx wtx;
+                        if (GetTransaction(inv.hash, wtx))
+                            if (wtx.fFromMe)
+                                fTrickleWait = true;
+                    }
+
+                    if (fTrickleWait)
+                    {
+                        vInvWait.push_back(inv);
+                        continue;
+                    }
+                }
+
+                // returns true if wasn't already contained in the set
+                if (pto->setInventoryKnown.insert(inv).second)
+                {
+                    vInv.push_back(inv);
+                    if (vInv.size() >= 1000)
+                    {
+                        pto->PushMessage("inv", vInv);
+                        vInv.clear();
+                    }
+                }
+            }
+            pto->vInventoryToSend = vInvWait;
+        }
+        if (!vInv.empty())
+            pto->PushMessage("inv", vInv);
+
+
+        //
+        // Message: getdata
+        //
+        vector<CInv> vGetData;
+        int64 nNow = GetTime() * 1000000;
+        CTxDB txdb("r");
+        while (!pto->mapAskFor.empty() && (*pto->mapAskFor.begin()).first <= nNow)
+        {
+            const CInv& inv = (*pto->mapAskFor.begin()).second;
+            if (!AlreadyHave(txdb, inv))
+            {
+                printf("sending getdata: %s\n", inv.ToString().c_str());
+                vGetData.push_back(inv);
+                if (vGetData.size() >= 1000)
+                {
+                    pto->PushMessage("getdata", vGetData);
+                    vGetData.clear();
+                }
+            }
+            pto->mapAskFor.erase(pto->mapAskFor.begin());
+        }
+        if (!vGetData.empty())
+            pto->PushMessage("getdata", vGetData);
+
+    }
+    return true;
+}
+
+
 
 bool LoadBlockIndex(bool fAllowNew)
 {

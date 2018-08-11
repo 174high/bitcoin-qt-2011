@@ -288,10 +288,10 @@ public:
     CAddrDB(const char* pszMode="r+") : CDB("addr.dat", pszMode) { }
 private:
     CAddrDB(const CAddrDB&);
- //   void operator=(const CAddrDB&);
+    void operator=(const CAddrDB&);
 public:
     bool WriteAddress(const CAddress& addr);
-//    bool EraseAddress(const CAddress& addr);
+    bool EraseAddress(const CAddress& addr);
     bool LoadAddresses();
 };
 
