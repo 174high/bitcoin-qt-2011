@@ -17,6 +17,9 @@
 
 using namespace std; 
 using namespace boost;
+
+unsigned int nWalletDBUpdated;
+uint64 nAccountingEntryNumber = 0;
 //
 // CDB
 //

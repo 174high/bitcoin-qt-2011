@@ -14,6 +14,9 @@ SOURCES += main.cpp \
            db.cpp \
            util.cpp \       
 	   script.cpp \
+	   wallet.cpp \
+	   crypter.cpp \
+	   keystore.cpp \
            cryptopp/sha.cpp \
            cryptopp/cpu.cpp
 

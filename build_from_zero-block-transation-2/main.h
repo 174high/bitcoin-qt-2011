@@ -466,6 +466,58 @@ public:
         return nValueOut;
     }
 
+   static bool AllowFree(double dPriority)
+    {
+        // Large (in bytes) low-priority (new, small-coin) transactions
+        // need a fee.
+        return dPriority > COIN * 144 / 250;
+    }
+
+    int64 GetMinFee(unsigned int nBlockSize=1, bool fAllowFree=true, bool fForRelay=false) const
+    {
+        // Base fee is either MIN_TX_FEE or MIN_RELAY_TX_FEE
+        int64 nBaseFee = fForRelay ? MIN_RELAY_TX_FEE : MIN_TX_FEE;
+
+        unsigned int nBytes = ::GetSerializeSize(*this, SER_NETWORK);
+        unsigned int nNewBlockSize = nBlockSize + nBytes;
+        int64 nMinFee = (1 + (int64)nBytes / 1000) * nBaseFee;
+
+        if (fAllowFree)
+        {
+            if (nBlockSize == 1)
+            {
+                // Transactions under 10K are free
+                // (about 4500bc if made of 50bc inputs)
+                if (nBytes < 10000)
+                    nMinFee = 0;
+            }
+            else
+            {
+                // Free transaction area
+                if (nNewBlockSize < 27000)
+                    nMinFee = 0;
+            }
+        }
+
+        // To limit dust spam, require MIN_TX_FEE/MIN_RELAY_TX_FEE if any output is less than 0.01
+        if (nMinFee < nBaseFee)
+            BOOST_FOREACH(const CTxOut& txout, vout)
+                if (txout.nValue < CENT)
+                    nMinFee = nBaseFee;
+
+        // Raise the price as the block approaches full
+        if (nBlockSize != 1 && nNewBlockSize >= MAX_BLOCK_SIZE_GEN/2)
+        {
+            if (nNewBlockSize >= MAX_BLOCK_SIZE_GEN)
+                return MAX_MONEY;
+            nMinFee *= MAX_BLOCK_SIZE_GEN / (MAX_BLOCK_SIZE_GEN - nNewBlockSize);
+        }
+
+        if (!MoneyRange(nMinFee))
+            nMinFee = MAX_MONEY;
+        return nMinFee;
+    }
+
 
     bool ReadFromDisk(CDiskTxPos pos, FILE** pfileRet=NULL)
     {
@@ -492,6 +544,18 @@ public:
         return true;
     }
 
+    friend bool operator==(const CTransaction& a, const CTransaction& b)
+    {
+        return (a.nVersion  == b.nVersion &&
+                a.vin       == b.vin &&
+                a.vout      == b.vout &&
+                a.nLockTime == b.nLockTime);
+    }
+
+    friend bool operator!=(const CTransaction& a, const CTransaction& b)
+    {
+        return !(a == b);
+    }
 
     std::string ToString() const
     {

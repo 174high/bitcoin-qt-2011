@@ -61,6 +61,18 @@ int fUseUPnP = true;
 int fUseUPnP = false;
 #endif
 
+bool static Reorganize(CTxDB& txdb, CBlockIndex* pindexNew);
+
+bool static IsFromMe(CTransaction& tx)
+{
+    BOOST_FOREACH(CWallet* pwallet, setpwalletRegistered)
+        if (pwallet->IsFromMe(tx))
+            return true;
+    return false;
+}
+
+
+
 void static SetBestChain(const CBlockLocator& loc)
 {
     BOOST_FOREACH(CWallet* pwallet, setpwalletRegistered)
@@ -113,6 +125,27 @@ void static InvalidChainFound(CBlockIndex* pindexNew)
     if (pindexBest && bnBestInvalidWork > bnBestChainWork + pindexBest->GetBlockWork() * 6)
         printf("InvalidChainFound: WARNING: Displayed transactions may not be correct!  You may need to upgrade, or other nodes may need to upgrade.\n");
 }
+
+bool CBlock::DisconnectBlock(CTxDB& txdb, CBlockIndex* pindex)
+{
+    // Disconnect in reverse order
+    for (int i = vtx.size()-1; i >= 0; i--)
+        if (!vtx[i].DisconnectInputs(txdb))
+            return false;
+
+    // Update block index on disk without changing it in memory.
+    // The memory index structure will be changed after the db commits.
+    if (pindex->pprev)
+    {
+        CDiskBlockIndex blockindexPrev(pindex->pprev);
+        blockindexPrev.hashNext = 0;
+        if (!txdb.WriteBlockIndex(blockindexPrev))
+            return error("DisconnectBlock() : WriteBlockIndex failed");
+    }
+
+    return true;
+}
+
 
 bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
 {
@@ -186,7 +219,7 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
         BOOST_FOREACH(CTransaction& tx, vtx)
             tx.RemoveFromMemoryPool();
     }
-/*    else
+    else
     {
         // New best branch
         if (!Reorganize(txdb, pindexNew))
@@ -196,7 +229,7 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
             return error("SetBestChain() : Reorganize failed");
         }
     }
-
+/*
     // Update best block in wallet (so we can detect restored wallets)
     if (!IsInitialBlockDownload())
     {
@@ -215,6 +248,173 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
 */
     return true;
 }
+
+bool CTransaction::AcceptToMemoryPool(CTxDB& txdb, bool fCheckInputs, bool* pfMissingInputs)
+{
+    #ifdef DEBUG_BLOCK
+    std::cout<<__FUNCTION__<<" CTransaction "<<std::endl;
+    #endif
+
+    if (pfMissingInputs)
+        *pfMissingInputs = false;
+
+    if (!CheckTransaction())
+        return error("AcceptToMemoryPool() : CheckTransaction failed");
+
+    // Coinbase is only valid in a block, not as a loose transaction
+    if (IsCoinBase())
+        return error("AcceptToMemoryPool() : coinbase as individual tx");
+
+    // To help v0.1.5 clients who would see it as a negative number
+    if ((int64)nLockTime > INT_MAX)
+        return error("AcceptToMemoryPool() : not accepting nLockTime beyond 2038 yet");
+
+    // Safety limits
+    unsigned int nSize = ::GetSerializeSize(*this, SER_NETWORK);
+    // Checking ECDSA signatures is a CPU bottleneck, so to avoid denial-of-service
+    // attacks disallow transactions with more than one SigOp per 34 bytes.
+    // 34 bytes because a TxOut is:
+    //   20-byte address + 8 byte bitcoin amount + 5 bytes of ops + 1 byte script length
+    if (GetSigOpCount() > nSize / 34 || nSize < 100)
+        return error("AcceptToMemoryPool() : nonstandard transaction");
+
+    // Rather not work on nonstandard transactions (unless -testnet)
+    if (!fTestNet && !IsStandard())
+        return error("AcceptToMemoryPool() : nonstandard transaction type");
+
+    // Do we already have it?
+    uint256 hash = GetHash();
+    CRITICAL_BLOCK(cs_mapTransactions)
+        if (mapTransactions.count(hash))
+            return false;
+    if (fCheckInputs)
+        if (txdb.ContainsTx(hash))
+            return false;
+
+    // Check for conflicts with in-memory transactions
+    CTransaction* ptxOld = NULL;
+    for (int i = 0; i < vin.size(); i++)
+    {
+        COutPoint outpoint = vin[i].prevout;
+        if (mapNextTx.count(outpoint))
+        {
+            // Disable replacement feature for now
+            return false;
+
+            // Allow replacing with a newer version of the same transaction
+            if (i != 0)
+                return false;
+            ptxOld = mapNextTx[outpoint].ptx;
+            if (ptxOld->IsFinal())
+                return false;
+            if (!IsNewerThan(*ptxOld))
+                return false;
+            for (int i = 0; i < vin.size(); i++)
+            {
+                COutPoint outpoint = vin[i].prevout;
+                if (!mapNextTx.count(outpoint) || mapNextTx[outpoint].ptx != ptxOld)
+                    return false;
+            }
+            break;
+        }
+    }
+
+    if (fCheckInputs)
+    {
+        // Check against previous transactions
+        map<uint256, CTxIndex> mapUnused;
+        int64 nFees = 0;
+        if (!ConnectInputs(txdb, mapUnused, CDiskTxPos(1,1,1), pindexBest, nFees, false, false))
+        {
+            if (pfMissingInputs)
+                *pfMissingInputs = true;
+            return error("AcceptToMemoryPool() : ConnectInputs failed %s", hash.ToString().substr(0,10).c_str());
+        }
+
+        // Don't accept it if it can't get into a block
+        if (nFees < GetMinFee(1000, true, true))
+            return error("AcceptToMemoryPool() : not enough fees");
+
+        // Continuously rate-limit free transactions
+        // This mitigates 'penny-flooding' -- sending thousands of free transactions just to
+        // be annoying or make other's transactions take longer to confirm.
+        if (nFees < MIN_RELAY_TX_FEE)
+        {
+            static CCriticalSection cs;
+            static double dFreeCount;
+            static int64 nLastTime;
+            int64 nNow = GetTime();
+
+            CRITICAL_BLOCK(cs)
+            {
+                // Use an exponentially decaying ~10-minute window:
+                dFreeCount *= pow(1.0 - 1.0/600.0, (double)(nNow - nLastTime));
+                nLastTime = nNow;
+                // -limitfreerelay unit is thousand-bytes-per-minute
+                // At default rate it would take over a month to fill 1GB
+                if (dFreeCount > GetArg("-limitfreerelay", 15)*10*1000 && !IsFromMe(*this))
+                    return error("AcceptToMemoryPool() : free transaction rejected by rate limiter");
+                if (fDebug)
+                    printf("Rate limit dFreeCount: %g => %g\n", dFreeCount, dFreeCount+nSize);
+                dFreeCount += nSize;
+            }
+        }
+    }
+/*
+    // Store transaction in memory
+    CRITICAL_BLOCK(cs_mapTransactions)
+    {
+        if (ptxOld)
+        {
+            printf("AcceptToMemoryPool() : replacing tx %s with new version\n", ptxOld->GetHash().ToString().c_str());
+            ptxOld->RemoveFromMemoryPool();
+        }
+        AddToMemoryPoolUnchecked();
+    }
+
+    ///// are we sure this is ok when loading transactions or restoring block txes
+    // If updated, erase old tx from wallet
+    if (ptxOld)
+        EraseFromWallets(ptxOld->GetHash());
+
+    printf("AcceptToMemoryPool(): accepted %s\n", hash.ToString().substr(0,10).c_str());
+*/    return true;
+}
+
+
+bool CTransaction::DisconnectInputs(CTxDB& txdb)
+{
+    // Relinquish previous transactions' spent pointers
+    if (!IsCoinBase())
+    {
+        BOOST_FOREACH(const CTxIn& txin, vin)
+        {
+            COutPoint prevout = txin.prevout;
+
+            // Get prev txindex from disk
+            CTxIndex txindex;
+            if (!txdb.ReadTxIndex(prevout.hash, txindex))
+                return error("DisconnectInputs() : ReadTxIndex failed");
+
+            if (prevout.n >= txindex.vSpent.size())
+                return error("DisconnectInputs() : prevout.n out of range");
+
+            // Mark outpoint as not spent
+            txindex.vSpent[prevout.n].SetNull();
+
+            // Write back
+            if (!txdb.UpdateTxIndex(prevout.hash, txindex))
+                return error("DisconnectInputs() : UpdateTxIndex failed");
+        }
+    }
+
+    // Remove transaction from index
+    if (!txdb.EraseTxIndex(*this))
+        return error("DisconnectInputs() : EraseTxPos failed");
+
+    return true;
+}
+
 
 bool CTransaction::ConnectInputs(CTxDB& txdb, map<uint256, CTxIndex>& mapTestPool, CDiskTxPos posThisTx,
                                  CBlockIndex* pindexBlock, int64& nFees, bool fBlock, bool fMiner, int64 nMinFee)
@@ -319,7 +519,7 @@ bool CTransaction::ConnectInputs(CTxDB& txdb, map<uint256, CTxIndex>& mapTestPoo
         if (!MoneyRange(nFees))
             return error("ConnectInputs() : nFees out of range");
     }
-/*
+
    if (fBlock)
     {
         // Add transaction to disk index
@@ -331,7 +531,7 @@ bool CTransaction::ConnectInputs(CTxDB& txdb, map<uint256, CTxIndex>& mapTestPoo
         // Add transaction to test pool
         mapTestPool[GetHash()] = CTxIndex(CDiskTxPos(1,1,1), vout.size());
     }
-*/
+
    return true; 
 }
 
@@ -517,6 +717,96 @@ bool CBlock::AddToBlockIndex(unsigned int nFile, unsigned int nBlockPos)
     }
 
     MainFrameRepaint();
+    return true;
+}
+bool static Reorganize(CTxDB& txdb, CBlockIndex* pindexNew)
+{
+    printf("REORGANIZE\n");
+
+    // Find the fork
+    CBlockIndex* pfork = pindexBest;
+    CBlockIndex* plonger = pindexNew;
+    while (pfork != plonger)
+    {
+        while (plonger->nHeight > pfork->nHeight)
+            if (!(plonger = plonger->pprev))
+                return error("Reorganize() : plonger->pprev is null");
+        if (pfork == plonger)
+            break;
+        if (!(pfork = pfork->pprev))
+            return error("Reorganize() : pfork->pprev is null");
+    }
+
+    // List of what to disconnect
+    vector<CBlockIndex*> vDisconnect;
+    for (CBlockIndex* pindex = pindexBest; pindex != pfork; pindex = pindex->pprev)
+        vDisconnect.push_back(pindex);
+
+    // List of what to connect
+    vector<CBlockIndex*> vConnect;
+    for (CBlockIndex* pindex = pindexNew; pindex != pfork; pindex = pindex->pprev)
+        vConnect.push_back(pindex);
+    reverse(vConnect.begin(), vConnect.end());
+
+    // Disconnect shorter branch
+    vector<CTransaction> vResurrect;
+    BOOST_FOREACH(CBlockIndex* pindex, vDisconnect)
+    {
+        CBlock block;
+        if (!block.ReadFromDisk(pindex))
+            return error("Reorganize() : ReadFromDisk for disconnect failed");
+        if (!block.DisconnectBlock(txdb, pindex))
+            return error("Reorganize() : DisconnectBlock failed");
+
+        // Queue memory transactions to resurrect
+        BOOST_FOREACH(const CTransaction& tx, block.vtx)
+            if (!tx.IsCoinBase())
+                vResurrect.push_back(tx);
+    }
+   // Connect longer branch
+    vector<CTransaction> vDelete;
+    for (int i = 0; i < vConnect.size(); i++)
+    {
+        CBlockIndex* pindex = vConnect[i];
+        CBlock block;
+        if (!block.ReadFromDisk(pindex))
+            return error("Reorganize() : ReadFromDisk for connect failed");
+        if (!block.ConnectBlock(txdb, pindex))
+        {
+            // Invalid block
+            txdb.TxnAbort();
+            return error("Reorganize() : ConnectBlock failed");
+        }
+
+        // Queue memory transactions to delete
+        BOOST_FOREACH(const CTransaction& tx, block.vtx)
+            vDelete.push_back(tx);
+    }
+    if (!txdb.WriteHashBestChain(pindexNew->GetBlockHash()))
+        return error("Reorganize() : WriteHashBestChain failed");
+
+    // Make sure it's successfully written to disk before changing memory structure
+    if (!txdb.TxnCommit())
+        return error("Reorganize() : TxnCommit failed");
+
+    // Disconnect shorter branch
+    BOOST_FOREACH(CBlockIndex* pindex, vDisconnect)
+        if (pindex->pprev)
+            pindex->pprev->pnext = NULL;
+
+    // Connect longer branch
+    BOOST_FOREACH(CBlockIndex* pindex, vConnect)
+        if (pindex->pprev)
+            pindex->pprev->pnext = pindex;
+
+    // Resurrect memory transactions that were in the disconnected branch
+    BOOST_FOREACH(CTransaction& tx, vResurrect)
+        tx.AcceptToMemoryPool(txdb, false);
+
+    // Delete redundant memory transactions that are in the connected branch
+    BOOST_FOREACH(CTransaction& tx, vDelete)
+        tx.RemoveFromMemoryPool();
+
     return true;
 }
 

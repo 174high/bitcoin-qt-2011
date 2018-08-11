@@ -96,13 +96,19 @@ public:
     int64 GetDebit(const CTxIn& txin) const;
     bool IsMine(const CTxOut& txout) const
     {
-//        return ::IsMine(*this, txout.scriptPubKey);
+//        return ::IsMine(*this, txout.scriptPubKey);  snq cautious
    }
-    int64 GetCredit(const CTxOut& txout) const
+
+   int64 GetCredit(const CTxOut& txout) const
     {
         if (!MoneyRange(txout.nValue))
             throw std::runtime_error("CWallet::GetCredit() : value out of range");
         return (IsMine(txout) ? txout.nValue : 0);
+    }
+
+    bool IsFromMe(const CTransaction& tx) const
+    {
+//        return (GetDebit(tx) > 0);    snq cautions
     }
 
   void SetBestChain(const CBlockLocator& loc)

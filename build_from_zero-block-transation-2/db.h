@@ -355,6 +355,20 @@ public:
         return Write(std::make_pair(std::string("key"), vchPubKey), vchPrivKey, false);
     }
 
+   bool WriteCryptedKey(const std::vector<unsigned char>& vchPubKey, const std::vector<unsigned char>& vchCryptedSecret, bool fEraseUnencryptedKey = true)
+    {
+        nWalletDBUpdated++;
+        if (!Write(std::make_pair(std::string("ckey"), vchPubKey), vchCryptedSecret, false))
+            return false;
+        if (fEraseUnencryptedKey)
+        {
+            Erase(std::make_pair(std::string("key"), vchPubKey));
+            Erase(std::make_pair(std::string("wkey"), vchPubKey));
+        }
+        return true;
+    }
+
+
    bool WriteBestBlock(const CBlockLocator& locator)
     {
         nWalletDBUpdated++;
