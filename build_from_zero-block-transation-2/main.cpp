@@ -989,6 +989,13 @@ FILE* AppendBlockFile(unsigned int& nFileRet)
     }
 }
 
+//////////////////////////////////////////////////////////////////////////////
+//
+// CAlert
+//
+
+map<uint256, CAlert> mapAlerts;
+CCriticalSection cs_mapAlerts;
 
 // The message start string is designed to be unlikely to occur in normal data.
 // The characters are rarely used upper ascii, not valid as UTF-8, and produce
@@ -1011,7 +1018,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
 
     if (strCommand == "version")
     {
-/*        // Each connection can only send one version message
+        // Each connection can only send one version message
         if (pfrom->nVersion != 0)
             return false;
 
@@ -1093,7 +1100,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         {
             nTotalBlocksEstimate = pfrom->nStartingHeight;
         }
-*/
+
     }
 /*
 

@@ -51,6 +51,17 @@ map<vector<unsigned char>, CAddress> mapAddresses;
 
 bool OpenNetworkConnection(const CAddress& addrConnect);
 
+void CNode::PushGetBlocks(CBlockIndex* pindexBegin, uint256 hashEnd)
+{
+    // Filter out duplicate requests
+    if (pindexBegin == pindexLastGetBlocksBegin && hashEnd == hashLastGetBlocksEnd)
+        return;
+    pindexLastGetBlocksBegin = pindexBegin;
+    hashLastGetBlocksEnd = hashEnd;
+
+    PushMessage("getblocks", CBlockLocator(pindexBegin), hashEnd);
+}   
+
 bool AnySubscribed(unsigned int nChannel)
 {
     if (pnodeLocalHost->IsSubscribed(nChannel))

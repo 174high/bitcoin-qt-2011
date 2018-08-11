@@ -174,24 +174,6 @@ int GetRandInt(int nMax)
 }
 
 
-//
-// "Never go to sea with two chronometers; take one or three."
-// Our three time sources are:
-//  - System clock
-//  - Median of other nodes's clocks
-//  - The user (asking the user to fix the system clock if the first two disagree)
-//
-int64 GetTime()
-{
-    return time(NULL);
-}
-
-static int64 nTimeOffset = 0;
-
-int64 GetAdjustedTime()
-{
-    return GetTime() + nTimeOffset;
-}
 
 string GetDataDir()
 {
@@ -419,3 +401,97 @@ vector<unsigned char> ParseHex(const string& str)
     return ParseHex(str.c_str());
 }
 
+
+//
+// "Never go to sea with two chronometers; take one or three."
+// Our three time sources are:
+//  - System clock
+//  - Median of other nodes's clocks
+//  - The user (asking the user to fix the system clock if the first two disagree)
+//
+int64 GetTime()
+{
+    return time(NULL);
+}
+
+static int64 nTimeOffset = 0;
+
+int64 GetAdjustedTime()
+{
+    return GetTime() + nTimeOffset;
+}
+
+void AddTimeData(unsigned int ip, int64 nTime)
+{
+    int64 nOffsetSample = nTime - GetTime();
+
+    // Ignore duplicates
+    static set<unsigned int> setKnown;
+    if (!setKnown.insert(ip).second)
+        return;
+
+    // Add data
+    static vector<int64> vTimeOffsets;
+    if (vTimeOffsets.empty())
+        vTimeOffsets.push_back(0);
+    vTimeOffsets.push_back(nOffsetSample);
+    printf("Added time data, samples %d, offset %+"PRI64d" (%+"PRI64d" minutes)\n", vTimeOffsets.size(), vTimeOffsets.back(), vTimeOffsets.back()/60);
+    if (vTimeOffsets.size() >= 5 && vTimeOffsets.size() % 2 == 1)
+    {
+        sort(vTimeOffsets.begin(), vTimeOffsets.end());
+        int64 nMedian = vTimeOffsets[vTimeOffsets.size()/2];
+        // Only let other nodes change our time by so much
+        if (abs64(nMedian) < 70 * 60)
+        {
+            nTimeOffset = nMedian;
+        }
+        else
+        {
+            nTimeOffset = 0;
+
+            static bool fDone;
+            if (!fDone)
+            {
+                // If nobody has a time different than ours but within 5 minutes of ours, give a warning
+                bool fMatch = false;
+                BOOST_FOREACH(int64 nOffset, vTimeOffsets)
+                    if (nOffset != 0 && abs64(nOffset) < 5 * 60)
+                        fMatch = true;
+
+                if (!fMatch)
+                {
+                    fDone = true;
+//                    string strMessage = _("Warning: Please check that your computer's date and time are correct.  If your clock is wrong Bitcoin will not work properly.");
+		    string strMessage = "Warning: Please check that your computer's date and time are correct.  If your clock is wrong Bitcoin will not work properly.";
+                    strMiscWarning = strMessage;
+                    printf("*** %s\n", strMessage.c_str());
+// snq                    boost::thread(boost::bind(ThreadSafeMessageBox, strMessage+" ", string("Bitcoin"), wxOK | wxICON_EXCLAMATION, (wxWindow*)NULL, -1, -1));
+                }
+            }
+        }
+        BOOST_FOREACH(int64 n, vTimeOffsets)
+            printf("%+"PRI64d"  ", n);
+        printf("|  nTimeOffset = %+"PRI64d"  (%+"PRI64d" minutes)\n", nTimeOffset, nTimeOffset/60);
+    }
+}
+
+
+
+string FormatVersion(int nVersion)
+{
+    if (nVersion%100 == 0)
+        return strprintf("%d.%d.%d", nVersion/1000000, (nVersion/10000)%100, (nVersion/100)%100);
+    else
+        return strprintf("%d.%d.%d.%d", nVersion/1000000, (nVersion/10000)%100, (nVersion/100)%100, nVersion%100);
+}
+
+string FormatFullVersion()
+{
+    string s = FormatVersion(VERSION) + pszSubVer;
+    if (VERSION_IS_BETA) {
+        s += "-";
+// snq        s += _("beta");
+	s += "beta";
+    }
+    return s;
+}
