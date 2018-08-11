@@ -979,6 +979,48 @@ public:
     }
 
 
+   enum { nMedianTimeSpan=11 };
+
+    int64 GetMedianTimePast() const
+    {
+        int64 pmedian[nMedianTimeSpan];
+        int64* pbegin = &pmedian[nMedianTimeSpan];
+        int64* pend = &pmedian[nMedianTimeSpan];
+
+        const CBlockIndex* pindex = this;
+        for (int i = 0; i < nMedianTimeSpan && pindex; i++, pindex = pindex->pprev)
+            *(--pbegin) = pindex->GetBlockTime();
+
+        std::sort(pbegin, pend);
+        return pbegin[(pend - pbegin)/2];
+    }
+   int64 GetMedianTime() const
+    {
+        const CBlockIndex* pindex = this;
+        for (int i = 0; i < nMedianTimeSpan/2; i++)
+        {
+            if (!pindex->pnext)
+                return GetBlockTime();
+            pindex = pindex->pnext;
+        }
+        return pindex->GetMedianTimePast();
+    }
+
+
+
+    std::string ToString() const
+    {
+        return strprintf("CBlockIndex(nprev=%08x, pnext=%08x, nFile=%d, nBlockPos=%-6d nHeight=%d, merkle=%s, hashBlock=%s)",
+            pprev, pnext, nFile, nBlockPos, nHeight,
+            hashMerkleRoot.ToString().substr(0,10).c_str(),
+            GetBlockHash().ToString().substr(0,20).c_str());
+    }
+
+    void print() const
+    {
+        printf("%s\n", ToString().c_str());
+    }
+
 
 
 }; 

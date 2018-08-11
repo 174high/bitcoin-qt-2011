@@ -37,7 +37,11 @@ uint64 nLocalHostNonce = 0;
 CCriticalSection cs_mapAddresses;
 CCriticalSection cs_vNodes;
 
+deque<pair<int64, CInv> > vRelayExpiration;
+CCriticalSection cs_mapRelay;
+map<CInv, int64> mapAlreadyAskedFor;
 
+map<CInv, CDataStream> mapRelay;
 
 vector<CNode*> vNodes;
 // Settings

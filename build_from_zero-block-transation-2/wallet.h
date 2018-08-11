@@ -157,6 +157,42 @@ public:
             vWalletUpdated.push_back(hashTx);
     }
 
+  int LoadWallet(bool& fFirstRunRet);
+//    bool BackupWallet(const std::string& strDest);
+
+    // requires cs_mapAddressBook lock
+    bool SetAddressBookName(const std::string& strAddress, const std::string& strName);
+
+    // requires cs_mapAddressBook lock
+    bool DelAddressBookName(const std::string& strAddress);
+
+//    void UpdatedTransaction(const uint256 &hashTx)
+//    {
+//        CRITICAL_BLOCK(cs_mapWallet)
+//            vWalletUpdated.push_back(hashTx);
+//    }
+
+    void PrintWallet(const CBlock& block);
+
+    void Inventory(const uint256 &hash)
+    {
+        CRITICAL_BLOCK(cs_mapRequestCount)
+        {
+            std::map<uint256, int>::iterator mi = mapRequestCount.find(hash);
+            if (mi != mapRequestCount.end())
+                (*mi).second++;
+        }
+    }
+
+//    int GetKeyPoolSize()
+//    {
+//        return setKeyPool.size();
+//    }
+
+    bool GetTransaction(const uint256 &hashTx, CWalletTx& wtx);
+
+    bool SetDefaultKey(const std::vector<unsigned char> &vchPubKey);
+
 };
 
 //

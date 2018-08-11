@@ -594,6 +594,12 @@ public:
         return std::max(nRefCount, 0) + (GetTime() < nReleaseTime ? 1 : 0);
     }
 
+   void AddAddressKnown(const CAddress& addr)
+    {
+        setAddrKnown.insert(addr);
+    }
+
+
     CNode* AddRef(int64 nTimeout=0)
     {
         if (nTimeout != 0)
@@ -606,6 +612,46 @@ public:
     void Release()
     {
         nRefCount--;
+    }
+
+   void PushAddress(const CAddress& addr)
+    {
+        // Known checking here is only to save space from duplicates.
+        // SendMessages will filter it again for knowns that were added
+        // after addresses were pushed.
+        if (addr.IsValid() && !setAddrKnown.count(addr))
+            vAddrToSend.push_back(addr);
+    }
+
+
+    void AddInventoryKnown(const CInv& inv)
+    {
+        CRITICAL_BLOCK(cs_inventory)
+            setInventoryKnown.insert(inv);
+    }
+
+    void PushInventory(const CInv& inv)
+    {
+        CRITICAL_BLOCK(cs_inventory)
+            if (!setInventoryKnown.count(inv))
+                vInventoryToSend.push_back(inv);
+    }
+
+    void AskFor(const CInv& inv)
+    {
+        // We're using mapAskFor as a priority queue,
+        // the key is the earliest time the request can be sent
+        int64& nRequestTime = mapAlreadyAskedFor[inv];
+        printf("askfor %s   %"PRI64d"\n", inv.ToString().c_str(), nRequestTime);
+
+        // Make sure not to reuse time indexes to keep things in the same order
+        int64 nNow = (GetTime() - 1) * 1000000;
+        static int64 nLastTime;
+        nLastTime = nNow = std::max(nNow, ++nLastTime);
+
+        // Each retry is 2 minutes after the last
+        nRequestTime = std::max(nRequestTime + 2 * 60 * 1000000, nNow);
+        mapAskFor.insert(std::make_pair(nRequestTime, inv));
     }
 
   void BeginMessage(const char* pszCommand)
@@ -630,15 +676,6 @@ public:
         nMessageStart = -1;
         cs_vSend.Leave();
         printf("(aborted)\n");
-    }
-
-   void PushAddress(const CAddress& addr)
-    {
-        // Known checking here is only to save space from duplicates.
-        // SendMessages will filter it again for knowns that were added
-        // after addresses were pushed.
-        if (addr.IsValid() && !setAddrKnown.count(addr))
-            vAddrToSend.push_back(addr);
     }
 
 
@@ -856,6 +893,42 @@ public:
 };
 
 
+inline void RelayInventory(const CInv& inv)
+{
+    // Put on lists to offer to the other nodes
+    CRITICAL_BLOCK(cs_vNodes)
+        BOOST_FOREACH(CNode* pnode, vNodes)
+            pnode->PushInventory(inv);
+}
+
+template<typename T>
+void RelayMessage(const CInv& inv, const T& a)
+{
+    CDataStream ss(SER_NETWORK);
+    ss.reserve(10000);
+    ss << a;
+    RelayMessage(inv, ss);
+}
+
+template<>
+inline void RelayMessage<>(const CInv& inv, const CDataStream& ss)
+{
+    CRITICAL_BLOCK(cs_mapRelay)
+    {
+        // Expire old relay messages
+        while (!vRelayExpiration.empty() && vRelayExpiration.front().first < GetTime())
+        {
+            mapRelay.erase(vRelayExpiration.front().second);
+            vRelayExpiration.pop_front();
+        }
+
+        // Save original serialized message so newer versions are preserved
+        mapRelay[inv] = ss;
+        vRelayExpiration.push_back(std::make_pair(GetTime() + 15 * 60, inv));
+    }
+
+    RelayInventory(inv);
+}
 
 
 
