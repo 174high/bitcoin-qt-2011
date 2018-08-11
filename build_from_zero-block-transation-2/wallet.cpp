@@ -85,7 +85,7 @@ bool CWallet::IsMine(const CTxIn &txin) const
 
 bool CWallet::AddToWallet(const CWalletTx& wtxIn)
 {
-/*
+
     std::cout<<__FUNCTION__<<std::endl ;
     uint256 hash = wtxIn.GetHash();
     CRITICAL_BLOCK(cs_mapWallet)
@@ -146,16 +146,16 @@ bool CWallet::AddToWallet(const CWalletTx& wtxIn)
 
         // since AddToWallet is called directly for self-originating transactions, check for consumption of own coins
         WalletUpdateSpent(wtx);
-    }
+     }
 
     // Refresh UI
-    MainFrameRepaint();
-*/    return true;
+// snq    MainFrameRepaint();
+     return true;
 }
 
 void CWallet::WalletUpdateSpent(const CTransaction &tx)
 {
-/*    // Anytime a signature is successfully verified, it's proof the outpoint is spent.
+    // Anytime a signature is successfully verified, it's proof the outpoint is spent.
     // Update the wallet spent flag if it doesn't know due to wallet.dat being
     // restored from backup or the user making copies of wallet.dat.
     CRITICAL_BLOCK(cs_mapWallet)
@@ -175,6 +175,12 @@ void CWallet::WalletUpdateSpent(const CTransaction &tx)
                 }
             }
         }
-    } */
+    } 
+}
+
+
+bool CWalletTx::WriteToDisk()
+{
+    return CWalletDB(pwallet->strWalletFile).WriteTx(GetHash(), *this);
 }
 

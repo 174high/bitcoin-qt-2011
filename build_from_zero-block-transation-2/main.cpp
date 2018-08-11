@@ -252,7 +252,7 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
             return error("SetBestChain() : Reorganize failed");
         }
     }
-/*
+
     // Update best block in wallet (so we can detect restored wallets)
     if (!IsInitialBlockDownload())
     {
@@ -268,14 +268,48 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
     nTimeBestReceived = GetTime();
     nTransactionsUpdated++;
     printf("SetBestChain: new best=%s  height=%d  work=%s\n", hashBestChain.ToString().substr(0,20).c_str(), nBestHeight, bnBestChainWork.ToString().c_str());
-*/
+
     return true;
+}
+
+
+int CMerkleTx::GetDepthInMainChain(int& nHeightRet) const
+{
+    if (hashBlock == 0 || nIndex == -1)
+        return 0;
+    
+    // Find the block it claims to be in
+    map<uint256, CBlockIndex*>::iterator mi = mapBlockIndex.find(hashBlock);
+    if (mi == mapBlockIndex.end())
+        return 0;
+    CBlockIndex* pindex = (*mi).second;
+    if (!pindex || !pindex->IsInMainChain())
+        return 0;
+    
+    // Make sure the merkle branch connects to this block
+    if (!fMerkleVerified)
+    {
+        if (CBlock::CheckMerkleBranch(GetHash(), vMerkleBranch, nIndex) != pindex->hashMerkleRoot)
+            return 0;
+        fMerkleVerified = true;
+    }
+
+    nHeightRet = pindex->nHeight;
+    return pindexBest->nHeight - pindex->nHeight + 1;
+}
+
+
+int CMerkleTx::GetBlocksToMaturity() const
+{
+    if (!IsCoinBase())
+        return 0;
+    return max(0, (COINBASE_MATURITY+20) - GetDepthInMainChain());
 }
 
 
 int CMerkleTx::SetMerkleBranch(const CBlock* pblock)
 {
-/*    if (fClient)
+    if (fClient)
     {
         if (hashBlock == 0)
             return 0;
@@ -322,7 +356,7 @@ int CMerkleTx::SetMerkleBranch(const CBlock* pblock)
         return 0;
 
     return pindexBest->nHeight - pindex->nHeight + 1;
-*/
+
 	return 0;  
 }
 
